@@ -27,7 +27,7 @@
       "extensions": [
         "ms-azuretools.vscode-docker",
         "vscjava.vscode-java-pack",
-        "ms-python.python",
+        "ms-pyright.pyright",
         "xdebug.php-pack",
         "esbenp.prettier-vscode"
       ]

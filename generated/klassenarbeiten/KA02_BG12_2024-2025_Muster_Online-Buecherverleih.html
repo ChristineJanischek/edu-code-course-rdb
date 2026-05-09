@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muster-Klassenarbeit: Relationale Datenbanken</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 2cm;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #1a5f8f;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+        h1 { font-size: 24pt; border-bottom: 3px solid #1a5f8f; padding-bottom: 0.5em; }
+        h2 { font-size: 18pt; }
+        h3 { font-size: 14pt; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 0.5em;
+            text-align: left;
+        }
+        table th {
+            background-color: #e8f1f7;
+            font-weight: bold;
+        }
+        pre {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1em;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-family: 'Courier New', monospace;
+        }
+        .box {
+            border-left: 4px solid #1a5f8f;
+            padding: 1em;
+            margin: 1em 0;
+            background-color: #f0f5fa;
+        }
+        .hint { border-left-color: #ffa500; background-color: #fffaf0; }
+        .warning { border-left-color: #ff6b6b; background-color: #ffe0e0; }
+    </style>
+</head>
+<body>
+    <hr />
+<p>titel: "Muster-Klassenarbeit: Online-Bücherverleih (BPE 6 &amp; 5.1)"
+schuljahr: "2024-2025"
+klasse: "BG12"
+fach: "Informatik"
+bearbeitungzeit: "90 Minuten"
+erreichbare_punkte: 30
+gewichtung:
+  bpe6_rdb: "90% (27 Punkte)"
+  bpe5_programmierung: "10% (3 Punkte)"
+version: "1.0 (Muster)"</p>
+<hr />
+<h1>Muster-Klassenarbeit: Online-Bücherverleih</h1>
+<p><strong>Klasse/Kurs:</strong> BG12<br />
+<strong>Schuljahr:</strong> 2024-2025<br />
+<strong>Bearbeitungszeit:</strong> 90 Minuten<br />
+<strong>Erreichbare Punkte:</strong> 30  </p>
+<blockquote>
+<p>📌 <strong>Hinweis:</strong> Diese Musterklassenarbeit zeigt die erwartete Struktur und Schwerpunkte. Sie kann als Vorlage für weitere Klassenarbeiten genutzt werden.</p>
+</blockquote>
+<hr />
+<h2>📖 Allgemeine Anleitung</h2>
+<p>Bearbeiten Sie alle Aufgaben in der vorgegebenen Reihenfolge. Sie haben <strong>90 Minuten</strong> Zeit. Die Aufgaben bauen teilweise aufeinander auf.</p>
+<p><strong>Materialien, die Sie benötigen:</strong>
+- Schreibzeug (Bleistift/Stift für Struktogramme)
+- ggf. SQL-Editor oder Terminal für Code-Tests</p>
+<hr />
+<h1>TEIL A: Relationale Datenbanken (27 Punkte / 90%)</h1>
+<h2>Aufgabe 1: Grundkonzepte Relationale Datenbanken</h2>
+<p><strong>Punkte: 3</strong><br />
+<strong>BPE:</strong> 6 – Grundkonzepte<br />
+<strong>Zeit:</strong> ~5 Minuten</p>
+<h3>Aufgabenstellung</h3>
+<p>Eine Bücherei betreibt ein Datenbanksystem zur Verwaltung von Büchern, Mitarbeitern und Ausleihvorgängen. </p>
+<p>Bewerten Sie die folgenden Aussagen zu Relationalen Datenbanken als <strong>richtig (r)</strong> oder <strong>falsch (f)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Aussage</th>
+<th>r/f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>Ein Primärschlüssel identifiziert eindeutig jeden Datensatz in einer Tabelle.</td>
+<td></td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Ein Fremdschlüssel kann mehrfach in einer Tabelle vorkommen.</td>
+<td></td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Normalisierung verhindert immer vollständig Datenredundanz.</td>
+<td></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Eine Relation in der Datenb ist gleichbedeutend mit einer Tabelle.</td>
+<td></td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>Ein NULL-Wert in einem Primärschlüssel ist nicht erlaubt.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Musterlösung</h3>
+<table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Aussage</th>
+<th>r/f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>Ein Primärschlüssel identifiziert eindeutig jeden Datensatz in einer Tabelle.</td>
+<td><strong>r</strong></td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Ein Fremdschlüssel kann mehrfach in einer Tabelle vorkommen.</td>
+<td><strong>r</strong></td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Normalisierung verhindert immer vollständig Datenredundanz.</td>
+<td><strong>f</strong> (Vereinigung ist ein Kompromiss)</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Eine Relation in der Datenbank ist gleichbedeutend mit einer Tabelle.</td>
+<td><strong>r</strong></td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>Ein NULL-Wert in einem Primärschlüssel ist nicht erlaubt.</td>
+<td><strong>r</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>Bewertung</h3>
+<ul>
+<li><strong>3 Punkte:</strong> Alle 5 Aussagen korrekt</li>
+<li><strong>2 Punkte:</strong> 4 Aussagen korrekt</li>
+<li><strong>1 Punkt:</strong> 3 Aussagen korrekt</li>
+<li><strong>0 Punkte:</strong> Weniger als 3 korrekt</li>
+</ul>
+<hr />
+<h2>Aufgabe 2: Datenbankdesign – Normalisierung</h2>
+<p><strong>Punkte: 4</strong><br />
+<strong>BPE:</strong> 6.3 – Normalisierung<br />
+<strong>Zeit:</strong> ~8 Minuten</p>
+<h3>Szenario</h3>
+<p>Die Bücherei hat folgende <strong>bisherige Tabellenstruktur</strong>:</p>
+<pre><code>Tabelle: Ausleihen
+┌─────────┬────────────┬───────────────┬─────────────────┬────────────────────┐
+│ aus_id  │ buch_titel │ mitarbeiter   │ ausleihdatum    │ rueckgabedatum     │
+├─────────┼────────────┼───────────────┼─────────────────┼────────────────────┤
+│ 1001    │ Java Basics│ Anna Müller   │ 2025-01-15      │ 2025-02-15         │
+│ 1002    │ Python Pro │ Anna Müller   │ 2025-01-16      │ 2025-02-20         │
+│ 1003    │ SQL Expert │ Max Schneider │ 2025-01-20      │ 2025-02-10         │
+└─────────┴────────────┴───────────────┴─────────────────┴────────────────────┘
+</code></pre>
+<p><strong>Probleme mit dieser Struktur:</strong>
+- Bücherdaten sind redundant (Titel wird wiederholt)
+- Kundendaten sind nicht separat gespeichert
+- Keine Unterscheidung zwischen Kunde (Mitglied) und Mitarbeiter möglich</p>
+<p><strong>Neue Anforderung:</strong> Die Struktur soll <strong>normalisiert</strong> werden zur <strong>3. Normalform (3NF)</strong>.</p>
+<h3>Aufgabenteile</h3>
+<h4>a) Identifikation des Normalisierungsproblems (1 Punkt)</h4>
+<p><strong>Frage:</strong> In welcher Normalform befindet sich die aktuelle Struktur? Begründen Sie Ihre Antwort.</p>
+<p><strong>Musterlösung:</strong>
+- <strong>Antwort:</strong> 1. Normalform (1NF) oder gar nicht normalisiert
+- <strong>Begründung:</strong> 
+  - Alle Attribute sind atomar ✅
+  - Aber: Partielle Abhängigkeiten vorhanden (buch_titel hängt nicht vollständig vom Primärschlüssel ab)
+  - Transitive Abhängigkeiten möglich (Redundanzen)</p>
+<h4>b) Normalisierung durchführen (2 Punkte)</h4>
+<p><strong>Frage:</strong> Beschreiben Sie die notwendigen Tabellen für eine normalisierte Struktur (3NF). Nennen Sie die Tabellen und deren Beziehungen.</p>
+<p><strong>Musterlösung:</strong></p>
+<p>Notwendige Tabellen:
+1. <strong>Bücher (buch_id, titel, autor, isbn, kategorie)</strong>
+2. <strong>Mitglieder (mitglied_id, name, adresse, telefon)</strong>
+3. <strong>Ausleihvorgänge (aus_id, mitglied_id, buch_id, ausleihdatum, rueckgabedatum)</strong></p>
+<p><strong>Beziehungen:</strong>
+- 1:N zwischen Mitglieder und Ausleihen
+- 1:N zwischen Bücher und Ausleihen</p>
+<h4>c) EERM erstellen (1 Punkt)</h4>
+<p><strong>Frage:</strong> Erstellen Sie ein erweitertes Entity-Relationship-Diagramm (EERM) für die normalisierte Struktur in MySQL Workbench.</p>
+<p><strong>Musterlösung (Text-Notation):</strong></p>
+<pre><code>┌──────────────────────────────────────────────────────────────┐
+│                        MITGLIEDER                            │
+├──────────────────────────────────────────────────────────────┤
+│ PK: mitglied_id (INT)                                        │
+│     name (VARCHAR)                                           │
+│     adresse (VARCHAR)                                        │
+│     anmeldedatum (DATE)                                      │
+└──────────────────────────────────────────────────────────────┘
+                            │
+                      1     │ N
+                            │ (has)
+                            ▼
+      ┌──────────────────────────────────────────────────────┐
+      │                  AUSLEIHVORGÄNGE                     │
+      ├──────────────────────────────────────────────────────┤
+      │ PK: aus_id (INT)                                     │
+      │ FK: mitglied_id       ──────► MITGLIEDER             │
+      │ FK: buch_id           ──────► BÜCHER                 │
+      │     ausleihdatum (DATE)                              │
+      │     rueckgabedatum (DATE)                            │
+      └──────────────────────────────────────────────────────┘
+                  △
+            1     │    N
+                  │ (contains)
+      ┌──────────┴────────────────────────────────────────┐
+      │                    BÜCHER                          │
+      ├───────────────────────────────────────────────────┤
+      │ PK: buch_id (INT)                                 │
+      │     titel (VARCHAR)                               │
+      │     autor (VARCHAR)                               │
+      │     isbn (VARCHAR)                                │
+      │     kategorie (VARCHAR)                           │
+      └───────────────────────────────────────────────────┘
+</code></pre>
+<h3>Bewertung</h3>
+<ul>
+<li>a) 1 Punkt: Korrekte Normalform mit Begründung</li>
+<li>b) 2 Punkte: Mindestens 3 Tabellen mit Beziehungen</li>
+<li>c) 1 Punkt: EERM mit Primär-/Fremdschlüsseln und Kardinalitäten</li>
+</ul>
+<hr />
+<h2>Aufgabe 3: SQL-Abfragen – SELECT, WHERE, JOIN</h2>
+<p><strong>Punkte: 5</strong><br />
+<strong>BPE:</strong> 6.4 – SQL-Abfragen<br />
+<strong>Zeit:</strong> ~12 Minuten</p>
+<h3>Datenbankschema</h3>
+<pre><code class="language-sql">CREATE TABLE buecher (
+    buch_id INT PRIMARY KEY,
+    titel VARCHAR(100) NOT NULL,
+    autor VARCHAR(100),
+    kategorie VARCHAR(50),
+    preis DECIMAL(8,2)
+);
+
+CREATE TABLE mitglieder (
+    mitglied_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    stadt VARCHAR(50),
+    anmeldedatum DATE
+);
+
+CREATE TABLE ausleihvorgaenge (
+    aus_id INT PRIMARY KEY,
+    mitglied_id INT NOT NULL,
+    buch_id INT NOT NULL,
+    ausleihdatum DATE,
+    rueckgabedatum DATE,
+    FOREIGN KEY (mitglied_id) REFERENCES mitglieder(mitglied_id),
+    FOREIGN KEY (buch_id) REFERENCES buecher(buch_id)
+);
+</code></pre>
+<h3>Aufgabenteile</h3>
+<h4>a) Einfache SELECT-Abfrage mit WHERE (1 Punkt)</h4>
+<p><strong>Frage:</strong> Schreiben Sie eine SQL-Abfrage, die alle <strong>Bücher der Kategorie "Science Fiction"</strong> anzeigt.</p>
+<p><strong>Ihre Lösung:</strong></p>
+<pre><code class="language-sql">SELECT * FROM buecher WHERE kategorie = 'Science Fiction';
+</code></pre>
+<p><strong>Bewertung:</strong> Syntax korrekt + WHERE-Bedingung funktioniert = 1 Punkt</p>
+<h4>b) SELECT mit spezifischen Spalten (1 Punkt)</h4>
+<p><strong>Frage:</strong> Zeigen Sie den <strong>Namen aller Mitglieder</strong> und ihr <strong>Anmeldedatum</strong> an.</p>
+<p><strong>Ihre Lösung:</strong></p>
+<pre><code class="language-sql">SELECT name, anmeldedatum FROM mitglieder;
+</code></pre>
+<p><strong>Bewertung:</strong> Spaltenselektion korrekt = 1 Punkt</p>
+<h4>c) JOIN – Mitglieder mit ihren Ausleihvorgängen (2 Punkte)</h4>
+<p><strong>Frage:</strong> Schreiben Sie eine Abfrage, die für jeden Ausleihvorgang den <strong>Namen des Mitglieds</strong>, den <strong>Buchtitel</strong> und das <strong>Ausleihdatum</strong> zeigt. Verwenden Sie mindestens einen JOIN.</p>
+<p><strong>Ihre Lösung:</strong></p>
+<pre><code class="language-sql">SELECT m.name, b.titel, a.ausleihdatum
+FROM ausleihvorgaenge a
+INNER JOIN mitglieder m ON a.mitglied_id = m.mitglied_id
+INNER JOIN buecher b ON a.buch_id = b.buch_id
+ORDER BY m.name;
+</code></pre>
+<p><strong>Bewertung:</strong>
+- 1 Punkt: Beiden JOINs korrekt
+- 1 Punkt: Alle gewünschten Spalten im SELECT</p>
+<h4>d) Aggregation und GROUP BY (1 Punkt – Bonus)</h4>
+<p><strong>Frage (Bonus, +1 Punkt):</strong> Wie viele Bücher hat jedes Mitglied ausgeliehen? Zeigen Sie Mitgliedname und Anzahl.</p>
+<p><strong>Ihre Lösung:</strong></p>
+<pre><code class="language-sql">SELECT m.name, COUNT(a.aus_id) AS anzahl_ausleihvorgaenge
+FROM mitglieder m
+LEFT JOIN ausleihvorgaenge a ON m.mitglied_id = a.mitglied_id
+GROUP BY m.mitglied_id, m.name;
+</code></pre>
+<p><strong>Bewertung:</strong> COUNT, GROUP BY, LEFT JOIN korrekt = 1 Bonus-Punkt</p>
+<h3>Bewertung (Gesamt 5 Punkte)</h3>
+<table>
+<thead>
+<tr>
+<th>Aufgabe</th>
+<th>Punkte</th>
+<th>Kriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a)</td>
+<td>1</td>
+<td>SELECT + WHERE + Bedingung korrekt</td>
+</tr>
+<tr>
+<td>b)</td>
+<td>1</td>
+<td>SELECT mit Spalten-Liste</td>
+</tr>
+<tr>
+<td>c)</td>
+<td>2</td>
+<td>Zwei JOINs + alle Spalten</td>
+</tr>
+<tr>
+<td>d)</td>
+<td>+1</td>
+<td>GROUP BY + COUNT + HAVING</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Aufgabe 4: Fehleranalyse – Referentielle Integrität</h2>
+<p><strong>Punkte: 6</strong><br />
+<strong>BPE:</strong> 6.2 – Datenintegrität<br />
+<strong>Zeit:</strong> ~10 Minuten</p>
+<h3>Szenario</h3>
+<p>Ein Nutzer versucht, ein Mitglied aus der Datenbank zu löschen und erhält folgende Fehlermeldung:</p>
+<pre><code>Error Code: 1451. 
+Cannot delete or update a parent row: a foreign key constraint fails 
+(`buecher_verleih`.`ausleihvorgaenge`, 
+CONSTRAINT `fk_ausleihvorgaenge_mitglied` 
+FOREIGN KEY (`mitglied_id`) REFERENCES `mitglieder` (`mitglied_id`))
+</code></pre>
+<h3>Aufgabenteile</h3>
+<h4>a) Fehlermeldung interpretieren (2 Punkte)</h4>
+<p><strong>Frage:</strong> Erklären Sie diese Fehlermeldung in Ihren eigenen Worten.
+1. Was ist das Grundproblem?
+2. Welche Konzepte sind hier relevant (Fremdschlüssel, referentielle Integrität)?</p>
+<p><strong>Musterlösung:</strong></p>
+<p><strong>Grundproblem:</strong>
+- Das Mitglied kann nicht gelöscht werden, da noch Ausleihvorgänge auf dieses Mitglied verweisen.
+- Diese Ausleihvorgänge nutzen die <code>mitglied_id</code> als Fremdschlüssel.</p>
+<p><strong>Relevante Konzepte:</strong>
+- <strong>Fremdschlüssel:</strong> Der Fremdschlüssel <code>mitgliel_id</code> in der Tabelle <code>ausleihvorgaenge</code> verweist auf <code>mitglieder.mitglied_id</code>
+- <strong>Referentielle Integrität:</strong> Diese wird durch die Fremdschlüssel-Constraint gewährleistet. Gelöschte Referenzen würden die Integrität verletzen.</p>
+<h4>b) Praktische Lösungen (2 Punkte)</h4>
+<p><strong>Frage:</strong> Nennen Sie mindestens <strong>zwei verschiedene Wege</strong>, dieses Problem zu beheben. Bewerten Sie jeweils Vor- und Nachteile.</p>
+<p><strong>Musterlösung:</strong></p>
+<p><strong>Option 1: Kaskadierendes Löschen (Cascading Delete)</strong></p>
+<pre><code class="language-sql">-- Die Ausleihvorgänge erst manuell löschen:
+DELETE FROM ausleihvorgaenge WHERE mitglied_id = 42;
+-- Dann das Mitglied:
+DELETE FROM mitglieder WHERE mitglied_id = 42;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Vorteil</th>
+<th>Nachteil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Datenbank bleibt konsistent</td>
+<td>Datenverlust möglich</td>
+</tr>
+<tr>
+<td>Einfache kontrollierte Löschung</td>
+<td>Mehrere Schritte nötig</td>
+</tr>
+<tr>
+<td></td>
+<td>Fehleranfällig</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Option 2: ON DELETE CASCADE (Automatische Löschung)</strong></p>
+<pre><code class="language-sql">-- Constraint umgestellen:
+ALTER TABLE ausleihvorgaenge 
+DROP FOREIGN KEY fk_ausleihvorgaenge_mitglied;
+
+ALTER TABLE ausleihvorgaenge 
+ADD CONSTRAINT fk_ausleihvorgaenge_mitglied
+FOREIGN KEY (mitglied_id) REFERENCES mitglieder(mitglied_id)
+ON DELETE CASCADE;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Vorteil</th>
+<th>Nachteil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatische Löschung</td>
+<td>Unkontrollierter Datenverlust möglich</td>
+</tr>
+<tr>
+<td>Weniger manuelle Schritte</td>
+<td>Schema-Änderung erforderlich</td>
+</tr>
+<tr>
+<td></td>
+<td>Datenverlust schwer zu verhindern</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Option 3: Soft Delete (Status-Flag)</strong></p>
+<pre><code class="language-sql">-- Statt zu löschen, Status ändern:
+UPDATE mitglieder SET status = 'inaktiv' WHERE mitglied_id = 42;
+
+-- Bei Abfragen nur aktive Mitglieder abfragen:
+SELECT * FROM mitglieder WHERE status = 'aktiv';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Vorteil</th>
+<th>Nachteil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keine Datenverluste</td>
+<td>Zusätzliche Komplexität</td>
+</tr>
+<tr>
+<td>Audit-Trail möglich</td>
+<td>Abfragen müssen Filter setzten</td>
+</tr>
+<tr>
+<td>Historische Daten erhalten</td>
+<td>Zusätzliche Spalte nötig</td>
+</tr>
+</tbody>
+</table>
+<h4>c) SQL-Befehle für Löschung (2 Punkte)</h4>
+<p><strong>Frage:</strong> Schreiben Sie die SQL-Befehle auf, um das Mitglied mit ID <code>42</code> <strong>sicher zu löschen</strong>, nachdem Sie alle Abhängigkeiten behandelt haben.</p>
+<p><strong>Musterlösung:</strong></p>
+<pre><code class="language-sql">-- Schritt 1: Alle Ausleihvorgänge für Mitglied 42 löschen
+DELETE FROM ausleihvorgaenge WHERE mitglied_id = 42;
+
+-- Schritt 2: Mitglied löschen
+DELETE FROM mitglieder WHERE mitglied_id = 42;
+
+-- Verifizierung:
+SELECT * FROM mitglieder WHERE mitglied_id = 42;  -- Sollte leer sein
+</code></pre>
+<p><strong>Bewertung:</strong>
+- 1 Punkt: Zunächst Ausleihvorgänge löschen
+- 1 Punkt: Dann Mitglied löschen (oder Verifizierung)</p>
+<h3>Bewertung (Gesamt 6 Punkte)</h3>
+<table>
+<thead>
+<tr>
+<th>Teil</th>
+<th>Punkte</th>
+<th>Kriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a)</td>
+<td>2</td>
+<td>Fremdschlüssel + Integrität erklärt</td>
+</tr>
+<tr>
+<td>b)</td>
+<td>2</td>
+<td>Zwei Lösungen mit Pro/Contra</td>
+</tr>
+<tr>
+<td>c)</td>
+<td>2</td>
+<td>DELETE-Befehle in korrekter Reihenfolge</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Aufgabe 5: Datenbankoptimierung – Indizes</h2>
+<p><strong>Punkte: 9</strong><br />
+<strong>BPE:</strong> 6.5 – Performance<br />
+<strong>Zeit:</strong> ~15 Minuten</p>
+<h3>Szenario</h3>
+<p>Die Bücherei-Datenbank hat jetzt <strong>500.000 Ausleihvorgänge</strong> im letzten Jahr. Die Abfrage nach Ausleihen eines bestimmten Mitglieds dauert mehrere Sekunden:</p>
+<pre><code class="language-sql">SELECT * FROM ausleihvorgaenge WHERE mitglied_id = 1234;
+</code></pre>
+<h3>Aufgabenteile</h3>
+<h4>a) Performance-Problem analysieren (1,5 Punkte)</h4>
+<p><strong>Frage:</strong> Warum dauert diese Abfrage mehrere Sekunden bei 500.000 Einträgen? Erklären Sie den Unterschied zwischen indexierter und nicht-indexierter Suche.</p>
+<p><strong>Musterlösung:</strong></p>
+<p><strong>Ohne Index:</strong>
+- Datenbankengine muss <strong>alle 500.000 Zeilen durchlaufen</strong> (Full Table Scan)
+- Für jede Zeile wird die <code>WHERE</code>-Bedingung überprüft
+- Komplexität: <strong>O(n)</strong> – linear</p>
+<p><strong>Mit Index:</strong>
+- Der Index ist wie ein <strong>Inhaltsverzeichnis</strong> in einem Buch
+- Datenbankengine kann direkt auf die relevanten Einträge zugreifen (B-Tree oder Hash)
+- Komplexität: <strong>O(log n)</strong> – logarithmisch
+- Typischer Speedup: 100-1000x schneller bei großen Datenmengen</p>
+<h4>b) Index erstellen (2 Punkte)</h4>
+<p><strong>Frage:</strong> Schreiben Sie einen SQL-Befehl, um einen Index auf der Spalte <code>mitglied_id</code> zu erstellen. Warum ist ein aussagekräftiger Name wichtig?</p>
+<p><strong>Musterlösung:</strong></p>
+<pre><code class="language-sql">-- Index erstellen
+CREATE INDEX idx_ausleihvorgaenge_mitglied_id 
+ON ausleihvorgaenge(mitglied_id);
+</code></pre>
+<p><strong>Namenskonvention:</strong>
+- <code>idx_</code> = Präfix für Index
+- <code>ausleihvorgaenge</code> = Tabellenname
+- <code>mitglied_id</code> = Spalte(n), die indexiert werden</p>
+<p><strong>Warum aussagekräftig:</strong>
+- Dokumentation: Andere Entwickler erkennen schnell, welche Abfragen optimiert werden
+- Fehlersuche: Bei Performance-Problemen leicht zu finden
+- Wartbarkeit: Indizes können gezielt verwaltet/gelöscht werden</p>
+<h4>c) Multi-Column Index (2 Punkte)</h4>
+<p><strong>Frage:</strong> Die Bücherei nutzt häufig diese Abfrage:</p>
+<pre><code class="language-sql">SELECT * FROM ausleihvorgaenge 
+WHERE mitglied_id = 1234 AND buch_id = 5;
+</code></pre>
+<p>Würde der Index aus Aufgabe b) für diese Abfrage reichen? Falls nein, wie würde Sie ihn optimieren?</p>
+<p><strong>Musterlösung:</strong></p>
+<p><strong>Würde der Index reichen?</strong> Teilweise ja, aber nicht optimal.
+- Der Index auf <code>mitglied_id</code> hilft, aber nicht für die <code>buch_id</code>-Bedingung
+- Die Datenbankengine könnte die 500.000 Zeilen einmal auf <code>mitglied_id</code> filtern, dann die Ergebnisse nochmal auf <code>buch_id</code> filtern</p>
+<p><strong>Bessere Lösung: Composite Index</strong></p>
+<pre><code class="language-sql">-- Composite (Multi-Column) Index
+CREATE INDEX idx_ausleihvorgaenge_mitglied_buch 
+ON ausleihvorgaenge(mitglied_id, buch_id);
+</code></pre>
+<p><strong>Warum besser:</strong>
+- Beide Bedingungen werden in einem Schritt verarbeitet
+- Weniger Zeilen-Scans notwendig
+- Komplexität bleibt <strong>O(log n)</strong>, aber mit kürzeren Zugriffszeiten</p>
+<h4>d) Nachteile von Indizes (1,5 Punkte)</h4>
+<p><strong>Frage:</strong> Indizes beschleunigen Lesezugriffe, haben aber auch Nachteile. Nennen Sie zwei Nachteile und erklären Sie diese.</p>
+<p><strong>Musterlösung:</strong></p>
+<p><strong>Nachteil 1: Speicherplatz</strong>
+- Jeder Index benötigt zusätzlichen Festplattenspeicher
+- Mit 500.000 Ausleihvorgängen kann ein Index mehrere GB belegen
+- Bei vielen Indizes kann der Speicherverbrauch problematisch werden</p>
+<p><strong>Nachteil 2: Schreibperformance &amp; Maintenance</strong>
+- <strong>INSERT:</strong> Wenn ein neuer Ausleihvorgang hinzukommt, muss der Index auch aktualisiert werden
+- <strong>UPDATE:</strong> Wenn <code>mitglied_id</code> geändert wird, müssen beide Original- und neuer Indexeintrag aktualisiert werden
+- <strong>DELETE:</strong> Der Indexeintrag muss auch gelöscht werden
+- <strong>Resultat:</strong> INSERT/UPDATE/DELETE werden 10-50% langsamer</p>
+<p><strong>Trade-off:</strong>
+- Indizes sind nur sinnvoll, wenn es <strong>viele Lesezugriffe</strong> (SELECT) und <strong>wenige Schreib­zugriffe</strong> (INSERT/UPDATE/DELETE) gibt
+- Für Abfragen mit häufigen Änderungen: Indizes sind kontraproduktiv</p>
+<h4>e) Weitere Optimierungen (2 Punkte)</h4>
+<p><strong>Frage:</strong> Nennen Sie zwei weitere Möglichkeiten zur Datenbankoptimierung (ohne Indizes).</p>
+<p><strong>Musterlösung:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Optimierungsmethode</th>
+<th>Erklärung</th>
+<th>Anwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Query-Optimierung</strong></td>
+<td>Umschreiben von ineffizienten SQL-Befehlen</td>
+<td>Unnötige JOINs entfernen, WHERE-Bedingungen optimieren</td>
+</tr>
+<tr>
+<td><strong>Partitionierung</strong></td>
+<td>Große Tabellen in kleinere Teile aufteilen (z.B. nach Jahr)</td>
+<td>500.000 Zeilen → 5 Partition × 100.000 Zeilen</td>
+</tr>
+<tr>
+<td><strong>Caching</strong></td>
+<td>Häufig abgerufene Daten im RAM speichern</td>
+<td>Redis, Memcached für Queries mit konstanten Ergebnissen</td>
+</tr>
+<tr>
+<td><strong>Denormalisierung</strong></td>
+<td>Kontrollierte Redundanz für häufige Abfragen</td>
+<td>Aggregates speichern statt zu berechnen</td>
+</tr>
+<tr>
+<td><strong>Archivierung</strong></td>
+<td>Alte Daten in separate Tabelle verschieben</td>
+<td>2023-2024 Ausleihvorgänge in <code>archive_ausleihvorgaenge</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Bewertung (Gesamt 9 Punkte)</h3>
+<table>
+<thead>
+<tr>
+<th>Teil</th>
+<th>Punkte</th>
+<th>Kriterien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a)</td>
+<td>1,5</td>
+<td>O(n) vs. O(log n) erklärt</td>
+</tr>
+<tr>
+<td>b)</td>
+<td>2</td>
+<td>CREATE INDEX korrekt + Namenskonvention</td>
+</tr>
+<tr>
+<td>c)</td>
+<td>2</td>
+<td>Composite Index + Begründung</td>
+</tr>
+<tr>
+<td>d)</td>
+<td>1,5</td>
+<td>Zwei Nachteile mit Erklärung</td>
+</tr>
+<tr>
+<td>e)</td>
+<td>2</td>
+<td>Zwei weitere Optimierungen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>TEIL B: Programmierung mit I/O &amp; Struktogramme (3 Punkte / 10%)</h1>
+<h2>Aufgabe 6: Programmierung – Benutzereingabe &amp; Validierung</h2>
+<p><strong>Punkte: 3</strong><br />
+<strong>BPE:</strong> 5.1 – Programme mit I/O und Struktogramme<br />
+<strong>Zeit:</strong> ~15 Minuten</p>
+<h3>Aufgabenstellung</h3>
+<p>Sie sollen ein Programm schreiben, das eine <strong>Postleitzahl</strong> validiert. Eine gültige deutsche Postleitzahl:
+- Hat genau <strong>5 Ziffern</strong>
+- Besteht <strong>nur aus Ziffern</strong> (keine Buchstaben)
+- Beginnt nicht mit <strong>"0"</strong> (führende Null nicht erlaubt)</p>
+<p>Das Programm soll den Benutzer solange auffordern, eine gültige Postleitzahl einzugeben, bis eine korrekte Eingabe erfolgt.</p>
+<h3>Aufgabenteile</h3>
+<h4>a) Struktogramm (1,5 Punkte)</h4>
+<p><strong>Aufgabe:</strong> Erstellen Sie ein <strong>Struktogramm</strong> nach BW-Standard-Notation für die Validierungslogik.</p>
+<p><strong>Sollte enthalten:</strong>
+1. Eingabeaufforderung
+2. Validierungsprüfungen (alle drei Bedingungen)
+3. Wiederholungsschleife bei ungültiger Eingabe
+4. Ausgabe bei erfolgreicher Validierung</p>
+<p><strong>Hinweis:</strong> Handgezeichnete Struktogramme sind <strong>völlig akzeptabel!</strong></p>
+<p><strong>Musterlösung (Text-Notation):</strong></p>
+<pre><code>┌─────────────────────────────────────────────┐
+│ START                                       │
+└─────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│ WIEDERHOLE (DO-WHILE)                      │
+└─────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│ Eingabe: &quot;PLZ (5 Ziffern):&quot;                │
+│ plz_eingabe                                 │
+└─────────────────────────────────────────────┘
+               │
+               ▼
+        ┌──────┴──────┐
+        │  IST         │ NEIN
+        │  len(plz) ═ 5? →─────┐
+        │ UND          │        │
+        │  alle Ziffern? │        │
+        │ UND          │        │
+        │  plz[0] ≠ '0'? │        │
+        ├──────┤        │
+        │      │        │
+       JA      │        │
+        │      │        │
+        ▼      │    ┌───┴────────────────────┐
+     gültig=  │    │ Ausgabe:               │
+     WAHR     │    │ &quot;Ungültiges Format!&quot;  │
+        │      │    │ gültig = FALSCH       │
+        │      │    └───┬────────────────────┘
+        │      │        │
+        └──────┴────────┘
+               │
+        ▼ (gültig = WAHR)
+┌─────────────────────────────────────────────┐
+│ Ausgabe: &quot;Postleitzahl gültig: &quot; plz       │
+└─────────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│ END                                         │
+└─────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Bewertung (a):</strong>
+- ✅ <strong>1,0 Punkt:</strong> Schleife, Bedingung, Ausgabe korrekt strukturiert
+- ✅ <strong>0,5 Punkte:</strong> Symbole erkennbar (auch handgezeichnet OK)</p>
+<h4>b) Python-Code (1,5 Punkte)</h4>
+<p><strong>Aufgabe:</strong> Implementieren Sie das Struktogramm in Python. Der Code soll:
+1. Benutzer zur Eingabe auffordern
+2. <strong>Alle drei Validierungskriterien</strong> prüfen
+3. Bei Fehler informative Fehlermeldung ggeben
+4. Bei Erfolg die PLZ bestätigen und Programm beenden</p>
+<p><strong>Ihre Lösung:</strong></p>
+<pre><code class="language-python"># Ihre Lösung:
+</code></pre>
+<p><strong>Musterlösung:</strong></p>
+<pre><code class="language-python"># Postleitzahl-Validator
+valid = False
+
+while not valid:
+    plz_eingabe = input(&quot;Geben Sie eine Postleitzahl (5 Ziffern) ein: &quot;)
+
+    # Bedingungen prüfen
+    if len(plz_eingabe) != 5:
+        print(&quot;Fehler: Postleitzahl muss genau 5 Ziffern haben.&quot;)
+    elif not plz_eingabe.isdigit():
+        print(&quot;Fehler: Postleitzahl darf nur Ziffern enthalten.&quot;)
+    elif plz_eingabe[0] == '0':
+        print(&quot;Fehler: Postleitzahl darf nicht mit 0 beginnen.&quot;)
+    else:
+        # Alle Bedingungen erfüllt
+        valid = True
+        print(f&quot;✓ Postleitzahl gültig: {plz_eingabe}&quot;)
+
+# Optional: PLZ verarbeiten
+import datetime
+print(f&quot;Eingabe erfolgreich abgeschlossen um {datetime.datetime.now().strftime('%H:%M:%S')}&quot;)
+</code></pre>
+<p><strong>Alternativer kompakterer Code:</strong></p>
+<pre><code class="language-python">valid = False
+
+while not valid:
+    plz = input(&quot;PLZ (5 Ziffern): &quot;)
+
+    # Alle Bedingungen in einer if-else prüfen
+    if len(plz) == 5 and plz.isdigit() and plz[0] != '0':
+        print(f&quot;✓ {plz} ist gültig!&quot;)
+        valid = True
+    else:
+        print(&quot;Ungültig! Bitte 5-stellige PLZ ohne führende Null eingeben.&quot;)
+</code></pre>
+<p><strong>Bewertung (b):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kriterium</th>
+<th>Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schleife funktioniert</td>
+<td>0,5</td>
+</tr>
+<tr>
+<td>Alle 3 Validierungen + logische Verknüpfung</td>
+<td>0,75</td>
+</tr>
+<tr>
+<td>Fehlerbehandlung &amp; aussagekräftige Ausgaben</td>
+<td>0,25</td>
+</tr>
+<tr>
+<td><strong>Gesamt</strong></td>
+<td><strong>1,5</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>Testfall-Beispiel</h3>
+<pre><code>Input:  &quot;02345&quot;
+Output: &quot;Fehler: Postleitzahl darf nicht mit 0 beginnen.&quot;
+
+Input:  &quot;2A3B5&quot;
+Output: &quot;Fehler: Postleitzahl darf nur Ziffern enthalten.&quot;
+
+Input:  &quot;23&quot;
+Output: &quot;Fehler: Postleitzahl muss genau 5 Ziffern haben.&quot;
+
+Input:  &quot;75001&quot;
+Output: &quot;✓ Postleitzahl gültig: 75001&quot;
+</code></pre>
+<hr />
+<h1>ZUSAMMENFASSUNG</h1>
+<h2>Punkte-Übersicht</h2>
+<table>
+<thead>
+<tr>
+<th>Aufgabe</th>
+<th>Thema</th>
+<th>Punkte</th>
+<th>BPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Grundkonzepte RDB</td>
+<td>3</td>
+<td>BPE 6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Datenbankdesign &amp; Normalisierung</td>
+<td>4</td>
+<td>BPE 6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SQL SELECT &amp; JOIN</td>
+<td>5</td>
+<td>BPE 6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fehleranalyse &amp; Integrität</td>
+<td>6</td>
+<td>BPE 6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Performance &amp; Indizes</td>
+<td>9</td>
+<td>BPE 6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Programmierung &amp; Struktogramme</td>
+<td>3</td>
+<td>BPE 5.1</td>
+</tr>
+<tr>
+<td><strong>GESAMT</strong></td>
+<td></td>
+<td><strong>30</strong></td>
+<td><strong>BPE 6: 27 (90%) / BPE 5.1: 3 (10%)</strong></td>
+</tr>
+</tbody>
+</table>
+<h2>Bewertungsrichtlinien für Lehrende</h2>
+<h3>Allgemeine Prinzipien</h3>
+<p>✅ <strong>Struktur vor Perfektionismus:</strong> Handgezeichnete Struktogramme sind OK<br />
+✅ <strong>Nachvollziehbarkeit:</strong> Jeder Schritt muss lesbar sein<br />
+✅ <strong>Logik vor Syntax:</strong> Logikfehler −1 bis −2 Pkte; Syntaxfehler −0,25 bis −0,5 Pkte<br />
+✅ <strong>Teilpunkte:</strong> Nicht alles-oder-nichts vergeben (außer explizit markiert)  </p>
+<h3>Häufige Fehler und Punktabzug</h3>
+<table>
+<thead>
+<tr>
+<th>Fehler</th>
+<th>Fachgebiet</th>
+<th>Abzug</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WHERE vor FROM (SQL-Syntax)</td>
+<td>SQL</td>
+<td>−0,5</td>
+<td><code>FROM ... WHERE</code> statt <code>WHERE ... FROM</code></td>
+</tr>
+<tr>
+<td>Fremdschlüssel in JOIN vergessen</td>
+<td>SQL</td>
+<td>−0,5 bis −1</td>
+<td><code>FROM t1, t2</code> statt JOIN</td>
+</tr>
+<tr>
+<td>Primärschlüssel in EERM nicht gekennzeichnet</td>
+<td>Design</td>
+<td>−0,5</td>
+<td>Keine Unterstreichung oder PK-Notation</td>
+</tr>
+<tr>
+<td>Struktogramm-Symbole unklar</td>
+<td>Programmierung</td>
+<td>−0,5</td>
+<td>Rautenform nicht erkennbar</td>
+</tr>
+<tr>
+<td><code>input()</code> oder <code>while</code> vergessen</td>
+<td>Python</td>
+<td>−0,5 bis −1</td>
+<td>Nur Print-Statement, keine Interaktion</td>
+</tr>
+<tr>
+<td>Logik-Fehler (endlosSchleife, falsche Bedingung)</td>
+<td>Programmierung</td>
+<td>−1 bis −1,5</td>
+<td><code>while True</code> ohne <code>break</code></td>
+</tr>
+<tr>
+<td>Keine Fehlerbehandlung (try/except)</td>
+<td>Python</td>
+<td>−0,25 (nicht schlecht)</td>
+<td>Aber Robustheit wichtiger als try/except</td>
+</tr>
+</tbody>
+</table>
+<h3>Checkliste für Lehrende</h3>
+<ul>
+<li>[ ] Aufgabe 1: Alle 5 Konzept-Aussagen eindeutig mit r/f bewertet</li>
+<li>[ ] Aufgabe 2: ERD zeigt 1:N oder N:M Beziehungen mit Kardinalitäten</li>
+<li>[ ] Aufgabe 3: Abfrage c) hat mindestens 2 JOINs und alle gewünschten Spalten</li>
+<li>[ ] Aufgabe 4: Fehlermeldung wird korrekt interpretiert (FK + Referentielle Integrität)</li>
+<li>[ ] Aufgabe 5: Index-Plan ist sinnvoll; Nachteile realistisch erwähnt</li>
+<li>[ ] Aufgabe 6: Struktogramm logisch geschlossen; while-Schleife funktioniert</li>
+</ul>
+<hr />
+<h1>Anhang: Lösungsblatt (gekürzt)</h1>
+<h2>Aufgabe 2b – Tabellen-Struktur (Lösung)</h2>
+<pre><code class="language-sql">CREATE TABLE buecher (
+    buch_id INT PRIMARY KEY AUTO_INCREMENT,
+    titel VARCHAR(100) NOT NULL,
+    autor VARCHAR(100),
+    isbn VARCHAR(13),
+    kategorie VARCHAR(50),
+    preis DECIMAL(8,2)
+);
+
+CREATE TABLE mitglieder (
+    mitglied_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    adresse VARCHAR(200),
+    stadt VARCHAR(50),
+    anmeldedatum DATE DEFAULT CURDATE()
+);
+
+CREATE TABLE ausleihvorgaenge (
+    aus_id INT PRIMARY KEY AUTO_INCREMENT,
+    mitglied_id INT NOT NULL,
+    buch_id INT NOT NULL,
+    ausleihdatum DATE DEFAULT CURDATE(),
+    rueckgabedatum DATE,
+    FOREIGN KEY (mitglied_id) REFERENCES mitglieder(mitglied_id),
+    FOREIGN KEY (buch_id) REFERENCES buecher(buch_id)
+);
+</code></pre>
+<hr />
+<h2>Änderungshistorie</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Datum</th>
+<th>Autor</th>
+<th>Änderungen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2025-05-09</td>
+<td>KI-Generation</td>
+<td>Muster-Klassenarbeit erstellt; Online-Bücherverleih Szenario</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Hinweis für die Nutzung:</strong> Diese Musterklassenarbeit kann als Vorlage für weitere Klassenarbeiten genutzt werden. Ändern Sie das Szenario (z.B. andere Domäne wie "Hotelreservierungssystem", "Produktverwaltung"), behalten Sie aber die Struktur und Schwerpunkte (BPE 6: 90%, BPE 5.1: 10%) bei.</p>
+</body>
+</html>

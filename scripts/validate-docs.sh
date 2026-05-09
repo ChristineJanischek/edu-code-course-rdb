@@ -64,4 +64,9 @@ if [[ $fail -ne 0 ]]; then
   exit 1
 fi
 
+if ! bash scripts/validate-ka-language-quality.sh; then
+  echo "[docs] FAIL: Klassenarbeits-Sprachqualitaet fehlgeschlagen"
+  exit 1
+fi
+
 echo "[docs] Dokumentationsvalidierung erfolgreich"

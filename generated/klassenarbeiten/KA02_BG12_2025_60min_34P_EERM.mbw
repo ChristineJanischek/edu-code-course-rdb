@@ -1,0 +1,52 @@
+# MBW-MODELLSPEZIFIKATION (schulinterner .mbw-Standard)
+# Hinweis: Fuer MySQL Workbench kann dieses Modell ueber den SQL-Dump reverse engineered
+# und dann als natives Workbench-Modell gespeichert werden.
+
+model_name: KA02_BG12_2025_60min_34P_EERM
+domain: kursplattform
+entities:
+  - name: mitglieder
+    pk: mitglied_id
+    attributes: [vorname, nachname, stadt, geburtsdatum, aktiv]
+  - name: dozenten
+    pk: dozent_id
+    attributes: [vorname, nachname, fachgebiet, email]
+  - name: kurse
+    pk: kurs_id
+    attributes: [titel, niveau, max_teilnehmer, status]
+  - name: termine
+    pk: termin_id
+    attributes: [kurs_id, start_datum, start_uhrzeit, ende_uhrzeit, raum]
+  - name: anmeldungen
+    pk: anmeldung_id
+    attributes: [mitglied_id, kurs_id, anmeldedatum, status]
+  - name: kurs_dozent
+    pk: [kurs_id, dozent_id]
+    attributes: [rolle]
+relationships:
+  - from: kurse
+    to: termine
+    type: 1:N
+    fk: termine.kurs_id -> kurse.kurs_id
+  - from: mitglieder
+    to: anmeldungen
+    type: 1:N
+    fk: anmeldungen.mitglied_id -> mitglieder.mitglied_id
+  - from: kurse
+    to: anmeldungen
+    type: 1:N
+    fk: anmeldungen.kurs_id -> kurse.kurs_id
+  - from: kurse
+    to: dozenten
+    type: N:M
+    via: kurs_dozent
+normalization:
+  target: 3NF
+  notes:
+    - Keine mehrfachen Gruppen
+    - N:M ueber Zwischentabelle aufgeloest
+    - Keine transitiven Abhaengigkeiten in Kernentitaeten
+anomalies_examples:
+  insert: Kurs ohne Dozentenzuordnung nicht direkt in N:M-Tabelle erfasst
+  update: Dozenten-E-Mail nur einmal in dozenten, nicht in mehreren Kurszeilen
+  delete: Loeschen eines Kurses loescht nicht automatisch Dozentenstammdaten

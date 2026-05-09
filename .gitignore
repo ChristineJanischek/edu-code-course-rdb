@@ -2,3 +2,9 @@
 build/
 __pycache__/
 *.pyc
+
+# Upload-Verzeichnisse: Inhalte nur lokal, nicht ins Repo
+uploads/klassenarbeiten-und-unterrichtsmaterialien/*
+!uploads/klassenarbeiten-und-unterrichtsmaterialien/.gitkeep
+uploads/pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/*
+!uploads/pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/.gitkeep

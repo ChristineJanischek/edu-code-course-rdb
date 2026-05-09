@@ -1,0 +1,124 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><title>KA02 60min 34P</title><style>body{font-family:Calibri,Arial,sans-serif;max-width:980px;margin:24px auto;line-height:1.45}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:6px}h1,h2,h3{color:#204a6b}code,pre{background:#f6f8fa}</style></head><body><hr />
+<p>titel: "Musterklassenarbeit BG12: EERM und SQL (60 Min)"
+klasse: "BG12"
+fach: "Informatik"
+bearbeitungszeit: "60 Minuten"
+erreichbare_punkte: 34
+verteilung:
+  modellierung_normalisierung_anomalien: 14
+  abfragen_mehrtabellen: 14
+  theorie_mc: 3
+  struktogramm: 3</p>
+<hr />
+<h1>Musterklassenarbeit (60 Minuten)</h1>
+<h2>Punkteumfang aus den Vorgaben</h2>
+<p>Gegeben:
+- Gesamtpruefung: 210 Minuten
+- 3 Aufgabenteile mit je 40 Punkten
+- Gesamtpunkte der Pruefung: 120</p>
+<p>Herleitung für 60 Minuten:</p>
+<p>120 * (60 / 210) = 34,29 -&gt; gerundet 34 Punkte</p>
+<h2>Struktur (3 Aufgabenteile)</h2>
+<table>
+<thead>
+<tr>
+<th>Teil</th>
+<th>Inhalte</th>
+<th style="text-align: right;">Punkte</th>
+<th style="text-align: right;">Zeit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Theorie (MC)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5 Min</td>
+</tr>
+<tr>
+<td>B</td>
+<td>EERM, Normalisierung, Anomalien</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">25 Min</td>
+</tr>
+<tr>
+<td>C</td>
+<td>SQL-Abfragen über viele Tabellen</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">25 Min</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Grundlagen Programmierung (Struktogramm)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5 Min</td>
+</tr>
+<tr>
+<td>Gesamt</td>
+<td></td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">60 Min</td>
+</tr>
+</tbody>
+</table>
+<h2>Teil A (3 Punkte)</h2>
+<h3>Aufgabe 1: Theorie (Multiple Choice) – 3 Punkte</h3>
+<p>Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)</p>
+<ol>
+<li>Ein Fremdschluessel darf mehrfach vorkommen.</li>
+<li>Eine N:M-Beziehung wird in relationalen Modellen direkt ohne Zwischentabelle gespeichert.</li>
+<li>Ein LEFT JOIN kann Datensaetze ohne Partner auf der rechten Seite sichtbar machen.</li>
+<li>Die 3NF reduziert Redundanz und Anomalien.</li>
+<li>Ein Primarschluessel darf NULL sein.</li>
+<li>HAVING filtert Gruppen nach GROUP BY.</li>
+</ol>
+<h2>Teil B (14 Punkte): EERM in MySQL Workbench</h2>
+<p>Nutzen Sie das bereitgestellte Datenmodell der Kursplattform.</p>
+<h3>Aufgabe 3.1: EERM modellieren – 8 Punkte</h3>
+<p>Sachverhalt:
+Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.</p>
+<p>Auftrag:
+Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begründen Sie Ihre Modellierungsentscheidungen kurz.</p>
+<h3>Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte</h3>
+<ul>
+<li>Benennen Sie 2 funktionale Abhaengigkeiten</li>
+<li>Begruenden Sie, warum das Modell in 3NF liegt</li>
+</ul>
+<h3>Aufgabe 3.3: Anomalien – 2 Punkte</h3>
+<p>Nennen Sie je ein Beispiel:
+- Einfügeanomalie
+- Änderungsanomalie
+- Löschanomalie</p>
+<h2>Teil C (14 Punkte): SQL-Abfragen über viele Tabellen</h2>
+<p>Grundlage: SQL-Dump im selben Verzeichnis.</p>
+<h3>Aufgabe 4.1 (4 Punkte)</h3>
+<p>Geben Sie für jedes Mitglied alle gebuchten Kurse mit Dozentenname und Termin (Datum) aus.
+Sortierung: Mitglied, Datum.</p>
+<h3>Aufgabe 4.2 (4 Punkte)</h3>
+<p>Ermitteln Sie je Mitglied die Anzahl Buchungen. Zeigen Sie nur Mitglieder mit mindestens 2 Buchungen.</p>
+<h3>Aufgabe 4.3 (3 Punkte)</h3>
+<p>Geben Sie pro Kurs den letzten Termin und die Anzahl angemeldeter Mitglieder aus.</p>
+<h3>Aufgabe 4.4 (3 Punkte)</h3>
+<p>Finden Sie Dozenten ohne Kurszuordnung (LEFT JOIN).</p>
+<h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
+<h3>Aufgabe 2: Struktogramm (am Ende bearbeiten)</h3>
+<p>Erstellen Sie ein Struktogramm für folgende Logik (BPE 5.1):
+- Eingabe: Punktezahl einer Teilleistung
+- Gueltig sind Werte von 0 bis 15
+- Bei ungueltiger Eingabe erneut abfragen
+- Bei gültiger Eingabe: "Eingabe gültig"</p>
+<p>Wichtig:
+- Keine Arrays und keine Listen verwenden (Arrays/Listen gehoeren zu BPE 7).
+- Fokus auf Eingabe, Bedingung, Schleife und Ausgabe.</p>
+<p>Bewertung:
+- Logik: 1,5
+- Strukturblocke: 1,0
+- Lesbarkeit: 0,5</p>
+<h2>Abgabe</h2>
+<ul>
+<li>EERM-Datei: KA02_BG12_2025_60min_34P_EERM.mbw</li>
+<li>SQL-Dump: KA02_BG12_2025_60min_34P_schema_data_dump.sql</li>
+<li>SQL-Loesungen als Datei oder Text</li>
+</ul>
+<h2>Kurzloesungsschluessel (Lehrkraft)</h2>
+<p>Aufgabe 1: r, f, r, r, f, r</p></body></html>
