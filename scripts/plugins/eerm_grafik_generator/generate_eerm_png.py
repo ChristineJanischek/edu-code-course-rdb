@@ -232,6 +232,7 @@ class SchemaDiagramRenderer:
 
         # draw relationships after boxes
         lane_count: dict[tuple[int, int], int] = {}
+        occupied_route_cells: set[tuple[int, int]] = set()
         ordered_fks = sorted(
             fks,
             key=lambda fk: (
@@ -265,6 +266,7 @@ class SchemaDiagramRenderer:
                 in_index=in_slot.get((fk.source_table, fk.target_table, fk.source_col), 0),
                 in_total=max(1, len(incoming[fk.source_table])),
                 lane=lane,
+                occupied_route_cells=occupied_route_cells,
             )
 
         legend = "Legende: PK = Primärschlüssel, FK = Fremdschlüssel"
@@ -486,6 +488,7 @@ class SchemaDiagramRenderer:
         in_index: int,
         in_total: int,
         lane: int,
+        occupied_route_cells: set[tuple[int, int]],
     ) -> None:
         slot_gap = 22 if self._strict_plus else 16
         parent_rect = parent_layout.rect
@@ -495,20 +498,54 @@ class SchemaDiagramRenderer:
         child_y = child_layout.row_y(fk.source_col)
 
         parent_on_left = ((parent_rect[0] + parent_rect[2]) // 2) <= ((child_rect[0] + child_rect[2]) // 2)
+        overlap_left = max(parent_rect[0], child_rect[0])
+        overlap_right = min(parent_rect[2], child_rect[2])
+        stacked_vertical = parent_rect[3] < child_rect[1] and (overlap_right - overlap_left) >= 80
 
-        if parent_on_left:
+        vertical_mode = False
+        start_marker: tuple[int, int]
+        end_marker: tuple[int, int]
+
+        if stacked_vertical:
+            vertical_mode = True
+            slot_gap_x = 18 if self._strict_plus else 12
+            overlap_mid = (overlap_left + overlap_right) // 2
+            sx = self._clamp(
+                overlap_mid + int((out_index - (out_total - 1) / 2) * slot_gap_x),
+                overlap_left + 12,
+                overlap_right - 12,
+            )
+            ex = self._clamp(
+                overlap_mid + int((in_index - (in_total - 1) / 2) * slot_gap_x),
+                overlap_left + 12,
+                overlap_right - 12,
+            )
+            sy_inner = parent_rect[3] - 10
+            sy = parent_rect[3]
+            ey = child_rect[1]
+            ey_inner = child_rect[1] + 10
+            start_marker = (sx, sy_inner)
+            end_marker = (ex, ey_inner)
+        elif parent_on_left:
             sx_inner = parent_rect[2] - 10
             sx = parent_rect[2]
             ex = child_rect[0]
             ex_inner = child_rect[0] + 10
+            start_marker = (sx_inner, parent_y)
+            end_marker = (ex_inner, child_y)
         else:
             sx_inner = parent_rect[0] + 10
             sx = parent_rect[0]
             ex = child_rect[2]
             ex_inner = child_rect[2] - 10
+            start_marker = (sx_inner, parent_y)
+            end_marker = (ex_inner, child_y)
 
-        sy = parent_y + int((out_index - (out_total - 1) / 2) * slot_gap)
-        ey = child_y + int((in_index - (in_total - 1) / 2) * slot_gap)
+        if not vertical_mode:
+            sy = parent_y + int((out_index - (out_total - 1) / 2) * slot_gap)
+            ey = child_y + int((in_index - (in_total - 1) / 2) * slot_gap)
+            start_marker = (start_marker[0], sy)
+            end_marker = (end_marker[0], ey)
 
         color = (88, 103, 133)
         width = 3
@@ -523,9 +560,13 @@ class SchemaDiagramRenderer:
             all_layouts=all_layouts,
             canvas_width=draw.im.size[0],
             canvas_height=draw.im.size[1],
+            occupied_route_cells=occupied_route_cells,
         )
         if route is None:
-            if parent_on_left and parent_rect[2] < child_rect[0]:
+            if vertical_mode:
+                lane_y = ((parent_rect[3] + child_rect[1]) // 2) + lane * (16 if self._strict_plus else 12)
+                points = [(sx, sy_inner), (sx, sy), (sx, lane_y), (ex, lane_y), (ex, ey), (ex, ey_inner)]
+            elif parent_on_left and parent_rect[2] < child_rect[0]:
                 lane_x = ((parent_rect[2] + child_rect[0]) // 2) + lane * (18 if self._strict_plus else 12)
                 points = [(sx_inner, sy), (sx, sy), (lane_x, sy), (lane_x, ey), (ex, ey), (ex_inner, ey)]
             elif (not parent_on_left) and child_rect[2] < parent_rect[0]:
@@ -537,6 +578,7 @@ class SchemaDiagramRenderer:
                     bus_x = max(parent_rect[2], child_rect[2]) + (56 if self._strict_plus else 34) + lane * (20 if self._strict_plus else 14)
                 else:
                     bus_x = min(parent_rect[0], child_rect[0]) - (56 if self._strict_plus else 34) - lane * (20 if self._strict_plus else 14)
+                bus_x = self._clamp(bus_x, 24, draw.im.size[0] - 24)
                 points = [
                     (sx_inner, sy),
                     (sx, sy),
@@ -546,19 +588,25 @@ class SchemaDiagramRenderer:
                     (ex_inner, ey),
                 ]
         else:
-            points = route
+            points, reserved_cells = route
+            occupied_route_cells.update(reserved_cells)
 
         for p1, p2 in zip(points, points[1:]):
             draw.line((*p1, *p2), fill=color, width=width)
 
         # small arrow at child side for clearer direction to FK table (points to FK).
-        if parent_on_left:
+        if vertical_mode:
+            draw.polygon([(ex, ey_inner), (ex - 6, ey_inner + 10), (ex + 6, ey_inner + 10)], fill=color)
+        elif parent_on_left:
             draw.polygon([(ex_inner, ey), (ex_inner - 10, ey - 6), (ex_inner - 10, ey + 6)], fill=color)
         else:
             draw.polygon([(ex_inner, ey), (ex_inner + 10, ey - 6), (ex_inner + 10, ey + 6)], fill=color)
 
         # Cardinality markers: parent side = 1, child side = N
-        if parent_on_left:
+        if vertical_mode:
+            draw.text((sx - 14, sy_inner - 14), "1", fill=(52, 64, 89), font=self._small_font)
+            draw.text((ex - 14, ey_inner + 4), "N", fill=(52, 64, 89), font=self._small_font)
+        elif parent_on_left:
             draw.text((sx_inner - 16, sy - 14), "1", fill=(52, 64, 89), font=self._small_font)
             draw.text((ex_inner + 4, ey - 14), "N", fill=(52, 64, 89), font=self._small_font)
         else:
@@ -566,8 +614,8 @@ class SchemaDiagramRenderer:
             draw.text((ex_inner - 16, ey - 14), "N", fill=(52, 64, 89), font=self._small_font)
 
         # Compact endpoint markers avoid text clutter in dense diagrams.
-        draw.ellipse((sx_inner - 3, sy - 3, sx_inner + 3, sy + 3), fill=(44, 70, 121))
-        draw.ellipse((ex_inner - 3, ey - 3, ex_inner + 3, ey + 3), fill=(44, 70, 121))
+        draw.ellipse((start_marker[0] - 3, start_marker[1] - 3, start_marker[0] + 3, start_marker[1] + 3), fill=(44, 70, 121))
+        draw.ellipse((end_marker[0] - 3, end_marker[1] - 3, end_marker[0] + 3, end_marker[1] + 3), fill=(44, 70, 121))
 
     def _route_around_tables(
         self,
@@ -578,10 +626,11 @@ class SchemaDiagramRenderer:
         all_layouts: dict[str, TableLayout],
         canvas_width: int,
         canvas_height: int,
-    ) -> list[tuple[int, int]] | None:
-        margin = 30 if self._strict_plus else 22
-        cell_size = 20 if self._strict_plus else 18
-        bounds = (20, 72, canvas_width - 20, canvas_height - 56)
+        occupied_route_cells: set[tuple[int, int]],
+    ) -> tuple[list[tuple[int, int]], set[tuple[int, int]]] | None:
+        margin = 20 if self._strict_plus else 14
+        cell_size = 14 if self._strict_plus else 12
+        bounds = self._routing_bounds(all_layouts, canvas_width, canvas_height)
 
         blocked: set[tuple[int, int]] = set()
         for name, layout in all_layouts.items():
@@ -591,6 +640,7 @@ class SchemaDiagramRenderer:
 
         start_cell = self._point_to_cell(start, bounds, cell_size)
         end_cell = self._point_to_cell(end, bounds, cell_size)
+        blocked.update(occupied_route_cells)
         blocked.discard(start_cell)
         blocked.discard(end_cell)
 
@@ -602,7 +652,45 @@ class SchemaDiagramRenderer:
         for cell in path_cells[1:-1]:
             points.append(self._cell_to_point(cell, bounds, cell_size))
         points.append(end)
-        return self._compress_polyline(points)
+        compressed = self._compress_polyline(points)
+        reserved_cells = set(path_cells[1:-1])
+        return compressed, reserved_cells
+
+    def _routing_bounds(
+        self,
+        all_layouts: dict[str, TableLayout],
+        canvas_width: int,
+        canvas_height: int,
+    ) -> tuple[int, int, int, int]:
+        if not all_layouts:
+            return (20, 72, canvas_width - 20, canvas_height - 56)
+
+        min_x = min(layout.rect[0] for layout in all_layouts.values())
+        min_y = min(layout.rect[1] for layout in all_layouts.values())
+        max_x = max(layout.rect[2] for layout in all_layouts.values())
+        max_y = max(layout.rect[3] for layout in all_layouts.values())
+
+        pad_x = 80 if self._strict_plus else 60
+        pad_y_top = 36
+        pad_y_bottom = 72 if self._strict_plus else 56
+
+        left = self._clamp(min_x - pad_x, 20, canvas_width - 40)
+        top = self._clamp(min_y - pad_y_top, 72, canvas_height - 80)
+        right = self._clamp(max_x + pad_x, 40, canvas_width - 20)
+        bottom = self._clamp(max_y + pad_y_bottom, 100, canvas_height - 56)
+
+        if right <= left:
+            left, right = 20, canvas_width - 20
+        if bottom <= top:
+            top, bottom = 72, canvas_height - 56
+        return (left, top, right, bottom)
+
+    def _clamp(self, value: int, low: int, high: int) -> int:
+        if value < low:
+            return low
+        if value > high:
+            return high
+        return value
 
     def _a_star_path(
         self,
@@ -616,7 +704,16 @@ class SchemaDiagramRenderer:
         height_cells = max(1, ((bounds[3] - bounds[1]) // cell_size) + 1)
 
         def heuristic(cell: tuple[int, int]) -> int:
-            return abs(cell[0] - goal[0]) + abs(cell[1] - goal[1])
+            return (abs(cell[0] - goal[0]) + abs(cell[1] - goal[1])) * 10
+
+        def edge_penalty(cell: tuple[int, int]) -> int:
+            x, y = cell
+            penalty = 0
+            if x <= 1 or x >= width_cells - 2:
+                penalty += 6
+            if y <= 1 or y >= height_cells - 2:
+                penalty += 4
+            return penalty
 
         open_heap: list[tuple[int, int, tuple[int, int]]] = []
         heapq.heappush(open_heap, (heuristic(start), 0, start))
@@ -642,7 +739,7 @@ class SchemaDiagramRenderer:
                 if neighbor in blocked:
                     continue
 
-                tentative = current_cost + 1
+                tentative = current_cost + 10 + edge_penalty(neighbor)
                 if tentative >= g_score.get(neighbor, 1_000_000_000):
                     continue
 

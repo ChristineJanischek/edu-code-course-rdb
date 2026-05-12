@@ -57,6 +57,8 @@ python3 scripts/plugins/eerm_grafik_generator/generate_eerm_png.py \
 - Rendert daraus Tabellenkarten und FK-Beziehungen als PNG
 - Standard-Workflow erzeugt A4-portrait-freundliche Diagramme (Entitaetstypen staerker untereinander)
 - Routed FK-Linien orthogonal um unbeteiligte Tabellen herum, statt Karten zu kreuzen
+- Reserviert bereits verwendete Routing-Zellen pro Verbindung, damit FK-Linien nicht deckungsgleich aufeinander liegen
+- Begrenzt Routing-Korridore auf den Diagrammbereich, um lange Aussenumwege (insbesondere rechts) zu reduzieren
 - Ueberschreibt bestehende PNGs nur mit `--force`
 - Betroffene Markdown-Dateien erhalten (falls fehlend) einen Abschnitt "Modellgrafik Teil C" mit PNG-Einbettung
 
