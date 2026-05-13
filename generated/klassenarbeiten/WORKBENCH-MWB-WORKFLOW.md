@@ -14,7 +14,6 @@ FK-/Index-Muster-Normalisierung: aktiv
 | foodtrucknetz | 2025 | wb_foodtrucknetz_2025 | utf8 | utf8_general_ci | 6 | generated/klassenarbeiten/foodtrucknetz_struktur_2025.sql | generated/klassenarbeiten/foodtrucknetz_daten_2025.sql | generated/klassenarbeiten/foodtrucknetz_2025.mwb |
 | stadtfahrradverleih | 2025 | wb_stadtfahrradverleih_2025 | utf8 | utf8_general_ci | 6 | generated/klassenarbeiten/stadtfahrradverleih_struktur_2025.sql | generated/klassenarbeiten/stadtfahrradverleih_daten_2025.sql | generated/klassenarbeiten/stadtfahrradverleih_2025.mwb |
 
-
 ## 2) Schritte in MySQL Workbench (pro System)
 
 1. Workbench starten.
