@@ -19,8 +19,33 @@ check_file_exists() {
 
 check_mwb_container() {
   local file="$1"
-  if [[ -f "$file" ]] && ! unzip -tqq "$file" >/dev/null 2>&1; then
+  if [[ ! -f "$file" ]]; then
+    return
+  fi
+
+  if ! unzip -tqq "$file" >/dev/null 2>&1; then
     note_fail "Kein gueltiger .mwb-Container (ZIP erwartet): $file"
+    return
+  fi
+
+  if ! unzip -l "$file" | awk '{print $4}' | grep -qx "document.mwb.xml"; then
+    note_fail "Kein natives Workbench-Modell (document.mwb.xml fehlt): $file"
+    return
+  fi
+
+  local doc_xml
+  if ! doc_xml="$(unzip -p "$file" document.mwb.xml 2>/dev/null)"; then
+    note_fail "document.mwb.xml kann nicht gelesen werden: $file"
+    return
+  fi
+
+  if ! printf '%s' "$doc_xml" | grep -q '<data[[:space:]][^>]*grt_format='; then
+    note_fail "Kein echtes Workbench-GRT-XML (data grt_format fehlt): $file"
+    return
+  fi
+
+  if ! printf '%s' "$doc_xml" | grep -q 'workbench\.physical\.Model'; then
+    note_fail "Kein echtes Workbench-Modellobjekt (workbench.physical.Model fehlt): $file"
   fi
 }
 

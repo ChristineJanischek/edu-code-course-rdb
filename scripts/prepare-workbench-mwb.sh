@@ -54,6 +54,8 @@ if [[ ! -d "$input_dir" ]]; then
   exit 1
 fi
 
+runtime_root_pw="${MYSQL_ROOT_PASSWORD:-}"
+
 if [[ -f .env ]]; then
   set -a
   # shellcheck disable=SC1091
@@ -61,8 +63,13 @@ if [[ -f .env ]]; then
   set +a
 fi
 
-if [[ -z "${MYSQL_ROOT_PASSWORD:-}" ]]; then
-  echo "[prepare-mwb] Fehler: MYSQL_ROOT_PASSWORD fehlt. Bitte .env konfigurieren."
+if [[ -n "$runtime_root_pw" ]]; then
+  MYSQL_ROOT_PASSWORD="$runtime_root_pw"
+fi
+
+if [[ -z "${MYSQL_ROOT_PASSWORD:-}" || "${MYSQL_ROOT_PASSWORD}" == CHANGE_ME* ]]; then
+  echo "[prepare-mwb] Fehler: MYSQL_ROOT_PASSWORD fehlt oder ist ungueltig."
+  echo "[prepare-mwb] Bitte .env konfigurieren oder MYSQL_ROOT_PASSWORD als Umgebungsvariable setzen."
   exit 1
 fi
 
@@ -162,7 +169,8 @@ for struct_sql in "$input_dir"/*_struktur_*.sql; do
     table_count="0"
   fi
 
-  entries+="| ${system_name} | ${year} | ${target_db} | ${table_count} | ${struct_sql} | ${data_sql} | ${target_mwb} |\n"
+  entries+="$(printf '| %s | %s | %s | %s | %s | %s | %s |' "$system_name" "$year" "$target_db" "$table_count" "$struct_sql" "$data_sql" "$target_mwb")"
+  entries+=$'\n'
   processed=$((processed + 1))
 done
 

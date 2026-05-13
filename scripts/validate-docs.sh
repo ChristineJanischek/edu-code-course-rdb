@@ -80,4 +80,9 @@ if ! bash scripts/validate-ka-language-quality.sh; then
   exit 1
 fi
 
+if ! bash scripts/validate-mwb-native.sh; then
+  echo "[docs] FAIL: Native-Workbench-Modellvalidierung fehlgeschlagen"
+  exit 1
+fi
+
 echo "[docs] Dokumentationsvalidierung erfolgreich"
