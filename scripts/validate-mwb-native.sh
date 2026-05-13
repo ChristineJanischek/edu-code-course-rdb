@@ -32,6 +32,28 @@ check_native_mwb() {
 
   if ! unzip -l "$file" | awk '{print $4}' | grep -qx "document.mwb.xml"; then
     note_fail "Kein natives Workbench-Modell (document.mwb.xml fehlt): $file"
+    return
+  fi
+
+  local doc_xml
+  if ! doc_xml="$(unzip -p "$file" document.mwb.xml 2>/dev/null)"; then
+    note_fail "document.mwb.xml kann nicht gelesen werden: $file"
+    return
+  fi
+
+  # Echte Workbench-Modelle enthalten GRT-XML mit data/grt_format und workbench.physical.Model.
+  if ! printf '%s' "$doc_xml" | grep -q '<data[[:space:]][^>]*grt_format='; then
+    note_fail "Kein echtes Workbench-GRT-XML (data grt_format fehlt): $file"
+    return
+  fi
+
+  if ! printf '%s' "$doc_xml" | grep -q 'workbench\.physical\.Model'; then
+    note_fail "Kein echtes Workbench-Modellobjekt (workbench.physical.Model fehlt): $file"
+    return
+  fi
+
+  if printf '%s' "$doc_xml" | grep -q 'generated_mwb_from_sql\.py\|generated_by="scripts/generate_mwb_from_sql.py"'; then
+    note_fail "Pseudo-MWB erkannt (nicht mit MySQL Workbench gespeichert): $file"
   fi
 }
 

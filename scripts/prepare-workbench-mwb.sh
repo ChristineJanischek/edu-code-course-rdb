@@ -49,6 +49,11 @@ EOF
   esac
 done
 
+if [[ ! -d "$input_dir" ]]; then
+  echo "[prepare-mwb] Fehler: Eingabeverzeichnis nicht gefunden: $input_dir"
+  exit 1
+fi
+
 if [[ -f .env ]]; then
   set -a
   # shellcheck disable=SC1091
@@ -63,11 +68,6 @@ fi
 
 if ! command -v docker >/dev/null 2>&1; then
   echo "[prepare-mwb] Fehler: docker nicht gefunden."
-  exit 1
-fi
-
-if [[ ! -d "$input_dir" ]]; then
-  echo "[prepare-mwb] Fehler: Eingabeverzeichnis nicht gefunden: $input_dir"
   exit 1
 fi
 
@@ -167,7 +167,7 @@ for struct_sql in "$input_dir"/*_struktur_*.sql; do
 done
 
 if [[ $processed -eq 0 ]]; then
-  echo "[prepare-mwb] Fehler: Keine verarbeitbaren *_struktur_*.sql Dateien gefunden."
+  echo "[prepare-mwb] Fehler: Keine verarbeitbaren *_struktur_*.sql Dateien fuer Guide-Erstellung gefunden."
   exit 1
 fi
 
