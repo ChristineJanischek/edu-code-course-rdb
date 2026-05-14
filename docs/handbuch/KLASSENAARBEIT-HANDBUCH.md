@@ -158,21 +158,21 @@ Hinweis:
 ### Schritt 5b: Echte Workbench-Modelle (.mwb mit document.mwb.xml) aus SQL erzeugen
 
 ```bash
-# Bereitet pro SQL-Paar ein eigenes Schema vor und erstellt einen Workbench-Leitfaden
+# Erzeugt direkt native MWB-Archive aus den SQL-Strukturdumps und legt einen Leitfaden ab
 bash scripts/prepare-workbench-mwb.sh
 ```
 
 Ergebnis:
-- Die SQL-Paare `*_struktur_*.sql` und `*_daten_*.sql` werden in getrennte Datenbankschemata geladen.
+- Die SQL-Strukturdumps werden direkt in native MWB-Archive umgewandelt.
 - Es wird `generated/klassenarbeiten/WORKBENCH-MWB-WORKFLOW.md` erzeugt.
 - In dieser Datei steht pro System:
-   - welches Schema in Workbench reverse engineered wird,
+   - welche Quelle fuer die Erzeugung verwendet wurde,
    - welcher Zielpfad fuer die echte `.mwb` zu verwenden ist.
 
 Wichtig:
-- Ein nativer Workbench-Container enthaelt intern `document.mwb.xml`.
+- Ein nativer Container enthaelt intern `document.mwb.xml`, `lock` und `@db/data.db`.
 - Platzhalterdateien sind fuer Aufgaben/Loesungen nicht zulaessig.
-- Nach dem Speichern in Workbench immer strikt pruefen:
+- Nach der Erzeugung immer strikt pruefen:
 
 ```bash
 bash scripts/validate-mwb-native.sh

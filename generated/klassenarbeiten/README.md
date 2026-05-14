@@ -44,8 +44,8 @@ bash ../../scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
 - **stadtfahrradverleih_2025.mwb**
    - EERM-Modellspezifikation fuer die SQL-Datenbank in Teil C
    - Muss als natives Workbench-Modell vorliegen (keine Platzhalterdatei)
-   - Fuer echte Workbench-Dateien zuerst SQL in Schemas laden und dann reverse engineeren:
-     `bash scripts/prepare-workbench-mwb.sh`
+    - Wird direkt aus den SQL-Strukturdumps erzeugt:
+       `bash scripts/prepare-workbench-mwb.sh`
 
 - **KA02_BG12_2025_60min_34P_SQLDB_EERM.png** (optional)
    - SQL-basiert gerenderte Referenzgrafik (oder exportierte Workbench-Grafik) fuer Unterrichtsmaterial
