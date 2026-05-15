@@ -1,5 +1,5 @@
 -- KA02 BG12 2025 - SQL-Teil C Daten (kompakt, 6 Entitaetstypen)
-USE ka02_bg12_2025_sqlteil;
+USE stadtfahrradverleihdb_2025;
 
 INSERT INTO kunden VALUES
 (1,'Lea','Keller','Mitte','2024-01-10',1),

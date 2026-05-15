@@ -1,5 +1,5 @@
 -- SQL-Daten Teil C (Version 2, kompakt mit 6 Entitaetstypen)
-USE ka02_bg12_2025_sqlteil_v2;
+USE coworkingcampusdb_2025;
 
 INSERT INTO kunden VALUES
 (1,'Aylin','Demir','Informatik','2024-01-10',1),

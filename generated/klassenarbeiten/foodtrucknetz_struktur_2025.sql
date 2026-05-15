@@ -1,9 +1,9 @@
 -- SQL-Struktur Teil C (Version 3)
 -- Kompakter SQL-Kontext mit 6 Entitaetstypen
 
-DROP DATABASE IF EXISTS ka02_bg12_2025_sqlteil_v3;
-CREATE DATABASE ka02_bg12_2025_sqlteil_v3 CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE ka02_bg12_2025_sqlteil_v3;
+DROP DATABASE IF EXISTS foodtrucknetzdb_2025;
+CREATE DATABASE foodtrucknetzdb_2025 CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE foodtrucknetzdb_2025;
 
 DROP TABLE IF EXISTS zahlungen;
 DROP TABLE IF EXISTS bestellungen;

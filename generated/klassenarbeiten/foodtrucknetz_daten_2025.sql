@@ -1,5 +1,5 @@
 -- SQL-Daten Teil C (Version 3, kompakt mit 6 Entitaetstypen)
-USE ka02_bg12_2025_sqlteil_v3;
+USE foodtrucknetzdb_2025;
 
 INSERT INTO kunden VALUES
 (1,'Mara','Klein','Gold','2024-01-08',1),

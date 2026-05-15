@@ -2,9 +2,9 @@
 -- Kontext Teil C: Stadtfahrradverleih (nicht identisch mit Teil-B-Modellierung)
 -- STRUKTUR-DEFINITION (kompakt, 6 Entitaetstypen)
 
-DROP DATABASE IF EXISTS ka02_bg12_2025_sqlteil;
-CREATE DATABASE ka02_bg12_2025_sqlteil CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE ka02_bg12_2025_sqlteil;
+DROP DATABASE IF EXISTS stadtfahrradverleihdb_2025;
+CREATE DATABASE stadtfahrradverleihdb_2025 CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE stadtfahrradverleihdb_2025;
 
 DROP TABLE IF EXISTS zahlungen;
 DROP TABLE IF EXISTS wartungen;
