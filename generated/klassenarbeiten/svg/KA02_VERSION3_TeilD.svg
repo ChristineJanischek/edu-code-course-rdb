@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="700" 
+     height="310" 
+     viewBox="0 0 700 310">
+  
+  <style>
+    .box { stroke: #000; stroke-width: 2; fill: #fff; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .label { font-size: 11px; fill: #666; }
+    .bold { font-weight: bold; }
+  </style>
+  
+  <!-- Titel -->
+  <text x="350" y="30" class="text bold" text-anchor="middle" font-size="16">FoodtruckNetz: Tagesumsatz berechnen</text>
+  <line x1="30" y1="50" x2="670" y2="50" stroke="#000" stroke-width="1"/>
+  
+  <!-- EINGABE -->
+  <rect x="50" y="80" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="98" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="115" class="text">anzahl</text>
+  <!-- EINGABE -->
+  <rect x="50" y="130" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="148" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="165" class="text">preis</text>
+  <!-- PROZESS -->
+  <rect x="50" y="180" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="198" class="text label">Zuweisung:</text>
+  
+  <!-- Text -->
+  <text x="60" y="215" class="text">tagesumsatz = anzahl * preis</text>
+  <!-- AUSGABE -->
+  <rect x="50" y="230" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="248" class="text label">Ausgabe:</text>
+  
+  <!-- Text -->
+  <text x="60" y="265" class="text">tagesumsatz</text>
+</svg>

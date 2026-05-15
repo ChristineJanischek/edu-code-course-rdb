@@ -303,22 +303,56 @@ WHERE w.wartung_id IS NULL;
 <p><strong>Bewertung:</strong> LEFT JOIN korrekt 1,5 Pkt | IS NULL Bedingung korrekt 1,5 Pkt</p>
 <hr />
 <h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
-<h3>Aufgabe 2: Struktogramm (am Ende bearbeiten)</h3>
-<p>Erstellen Sie ein Struktogramm für folgende Logik (BPE 5.1):
-- Eingabe: Punktezahl einer Teilleistung
-- Gültig sind Werte von 0 bis 15
-- Bei ungueltiger Eingabe erneut abfragen
-- Bei gültiger Eingabe: "Eingabe gültig"</p>
-<p><strong>Musterloesung (Text-Notation):</strong></p>
+<h3>Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung</h3>
+<p>Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
+<ul>
+<li><strong>Eingabe:</strong> Anzahl der Ausleih-Tage und Tagespreis in Euro</li>
+<li><strong>Verarbeitung:</strong> Berechnung der Gesamtkosten</li>
+<li><strong>Ausgabe:</strong> Gesamtkosten in Euro</li>
+</ul>
+<p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
+<table>
+<thead>
+<tr>
+<th>Bewertungskriterium</th>
+<th style="text-align: right;">Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>Berechnungsformel korrekt (Zuweisung mit :=)</td>
+<td style="text-align: right;">1,5</td>
+</tr>
+<tr>
+<td>Variablennamen und Lesbarkeit</td>
+<td style="text-align: right;">0,5</td>
+</tr>
+<tr>
+<td><strong>Gesamt</strong></td>
+<td style="text-align: right;"><strong>3,0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Musterloesung (Text-Notation gemaess Operatorenliste):</strong></p>
 <pre><code>ANFANG
-  EINGABE: punkte
-  SOLANGE punkte &lt; 0 ODER punkte &gt; 15:
-      AUSGABE: &quot;Ungueltige Eingabe, bitte wiederholen&quot;
-      EINGABE: punkte
-  AUSGABE: &quot;Eingabe gültig&quot;
+  EINGABE: tage
+  EINGABE: tagespreis
+  gesamtkosten := tage * tagespreis
+  AUSGABE: gesamtkosten
 ENDE
 </code></pre>
-<p><strong>Bewertung:</strong> Logik korrekt 1,5 Pkt | Strukturbloecke sauber 1,0 Pkt | Lesbarkeit 0,5 Pkt</p>
+<p><strong>Struktogramm (BW-Standard, generiert):</strong></p>
+<p><img alt="Struktogramm Version 1 Teil D" src="svg/KA02_VERSION1_TeilD.svg" /></p>
+<p><strong>Bewertungshinweise:</strong>
+- 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
+- 1,5 Pkt: Zuweisung <code>gesamtkosten := tage * tagespreis</code> korrekt (Operator := und Formel je 0,75 Pkt)
+- 0,5 Pkt: Variablennamen aussagekräftig und einheitlich</p>
 <hr />
 <h2>Abgabe</h2>
 <ul>

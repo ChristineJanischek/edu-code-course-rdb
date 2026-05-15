@@ -142,15 +142,40 @@ WHERE st.ticket_id IS NULL;
 
 ## Teil D (3 Punkte): Grundlagen Programmierung
 
-### Aufgabe 2: Struktogramm – Musterlösung
+### Aufgabe: Struktogramm – CoworkingCampus Buchungsbetrag
+
+Eine Bucherin moechte wissen, wie viel ihre Buchung im CoworkingCampus kostet.
+Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+
+- **Eingabe:** Anzahl gebuchter Stunden und Stundenpreis in Euro
+- **Verarbeitung:** Berechnung des Gesamtbetrags
+- **Ausgabe:** Gesamtbetrag in Euro
+
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
+
+| Bewertungskriterium | Punkte |
+|---|---:|
+| Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig | 1,0 |
+| Berechnungsformel korrekt (Zuweisung mit :=) | 1,5 |
+| Variablennamen und Lesbarkeit | 0,5 |
+| **Gesamt** | **3,0** |
+
+**Musterloesung (Text-Notation gemaess Operatorenliste):**
 ```
 ANFANG
   EINGABE: stunden
-  SOLANGE stunden < 1 ODER stunden > 12:
-      AUSGABE: "Ungültige Eingabe, bitte wiederholen"
-      EINGABE: stunden
-  AUSGABE: "Wert gültig"
+  EINGABE: stundenpreis
+  gesamtbetrag := stunden * stundenpreis
+  AUSGABE: gesamtbetrag
 ENDE
 ```
 
-**Bewertung:** Logik 1,5 Pkt | Strukturbloecke 1,0 Pkt | Lesbarkeit 0,5 Pkt
+**Struktogramm (BW-Standard, generiert):**
+
+![Struktogramm Version 2 Teil D](svg/KA02_VERSION2_TeilD.svg)
+
+**Bewertungshinweise:**
+- 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
+- 1,5 Pkt: Zuweisung `gesamtbetrag := stunden * stundenpreis` korrekt (Operator := und Formel je 0,75 Pkt)
+- 0,5 Pkt: Variablennamen aussagekräftig und einheitlich

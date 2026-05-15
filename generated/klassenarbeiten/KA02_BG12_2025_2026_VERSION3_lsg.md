@@ -135,15 +135,40 @@ WHERE b.bestellung_id IS NULL;
 
 ## Teil D (3 Punkte): Grundlagen Programmierung
 
-### Aufgabe 2: Struktogramm – Musterlösung
+### Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz
+
+Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
+Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+
+- **Eingabe:** Anzahl verkaufter Menüs und Preis pro Menü in Euro
+- **Verarbeitung:** Berechnung des Tagesumsatzes
+- **Ausgabe:** Tagesumsatz in Euro
+
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
+
+| Bewertungskriterium | Punkte |
+|---|---:|
+| Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig | 1,0 |
+| Berechnungsformel korrekt (Zuweisung mit :=) | 1,5 |
+| Variablennamen und Lesbarkeit | 0,5 |
+| **Gesamt** | **3,0** |
+
+**Musterloesung (Text-Notation gemaess Operatorenliste):**
 ```
 ANFANG
-  EINGABE: menues
-  SOLANGE menues < 0 ODER menues > 30:
-      AUSGABE: "Ungültige Eingabe, bitte wiederholen"
-      EINGABE: menues
-  AUSGABE: "Eingabe gültig"
+  EINGABE: anzahl
+  EINGABE: preis
+  tagesumsatz := anzahl * preis
+  AUSGABE: tagesumsatz
 ENDE
 ```
 
-**Bewertung:** Logik 1,5 Pkt | Strukturbloecke 1,0 Pkt | Lesbarkeit 0,5 Pkt
+**Struktogramm (BW-Standard, generiert):**
+
+![Struktogramm Version 3 Teil D](svg/KA02_VERSION3_TeilD.svg)
+
+**Bewertungshinweise:**
+- 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
+- 1,5 Pkt: Zuweisung `tagesumsatz := anzahl * preis` korrekt (Operator := und Formel je 0,75 Pkt)
+- 0,5 Pkt: Variablennamen aussagekräftig und einheitlich

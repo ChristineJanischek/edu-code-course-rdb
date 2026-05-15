@@ -110,17 +110,24 @@ Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).
 
 ## Teil D (3 Punkte): Grundlagen Programmierung
 
-### Aufgabe 2: Struktogramm (am Ende bearbeiten)
-Erstellen Sie ein Struktogramm fuer folgende Logik (BPE 5.1):
-- Eingabe: Punktezahl einer Teilleistung
-- Gueltig sind Werte von 0 bis 15
-- Bei ungueltiger Eingabe erneut abfragen
-- Bei gueltiger Eingabe: "Eingabe gueltig"
+### Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung
 
-**Wichtig:** Keine Arrays und keine Listen verwenden (Arrays/Listen gehoeren zu BPE 7).
-Fokus auf Eingabe, Bedingung, Schleife und Ausgabe.
+Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
 
-Bewertung: Logik 1,5 Pkt | Strukturbloecke 1,0 Pkt | Lesbarkeit 0,5 Pkt
+- **Eingabe:** Anzahl der Ausleih-Tage und Tagespreis in Euro
+- **Verarbeitung:** Berechnung der Gesamtkosten
+- **Ausgabe:** Gesamtkosten in Euro
+
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
+
+| Bewertungskriterium | Punkte |
+|---|---:|
+| Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig | 1,0 |
+| Berechnungsformel korrekt (Zuweisung mit :=) | 1,5 |
+| Variablennamen und Lesbarkeit | 0,5 |
+| **Gesamt** | **3,0** |
 
 ---
 

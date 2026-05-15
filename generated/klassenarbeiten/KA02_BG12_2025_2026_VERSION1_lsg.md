@@ -182,25 +182,43 @@ WHERE w.wartung_id IS NULL;
 
 ## Teil D (3 Punkte): Grundlagen Programmierung
 
-### Aufgabe 2: Struktogramm (am Ende bearbeiten)
-Erstellen Sie ein Struktogramm für folgende Logik (BPE 5.1):
-- Eingabe: Punktezahl einer Teilleistung
-- Gültig sind Werte von 0 bis 15
-- Bei ungueltiger Eingabe erneut abfragen
-- Bei gültiger Eingabe: "Eingabe gültig"
+### Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung
 
-**Musterloesung (Text-Notation):**
+Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste für Struktogramme) für folgende Verarbeitung:
+
+- **Eingabe:** Anzahl der Ausleih-Tage und Tagespreis in Euro
+- **Verarbeitung:** Berechnung der Gesamtkosten
+- **Ausgabe:** Gesamtkosten in Euro
+
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
+
+| Bewertungskriterium | Punkte |
+|---|---:|
+| Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig | 1,0 |
+| Berechnungsformel korrekt (Zuweisung mit :=) | 1,5 |
+| Variablennamen und Lesbarkeit | 0,5 |
+| **Gesamt** | **3,0** |
+
+**Musterloesung (Text-Notation gemaess Operatorenliste):**
 ```
 ANFANG
-  EINGABE: punkte
-  SOLANGE punkte < 0 ODER punkte > 15:
-      AUSGABE: "Ungueltige Eingabe, bitte wiederholen"
-      EINGABE: punkte
-  AUSGABE: "Eingabe gültig"
+  EINGABE: tage
+  EINGABE: tagespreis
+  gesamtkosten := tage * tagespreis
+  AUSGABE: gesamtkosten
 ENDE
 ```
 
-**Bewertung:** Logik korrekt 1,5 Pkt | Strukturbloecke sauber 1,0 Pkt | Lesbarkeit 0,5 Pkt
+**Struktogramm (BW-Standard, generiert):**
+
+![Struktogramm Version 1 Teil D](svg/KA02_VERSION1_TeilD.svg)
+
+**Bewertungshinweise:**
+- 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
+- 1,5 Pkt: Zuweisung `gesamtkosten := tage * tagespreis` korrekt (Operator := und Formel je 0,75 Pkt)
+- 0,5 Pkt: Variablennamen aussagekräftig und einheitlich
 
 ---
 

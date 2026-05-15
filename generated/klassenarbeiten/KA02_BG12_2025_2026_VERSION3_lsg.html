@@ -239,15 +239,55 @@ WHERE b.bestellung_id IS NULL;
 </code></pre>
 <hr />
 <h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
-<h3>Aufgabe 2: Struktogramm – Musterlösung</h3>
+<h3>Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz</h3>
+<p>Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:</p>
+<ul>
+<li><strong>Eingabe:</strong> Anzahl verkaufter Menüs und Preis pro Menü in Euro</li>
+<li><strong>Verarbeitung:</strong> Berechnung des Tagesumsatzes</li>
+<li><strong>Ausgabe:</strong> Tagesumsatz in Euro</li>
+</ul>
+<p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
+<table>
+<thead>
+<tr>
+<th>Bewertungskriterium</th>
+<th style="text-align: right;">Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>Berechnungsformel korrekt (Zuweisung mit :=)</td>
+<td style="text-align: right;">1,5</td>
+</tr>
+<tr>
+<td>Variablennamen und Lesbarkeit</td>
+<td style="text-align: right;">0,5</td>
+</tr>
+<tr>
+<td><strong>Gesamt</strong></td>
+<td style="text-align: right;"><strong>3,0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Musterloesung (Text-Notation gemaess Operatorenliste):</strong></p>
 <pre><code>ANFANG
-  EINGABE: menues
-  SOLANGE menues &lt; 0 ODER menues &gt; 30:
-      AUSGABE: &quot;Ungültige Eingabe, bitte wiederholen&quot;
-      EINGABE: menues
-  AUSGABE: &quot;Eingabe gültig&quot;
+  EINGABE: anzahl
+  EINGABE: preis
+  tagesumsatz := anzahl * preis
+  AUSGABE: tagesumsatz
 ENDE
 </code></pre>
-<p><strong>Bewertung:</strong> Logik 1,5 Pkt | Strukturbloecke 1,0 Pkt | Lesbarkeit 0,5 Pkt</p>
+<p><strong>Struktogramm (BW-Standard, generiert):</strong></p>
+<p><img alt="Struktogramm Version 3 Teil D" src="svg/KA02_VERSION3_TeilD.svg" /></p>
+<p><strong>Bewertungshinweise:</strong>
+- 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
+- 1,5 Pkt: Zuweisung <code>tagesumsatz := anzahl * preis</code> korrekt (Operator := und Formel je 0,75 Pkt)
+- 0,5 Pkt: Variablennamen aussagekräftig und einheitlich</p>
 </body>
 </html>

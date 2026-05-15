@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struktogramm>
+  <metadata>
+    <titel>Fahrradverleih: Gesamtkosten berechnen</titel>
+    <level>KA02</level>
+    <kategorie>EVA-Prinzip (Sequenz)</kategorie>
+    <autor>KA02 BG12 2025/2026 – VERSION1</autor>
+    <beschreibung>Einlesen von Ausleih-Tagen und Tagespreis, Berechnung der Gesamtkosten, Ausgabe</beschreibung>
+  </metadata>
+  <inhalt>
+    <eingabe typ="einlesen">tage</eingabe>
+    <eingabe typ="einlesen">tagespreis</eingabe>
+    <prozess typ="zuweisung">gesamtkosten = tage * tagespreis</prozess>
+    <ausgabe typ="ausgabe">gesamtkosten</ausgabe>
+  </inhalt>
+</struktogramm>

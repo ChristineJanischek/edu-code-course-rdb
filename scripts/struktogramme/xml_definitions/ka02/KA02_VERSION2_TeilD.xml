@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struktogramm>
+  <metadata>
+    <titel>CoworkingCampus: Buchungsbetrag berechnen</titel>
+    <level>KA02</level>
+    <kategorie>EVA-Prinzip (Sequenz)</kategorie>
+    <autor>KA02 BG12 2025/2026 – VERSION2</autor>
+    <beschreibung>Einlesen von Buchungsstunden und Stundenpreis, Berechnung des Gesamtbetrags, Ausgabe</beschreibung>
+  </metadata>
+  <inhalt>
+    <eingabe typ="einlesen">stunden</eingabe>
+    <eingabe typ="einlesen">stundenpreis</eingabe>
+    <prozess typ="zuweisung">gesamtbetrag = stunden * stundenpreis</prozess>
+    <ausgabe typ="ausgabe">gesamtbetrag</ausgabe>
+  </inhalt>
+</struktogramm>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- Wurzel-Element -->
+  <xs:element name="struktogramm" type="StruktogrammType"/>
+  
+  <!-- Haupttypen -->
+  <xs:complexType name="StruktogrammType">
+    <xs:sequence>
+      <xs:element name="metadata" type="MetadataType"/>
+      <xs:element name="inhalt" type="InhaltType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Metadaten -->
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="titel" type="xs:string"/>
+      <xs:element name="level" type="LevelType"/>
+      <xs:element name="kategorie" type="xs:string"/>
+      <xs:element name="autor" type="xs:string" minOccurs="0"/>
+      <xs:element name="erstellt" type="xs:date" minOccurs="0"/>
+      <xs:element name="beschreibung" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Lernlevel -->
+  <xs:simpleType name="LevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="L1"/>
+      <xs:enumeration value="L2"/>
+      <xs:enumeration value="L3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- Hauptinhalt -->
+  <xs:complexType name="InhaltType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="sequenz" type="SequenzType"/>
+      <xs:element name="wenn" type="WennType"/>
+      <xs:element name="wiederhole" type="Wiederholetype"/>
+      <xs:element name="zaehle" type="ZaehleType"/>
+      <xs:element name="prozess" type="xs:string"/>
+      <xs:element name="eingabe" type="xs:string"/>
+      <xs:element name="ausgabe" type="xs:string"/>
+      <xs:element name="rueckgabe" type="xs:string"/>
+    </xs:choice>
+  </xs:complexType>
+  
+  <!-- Sequenz (Nacheinander) -->
+  <xs:complexType name="SequenzType">
+    <xs:sequence>
+      <xs:element name="schritt" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Verzweigung (wenn-dann-sonst) -->
+  <xs:complexType name="WennType">
+    <xs:sequence>
+      <xs:element name="bedingung" type="xs:string"/>
+      <xs:element name="dann" type="InhaltType"/>
+      <xs:element name="sonst" type="InhaltType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Wiederholung (solange) -->
+  <xs:complexType name="Wiederholetype">
+    <xs:sequence>
+      <xs:element name="bedingung" type="xs:string"/>
+      <xs:element name="inhalt" type="InhaltType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Zähler-Schleife -->
+  <xs:complexType name="ZaehleType">
+    <xs:sequence>
+      <xs:element name="variable" type="xs:string"/>
+      <xs:element name="von" type="xs:string"/>
+      <xs:element name="bis" type="xs:string"/>
+      <xs:element name="schrittweite" type="xs:string" minOccurs="0"/>
+      <xs:element name="inhalt" type="InhaltType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

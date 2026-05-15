@@ -109,14 +109,24 @@ Finden Sie Produkte ohne Bestellung (LEFT JOIN).
 
 ## Teil D (3 Punkte): Grundlagen Programmierung
 
-### Aufgabe 2: Struktogramm (am Ende bearbeiten)
-Erstellen Sie ein Struktogramm für folgende Logik (BPE 5.1):
-- Eingabe: Anzahl verkaufter Menüs pro Stunde
-- Gültig sind Werte von 0 bis 30
-- Bei ungültiger Eingabe erneut abfragen
-- Bei gültiger Eingabe: "Eingabe gültig"
+### Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz
 
-Bewertung: Logik 1,5 Pkt | Strukturbloecke 1,0 Pkt | Lesbarkeit 0,5 Pkt
+Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
+Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+
+- **Eingabe:** Anzahl verkaufter Menüs und Preis pro Menü in Euro
+- **Verarbeitung:** Berechnung des Tagesumsatzes
+- **Ausgabe:** Tagesumsatz in Euro
+
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
+
+| Bewertungskriterium | Punkte |
+|---|---:|
+| Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig | 1,0 |
+| Berechnungsformel korrekt (Zuweisung mit :=) | 1,5 |
+| Variablennamen und Lesbarkeit | 0,5 |
+| **Gesamt** | **3,0** |
 
 ---
 

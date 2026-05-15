@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struktogramm>
+  <metadata>
+    <titel>FoodtruckNetz: Tagesumsatz berechnen</titel>
+    <level>KA02</level>
+    <kategorie>EVA-Prinzip (Sequenz)</kategorie>
+    <autor>KA02 BG12 2025/2026 – VERSION3</autor>
+    <beschreibung>Einlesen von Anzahl Menüs und Preis, Berechnung des Tagesumsatzes, Ausgabe</beschreibung>
+  </metadata>
+  <inhalt>
+    <eingabe typ="einlesen">anzahl</eingabe>
+    <eingabe typ="einlesen">preis</eingabe>
+    <prozess typ="zuweisung">tagesumsatz = anzahl * preis</prozess>
+    <ausgabe typ="ausgabe">tagesumsatz</ausgabe>
+  </inhalt>
+</struktogramm>
