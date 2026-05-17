@@ -62,6 +62,53 @@ def _to_rel_posix(base_dir: Path, target: Path) -> str:
     return Path(os.path.relpath(target, base_dir)).as_posix()
 
 
+def _normalize_table_style(existing_style: str) -> str:
+    required_props = [
+        "width:100%",
+        "max-width:100%",
+        "table-layout:fixed",
+        "border-collapse:collapse",
+        "mso-table-lspace:0pt",
+        "mso-table-rspace:0pt",
+    ]
+    existing_chunks = [chunk.strip() for chunk in existing_style.split(";") if chunk.strip()]
+    existing_lower = {chunk.lower() for chunk in existing_chunks}
+    for prop in required_props:
+        if prop.lower() not in existing_lower:
+            existing_chunks.append(prop)
+    return "; ".join(existing_chunks)
+
+
+def _ensure_table_fit_to_page_and_word(html_content: str) -> str:
+    # Erzwingt robuste Tabellenbreite fuer Print-A4 und Word-Paste (Groesse an Fenster).
+    table_open_pattern = re.compile(r"<table\b([^>]*)>", re.IGNORECASE)
+
+    def _replace_table_open(match: re.Match[str]) -> str:
+        attrs = match.group(1) or ""
+
+        if re.search(r'\bwidth\s*=\s*"[^"]*"', attrs, re.IGNORECASE):
+            attrs = re.sub(r'\bwidth\s*=\s*"[^"]*"', 'width="100%"', attrs, flags=re.IGNORECASE)
+        else:
+            attrs += ' width="100%"'
+
+        style_match = re.search(r'\bstyle\s*=\s*"([^"]*)"', attrs, re.IGNORECASE)
+        if style_match:
+            merged_style = _normalize_table_style(style_match.group(1))
+            attrs = re.sub(
+                r'\bstyle\s*=\s*"[^"]*"',
+                f'style="{escape(merged_style, quote=True)}"',
+                attrs,
+                flags=re.IGNORECASE,
+            )
+        else:
+            merged_style = _normalize_table_style("")
+            attrs += f' style="{escape(merged_style, quote=True)}"'
+
+        return f"<table{attrs}>"
+
+    return table_open_pattern.sub(_replace_table_open, html_content)
+
+
 def _embed_graphics(html_content: str, md_file: str) -> str:
     img_pattern = re.compile(r'<img\s+([^>]*?)src="([^"]+)"([^>]*)/?>', re.IGNORECASE)
     base_dir = Path(md_file).parent.resolve()
@@ -149,6 +196,7 @@ def markdown_to_html(md_file, html_file):
     
     html_content = markdown.markdown(md_content, extensions=['tables', 'extra'])
     html_content = _embed_graphics(html_content, md_file)
+    html_content = _ensure_table_fit_to_page_and_word(html_content)
     html_content = _wrap_tables(html_content)
     
     # Wrap mit HTML-Template (A4-druckoptimiert)
