@@ -67,7 +67,7 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.
 
-**Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.
+**Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begründen Sie Ihre Modellierungsentscheidungen kurz.
 
 **Bewertung (8 Punkte):**
 - Entitätstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkräfte, Buchungen): 2 Pkt
@@ -91,7 +91,7 @@ Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse 
 **Musterlösung:**
 - Einfügeanomalie: Ein neuer Kurs kann erst angelegt werden, wenn mindestens ein Termin bekannt ist (falls Kursdaten nur über Terminrelation gespeichert).
 - Änderungsanomalie: Wird der Kursname in einer denormalisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
-- Löschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.
+- Löschanomalie: Wird der letzte Termin eines Kurses gelöscht, gehen alle Kursinformationen verloren.
 
 **Bewertung:** je 0,5 Pkt pro Beispiel (max. 2 Pkt für je ein sinnvolles Beispiel)
 
@@ -191,7 +191,7 @@ Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) 
 - **Verarbeitung:** Berechnung der Gesamtkosten
 - **Ausgabe:** Gesamtkosten in Euro
 
-**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Blöcke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
 
 | Bewertungskriterium | Punkte |

@@ -118,7 +118,7 @@ Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) 
 - **Verarbeitung:** Berechnung des Gesamtbetrags
 - **Ausgabe:** Gesamtbetrag in Euro
 
-**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Blöcke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
 
 | Bewertungskriterium | Punkte |

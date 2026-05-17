@@ -249,7 +249,7 @@ fassung: loesung</p>
 <h3>Aufgabe 3.1: EERM modellieren – 8 Punkte</h3>
 <p><strong>Sachverhalt Modellierung (Kontext 1):</strong></p>
 <p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.</p>
-<p><strong>Auftrag:</strong> Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.</p>
+<p><strong>Auftrag:</strong> Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begründen Sie Ihre Modellierungsentscheidungen kurz.</p>
 <p><strong>Bewertung (8 Punkte):</strong>
 - Entitätstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkräfte, Buchungen): 2 Pkt
 - Beziehungen korrekt (N:M-Auflösungen, 1:N): 3 Pkt
@@ -266,7 +266,7 @@ fassung: loesung</p>
 <p><strong>Musterlösung:</strong>
 - Einfügeanomalie: Ein neuer Kurs kann erst angelegt werden, wenn mindestens ein Termin bekannt ist (falls Kursdaten nur über Terminrelation gespeichert).
 - Änderungsanomalie: Wird der Kursname in einer denormalisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
-- Löschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.</p>
+- Löschanomalie: Wird der letzte Termin eines Kurses gelöscht, gehen alle Kursinformationen verloren.</p>
 <p><strong>Bewertung:</strong> je 0,5 Pkt pro Beispiel (max. 2 Pkt für je ein sinnvolles Beispiel)</p>
 <hr />
 <h2>Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen</h2>
@@ -343,7 +343,7 @@ Erstellen Sie ein <strong>Struktogramm</strong> (gemäß Operatorenliste für St
 <li><strong>Verarbeitung:</strong> Berechnung der Gesamtkosten</li>
 <li><strong>Ausgabe:</strong> Gesamtkosten in Euro</li>
 </ul>
-<p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+<p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Blöcke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
 <div class="table-wrap"><table>
 <thead>
@@ -381,55 +381,7 @@ ENDE
 </code></pre>
 <p><strong>Struktogramm (BW-Standard, generiert):</strong></p>
 <p><figure class="ka-figure" aria-label="Struktogramm Version 1 Teil D">
-<svg xmlns="http://www.w3.org/2000/svg" 
-     width="700" 
-     height="310" 
-     viewBox="0 0 700 310">
-  
-  <style>
-    .box { stroke: #000; stroke-width: 2; fill: #fff; }
-    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
-    .label { font-size: 11px; fill: #666; }
-    .bold { font-weight: bold; }
-  </style>
-  
-  <!-- Titel -->
-  <text x="350" y="30" class="text bold" text-anchor="middle" font-size="16">Fahrradverleih: Gesamtkosten berechnen</text>
-  <line x1="30" y1="50" x2="670" y2="50" stroke="#000" stroke-width="1"/>
-  
-  <!-- EINGABE -->
-  <rect x="50" y="80" width="600" height="50" class="box"/>
-  
-  <!-- Bezeichnung -->
-  <text x="60" y="98" class="text label">Einlesen:</text>
-  
-  <!-- Text -->
-  <text x="60" y="115" class="text">tage</text>
-  <!-- EINGABE -->
-  <rect x="50" y="130" width="600" height="50" class="box"/>
-  
-  <!-- Bezeichnung -->
-  <text x="60" y="148" class="text label">Einlesen:</text>
-  
-  <!-- Text -->
-  <text x="60" y="165" class="text">tagespreis</text>
-  <!-- PROZESS -->
-  <rect x="50" y="180" width="600" height="50" class="box"/>
-  
-  <!-- Bezeichnung -->
-  <text x="60" y="198" class="text label">Zuweisung:</text>
-  
-  <!-- Text -->
-  <text x="60" y="215" class="text">gesamtkosten = tage * tagespreis</text>
-  <!-- AUSGABE -->
-  <rect x="50" y="230" width="600" height="50" class="box"/>
-  
-  <!-- Bezeichnung -->
-  <text x="60" y="248" class="text label">Ausgabe:</text>
-  
-  <!-- Text -->
-  <text x="60" y="265" class="text">gesamtkosten</text>
-</svg>
+<img alt="Struktogramm Version 1 Teil D" src="svg/KA02_VERSION1_TeilD.png" />
 </figure></p>
 <p><strong>Bewertungshinweise:</strong>
 - 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)

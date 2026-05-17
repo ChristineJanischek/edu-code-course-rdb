@@ -63,11 +63,11 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.
 
-**Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.
+**Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begründen Sie Ihre Modellierungsentscheidungen kurz.
 
 ### Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte
 - Benennen Sie 2 funktionale Abhängigkeiten.
-- Begruenden Sie, warum das Modell in 3NF liegt.
+- Begründen Sie, warum das Modell in 3NF liegt.
 
 ### Aufgabe 3.3: Anomalien – 2 Punkte
 Nennen Sie je ein Beispiel:
@@ -80,7 +80,7 @@ Nennen Sie je ein Beispiel:
 ## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
-Fuer Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
 Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.
 
 **Konkreter Sachverhalt:**
@@ -119,7 +119,7 @@ Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) 
 - **Verarbeitung:** Berechnung der Gesamtkosten
 - **Ausgabe:** Gesamtkosten in Euro
 
-**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
+**Hinweis:** Verwenden Sie ausschliesslich Sequenz-Blöcke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind nicht erforderlich.
 
 | Bewertungskriterium | Punkte |
