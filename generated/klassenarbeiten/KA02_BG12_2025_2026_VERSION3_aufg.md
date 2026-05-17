@@ -31,7 +31,7 @@ fassung: aufgaben
 |---|---|---:|---:|
 | A | Theorie (MC) | 3 | 5 Min |
 | B | EERM, Normalisierung, Anomalien | 14 | 25 Min |
-| C | SQL-Abfragen ueber mehrere Tabellen | 14 | 25 Min |
+| C | SQL-Abfragen über mehrere Tabellen | 14 | 25 Min |
 | D | Grundlagen Programmierung (Struktogramm) | 3 | 5 Min |
 | **Gesamt** |  | **34** | **60 Min** |
 
@@ -77,13 +77,13 @@ Nennen Sie je ein Beispiel:
 
 ---
 
-## Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen
+## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
 Für Teil C wird absichtlich ein anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
 
 **Konkreter Sachverhalt:**
-Ein Foodtruck-Netzwerk verwaltet Kundinnen und Kunden, Trucks, Standorte, Produkte, Bestellungen und Zahlungen (6 Entitaetstypen).
+Ein Foodtruck-Netzwerk verwaltet Kundinnen und Kunden, Trucks, Standorte, Produkte, Bestellungen und Zahlungen (6 Entitätstypen).
 
 **Arbeitsgrundlage:**
 - SQL-Struktur: `foodtrucknetz_struktur_2025.sql`
@@ -111,8 +111,8 @@ Finden Sie Produkte ohne Bestellung (LEFT JOIN).
 
 ### Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz
 
-Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
-Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+Ein Foodtruck-Betreiber möchte seinen Tagesumsatz berechnen.
+Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:
 
 - **Eingabe:** Anzahl verkaufter Menüs und Preis pro Menü in Euro
 - **Verarbeitung:** Berechnung des Tagesumsatzes

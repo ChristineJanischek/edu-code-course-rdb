@@ -1,5 +1,5 @@
 ---
-titel: "Klassenarbeit BG12 2025/2026: EERM und SQL (60 Min) – Loesung/Erwartungshorizont"
+titel: "Klassenarbeit BG12 2025/2026: EERM und SQL (60 Min) – Lösung/Erwartungshorizont"
 klasse: "BG12"
 schuljahr: "2025-2026"
 fach: "Informatik"
@@ -19,11 +19,11 @@ artefakte:
 fassung: loesung
 ---
 
-# Klassenarbeit (60 Minuten) – Loesung und Erwartungshorizont
+# Klassenarbeit (60 Minuten) – Lösung und Erwartungshorizont
 
 **Klasse/Kurs:** BG12 | **Schuljahr:** 2025/2026 | **Bearbeitungszeit:** 60 Minuten | **Erreichbare Punkte:** 34
 
-> **Hinweis:** Diese Fassung enthaelt Musterloesungen und Bewertungshinweise. Nur für Lehrkraefte.
+> **Hinweis:** Diese Fassung enthält Musterlösungen und Bewertungshinweise. Nur für Lehrkräfte.
 
 ---
 
@@ -46,14 +46,14 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 | Nr. | Aussage | r/f |
 |-----|---------|-----|
-| 1 | Ein Fremdschluessel darf mehrfach vorkommen. | |
+| 1 | Ein Fremdschlüssel darf mehrfach vorkommen. | |
 | 2 | Eine N:M-Beziehung wird in relationalen Modellen direkt ohne Zwischentabelle gespeichert. | |
-| 3 | Ein LEFT JOIN kann Datensaetze ohne Partner auf der rechten Seite sichtbar machen. | |
+| 3 | Ein LEFT JOIN kann Datensätze ohne Partner auf der rechten Seite sichtbar machen. | |
 | 4 | Die 3NF reduziert Redundanz und Anomalien. | |
-| 5 | Ein Primarschluessel darf NULL sein. | |
+| 5 | Ein Primärschlüssel darf NULL sein. | |
 | 6 | HAVING filtert Gruppen nach GROUP BY. | |
 
-**Musterloesung:** r, f, r, r, f, r
+**Musterlösung:** r, f, r, r, f, r
 
 ---
 
@@ -65,13 +65,13 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 **Sachverhalt Modellierung (Kontext 1):**
 
-Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkraefte betreuen Kurse, zum Teil im Team. Die Schulleitung benoetigt spaeter Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkraeften ohne aktive Zuordnung.
+Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.
 
 **Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.
 
 **Bewertung (8 Punkte):**
-- Entitaetstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkraefte, Buchungen): 2 Pkt
-- Beziehungen korrekt (N:M-Aufloesungen, 1:N): 3 Pkt
+- Entitätstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkräfte, Buchungen): 2 Pkt
+- Beziehungen korrekt (N:M-Auflösungen, 1:N): 3 Pkt
 - Kardinalitäten korrekt angegeben: 1 Pkt
 - Attributzuweisung sinnvoll, PKs und FKs korrekt: 2 Pkt
 
@@ -79,19 +79,19 @@ Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse 
 
 ### Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte
 
-**Musterloesung (Beispiel):**
-- FA1: `termin_id → kurs_id` (jeder Termin gehoert zu einem Kurs)
+**Musterlösung (Beispiel):**
+- FA1: `termin_id → kurs_id` (jeder Termin gehört zu einem Kurs)
 - FA2: `buchung_id → teilnehmer_id, termin_id` (jede Buchung identifiziert Teilnehmer und Termin)
-- Das Modell liegt in 3NF, weil: kein Attribut haengt transitiv von einem Nicht-Schluessel ab (alle Nicht-Schluessel-Attribute haengen direkt von den PKs ab).
+- Das Modell liegt in 3NF, weil: kein Attribut hängt transitiv von einem Nicht-Schlüssel ab (alle Nicht-Schlüssel-Attribute hängen direkt von den PKs ab).
 
-**Bewertung:** je 1 Pkt pro korrekte FA (2 Pkt) + Begruendung 3NF (2 Pkt)
+**Bewertung:** je 1 Pkt pro korrekte FA (2 Pkt) + Begründung 3NF (2 Pkt)
 
 ### Aufgabe 3.3: Anomalien – 2 Punkte
 
-**Musterloesung:**
+**Musterlösung:**
 - Einfügeanomalie: Ein neuer Kurs kann erst angelegt werden, wenn mindestens ein Termin bekannt ist (falls Kursdaten nur über Terminrelation gespeichert).
-- Änderungsanomalie: Wird der Kursname in einer denormlisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
-- Loschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.
+- Änderungsanomalie: Wird der Kursname in einer denormalisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
+- Löschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.
 
 **Bewertung:** je 0,5 Pkt pro Beispiel (max. 2 Pkt für je ein sinnvolles Beispiel)
 
@@ -100,11 +100,11 @@ Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse 
 ## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
-Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungsloesung aus Teil B nicht indirekt vorgegeben wird.
-Die didaktische Trennung ist essentiell für die Unabhaengigkeit der Aufgabenteile.
+Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.
 
 **Konkreter Sachverhalt:**
-Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrraeder, Ausleihen, Zahlungen und Wartungen (6 Entitaetstypen). Die bereitgestellte Uebungsdatenbank ist bereits in 3NF modelliert.
+Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrräder, Ausleihen, Zahlungen und Wartungen (6 Entitätstypen). Die bereitgestellte Übungsdatenbank ist bereits in 3NF modelliert.
 
 **Arbeitsgrundlage:**
 - SQL-Struktur: `stadtfahrradverleih_struktur_2025.sql`
@@ -116,7 +116,7 @@ Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fa
 ### Aufgabe 4.1 (4 Punkte)
 Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus. Sortierung: Kundennachname, Startzeit.
 
-**Musterloesung:**
+**Musterlösung:**
 ```sql
 SELECT
   k.nachname, k.vorname,
@@ -134,12 +134,12 @@ JOIN zahlungen z ON a.ausleihe_id = z.ausleihe_id
 WHERE a.status = 'abgeschlossen'
 ORDER BY k.nachname, a.startzeit;
 ```
-**Bewertung:** JOIN-Kette vollstaendig 2 Pkt | WHERE korrekt 1 Pkt | ORDER BY korrekt 1 Pkt
+**Bewertung:** JOIN-Kette vollständig 2 Pkt | WHERE korrekt 1 Pkt | ORDER BY korrekt 1 Pkt
 
 ### Aufgabe 4.2 (4 Punkte)
 Ermitteln Sie je Kundin/Kunde die Anzahl abgeschlossener Ausleihen. Zeigen Sie nur Personen mit mindestens 2 abgeschlossenen Ausleihen.
 
-**Musterloesung:**
+**Musterlösung:**
 ```sql
 SELECT k.nachname, k.vorname, COUNT(a.ausleihe_id) AS anzahl_ausleihen
 FROM kunden k
@@ -154,7 +154,7 @@ ORDER BY anzahl_ausleihen DESC;
 ### Aufgabe 4.3 (3 Punkte)
 Geben Sie pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen/Kunden aus, die dort gestartet sind.
 
-**Musterloesung:**
+**Musterlösung:**
 ```sql
 SELECT
   s.stationsname,
@@ -167,9 +167,9 @@ GROUP BY s.station_id, s.stationsname;
 **Bewertung:** MAX korrekt 1 Pkt | COUNT DISTINCT 1 Pkt | GROUP BY korrekt 1 Pkt
 
 ### Aufgabe 4.4 (3 Punkte)
-Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).
+Finden Sie Fahrräder ohne dokumentierte Wartung (LEFT JOIN).
 
-**Musterloesung:**
+**Musterlösung:**
 ```sql
 SELECT f.fahrrad_id, f.typname, f.seriennummer
 FROM fahrraeder f
@@ -184,8 +184,8 @@ WHERE w.wartung_id IS NULL;
 
 ### Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung
 
-Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
-Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste für Struktogramme) für folgende Verarbeitung:
+Ein Kunde möchte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:
 
 - **Eingabe:** Anzahl der Ausleih-Tage und Tagespreis in Euro
 - **Verarbeitung:** Berechnung der Gesamtkosten
@@ -201,7 +201,7 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind
 | Variablennamen und Lesbarkeit | 0,5 |
 | **Gesamt** | **3,0** |
 
-**Musterloesung (Text-Notation gemaess Operatorenliste):**
+**Musterlösung (Text-Notation gemäß Operatorenliste):**
 ```
 ANFANG
   EINGABE: tage
@@ -225,7 +225,7 @@ ENDE
 ## Abgabe
 
 - EERM-Modellierung Teil B (von Schuelern erstellt): als `.mwb`-Datei abgeben
-- SQL-Loesungen Teil C: als Datei oder Text
+- SQL-Lösungen Teil C: als Datei oder Text
 
 ---
 
@@ -233,8 +233,8 @@ ENDE
 
 Aufgabe 1: r, f, r, r, f, r
 
-Loesungshinweise Teil C:
-- 4.1 benoetigt JOIN über mindestens: ausleihen, kunden, fahrraeder, stationen (2x), zahlungen
-- 4.2 benoetigt GROUP BY/HAVING auf kunden + ausleihen
-- 4.3 benoetigt Aggregation pro station + MAX(startzeit)
-- 4.4 benoetigt LEFT JOIN fahrraeder -> wartungen und IS NULL
+Lösungshinweise Teil C:
+- 4.1 benötigt JOIN über mindestens: ausleihen, kunden, fahrraeder, stationen (2x), zahlungen
+- 4.2 benötigt GROUP BY/HAVING auf kunden + ausleihen
+- 4.3 benötigt Aggregation pro station + MAX(startzeit)
+- 4.4 benötigt LEFT JOIN fahrraeder -> wartungen und IS NULL

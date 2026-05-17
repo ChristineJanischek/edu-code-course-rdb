@@ -31,7 +31,7 @@ fassung: aufgaben
 |---|---|---:|---:|
 | A | Theorie (MC) | 3 | 5 Min |
 | B | EERM, Normalisierung, Anomalien | 14 | 25 Min |
-| C | SQL-Abfragen ueber mehrere Tabellen | 14 | 25 Min |
+| C | SQL-Abfragen über mehrere Tabellen | 14 | 25 Min |
 | D | Grundlagen Programmierung (Struktogramm) | 3 | 5 Min |
 | **Gesamt** |  | **34** | **60 Min** |
 
@@ -44,11 +44,11 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 | Nr. | Aussage | r/f |
 |-----|---------|-----|
-| 1 | Ein Fremdschluessel darf mehrfach vorkommen. | |
+| 1 | Ein Fremdschlüssel darf mehrfach vorkommen. | |
 | 2 | Eine N:M-Beziehung wird in relationalen Modellen direkt ohne Zwischentabelle gespeichert. | |
-| 3 | Ein LEFT JOIN kann Datensaetze ohne Partner auf der rechten Seite sichtbar machen. | |
+| 3 | Ein LEFT JOIN kann Datensätze ohne Partner auf der rechten Seite sichtbar machen. | |
 | 4 | Die 3NF reduziert Redundanz und Anomalien. | |
-| 5 | Ein Primarschluessel darf NULL sein. | |
+| 5 | Ein Primärschlüssel darf NULL sein. | |
 | 6 | HAVING filtert Gruppen nach GROUP BY. | |
 
 ---
@@ -61,30 +61,30 @@ Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)
 
 **Sachverhalt Modellierung (Kontext 1):**
 
-Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkraefte betreuen Kurse, zum Teil im Team. Die Schulleitung benoetigt spaeter Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkraeften ohne aktive Zuordnung.
+Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.
 
 **Auftrag:** Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.
 
 ### Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte
-- Benennen Sie 2 funktionale Abhaengigkeiten.
+- Benennen Sie 2 funktionale Abhängigkeiten.
 - Begruenden Sie, warum das Modell in 3NF liegt.
 
 ### Aufgabe 3.3: Anomalien – 2 Punkte
 Nennen Sie je ein Beispiel:
-- Einfuegeanomalie
-- Aenderungsanomalie
-- Loschanomalie
+- Einfügeanomalie
+- Änderungsanomalie
+- Löschanomalie
 
 ---
 
-## Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen
+## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
-Fuer Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungsloesung aus Teil B nicht indirekt vorgegeben wird.
-Die didaktische Trennung ist essentiell fuer die Unabhaengigkeit der Aufgabenteile.
+Fuer Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.
 
 **Konkreter Sachverhalt:**
-Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrraeder, Ausleihen, Zahlungen und Wartungen (6 Entitaetstypen). Die bereitgestellte Uebungsdatenbank ist bereits in 3NF modelliert.
+Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrräder, Ausleihen, Zahlungen und Wartungen (6 Entitätstypen). Die bereitgestellte Übungsdatenbank ist bereits in 3NF modelliert.
 
 **Arbeitsgrundlage:**
 - SQL-Struktur: `stadtfahrradverleih_struktur_2025.sql`
@@ -94,7 +94,7 @@ Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fa
 ![EERM Teil C - separater SQL-Kontext](./stadtfahrradverleih_2025.png)
 
 ### Aufgabe 4.1 (4 Punkte)
-Geben Sie fuer jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.
+Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.
 Sortierung: Kundennachname, Startzeit.
 
 ### Aufgabe 4.2 (4 Punkte)
@@ -104,7 +104,7 @@ Ermitteln Sie je Kundin/Kunde die Anzahl abgeschlossener Ausleihen. Zeigen Sie n
 Geben Sie pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen/Kunden aus, die dort gestartet sind.
 
 ### Aufgabe 4.4 (3 Punkte)
-Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).
+Finden Sie Fahrräder ohne dokumentierte Wartung (LEFT JOIN).
 
 ---
 
@@ -112,8 +112,8 @@ Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).
 
 ### Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung
 
-Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
-Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+Ein Kunde möchte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:
 
 - **Eingabe:** Anzahl der Ausleih-Tage und Tagespreis in Euro
 - **Verarbeitung:** Berechnung der Gesamtkosten
@@ -134,4 +134,4 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind
 ## Abgabe
 
 - EERM-Modellierung Teil B (von Schuelern erstellt): als `.mwb`-Datei abgeben
-- SQL-Loesungen Teil C: als Datei oder Text
+- SQL-Lösungen Teil C: als Datei oder Text

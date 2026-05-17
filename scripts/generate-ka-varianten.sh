@@ -8,6 +8,7 @@ root_dir="/workspaces/edu-code-course-rdb"
 ka_dir="$root_dir/generated/klassenarbeiten"
 convert_script="$root_dir/scripts/convert_ka_markdown.py"
 assets_script="$root_dir/scripts/generate-ka-eerm-assets.sh"
+struktogramm_script="$root_dir/scripts/generate-ka-struktogramme.sh"
 
 if [[ -x "$root_dir/.venv/bin/python" ]]; then
   py="$root_dir/.venv/bin/python"
@@ -67,10 +68,15 @@ done
 
 echo "[ka-varianten] Kontextvariationen OK (3 unterschiedliche Versionen)"
 
-echo "[ka-varianten] HTML-Exporte erzeugen..."
-"$py" "$convert_script"
+ka_set=$(echo "$prefix" | sed -E 's/^KA([0-9]+).*/ka\1/' | tr '[:upper:]' '[:lower:]')
+
+echo "[ka-varianten] Struktogramm-SVG-Artefakte erzeugen ($ka_set)..."
+bash "$struktogramm_script" "$ka_set"
 
 echo "[ka-varianten] EERM-PNG-Artefakte erzeugen..."
 bash "$assets_script" --force
+
+echo "[ka-varianten] HTML-Exporte erzeugen (inkl. Grafik-Einbettung und Tabellenlayout)..."
+"$py" "$convert_script"
 
 echo "[ka-varianten] Fertig"

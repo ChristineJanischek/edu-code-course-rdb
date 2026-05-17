@@ -33,7 +33,7 @@ fassung: loesung
 |---|---|---:|---:|
 | A | Theorie (MC) | 3 | 5 Min |
 | B | EERM, Normalisierung, Anomalien | 14 | 25 Min |
-| C | SQL-Abfragen ueber mehrere Tabellen | 14 | 25 Min |
+| C | SQL-Abfragen über mehrere Tabellen | 14 | 25 Min |
 | D | Grundlagen Programmierung (Struktogramm) | 3 | 5 Min |
 | **Gesamt** |  | **34** | **60 Min** |
 
@@ -71,7 +71,7 @@ fassung: loesung
 
 ---
 
-## Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen
+## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
 Für Teil C wird absichtlich ein anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
@@ -137,8 +137,8 @@ WHERE b.bestellung_id IS NULL;
 
 ### Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz
 
-Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
-Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+Ein Foodtruck-Betreiber möchte seinen Tagesumsatz berechnen.
+Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:
 
 - **Eingabe:** Anzahl verkaufter Menüs und Preis pro Menü in Euro
 - **Verarbeitung:** Berechnung des Tagesumsatzes
@@ -154,7 +154,7 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden **nicht** bewertet und sind
 | Variablennamen und Lesbarkeit | 0,5 |
 | **Gesamt** | **3,0** |
 
-**Musterloesung (Text-Notation gemaess Operatorenliste):**
+**Musterlösung (Text-Notation gemäß Operatorenliste):**
 ```
 ANFANG
   EINGABE: anzahl

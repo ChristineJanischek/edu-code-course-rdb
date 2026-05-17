@@ -31,7 +31,7 @@ fassung: aufgaben
 |---|---|---:|---:|
 | A | Theorie (MC) | 3 | 5 Min |
 | B | EERM, Normalisierung, Anomalien | 14 | 25 Min |
-| C | SQL-Abfragen ueber mehrere Tabellen | 14 | 25 Min |
+| C | SQL-Abfragen über mehrere Tabellen | 14 | 25 Min |
 | D | Grundlagen Programmierung (Struktogramm) | 3 | 5 Min |
 | **Gesamt** |  | **34** | **60 Min** |
 
@@ -77,13 +77,13 @@ Nennen Sie je ein Beispiel:
 
 ---
 
-## Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen
+## Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen
 
 **Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:**
 Für Teil C wird absichtlich ein anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
 
 **Konkreter Sachverhalt:**
-Ein Campus-Coworking-System verwaltet Kundinnen und Kunden, Standorte, Arbeitsplaetze, Buchungen, Zahlungen und Supporttickets (6 Entitaetstypen).
+Ein Campus-Coworking-System verwaltet Kundinnen und Kunden, Standorte, Arbeitsplaetze, Buchungen, Zahlungen und Supporttickets (6 Entitätstypen).
 
 **Arbeitsgrundlage:**
 - SQL-Struktur: `coworkingcampus_struktur_2025.sql`
@@ -111,8 +111,8 @@ Finden Sie Kundinnen/Kunden ohne Supportticket (LEFT JOIN).
 
 ### Aufgabe: Struktogramm – CoworkingCampus Buchungsbetrag
 
-Eine Bucherin moechte wissen, wie viel ihre Buchung im CoworkingCampus kostet.
-Erstellen Sie ein **Struktogramm** (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:
+Eine Bucherin möchte wissen, wie viel ihre Buchung im CoworkingCampus kostet.
+Erstellen Sie ein **Struktogramm** (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:
 
 - **Eingabe:** Anzahl gebuchter Stunden und Stundenpreis in Euro
 - **Verarbeitung:** Berechnung des Gesamtbetrags

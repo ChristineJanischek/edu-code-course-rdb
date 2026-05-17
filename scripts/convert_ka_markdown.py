@@ -4,8 +4,143 @@ Konvertiert Muster-Klassenarbeit von Markdown zu verschiedenen Formaten.
 Erstellt auch Validierungen und Metadaten.
 """
 
+import os
+import re
+from html import escape
 import markdown
 from pathlib import Path
+
+
+def _extract_alt_text(img_attrs: str) -> str:
+    alt_match = re.search(r'alt\s*=\s*"([^"]*)"', img_attrs, re.IGNORECASE)
+    if alt_match:
+        return alt_match.group(1).strip() or "Grafik"
+    return "Grafik"
+
+
+def _is_external_src(src: str) -> bool:
+    src_lower = src.lower()
+    return src_lower.startswith("http://") or src_lower.startswith("https://") or src_lower.startswith("data:")
+
+
+def _resolve_local_path(md_file: str, src: str) -> Path:
+    src_path = Path(src)
+    if src_path.is_absolute():
+        return src_path
+    return (Path(md_file).parent / src_path).resolve()
+
+
+def _read_svg(svg_path: Path) -> str | None:
+    if not svg_path.exists() or svg_path.suffix.lower() != ".svg":
+        return None
+    svg_markup = svg_path.read_text(encoding="utf-8")
+    # XML-Header entfernen, damit valides Inline-SVG in HTML entsteht.
+    svg_markup = re.sub(r"^\s*<\?xml[^>]*>\s*", "", svg_markup)
+    return svg_markup.strip()
+
+
+def _render_svg_from_xml(xml_path: Path) -> str | None:
+    if not xml_path.exists() or xml_path.suffix.lower() != ".xml":
+        return None
+
+    try:
+        import sys
+
+        converter_dir = Path(__file__).resolve().parent / "struktogramme" / "converter"
+        if str(converter_dir) not in sys.path:
+            sys.path.insert(0, str(converter_dir))
+        from struktogramm_xml_renderer import BWStruktogrammRenderer
+
+        renderer = BWStruktogrammRenderer()
+        return renderer.xml_to_svg(str(xml_path)).strip()
+    except Exception as err:  # pragma: no cover - defensiver Fallback
+        print(f"⚠️  XML->SVG Konvertierung fehlgeschlagen: {xml_path} ({err})")
+        return None
+
+
+def _to_rel_posix(base_dir: Path, target: Path) -> str:
+    return Path(os.path.relpath(target, base_dir)).as_posix()
+
+
+def _embed_graphics(html_content: str, md_file: str) -> str:
+    img_pattern = re.compile(r'<img\s+([^>]*?)src="([^"]+)"([^>]*)/?>', re.IGNORECASE)
+    base_dir = Path(md_file).parent.resolve()
+
+    def _replace_img(match: re.Match[str]) -> str:
+        before_attrs = match.group(1) or ""
+        src = match.group(2)
+        after_attrs = match.group(3) or ""
+        full_attrs = f"{before_attrs} {after_attrs}"
+        alt_text = _extract_alt_text(full_attrs)
+
+        if _is_external_src(src):
+            return match.group(0)
+
+        local_src = _resolve_local_path(md_file, src)
+        src_suffix = local_src.suffix.lower()
+
+        svg_candidates: list[Path] = []
+        xml_candidates: list[Path] = []
+        png_candidates: list[Path] = []
+
+        if src_suffix == ".svg":
+            svg_candidates.append(local_src)
+            xml_candidates.append(local_src.with_suffix(".xml"))
+            png_candidates.append(local_src.with_suffix(".png"))
+        elif src_suffix == ".xml":
+            xml_candidates.append(local_src)
+            svg_candidates.append(local_src.with_suffix(".svg"))
+            png_candidates.append(local_src.with_suffix(".png"))
+        elif src_suffix == ".png":
+            png_candidates.append(local_src)
+            svg_candidates.append(local_src.with_suffix(".svg"))
+            xml_candidates.append(local_src.with_suffix(".xml"))
+        else:
+            svg_candidates.append(local_src.with_suffix(".svg"))
+            xml_candidates.append(local_src.with_suffix(".xml"))
+            png_candidates.append(local_src.with_suffix(".png"))
+
+        # 1) Bevorzugt SVG inline einbetten
+        for svg_path in svg_candidates:
+            svg_markup = _read_svg(svg_path)
+            if svg_markup:
+                print(f"🖼️  Inline-SVG eingebettet: {svg_path}")
+                return (
+                    f'<figure class="ka-figure" aria-label="{escape(alt_text, quote=True)}">\n'
+                    f"{svg_markup}\n"
+                    "</figure>"
+                )
+
+        # 2) XML zur Laufzeit in SVG wandeln und inline einbetten
+        for xml_path in xml_candidates:
+            svg_markup = _render_svg_from_xml(xml_path)
+            if svg_markup:
+                print(f"🧩 XML zu Inline-SVG konvertiert: {xml_path}")
+                return (
+                    f'<figure class="ka-figure" aria-label="{escape(alt_text, quote=True)}">\n'
+                    f"{svg_markup}\n"
+                    "</figure>"
+                )
+
+        # 3) Fallback auf PNG
+        for png_path in png_candidates:
+            if png_path.exists():
+                rel_src = _to_rel_posix(base_dir, png_path.resolve())
+                print(f"🖼️  PNG-Fallback verwendet: {png_path}")
+                return (
+                    "<figure class=\"ka-figure\">"
+                    f"<img alt=\"{escape(alt_text, quote=True)}\" src=\"{escape(rel_src, quote=True)}\" />"
+                    "</figure>"
+                )
+
+        return match.group(0)
+
+    return img_pattern.sub(_replace_img, html_content)
+
+
+def _wrap_tables(html_content: str) -> str:
+    # Tabellen in einen responsiven Container setzen, damit sie immer zur Seitenbreite passen.
+    return re.sub(r"(?is)(<table\b.*?</table>)", r'<div class="table-wrap">\1</div>', html_content)
 
 def markdown_to_html(md_file, html_file):
     """Konvertiert Markdown zu HTML"""
@@ -13,6 +148,8 @@ def markdown_to_html(md_file, html_file):
         md_content = f.read()
     
     html_content = markdown.markdown(md_content, extensions=['tables', 'extra'])
+    html_content = _embed_graphics(html_content, md_file)
+    html_content = _wrap_tables(html_content)
     
     # Wrap mit HTML-Template (A4-druckoptimiert)
     full_html = f"""<!DOCTYPE html>
@@ -50,10 +187,19 @@ def markdown_to_html(md_file, html_file):
             orphans: 3;
             widows: 3;
         }}
+        .table-wrap {{
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 1em 0;
+            page-break-inside: avoid;
+        }}
         table {{
             border-collapse: collapse;
             width: 100%;
-            margin: 1em 0;
+            min-width: 100%;
+            margin: 0;
+            table-layout: fixed;
             page-break-inside: avoid;
         }}
         table th, table td {{
@@ -62,6 +208,8 @@ def markdown_to_html(md_file, html_file):
             text-align: left;
             vertical-align: top;
             font-size: 10.5pt;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }}
         table th {{
             background-color: #e8f1f7;
@@ -98,10 +246,27 @@ def markdown_to_html(md_file, html_file):
             border-radius: 6px;
             page-break-inside: avoid;
         }}
+        .ka-figure {{
+            margin: 0.8em 0;
+            page-break-inside: avoid;
+        }}
+        .ka-figure svg {{
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d3dbe8;
+            border-radius: 6px;
+            background: #fff;
+        }}
         @media print {{
             body {{
                 max-width: none;
                 margin: 0;
+            }}
+            .table-wrap {{
+                overflow: visible;
             }}
             pre, blockquote, table, img {{
                 page-break-inside: avoid;

@@ -33,10 +33,19 @@
             orphans: 3;
             widows: 3;
         }
+        .table-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 1em 0;
+            page-break-inside: avoid;
+        }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin: 1em 0;
+            min-width: 100%;
+            margin: 0;
+            table-layout: fixed;
             page-break-inside: avoid;
         }
         table th, table td {
@@ -45,6 +54,8 @@
             text-align: left;
             vertical-align: top;
             font-size: 10.5pt;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         table th {
             background-color: #e8f1f7;
@@ -81,10 +92,27 @@
             border-radius: 6px;
             page-break-inside: avoid;
         }
+        .ka-figure {
+            margin: 0.8em 0;
+            page-break-inside: avoid;
+        }
+        .ka-figure svg {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d3dbe8;
+            border-radius: 6px;
+            background: #fff;
+        }
         @media print {
             body {
                 max-width: none;
                 margin: 0;
+            }
+            .table-wrap {
+                overflow: visible;
             }
             pre, blockquote, table, img {
                 page-break-inside: avoid;
@@ -123,7 +151,7 @@ fassung: loesung</p>
 </blockquote>
 <hr />
 <h2>Struktur</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Teil</th>
@@ -147,7 +175,7 @@ fassung: loesung</p>
 </tr>
 <tr>
 <td>C</td>
-<td>SQL-Abfragen ueber mehrere Tabellen</td>
+<td>SQL-Abfragen über mehrere Tabellen</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">25 Min</td>
 </tr>
@@ -164,7 +192,7 @@ fassung: loesung</p>
 <td style="text-align: right;"><strong>60 Min</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2>Teil A (3 Punkte)</h2>
 <h3>Aufgabe 1: Theorie (Multiple Choice) – 3 Punkte</h3>
@@ -189,14 +217,14 @@ fassung: loesung</p>
 - Änderungsanomalie: Raumname an mehreren Stellen zu ändern.
 - Löschanomalie: Letzter Termin gelöscht, Mentorzuordnung geht verloren.</p>
 <hr />
-<h2>Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen</h2>
+<h2>Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen</h2>
 <p><strong>Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:</strong>
 Für Teil C wird absichtlich ein anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.</p>
 <p><strong>Arbeitsgrundlage:</strong>
 - SQL-Struktur: <code>foodtrucknetz_struktur_2025.sql</code>
 - SQL-Daten: <code>foodtrucknetz_daten_2025.sql</code>
 - EERM-Referenzgrafik: <code>foodtrucknetz_2025.png</code></p>
-<p><img alt="EERM Teil C - separater SQL-Kontext" src="./foodtrucknetz_2025.png" /></p>
+<p><figure class="ka-figure"><img alt="EERM Teil C - separater SQL-Kontext" src="foodtrucknetz_2025.png" /></figure></p>
 <h3>Aufgabe 4.1 (4 Punkte) – Musterlösung</h3>
 <pre><code class="language-sql">SELECT
   k.nachname,
@@ -240,8 +268,8 @@ WHERE b.bestellung_id IS NULL;
 <hr />
 <h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
 <h3>Aufgabe: Struktogramm – FoodtruckNetz Tagesumsatz</h3>
-<p>Ein Foodtruck-Betreiber moechte seinen Tagesumsatz berechnen.
-Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:</p>
+<p>Ein Foodtruck-Betreiber möchte seinen Tagesumsatz berechnen.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
 <ul>
 <li><strong>Eingabe:</strong> Anzahl verkaufter Menüs und Preis pro Menü in Euro</li>
 <li><strong>Verarbeitung:</strong> Berechnung des Tagesumsatzes</li>
@@ -249,7 +277,7 @@ Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste fuer St
 </ul>
 <p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bewertungskriterium</th>
@@ -274,8 +302,8 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewe
 <td style="text-align: right;"><strong>3,0</strong></td>
 </tr>
 </tbody>
-</table>
-<p><strong>Musterloesung (Text-Notation gemaess Operatorenliste):</strong></p>
+</table></div>
+<p><strong>Musterlösung (Text-Notation gemäß Operatorenliste):</strong></p>
 <pre><code>ANFANG
   EINGABE: anzahl
   EINGABE: preis
@@ -284,7 +312,57 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewe
 ENDE
 </code></pre>
 <p><strong>Struktogramm (BW-Standard, generiert):</strong></p>
-<p><img alt="Struktogramm Version 3 Teil D" src="svg/KA02_VERSION3_TeilD.svg" /></p>
+<p><figure class="ka-figure" aria-label="Struktogramm Version 3 Teil D">
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="700" 
+     height="310" 
+     viewBox="0 0 700 310">
+  
+  <style>
+    .box { stroke: #000; stroke-width: 2; fill: #fff; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .label { font-size: 11px; fill: #666; }
+    .bold { font-weight: bold; }
+  </style>
+  
+  <!-- Titel -->
+  <text x="350" y="30" class="text bold" text-anchor="middle" font-size="16">FoodtruckNetz: Tagesumsatz berechnen</text>
+  <line x1="30" y1="50" x2="670" y2="50" stroke="#000" stroke-width="1"/>
+  
+  <!-- EINGABE -->
+  <rect x="50" y="80" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="98" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="115" class="text">anzahl</text>
+  <!-- EINGABE -->
+  <rect x="50" y="130" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="148" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="165" class="text">preis</text>
+  <!-- PROZESS -->
+  <rect x="50" y="180" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="198" class="text label">Zuweisung:</text>
+  
+  <!-- Text -->
+  <text x="60" y="215" class="text">tagesumsatz = anzahl * preis</text>
+  <!-- AUSGABE -->
+  <rect x="50" y="230" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="248" class="text label">Ausgabe:</text>
+  
+  <!-- Text -->
+  <text x="60" y="265" class="text">tagesumsatz</text>
+</svg>
+</figure></p>
 <p><strong>Bewertungshinweise:</strong>
 - 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
 - 1,5 Pkt: Zuweisung <code>tagesumsatz := anzahl * preis</code> korrekt (Operator := und Formel je 0,75 Pkt)

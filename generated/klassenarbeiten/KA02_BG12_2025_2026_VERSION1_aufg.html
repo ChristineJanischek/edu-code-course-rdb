@@ -33,10 +33,19 @@
             orphans: 3;
             widows: 3;
         }
+        .table-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 1em 0;
+            page-break-inside: avoid;
+        }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin: 1em 0;
+            min-width: 100%;
+            margin: 0;
+            table-layout: fixed;
             page-break-inside: avoid;
         }
         table th, table td {
@@ -45,6 +54,8 @@
             text-align: left;
             vertical-align: top;
             font-size: 10.5pt;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         table th {
             background-color: #e8f1f7;
@@ -81,10 +92,27 @@
             border-radius: 6px;
             page-break-inside: avoid;
         }
+        .ka-figure {
+            margin: 0.8em 0;
+            page-break-inside: avoid;
+        }
+        .ka-figure svg {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d3dbe8;
+            border-radius: 6px;
+            background: #fff;
+        }
         @media print {
             body {
                 max-width: none;
                 margin: 0;
+            }
+            .table-wrap {
+                overflow: visible;
             }
             pre, blockquote, table, img {
                 page-break-inside: avoid;
@@ -120,7 +148,7 @@ fassung: aufgaben</p>
 <p><strong>Klasse/Kurs:</strong> BG12 | <strong>Schuljahr:</strong> 2025/2026 | <strong>Bearbeitungszeit:</strong> 60 Minuten | <strong>Erreichbare Punkte:</strong> 34</p>
 <hr />
 <h2>Struktur</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Teil</th>
@@ -144,7 +172,7 @@ fassung: aufgaben</p>
 </tr>
 <tr>
 <td>C</td>
-<td>SQL-Abfragen ueber mehrere Tabellen</td>
+<td>SQL-Abfragen über mehrere Tabellen</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">25 Min</td>
 </tr>
@@ -161,12 +189,12 @@ fassung: aufgaben</p>
 <td style="text-align: right;"><strong>60 Min</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2>Teil A (3 Punkte)</h2>
 <h3>Aufgabe 1: Theorie (Multiple Choice) – 3 Punkte</h3>
 <p>Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Nr.</th>
@@ -177,7 +205,7 @@ fassung: aufgaben</p>
 <tbody>
 <tr>
 <td>1</td>
-<td>Ein Fremdschluessel darf mehrfach vorkommen.</td>
+<td>Ein Fremdschlüssel darf mehrfach vorkommen.</td>
 <td></td>
 </tr>
 <tr>
@@ -187,7 +215,7 @@ fassung: aufgaben</p>
 </tr>
 <tr>
 <td>3</td>
-<td>Ein LEFT JOIN kann Datensaetze ohne Partner auf der rechten Seite sichtbar machen.</td>
+<td>Ein LEFT JOIN kann Datensätze ohne Partner auf der rechten Seite sichtbar machen.</td>
 <td></td>
 </tr>
 <tr>
@@ -197,7 +225,7 @@ fassung: aufgaben</p>
 </tr>
 <tr>
 <td>5</td>
-<td>Ein Primarschluessel darf NULL sein.</td>
+<td>Ein Primärschlüssel darf NULL sein.</td>
 <td></td>
 </tr>
 <tr>
@@ -206,50 +234,50 @@ fassung: aufgaben</p>
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2>Teil B (14 Punkte): EERM in MySQL Workbench</h2>
 <p><strong>Wichtig:</strong> Teil B ist eine reine Modellierungsaufgabe. Es wird bewusst kein fertiges SQL-Schema vorgegeben. Die Struktur muss selbst aus dem Sachverhalt entwickelt werden.</p>
 <h3>Aufgabe 3.1: EERM modellieren – 8 Punkte</h3>
 <p><strong>Sachverhalt Modellierung (Kontext 1):</strong></p>
-<p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkraefte betreuen Kurse, zum Teil im Team. Die Schulleitung benoetigt spaeter Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkraeften ohne aktive Zuordnung.</p>
+<p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.</p>
 <p><strong>Auftrag:</strong> Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.</p>
 <h3>Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte</h3>
 <ul>
-<li>Benennen Sie 2 funktionale Abhaengigkeiten.</li>
+<li>Benennen Sie 2 funktionale Abhängigkeiten.</li>
 <li>Begruenden Sie, warum das Modell in 3NF liegt.</li>
 </ul>
 <h3>Aufgabe 3.3: Anomalien – 2 Punkte</h3>
 <p>Nennen Sie je ein Beispiel:
-- Einfuegeanomalie
-- Aenderungsanomalie
-- Loschanomalie</p>
+- Einfügeanomalie
+- Änderungsanomalie
+- Löschanomalie</p>
 <hr />
-<h2>Teil C (14 Punkte): SQL-Abfragen ueber mehrere Tabellen</h2>
+<h2>Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen</h2>
 <p><strong>Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:</strong>
-Fuer Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungsloesung aus Teil B nicht indirekt vorgegeben wird.
-Die didaktische Trennung ist essentiell fuer die Unabhaengigkeit der Aufgabenteile.</p>
+Fuer Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.</p>
 <p><strong>Konkreter Sachverhalt:</strong>
-Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrraeder, Ausleihen, Zahlungen und Wartungen (6 Entitaetstypen). Die bereitgestellte Uebungsdatenbank ist bereits in 3NF modelliert.</p>
+Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrräder, Ausleihen, Zahlungen und Wartungen (6 Entitätstypen). Die bereitgestellte Übungsdatenbank ist bereits in 3NF modelliert.</p>
 <p><strong>Arbeitsgrundlage:</strong>
 - SQL-Struktur: <code>stadtfahrradverleih_struktur_2025.sql</code>
 - SQL-Daten: <code>stadtfahrradverleih_daten_2025.sql</code>
 - EERM-Referenzgrafik: <code>stadtfahrradverleih_2025.png</code></p>
-<p><img alt="EERM Teil C - separater SQL-Kontext" src="./stadtfahrradverleih_2025.png" /></p>
+<p><figure class="ka-figure"><img alt="EERM Teil C - separater SQL-Kontext" src="stadtfahrradverleih_2025.png" /></figure></p>
 <h3>Aufgabe 4.1 (4 Punkte)</h3>
-<p>Geben Sie fuer jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.
+<p>Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.
 Sortierung: Kundennachname, Startzeit.</p>
 <h3>Aufgabe 4.2 (4 Punkte)</h3>
 <p>Ermitteln Sie je Kundin/Kunde die Anzahl abgeschlossener Ausleihen. Zeigen Sie nur Personen mit mindestens 2 abgeschlossenen Ausleihen.</p>
 <h3>Aufgabe 4.3 (3 Punkte)</h3>
 <p>Geben Sie pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen/Kunden aus, die dort gestartet sind.</p>
 <h3>Aufgabe 4.4 (3 Punkte)</h3>
-<p>Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).</p>
+<p>Finden Sie Fahrräder ohne dokumentierte Wartung (LEFT JOIN).</p>
 <hr />
 <h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
 <h3>Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung</h3>
-<p>Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
-Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste fuer Struktogramme) fuer folgende Verarbeitung:</p>
+<p>Ein Kunde möchte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
 <ul>
 <li><strong>Eingabe:</strong> Anzahl der Ausleih-Tage und Tagespreis in Euro</li>
 <li><strong>Verarbeitung:</strong> Berechnung der Gesamtkosten</li>
@@ -257,7 +285,7 @@ Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste fuer St
 </ul>
 <p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bewertungskriterium</th>
@@ -282,12 +310,12 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewe
 <td style="text-align: right;"><strong>3,0</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2>Abgabe</h2>
 <ul>
 <li>EERM-Modellierung Teil B (von Schuelern erstellt): als <code>.mwb</code>-Datei abgeben</li>
-<li>SQL-Loesungen Teil C: als Datei oder Text</li>
+<li>SQL-Lösungen Teil C: als Datei oder Text</li>
 </ul>
 </body>
 </html>

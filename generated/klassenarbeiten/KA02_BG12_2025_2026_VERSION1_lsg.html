@@ -33,10 +33,19 @@
             orphans: 3;
             widows: 3;
         }
+        .table-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 1em 0;
+            page-break-inside: avoid;
+        }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin: 1em 0;
+            min-width: 100%;
+            margin: 0;
+            table-layout: fixed;
             page-break-inside: avoid;
         }
         table th, table td {
@@ -45,6 +54,8 @@
             text-align: left;
             vertical-align: top;
             font-size: 10.5pt;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         table th {
             background-color: #e8f1f7;
@@ -81,10 +92,27 @@
             border-radius: 6px;
             page-break-inside: avoid;
         }
+        .ka-figure {
+            margin: 0.8em 0;
+            page-break-inside: avoid;
+        }
+        .ka-figure svg {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d3dbe8;
+            border-radius: 6px;
+            background: #fff;
+        }
         @media print {
             body {
                 max-width: none;
                 margin: 0;
+            }
+            .table-wrap {
+                overflow: visible;
             }
             pre, blockquote, table, img {
                 page-break-inside: avoid;
@@ -97,7 +125,7 @@
 </head>
 <body>
     <hr />
-<p>titel: "Klassenarbeit BG12 2025/2026: EERM und SQL (60 Min) – Loesung/Erwartungshorizont"
+<p>titel: "Klassenarbeit BG12 2025/2026: EERM und SQL (60 Min) – Lösung/Erwartungshorizont"
 klasse: "BG12"
 schuljahr: "2025-2026"
 fach: "Informatik"
@@ -116,14 +144,14 @@ artefakte:
   sql_db_eerm_grafik: "stadtfahrradverleih_2025.png"
 fassung: loesung</p>
 <hr />
-<h1>Klassenarbeit (60 Minuten) – Loesung und Erwartungshorizont</h1>
+<h1>Klassenarbeit (60 Minuten) – Lösung und Erwartungshorizont</h1>
 <p><strong>Klasse/Kurs:</strong> BG12 | <strong>Schuljahr:</strong> 2025/2026 | <strong>Bearbeitungszeit:</strong> 60 Minuten | <strong>Erreichbare Punkte:</strong> 34</p>
 <blockquote>
-<p><strong>Hinweis:</strong> Diese Fassung enthaelt Musterloesungen und Bewertungshinweise. Nur für Lehrkraefte.</p>
+<p><strong>Hinweis:</strong> Diese Fassung enthält Musterlösungen und Bewertungshinweise. Nur für Lehrkräfte.</p>
 </blockquote>
 <hr />
 <h2>Struktur</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Teil</th>
@@ -164,12 +192,12 @@ fassung: loesung</p>
 <td style="text-align: right;"><strong>60 Min</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2>Teil A (3 Punkte)</h2>
 <h3>Aufgabe 1: Theorie (Multiple Choice) – 3 Punkte</h3>
 <p>Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Nr.</th>
@@ -180,7 +208,7 @@ fassung: loesung</p>
 <tbody>
 <tr>
 <td>1</td>
-<td>Ein Fremdschluessel darf mehrfach vorkommen.</td>
+<td>Ein Fremdschlüssel darf mehrfach vorkommen.</td>
 <td></td>
 </tr>
 <tr>
@@ -190,7 +218,7 @@ fassung: loesung</p>
 </tr>
 <tr>
 <td>3</td>
-<td>Ein LEFT JOIN kann Datensaetze ohne Partner auf der rechten Seite sichtbar machen.</td>
+<td>Ein LEFT JOIN kann Datensätze ohne Partner auf der rechten Seite sichtbar machen.</td>
 <td></td>
 </tr>
 <tr>
@@ -200,7 +228,7 @@ fassung: loesung</p>
 </tr>
 <tr>
 <td>5</td>
-<td>Ein Primarschluessel darf NULL sein.</td>
+<td>Ein Primärschlüssel darf NULL sein.</td>
 <td></td>
 </tr>
 <tr>
@@ -209,48 +237,48 @@ fassung: loesung</p>
 <td></td>
 </tr>
 </tbody>
-</table>
-<p><strong>Musterloesung:</strong> r, f, r, r, f, r</p>
+</table></div>
+<p><strong>Musterlösung:</strong> r, f, r, r, f, r</p>
 <hr />
 <h2>Teil B (14 Punkte): EERM in MySQL Workbench</h2>
 <p><strong>Wichtig didaktisch:</strong> Teil B ist eine reine Modellierungsaufgabe. Es wird bewusst kein fertiges SQL-Schema vorgegeben. Die Struktur muss selbst aus dem Sachverhalt entwickelt werden.</p>
 <h3>Aufgabe 3.1: EERM modellieren – 8 Punkte</h3>
 <p><strong>Sachverhalt Modellierung (Kontext 1):</strong></p>
-<p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkraefte betreuen Kurse, zum Teil im Team. Die Schulleitung benoetigt spaeter Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkraeften ohne aktive Zuordnung.</p>
+<p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.</p>
 <p><strong>Auftrag:</strong> Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begruenden Sie Ihre Modellierungsentscheidungen kurz.</p>
 <p><strong>Bewertung (8 Punkte):</strong>
-- Entitaetstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkraefte, Buchungen): 2 Pkt
-- Beziehungen korrekt (N:M-Aufloesungen, 1:N): 3 Pkt
+- Entitätstypen korrekt identifiziert (Teilnehmende, Kurse, Termine, Lehrkräfte, Buchungen): 2 Pkt
+- Beziehungen korrekt (N:M-Auflösungen, 1:N): 3 Pkt
 - Kardinalitäten korrekt angegeben: 1 Pkt
 - Attributzuweisung sinnvoll, PKs und FKs korrekt: 2 Pkt</p>
 <p><strong>Referenzmodell:</strong> <code>kursplattform_2025.mwb</code></p>
 <h3>Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte</h3>
-<p><strong>Musterloesung (Beispiel):</strong>
-- FA1: <code>termin_id → kurs_id</code> (jeder Termin gehoert zu einem Kurs)
+<p><strong>Musterlösung (Beispiel):</strong>
+- FA1: <code>termin_id → kurs_id</code> (jeder Termin gehört zu einem Kurs)
 - FA2: <code>buchung_id → teilnehmer_id, termin_id</code> (jede Buchung identifiziert Teilnehmer und Termin)
-- Das Modell liegt in 3NF, weil: kein Attribut haengt transitiv von einem Nicht-Schluessel ab (alle Nicht-Schluessel-Attribute haengen direkt von den PKs ab).</p>
-<p><strong>Bewertung:</strong> je 1 Pkt pro korrekte FA (2 Pkt) + Begruendung 3NF (2 Pkt)</p>
+- Das Modell liegt in 3NF, weil: kein Attribut hängt transitiv von einem Nicht-Schlüssel ab (alle Nicht-Schlüssel-Attribute hängen direkt von den PKs ab).</p>
+<p><strong>Bewertung:</strong> je 1 Pkt pro korrekte FA (2 Pkt) + Begründung 3NF (2 Pkt)</p>
 <h3>Aufgabe 3.3: Anomalien – 2 Punkte</h3>
-<p><strong>Musterloesung:</strong>
+<p><strong>Musterlösung:</strong>
 - Einfügeanomalie: Ein neuer Kurs kann erst angelegt werden, wenn mindestens ein Termin bekannt ist (falls Kursdaten nur über Terminrelation gespeichert).
-- Änderungsanomalie: Wird der Kursname in einer denormlisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
-- Loschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.</p>
+- Änderungsanomalie: Wird der Kursname in einer denormalisierten Tabelle geaendert, muss er in allen Buchungszeilen angepasst werden.
+- Löschanomalie: Wird der letzte Termin eines Kurses geloescht, gehen alle Kursinformationen verloren.</p>
 <p><strong>Bewertung:</strong> je 0,5 Pkt pro Beispiel (max. 2 Pkt für je ein sinnvolles Beispiel)</p>
 <hr />
 <h2>Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen</h2>
 <p><strong>Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:</strong>
-Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungsloesung aus Teil B nicht indirekt vorgegeben wird.
-Die didaktische Trennung ist essentiell für die Unabhaengigkeit der Aufgabenteile.</p>
+Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.</p>
 <p><strong>Konkreter Sachverhalt:</strong>
-Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrraeder, Ausleihen, Zahlungen und Wartungen (6 Entitaetstypen). Die bereitgestellte Uebungsdatenbank ist bereits in 3NF modelliert.</p>
+Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrräder, Ausleihen, Zahlungen und Wartungen (6 Entitätstypen). Die bereitgestellte Übungsdatenbank ist bereits in 3NF modelliert.</p>
 <p><strong>Arbeitsgrundlage:</strong>
 - SQL-Struktur: <code>stadtfahrradverleih_struktur_2025.sql</code>
 - SQL-Daten: <code>stadtfahrradverleih_daten_2025.sql</code>
 - EERM-Referenzgrafik: <code>stadtfahrradverleih_2025.png</code></p>
-<p><img alt="EERM Teil C - separater SQL-Kontext" src="./stadtfahrradverleih_2025.png" /></p>
+<p><figure class="ka-figure"><img alt="EERM Teil C - separater SQL-Kontext" src="stadtfahrradverleih_2025.png" /></figure></p>
 <h3>Aufgabe 4.1 (4 Punkte)</h3>
 <p>Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus. Sortierung: Kundennachname, Startzeit.</p>
-<p><strong>Musterloesung:</strong></p>
+<p><strong>Musterlösung:</strong></p>
 <pre><code class="language-sql">SELECT
   k.nachname, k.vorname,
   f.fahrrad_id,
@@ -267,10 +295,10 @@ JOIN zahlungen z ON a.ausleihe_id = z.ausleihe_id
 WHERE a.status = 'abgeschlossen'
 ORDER BY k.nachname, a.startzeit;
 </code></pre>
-<p><strong>Bewertung:</strong> JOIN-Kette vollstaendig 2 Pkt | WHERE korrekt 1 Pkt | ORDER BY korrekt 1 Pkt</p>
+<p><strong>Bewertung:</strong> JOIN-Kette vollständig 2 Pkt | WHERE korrekt 1 Pkt | ORDER BY korrekt 1 Pkt</p>
 <h3>Aufgabe 4.2 (4 Punkte)</h3>
 <p>Ermitteln Sie je Kundin/Kunde die Anzahl abgeschlossener Ausleihen. Zeigen Sie nur Personen mit mindestens 2 abgeschlossenen Ausleihen.</p>
-<p><strong>Musterloesung:</strong></p>
+<p><strong>Musterlösung:</strong></p>
 <pre><code class="language-sql">SELECT k.nachname, k.vorname, COUNT(a.ausleihe_id) AS anzahl_ausleihen
 FROM kunden k
 JOIN ausleihen a ON k.kunde_id = a.kunde_id
@@ -282,7 +310,7 @@ ORDER BY anzahl_ausleihen DESC;
 <p><strong>Bewertung:</strong> GROUP BY 1 Pkt | HAVING korrekt 2 Pkt | Spaltenselektion 1 Pkt</p>
 <h3>Aufgabe 4.3 (3 Punkte)</h3>
 <p>Geben Sie pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen/Kunden aus, die dort gestartet sind.</p>
-<p><strong>Musterloesung:</strong></p>
+<p><strong>Musterlösung:</strong></p>
 <pre><code class="language-sql">SELECT
   s.stationsname,
   MAX(a.startzeit) AS letzter_start,
@@ -293,8 +321,8 @@ GROUP BY s.station_id, s.stationsname;
 </code></pre>
 <p><strong>Bewertung:</strong> MAX korrekt 1 Pkt | COUNT DISTINCT 1 Pkt | GROUP BY korrekt 1 Pkt</p>
 <h3>Aufgabe 4.4 (3 Punkte)</h3>
-<p>Finden Sie Fahrraeder ohne dokumentierte Wartung (LEFT JOIN).</p>
-<p><strong>Musterloesung:</strong></p>
+<p>Finden Sie Fahrräder ohne dokumentierte Wartung (LEFT JOIN).</p>
+<p><strong>Musterlösung:</strong></p>
 <pre><code class="language-sql">SELECT f.fahrrad_id, f.typname, f.seriennummer
 FROM fahrraeder f
 LEFT JOIN wartungen w ON f.fahrrad_id = w.fahrrad_id
@@ -304,8 +332,8 @@ WHERE w.wartung_id IS NULL;
 <hr />
 <h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
 <h3>Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung</h3>
-<p>Ein Kunde moechte wissen, wie viel eine Fahrradausleihe kostet.
-Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
+<p>Ein Kunde möchte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
 <ul>
 <li><strong>Eingabe:</strong> Anzahl der Ausleih-Tage und Tagespreis in Euro</li>
 <li><strong>Verarbeitung:</strong> Berechnung der Gesamtkosten</li>
@@ -313,7 +341,7 @@ Erstellen Sie ein <strong>Struktogramm</strong> (gemaess Operatorenliste für St
 </ul>
 <p><strong>Hinweis:</strong> Verwenden Sie ausschliesslich Sequenz-Bloecke (EVA-Prinzip).
 Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>Bewertungskriterium</th>
@@ -338,8 +366,8 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewe
 <td style="text-align: right;"><strong>3,0</strong></td>
 </tr>
 </tbody>
-</table>
-<p><strong>Musterloesung (Text-Notation gemaess Operatorenliste):</strong></p>
+</table></div>
+<p><strong>Musterlösung (Text-Notation gemäß Operatorenliste):</strong></p>
 <pre><code>ANFANG
   EINGABE: tage
   EINGABE: tagespreis
@@ -348,7 +376,57 @@ Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewe
 ENDE
 </code></pre>
 <p><strong>Struktogramm (BW-Standard, generiert):</strong></p>
-<p><img alt="Struktogramm Version 1 Teil D" src="svg/KA02_VERSION1_TeilD.svg" /></p>
+<p><figure class="ka-figure" aria-label="Struktogramm Version 1 Teil D">
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="700" 
+     height="310" 
+     viewBox="0 0 700 310">
+  
+  <style>
+    .box { stroke: #000; stroke-width: 2; fill: #fff; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .label { font-size: 11px; fill: #666; }
+    .bold { font-weight: bold; }
+  </style>
+  
+  <!-- Titel -->
+  <text x="350" y="30" class="text bold" text-anchor="middle" font-size="16">Fahrradverleih: Gesamtkosten berechnen</text>
+  <line x1="30" y1="50" x2="670" y2="50" stroke="#000" stroke-width="1"/>
+  
+  <!-- EINGABE -->
+  <rect x="50" y="80" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="98" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="115" class="text">tage</text>
+  <!-- EINGABE -->
+  <rect x="50" y="130" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="148" class="text label">Einlesen:</text>
+  
+  <!-- Text -->
+  <text x="60" y="165" class="text">tagespreis</text>
+  <!-- PROZESS -->
+  <rect x="50" y="180" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="198" class="text label">Zuweisung:</text>
+  
+  <!-- Text -->
+  <text x="60" y="215" class="text">gesamtkosten = tage * tagespreis</text>
+  <!-- AUSGABE -->
+  <rect x="50" y="230" width="600" height="50" class="box"/>
+  
+  <!-- Bezeichnung -->
+  <text x="60" y="248" class="text label">Ausgabe:</text>
+  
+  <!-- Text -->
+  <text x="60" y="265" class="text">gesamtkosten</text>
+</svg>
+</figure></p>
 <p><strong>Bewertungshinweise:</strong>
 - 1,0 Pkt: ANFANG/ENDE vorhanden, 4 Sequenzblöcke sauber abgegrenzt (je 0,25 Pkt)
 - 1,5 Pkt: Zuweisung <code>gesamtkosten := tage * tagespreis</code> korrekt (Operator := und Formel je 0,75 Pkt)
@@ -357,15 +435,15 @@ ENDE
 <h2>Abgabe</h2>
 <ul>
 <li>EERM-Modellierung Teil B (von Schuelern erstellt): als <code>.mwb</code>-Datei abgeben</li>
-<li>SQL-Loesungen Teil C: als Datei oder Text</li>
+<li>SQL-Lösungen Teil C: als Datei oder Text</li>
 </ul>
 <hr />
 <h2>Kurzloesungsschluessel (Lehrkraft)</h2>
 <p>Aufgabe 1: r, f, r, r, f, r</p>
-<p>Loesungshinweise Teil C:
-- 4.1 benoetigt JOIN über mindestens: ausleihen, kunden, fahrraeder, stationen (2x), zahlungen
-- 4.2 benoetigt GROUP BY/HAVING auf kunden + ausleihen
-- 4.3 benoetigt Aggregation pro station + MAX(startzeit)
-- 4.4 benoetigt LEFT JOIN fahrraeder -&gt; wartungen und IS NULL</p>
+<p>Lösungshinweise Teil C:
+- 4.1 benötigt JOIN über mindestens: ausleihen, kunden, fahrraeder, stationen (2x), zahlungen
+- 4.2 benötigt GROUP BY/HAVING auf kunden + ausleihen
+- 4.3 benötigt Aggregation pro station + MAX(startzeit)
+- 4.4 benötigt LEFT JOIN fahrraeder -&gt; wartungen und IS NULL</p>
 </body>
 </html>

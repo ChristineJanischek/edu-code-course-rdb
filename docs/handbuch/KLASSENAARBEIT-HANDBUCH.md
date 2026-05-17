@@ -187,6 +187,20 @@ python3 scripts/plugins/eerm_grafik_generator/embed_eerm_png_reference.py \
 
 ### Schritt 6: Konvertierung durchfuehren
 
+Empfohlen (dauerhaft automatisiert):
+
+```bash
+# Erzeugt Struktogramm-SVG, EERM-PNG-Referenzen und HTML in einem Ablauf
+bash scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
+```
+
+Dieser Ablauf stellt sicher:
+- Struktogramm-Grafiken werden automatisch erzeugt.
+- Grafiken werden bei der HTML-Erzeugung automatisch eingebettet (Prioritaet: SVG inline, sonst XML->SVG, sonst PNG-Fallback).
+- Tabellen werden in den generierten KA-HTML-Dateien automatisch auf Seitenbreite angepasst (responsive Table-Wrapper).
+
+Alternativ (nur reine HTML-Konvertierung):
+
 ```bash
 # Validierung und HTML-Konvertierung
 python /workspaces/edu-code-course-rdb/scripts/convert_ka_markdown.py
