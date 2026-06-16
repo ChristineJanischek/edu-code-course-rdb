@@ -9,6 +9,12 @@ Alle Begriffe sind alphabetisch sortiert und schülergerecht erklärt.
 - Nutze danach die Beispielzeile, um den Begriff direkt in SQL oder im EERM wiederzuerkennen.
 - Arbeite beim Modellieren immer mit dem 3NF-Fokus: erst fachlich korrekt, dann technisch umsetzen.
 
+> **Tipp: Suchfunktion nutzen**
+> Die durchsuchbare Version mit Live-Filter findest du in der HTML-Datei:
+> `stichwortverzeichnis_relationale_datenbanken.html`
+> Rechtsklick auf die Datei im Explorer → **„Open with Live Server"** → Begriff eintippen, fertig.
+> Eine ausführliche Schritt-für-Schritt-Anleitung steht in der [README.md](./README.md).
+
 ## Lernweg zur 3. Normalform (3NF)
 
 1. Sachverhalt in Entitäten, Attribute und Beziehungen zerlegen.
