@@ -6,6 +6,32 @@ Diese Routine richtet sich an Lehrkräfte oder Teams, die aus diesem Repository 
 
 Neue Verbesserungen aus dem Original-Repository regelmäßig als Pull verfügbar machen.
 
+## Automatischer Weg (empfohlen): Sync-PR per GitHub Actions
+
+Im Repository ist ein Workflow vorhanden:
+
+- `.github/workflows/template-sync-pr.yml`
+
+Was dieser Workflow macht:
+
+1. Läuft automatisch jeden Montagmorgen (UTC) und zusätzlich manuell per "Run workflow".
+2. Holt Änderungen aus `upstream/main`.
+3. Erstellt bei neuen Änderungen automatisch einen Pull Request nach `main`.
+
+### Konfiguration für Template-Nutzer
+
+Setze in deinem abgeleiteten Repository eine Variable unter
+`Settings -> Secrets and variables -> Actions -> Variables`:
+
+- `TEMPLATE_UPSTREAM_REPO=ChristineJanischek/edu-code-course-rdb`
+
+Falls die Variable fehlt, nutzt der Workflow diesen Wert als Standard.
+
+### Vorteil
+
+- Updates kommen als prüfbarer PR statt als stiller Direkt-Merge.
+- Lehrkräfte können Änderungen didaktisch freigeben, bevor sie live sind.
+
 ## Einmalig einrichten
 
 1. In deinem abgeleiteten Repository das Original als zusätzliche Remote-Quelle eintragen:
@@ -37,6 +63,8 @@ git push origin main
   - `generated/informationen/begrifflichkeiten/`
   - `generated/informationen/teil-b/`
   - `generated/informationen/teil-c/`
+
+Hinweis: Wenn der automatische Workflow aktiv ist, dient die manuelle Routine vor allem als Fallback bei Merge-Konflikten.
 
 ## Optional: Team-Standard festlegen
 

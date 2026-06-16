@@ -1,0 +1,88 @@
+name: template-sync-pr
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge upstream main
+        id: merge
+        env:
+          UPSTREAM_REPO: ${{ vars.TEMPLATE_UPSTREAM_REPO != '' && vars.TEMPLATE_UPSTREAM_REPO || 'ChristineJanischek/edu-code-course-rdb' }}
+        run: |
+          set -euo pipefail
+
+          echo "Using upstream repository: ${UPSTREAM_REPO}"
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git"
+          git fetch upstream main
+          git checkout main
+
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "No upstream changes to sync."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git merge --no-ff --no-commit upstream/main; then
+            echo "Merge conflict detected."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "has_conflict=true" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No staged changes after merge."
+            git merge --abort || true
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          echo "has_conflict=false" >> "$GITHUB_OUTPUT"
+
+      - name: Create sync pull request
+        if: steps.merge.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/sync-upstream-main
+          delete-branch: false
+          title: "chore: sync upstream main"
+          body: |
+            ## Automatischer Upstream-Sync
+
+            Dieser Pull Request wurde automatisch erstellt, um Änderungen aus dem Upstream-Repository zu übernehmen.
+
+            ### Quelle
+            - Upstream-Branch: `main`
+            - Workflow: `template-sync-pr`
+
+            ### Hinweise
+            - Bitte die Änderungen kurz prüfen und anschließend mergen.
+            - Bei Konflikten den Workflow manuell starten und Konflikte lokal lösen.
+          commit-message: "chore: sync upstream main"
+          signoff: true
+
+      - name: Conflict hint
+        if: failure()
+        run: |
+          echo "Upstream merge failed due to conflict."
+          echo "Please resolve conflicts manually and then merge upstream/main."

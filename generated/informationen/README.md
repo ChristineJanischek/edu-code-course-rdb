@@ -11,3 +11,7 @@
 ## Hinweis
 
 Für das selbstgesteuerte Fernstudium sollte bei Verständnisfragen zuerst das Stichwortverzeichnis genutzt werden.
+
+Für Repository-Templates steht zusätzlich eine automatische Sync-PR-Routine bereit:
+
+- [Template-Sync-Routine für Pull-Updates](./begrifflichkeiten/template-sync-routine.md)
