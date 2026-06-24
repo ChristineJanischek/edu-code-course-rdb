@@ -24,3 +24,5 @@ Dieses Repository hat ab sofort einen klaren Portal-Einstieg mit zwei Zielgruppe
 
 Die fachliche SSOT für Inhalte liegt in der normalisierten Content-DB unter `data/content-db/`.
 Abgeleitete Artefakte werden über die Skripte in `scripts/` generiert und validiert.
+
+Template-Repositories und abgeleitete Schul-Repositories sollen Änderungen grundsätzlich als Voll-Repo-Merge von `upstream/main` übernehmen, nicht selektiv dateiweise. Die dazugehörige Routine ist in [generated/informationen/begrifflichkeiten/template-sync-routine.md](generated/informationen/begrifflichkeiten/template-sync-routine.md) beschrieben.

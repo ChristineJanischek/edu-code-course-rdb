@@ -18,6 +18,7 @@
 <p>Diese Routine richtet sich an Lehrkräfte oder Teams, die aus diesem Repository ein eigenes Template-Repository erzeugt haben.</p>
 <h2>Ziel</h2>
 <p>Neue Verbesserungen aus dem Original-Repository regelmäßig als Pull verfügbar machen.</p>
+<p>Wichtig: Template-Repositories sollen nicht nur einzelne Dateien oder Teilbereiche übernehmen, sondern den vollständigen Stand von <code>upstream/main</code> als Ganzes mergen.</p>
 <h2>Automatischer Weg (empfohlen): Sync-PR per GitHub Actions</h2>
 <p>Im Repository ist ein Workflow vorhanden:</p>
 <ul>
@@ -27,7 +28,8 @@
 <ol>
 <li>Läuft automatisch jeden Montagmorgen (UTC) und zusätzlich manuell per "Run workflow".</li>
 <li>Holt Änderungen aus <code>upstream/main</code>.</li>
-<li>Erstellt bei neuen Änderungen automatisch einen Pull Request nach <code>main</code>.</li>
+<li>Führt einen Voll-Repo-Merge von <code>upstream/main</code> in das eigene <code>main</code> durch.</li>
+<li>Pusht das Ergebnis direkt nach <code>main</code> oder erstellt bei Branch-Schutzregeln einen Sync-Pull-Request.</li>
 </ol>
 <h3>Konfiguration für Template-Nutzer</h3>
 <p>Setze in deinem abgeleiteten Repository eine Variable unter
@@ -40,7 +42,18 @@
 <ul>
 <li>Updates kommen als prüfbarer PR statt als stiller Direkt-Merge.</li>
 <li>Lehrkräfte können Änderungen didaktisch freigeben, bevor sie live sind.</li>
+<li>Der komplette Repository-Stand bleibt konsistent, auch wenn sich Struktur, Skripte, Doku und Webapp gleichzeitig geändert haben.</li>
 </ul>
+<h2>Admin-Checkliste für Template-Repositories</h2>
+<ol>
+<li>Sicherstellen, dass das Template-Repository den Workflow <code>.github/workflows/template-sync-pr.yml</code> enthält.</li>
+<li>Unter <code>Settings -&gt; Secrets and variables -&gt; Actions -&gt; Variables</code> die Variable <code>TEMPLATE_UPSTREAM_REPO=ChristineJanischek/edu-code-course-rdb</code> setzen.</li>
+<li>Prüfen, dass der Default-Branch <code>main</code> heißt.</li>
+<li>Falls Branch-Schutz aktiv ist: GitHub Actions Push auf <code>main</code> erlauben oder PR-basierte Übernahme zulassen.</li>
+<li>Keine selektiven Cherry-Picks für Template-Updates verwenden, wenn der Upstream strukturell umgebaut wurde.</li>
+<li>Nach dem ersten Sync prüfen, ob <code>generated/</code>, <code>scripts/</code>, <code>services/</code>, <code>webapp/</code> und <code>docs/</code> vollständig übernommen wurden.</li>
+<li>Bei Konflikten immer <code>upstream/main</code> vollständig mergen, nicht einzelne Dateien manuell nachziehen.</li>
+</ol>
 <h2>Einmalig einrichten</h2>
 <ol>
 <li>In deinem abgeleiteten Repository das Original als zusätzliche Remote-Quelle eintragen:</li>
@@ -58,6 +71,7 @@ git checkout main
 git merge --no-ff upstream/main
 git push origin main
 </code></pre>
+<p>Diese Routine ist bewusst als Voll-Repo-Merge formuliert. Sie ist die richtige Wahl, wenn sich das Ursprungsrepository in vielen Bereichen gleichzeitig weiterentwickelt hat.</p>
 <h2>Empfehlung für den Unterrichtsbetrieb</h2>
 <ul>
 <li>Führe die Sync-Routine mindestens 1x pro Woche aus.</li>
@@ -68,6 +82,12 @@ git push origin main
 <li><code>generated/informationen/teil-c/</code></li>
 </ul>
 <p>Hinweis: Wenn der automatische Workflow aktiv ist, dient die manuelle Routine vor allem als Fallback bei Merge-Konflikten.</p>
+<h2>Mindestregel für Template-Nutzer</h2>
+<ul>
+<li>Upstream-Änderungen immer von <code>upstream/main</code> übernehmen.</li>
+<li>Das Repository nie nur teilweise synchronisieren.</li>
+<li>Bei größeren Änderungen zuerst den automatischen Sync-Workflow oder einen normalen Merge verwenden und erst danach lokale Anpassungen erneut einbringen.</li>
+</ul>
 <h2>Optional: Team-Standard festlegen</h2>
 <p>Wenn mehrere Personen am Schul-Repository arbeiten, die Routine als festen Termin in den Teamkalender aufnehmen (z. B. Montag 07:30 Uhr).</p>
     </main>
