@@ -1,24 +1,55 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Projektion in SQL</title>
-  <style>
-    :root { --bg:#fffdf4; --card:#fff; --text:#302913; --accent:#a46b00; --tip:#fff4dc; }
-    body { margin:0; font-family:"Segoe UI","Verdana",sans-serif; background:linear-gradient(120deg,#fffdf4,#f3fbff); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#1f2937; color:#f9fafb; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #a46b00; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Projektion in SQL</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Projektion in SQL</h1>
-  <h2>Was ist Projektion?</h2>
-  <p>Projektion bestimmt, welche Spalten im Ergebnis sichtbar sind.</p>
-  <pre><code>SELECT Name, Kategorie
-FROM FOODTRUCK;</code></pre>
-  <pre><code>SELECT DISTINCT Stadt
-FROM STANDORT;</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> Projektion steuert Spalten, Selektion steuert Zeilen.</div>
-</div></div></body>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Projektion in SQL</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/02_projektion_in_sql.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Projektion in SQL</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du wählst gezielt benötigte Spalten aus.</li>
+<li>Du unterscheidest Projektion von Selektion.</li>
+<li>Du nutzt DISTINCT bei Bedarf.</li>
+</ul>
+<h2>Kernidee</h2>
+<p>Projektion bedeutet: Welche Spalten sollen im Ergebnis sichtbar sein?</p>
+<h2>Beispiel</h2>
+<pre><code class="language-sql">SELECT Name, Kategorie
+FROM FOODTRUCK;
+</code></pre>
+<p>Nur die Spalten Name und Kategorie werden ausgegeben.</p>
+<h2>Mit DISTINCT</h2>
+<p><code>sql
+SELECT DISTINCT Stadt
+FROM ST</code>sql
+SELECT DISTINCT Stadt
+FROM STANDORT;
+```Spalten, nicht Zeilen.
+- SELECT * nur in der Analyse, nicht in der sauberen Lösung.
+- DISTINCT nur verwenden, wenn fachlich nötig.</p>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Projektion und Filter verwechseln.</li>
+<li>Zu viele Spalten auswählen.</li>
+<li>DISTINCT einsetzen, um Modellfehler zu kaschieren.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

@@ -1,0 +1,302 @@
+{
+  "meta": {
+    "schema": "content-db-3nf-v1",
+    "managed_by": "scripts/content_db_pipeline.py",
+    "generated_artifacts": [
+      "generated/content/learning-catalog.json",
+      "generated/content/learning-catalog.md",
+      "generated/content/redundancy-report.md",
+      "webapp/public/data/learning-content.json"
+    ]
+  },
+  "contexts": [
+    {
+      "context_id": "ctx_eerm_modelling",
+      "code": "CTX-EERM",
+      "title": "EERM und Modellierung",
+      "description": "Kontext fuer Entitaeten, Beziehungen, Kardinalitaeten und Schluessel.",
+      "time_horizon": "kurzfristig",
+      "documents": [
+        {
+          "document_id": "doc_teilb_3nf",
+          "context_id": "ctx_eerm_modelling",
+          "kind": "generated",
+          "title": "Normalisierung bis 3NF",
+          "source_path": "generated/informationen/teil-b/03_normalisierung_bis_3nf.md",
+          "summary": "Lernmaterial zu Normalformen, Abhaengigkeiten und Anomalien.",
+          "target_audience": "Lernende",
+          "topics": [
+            {
+              "topic_id": "topic_3nf",
+              "code": "TOP-3NF",
+              "title": "Normalisierung bis 3NF",
+              "description": "Vermeidung transitativer Abhaengigkeiten und Redundanzen."
+            },
+            {
+              "topic_id": "topic_eerm",
+              "code": "TOP-EERM",
+              "title": "EERM Grundlagen",
+              "description": "Entitaeten, Attribute und Beziehungen im Fachkontext."
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task_eerm_context_to_model",
+          "context_id": "ctx_eerm_modelling",
+          "title": "Kontext in EERM ueberfuehren",
+          "prompt": "Extrahiere Entitaeten, Attribute und Beziehungen aus dem Fachtext und begruende die Kardinalitaeten.",
+          "difficulty": "mittel",
+          "topics": [
+            {
+              "topic_id": "topic_eerm",
+              "code": "TOP-EERM",
+              "title": "EERM Grundlagen",
+              "description": "Entitaeten, Attribute und Beziehungen im Fachkontext."
+            },
+            {
+              "topic_id": "topic_kardinalitaet",
+              "code": "TOP-CARD",
+              "title": "Kardinalitaeten",
+              "description": "Eine-Saetze und Mengenaussagen fuer Beziehungen."
+            }
+          ],
+          "keywords": [
+            {
+              "keyword_id": "kw_eerm",
+              "label": "EERM"
+            },
+            {
+              "keyword_id": "kw_redundanz",
+              "label": "Redundanz"
+            }
+          ],
+          "solutions": [
+            {
+              "solution_id": "solution_eerm_context_to_model",
+              "task_id": "task_eerm_context_to_model",
+              "version": "1.0",
+              "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md",
+              "summary": "Referenz fuer modellierungsbezogene Ableitungen und Kardinalitaetsbegruendung."
+            }
+          ]
+        },
+        {
+          "task_id": "task_3nf_refactor",
+          "context_id": "ctx_eerm_modelling",
+          "title": "Bis 3NF normalisieren",
+          "prompt": "Fuehre ein Tabellenmodell in die 3. Normalform ueber und dokumentiere die aufgeloesten Abhaengigkeiten.",
+          "difficulty": "hoch",
+          "topics": [
+            {
+              "topic_id": "topic_3nf",
+              "code": "TOP-3NF",
+              "title": "Normalisierung bis 3NF",
+              "description": "Vermeidung transitativer Abhaengigkeiten und Redundanzen."
+            }
+          ],
+          "keywords": [
+            {
+              "keyword_id": "kw_3nf",
+              "label": "3NF"
+            },
+            {
+              "keyword_id": "kw_redundanz",
+              "label": "Redundanz"
+            }
+          ],
+          "solutions": [
+            {
+              "solution_id": "solution_3nf_refactor",
+              "task_id": "task_3nf_refactor",
+              "version": "1.0",
+              "source_path": "generated/informationen/teil-b/03_normalisierung_bis_3nf.md",
+              "summary": "Referenz fuer Normalisierungsschritte und Anomaliebegruendung."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context_id": "ctx_governance",
+      "code": "CTX-GOV",
+      "title": "Governance und Dokumentation",
+      "description": "Kontext fuer Architektur, Prozesse, Redundanzmanagement und Qualitaetsgates.",
+      "time_horizon": "langfristig",
+      "documents": [
+        {
+          "document_id": "doc_architektur",
+          "context_id": "ctx_governance",
+          "kind": "handbuch",
+          "title": "Architektur",
+          "source_path": "docs/handbuch/ARCHITEKTUR.md",
+          "summary": "Systemdesign, Schichten, Governance und Erweiterungspfade.",
+          "target_audience": "Lehrkraefte und Maintainer",
+          "topics": [
+            {
+              "topic_id": "topic_governance",
+              "code": "TOP-GOV",
+              "title": "Governance und Redundanzmanagement",
+              "description": "SSOT, Review, Quality Gates und Dokumentationspflege."
+            }
+          ]
+        },
+        {
+          "document_id": "doc_redundanz_prozess",
+          "context_id": "ctx_governance",
+          "kind": "handbuch",
+          "title": "Redundanz-Management",
+          "source_path": "docs/handbuch/prozesse/redundanz-management.md",
+          "summary": "Vorgehen zur Erkennung und Elimination von inhaltlicher Doppelung.",
+          "target_audience": "Maintainer",
+          "topics": [
+            {
+              "topic_id": "topic_governance",
+              "code": "TOP-GOV",
+              "title": "Governance und Redundanzmanagement",
+              "description": "SSOT, Review, Quality Gates und Dokumentationspflege."
+            }
+          ]
+        }
+      ],
+      "tasks": []
+    },
+    {
+      "context_id": "ctx_exam_assets",
+      "code": "CTX-KA",
+      "title": "Klassenarbeit und Pruefungsartefakte",
+      "description": "Kontext fuer Aufgaben, Loesungen, SQL-Dumps und Modellgrafiken.",
+      "time_horizon": "mittelfristig",
+      "documents": [
+        {
+          "document_id": "doc_ka_v1_aufgabe",
+          "context_id": "ctx_exam_assets",
+          "kind": "generated",
+          "title": "KA02 VERSION1 Aufgabenstellung",
+          "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_aufg.md",
+          "summary": "Pruefungsaufgaben inkl. Kontextmaterialien.",
+          "target_audience": "Lernende",
+          "topics": [
+            {
+              "topic_id": "topic_eerm",
+              "code": "TOP-EERM",
+              "title": "EERM Grundlagen",
+              "description": "Entitaeten, Attribute und Beziehungen im Fachkontext."
+            },
+            {
+              "topic_id": "topic_sql_join",
+              "code": "TOP-JOIN",
+              "title": "SQL ueber mehrere Tabellen",
+              "description": "JOIN-Ketten, Selektion und fachlich korrekte Ergebnismengen."
+            }
+          ]
+        },
+        {
+          "document_id": "doc_ka_v1_loesung",
+          "context_id": "ctx_exam_assets",
+          "kind": "generated",
+          "title": "KA02 VERSION1 Loesung",
+          "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md",
+          "summary": "Loesung und Erwartungshorizont fuer die Aufgabenstellung.",
+          "target_audience": "Lehrkraefte",
+          "topics": [
+            {
+              "topic_id": "topic_3nf",
+              "code": "TOP-3NF",
+              "title": "Normalisierung bis 3NF",
+              "description": "Vermeidung transitativer Abhaengigkeiten und Redundanzen."
+            },
+            {
+              "topic_id": "topic_sql_group",
+              "code": "TOP-GROUP",
+              "title": "Aggregation und Gruppierung",
+              "description": "GROUP BY, HAVING und Doppelzaehlungsvermeidung."
+            }
+          ]
+        }
+      ],
+      "tasks": []
+    },
+    {
+      "context_id": "ctx_sql_queries",
+      "code": "CTX-SQL",
+      "title": "SQL und Abfragekompetenz",
+      "description": "Kontext fuer JOIN, Projektion, Selektion, Gruppierung und Auswertung.",
+      "time_horizon": "kurzfristig",
+      "documents": [
+        {
+          "document_id": "doc_teilc_join",
+          "context_id": "ctx_sql_queries",
+          "kind": "generated",
+          "title": "SQL ueber mehrere Tabellen",
+          "source_path": "generated/informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md",
+          "summary": "Lernmaterial fuer JOIN-basierte Abfragen.",
+          "target_audience": "Lernende",
+          "topics": [
+            {
+              "topic_id": "topic_sql_join",
+              "code": "TOP-JOIN",
+              "title": "SQL ueber mehrere Tabellen",
+              "description": "JOIN-Ketten, Selektion und fachlich korrekte Ergebnismengen."
+            },
+            {
+              "topic_id": "topic_sql_group",
+              "code": "TOP-GROUP",
+              "title": "Aggregation und Gruppierung",
+              "description": "GROUP BY, HAVING und Doppelzaehlungsvermeidung."
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task_sql_join_count",
+          "context_id": "ctx_sql_queries",
+          "title": "Buchungen pro Raum zaehlen",
+          "prompt": "Schreibe eine SQL-Abfrage mit JOIN und GROUP BY, die Buchungen je Raum ausgibt.",
+          "difficulty": "mittel",
+          "topics": [
+            {
+              "topic_id": "topic_sql_join",
+              "code": "TOP-JOIN",
+              "title": "SQL ueber mehrere Tabellen",
+              "description": "JOIN-Ketten, Selektion und fachlich korrekte Ergebnismengen."
+            },
+            {
+              "topic_id": "topic_sql_group",
+              "code": "TOP-GROUP",
+              "title": "Aggregation und Gruppierung",
+              "description": "GROUP BY, HAVING und Doppelzaehlungsvermeidung."
+            }
+          ],
+          "keywords": [
+            {
+              "keyword_id": "kw_join",
+              "label": "JOIN"
+            },
+            {
+              "keyword_id": "kw_group_by",
+              "label": "GROUP BY"
+            }
+          ],
+          "solutions": [
+            {
+              "solution_id": "solution_sql_join_count",
+              "task_id": "task_sql_join_count",
+              "version": "1.0",
+              "source_path": "generated/informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md",
+              "summary": "Referenz fuer JOIN- und GROUP-BY-Struktur."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "topic_count": 6,
+  "keyword_count": 7,
+  "redundancy": {
+    "exact_duplicate_groups": [],
+    "group_count": 0
+  }
+}

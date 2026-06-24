@@ -10,7 +10,7 @@ import sys
 
 files = [
     Path("docs/handbuch/templates/KLASSENARBEIT-TEMPLATE-60MIN-34P-BPE6-BPE5.md"),
-    Path("generated/klassenarbeiten/KA02_BG12_2025_2026_VERSION1_lsg.md"),
+    Path("generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md"),
 ]
 
 errors = []

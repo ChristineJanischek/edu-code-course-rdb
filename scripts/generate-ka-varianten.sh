@@ -16,7 +16,7 @@ else
   py="python3"
 fi
 
-prefix="${1:-KA02_BG12_2025_2026}"
+prefix="${1:-KA02_2025_2026}"
 
 echo "[ka-varianten] Prefix: $prefix"
 

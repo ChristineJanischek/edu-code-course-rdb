@@ -1,23 +1,54 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Daten ändern</title>
-  <style>
-    :root { --bg:#fff9f3; --card:#fff; --text:#3b2916; --accent:#a9671a; --tip:#fff0de; --warn:#ffe7d7; }
-    body { margin:0; font-family:"Segoe UI","Trebuchet MS",sans-serif; background:linear-gradient(120deg,#fff9f3,#f4fff8); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#2a1b10; color:#ffeede; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #a9671a; padding:10px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #cc5f2d; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Daten ändern</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Daten ändern</h1>
-  <pre><code>UPDATE FOODTRUCK
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Daten ändern</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/09_daten_aendern.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Daten ändern</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du aktualisierst Daten gezielt mit UPDATE.</li>
+<li>Du setzt sichere WHERE-Bedingungen.</li>
+<li>Du vermeidest unbeabsichtigte Massenänderungen.</li>
+</ul>
+<h2>Grundmuster</h2>
+<pre><code class="language-sql">UPDATE FOODTRUCK
 SET Rating = 4.8
-WHERE TruckID = 101;</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> Vor UPDATE die Zielmenge mit SELECT prüfen.</div>
-  <div class="warn"><strong>Achtung:</strong> UPDATE ohne WHERE betrifft alle Zeilen.</div>
-</div></div></body>
+WHERE TruckID = 101;
+</code></pre>
+<h2>Mehrere Felder</h2>
+<p><code>sql
+UPDATE FOODTRUCK
+SET Kategorie = 'Fusion', Ra</code>sql
+UPDATE FOODTRUCK
+SET Kategorie = 'Fusion', Rating = 4.6
+WHERE TruckID = 102;
+```n.
+- Vor UPDATE die Zielmenge mit SELECT prüfen.
+- Schlüsselbasierte Bedingungen sind am sichersten.</p>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Unscharfe Filterbedingungen.</li>
+<li>Datentypverletzungen.</li>
+<li>Geschäftslogik im Nachhinein „korrigieren“ statt vorher prüfen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

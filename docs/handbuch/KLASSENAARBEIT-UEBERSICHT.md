@@ -29,11 +29,11 @@ Didaktische Leitlinie (verbindlich):
 │
 ├─ 🎯 MUSTERKLASSENARBEIT
 │  └─ generated/klassenarbeiten/
-│     ├─ KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md  (28,7 KB)
-│     ├─ KA02_BG12_2024-2025_Muster_Online-Buecherverleih.html (36,7 KB)
-│     ├─ KA02_BG12_2025_60min_34P_Muster_EERM_SQL.md
-│     ├─ KA02_BG12_2025_60min_34P_schema_data_dump.sql
-│     ├─ KA02_BG12_2025_60min_34P_SQLDB_EERM.mwb
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.md  (28,7 KB)
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.html (36,7 KB)
+│     ├─ KA02_2025_60min_34P_Muster_EERM_SQL.md
+│     ├─ KA02_2025_60min_34P_schema_data_dump.sql
+│     ├─ KA02_2025_60min_34P_SQLDB_EERM.mwb
 │     └─ README.md
 │        (Komplettes Beispiel mit allen Lösungen)
 │        • Szenario: Online-Bücherverleih
@@ -88,13 +88,14 @@ Didaktische Leitlinie (verbindlich):
 
 ### 4️⃣ Validierung & Qualitätskontrolle
 
-```
+__`
 ✅ Markdown-Struktur validiert
 ✅ 6 Aufgaben gefunden → 30 Punkte
 ✅ 324 Tabellen-Zeilen (strukturiert)
 ✅ 44 Code-Blöcke (SQL, Python, Strukturogramme)
 ✅ 60 Überschriften (logische Gliederung)
 ✅ HTML-Export erfolgreich
+`folgreich
 ```
 
 ---
@@ -104,20 +105,19 @@ Didaktische Leitlinie (verbindlich):
 ### Option A: Musterklassenarbeit sofort nutzen
 ```bash
 # 1. Muster-Datei öffnen:
-gedit generated/klassenarbeiten/KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md
+gedit generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Bue``erverleih.md
 
 # 2. HTML-Preview im Browser öffnen:
-firefox generated/klassenarbeiten/KA02_BG12_2024-2025_Muster_Online-Buecherverleih.html
+firefox generated/klassenarb__`bash
+# 1. Muster-Datei öffnen:
+gedit generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Buecherverleih.md
+
+# 2. HTML-Preview im Browser öffnen:
+firefox generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Buecherverleih.html
 
 # 3. Zu DOCX konvertieren (online oder lokal mit Pandoc):
 pandoc [...].html -o Klassenarbeit.docx
-```
-
-### Option B: Neue Klassenarbeit basierend auf Template
-```bash
-# 1. Template kopieren:
-cp docs/handbuch/templates/KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md \
-   generated/klassenarbeiten/KA02_BG12_2025_NEU_HotelSystem.md
+`assenarbeiten/KA02_2025_NEU_HotelSystem.md
 
 # 2. Szenario anpassen (Bücherverleih → Hotel-Reservierung)
 
@@ -130,62 +130,52 @@ python scripts/convert_ka_markdown.py
 ### Option C: Szenario-Vorlagen
 **Vordefinierte Szenarien zur Auswahl:**
 - 🏨 Hotel-Reservierungssystem
-- 🏪 Supermarkt-Verwaltung
+- 🏪 Supermarkt-``rwaltung
 - 🎓 Schulverwaltung
-- 🚗 Autovermietung
+- 🚗 Autovermietun__`bash
+# 1. Template kopieren:
+cp docs/handbuch/templates/KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md \
+   generated/klassenarbeiten/KA02_2025_NEU_HotelSystem.md
 
----
+# 2. Szenario anpassen (Bücherverleih → Hotel-Reservierung)
 
-## 📖 VOLLSTÄNDIGE DOKUMENTATION
+# 3. Validierung durchführen:
+python scripts/convert_ka_markdown.py
 
-### Zum Lesen
-1. **[KLASSENAARBEIT-HANDBUCH.md](docs/handbuch/KLASSENAARBEIT-HANDBUCH.md)** – Alles Wichtige
-2. **[Musterklassenarbeit.md](generated/klassenarbeiten/KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md)** – Konkrete Beispiele
-3. **[Template.md](docs/handbuch/templates/KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md)** – Vorlage zum Kopieren
-
-### Tools & Skripte
-- **convert_ka_markdown.py** – Validierung & HTML-Export
-- **analyze_ka_detailed.py** – DOCX-Analyse
-
----
-
-## 🎯 VERWENDET VON
+# 4. Zu DOCX konvertieren
+`# 🎯 VERWENDET VON
 
 ### Externe Repositories
-✅ **Python-Algorithmen-Datenstrukturen** ([Link](https://github.com/ChristineJanischek/python-algorithmen-datenstrukturen))
-- Prüfungs-Format & Struktur
-- Struktogramm-Standards
-- Best Practices
+✅ **Python-Al```bash
+# 1. Muster-Datei öffnen:
+gedit generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Buecherverleih.md
 
-### Lokale Ressourcen
-✅ Klassenarrbeiten 2022-2025 (Archiv) – Historische Referenzen
-✅ Lehrplan BW – BPE 6 & 5.1
-✅ Operatorenliste-Struktogramme
+# 2. HTML-Preview im Browser öffnen:
+firefox generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Buecherverleih.html
 
----
-
-## ✨ BESONDERHEITEN
+# 3. Zu DOCX konvertieren (online oder lokal mit Pandoc):
+pandoc [...].html -o Klassenarbeit.docx
+```RHEITEN
 
 | Feature | Beschreibung |
 |---------|-------------|
 | **BPE-konform** | 90% RDB (BPE 6) + 10% Programmierung (BPE 5.1) |
 | **Praktisch** | Realistische Szenarien (nicht abstrakt) |
-| **Lehrende-freundlich** | Mit Bestell-/Fehlern & Bewertungskriterien |
+| **Lehrende-freundlich** | Mit Bestell-/F``lern & Bewertungskriterien |
 | **Schüler-freundlich** | Klare Aufgabenstellung, Testfälle |
 | **Skalierbar** | Einfache Anpassung für neue Aufgaben |
-| **Versionierbar** | Git-ready Markdown-Format |
-| **Multi-Format** | MD → HTML → DOCX → PDF |
+| **Ve```bash
+# 1. Template kopieren:
+cp docs/handbuch/templates/KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md \
+   generated/klassenarbeiten/KA02_2025_NEU_HotelSystem.md
 
----
+# 2. Szenario anpassen (Bücherverleih → Hotel-Reservierung)
 
-## 📋 CHECKLISTE: Was noch zu tun ist?
+# 3. Validierung durchführen:
+python scripts/convert_ka_markdown.py
 
-- [ ] **Optional: Pandoc installieren** (für direkte DOCX-Konvertierung)
-  ```bash
-  apt update && apt install pandoc -y
-  ```
-
-- [ ] **Optional: Szenario-Vorlagen erstellen** (zusätzliche Klassenaarbeit)
+# 4. Zu DOCX konvertieren
+```he Klassenaarbeit)
   1. Template kopieren
   2. Szenario ändern (z.B. Hotel)
   3. `convert_ka_markdown.py` ausführen
@@ -233,8 +223,34 @@ edu-code-course-rdb/
 │
 ├─ generated/
 │  └─ klassenarbeiten/
-│     ├─ KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md ⭐ NEU
-│     ├─ KA02_BG12_2024-2025_Muster_Online-Buecherverleih.html ⭐ NEU
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.md ⭐ NEU
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.html ⭐ NEU
+│     └─ README.md ⭐ NEU
+│
+├─ scripts/
+│  ├─ convert_ka_markdown.py ⭐ NEU
+│  ├─ analyze_ka_detailed.py ⭐ NEU
+│  └─ analyze_ka.py ⭐ NEU
+│
+└─ uploads/
+   ├─ klassenarbeiten-und-unterrichtsmat`convert_ka_markdown.py`iv 2022-2025)
+  ├─ lehrplaene/
+  │  └─ BG2-AG-EG-SG-WG_Informatik_18_3992k_NEU_Abitur2021.pdf
+   └─ pruefungsaufgaben-und-erwartungshorizonte-für-ki-training/
+    └─ (Pruefungsaufgaben, Erwartungshorizonte, MWB-Referenzen)
+```
+__`
+edu-code-course-rdb/
+├─ docs/handbuch/
+│  ├─ ARCHITEKTUR.md
+│  ├─ KLASSENAARBEIT-HANDBUCH.md ⭐ NEU
+│  └─ templates/
+│     └─ KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md ⭐ NEU
+│
+├─ generated/
+│  └─ klassenarbeiten/
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.md ⭐ NEU
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.html ⭐ NEU
 │     └─ README.md ⭐ NEU
 │
 ├─ scripts/
@@ -249,34 +265,7 @@ edu-code-course-rdb/
   │  └─ BG2-AG-EG-SG-WG_Informatik_18_3992k_NEU_Abitur2021.pdf
    └─ pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/
     └─ (Pruefungsaufgaben, Erwartungshorizonte, MWB-Referenzen)
-```
-
----
-
-## 📞 SUPPORT & FEEDBACK
-
-**Dokumentation:**
-- [KLASSENAARBEIT-HANDBUCH.md](docs/handbuch/KLASSENAARBEIT-HANDBUCH.md) – Anleitung
-- [Repository](https://github.com/ChristineJanischek/edu-code-course-rdb) – GitHub
-
-**Probleme?**
-- Siehe FAQ in Handbuch
-- Validierungs-Script ausführen: `python scripts/convert_ka_markdown.py`
-- GitHub Issues öffnen
-
----
-
-## 🎉 CONCLUSION
-
-✅ **Template & Musterklassenarbeit** sind einsatzbereit
-✅ **Dokumentation** ist vollständig
-✅ **Validierung** erfolgreich durchgeführt
-✅ **Export-Optionen** verfügbar (HTML, DOCX, PDF)
-✅ **Best Practices** von Python-AuD-Repo integriert
-
-**Nächste Schritte:**
-1. Handbuch lesen: [KLASSENAARBEIT-HANDBUCH.md](docs/handbuch/KLASSENAARBEIT-HANDBUCH.md)
-2. Musterklassenarbeit ansehen: [Online-Bücherverleih](generated/klassenarbeiten/KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md)
+`_BG12_2024-2025_Muster_Online-Buecherverleih.md)
 3. Optional: Neue Klassenarbeit basierend auf Template erstellen
 4. Optional: Szenario variieren & weitere Versionen generieren
 
@@ -285,3 +274,30 @@ edu-code-course-rdb/
 **Erstellt:** 9. Mai 2025
 **Version:** 1.0
 **Status:** ✅ Fertig & Getestet
+```
+edu-code-course-rdb/
+├─ docs/handbuch/
+│  ├─ ARCHITEKTUR.md
+│  ├─ KLASSENAARBEIT-HANDBUCH.md ⭐ NEU
+│  └─ templates/
+│     └─ KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.md ⭐ NEU
+│
+├─ generated/
+│  └─ klassenarbeiten/
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.md ⭐ NEU
+│     ├─ KA02_2024-2025_Muster_Online-Buecherverleih.html ⭐ NEU
+│     └─ README.md ⭐ NEU
+│
+├─ scripts/
+│  ├─ convert_ka_markdown.py ⭐ NEU
+│  ├─ analyze_ka_detailed.py ⭐ NEU
+│  └─ analyze_ka.py ⭐ NEU
+│
+└─ uploads/
+   ├─ klassenarbeiten-und-unterrichtsmaterialien/
+   │  └─ (Archiv 2022-2025)
+  ├─ lehrplaene/
+  │  └─ BG2-AG-EG-SG-WG_Informatik_18_3992k_NEU_Abitur2021.pdf
+   └─ pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/
+    └─ (Pruefungsaufgaben, Erwartungshorizonte, MWB-Referenzen)
+``````python scripts/convert_ka_markdown.py`

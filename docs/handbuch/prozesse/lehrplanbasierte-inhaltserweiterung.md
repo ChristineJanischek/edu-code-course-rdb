@@ -15,10 +15,9 @@ Der Geltungsbereich ist bewusst auf relationale Datenbanken begrenzt:
 ## Verbindliche Ablageorte
 
 - Lehrpläne und Bildungspläne: `uploads/lehrplaene/`
-- Prüfungsaufgaben, Erwartungshorizonte, Referenzmaterial: `uploads/pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/`
-- Archivmaterial für Unterricht und Klassenarbeiten: `uploads/klassenarbeiten-und-unterrichtsmaterialien/`
+- Prüfungsaufgaben, Erwartungshorizonte, Referenzmaterial: `uploads`uploads/pruefungsaufgaben-und-erwartungshorizonte-fuer-ki-training/`vmaterial für Unterricht und Klassenarbeiten: `uploads/klassenarbeiten-und-unterrichtsmaterialien/`
 
-Neue Lehrpläne dürfen nicht mehr im Prüfungsaufgaben-Verzeichnis abgelegt werden.
+Neue Lehr`uploads/klassenarbeiten-und-unterrichtsmaterialien/`is abgelegt werden.
 
 ## Zielbild
 
@@ -53,7 +52,7 @@ Geeignete Wahl:
 Begründung:
 
 - stark für mehrsprachige Inhalte, auch deutschsprachige Lehrpläne
-- robust für semantische Suche über Kompetenzformulierungen, Operatoren und Inhaltsfelder
+- robust `BAAI/bge-m3`he Suche über Kompetenzformulierungen, Operatoren und Inhaltsfelder
 - gut geeignet für Chunk-Retrieval aus PDFs, Handbuchtexten und vorhandenen Aufgabenbeständen
 
 ## 3. Empfohlenes Verfahren
@@ -89,12 +88,12 @@ Der erste Import erfolgt mit:
 python3 scripts/import_curriculum_pdf.py
 ```
 
-Dabei entstehen strukturierte JSON-Artefakte unter `generated/lehrplaene/`.
+Dabei entstehen strukturier`uploads/lehrplaene/`er `generated/lehrplaene/`.
 
 Namensregel:
 
 - bestehende sprechende Dateinamen beibehalten
-- Jahrgang oder Fassung nur ergänzen, wenn erforderlich
+- Jahrgang oder Fassung n`generated/lehrplaene/`derlich
 - keine Umbenennung in generische Dateinamen
 
 ## Schritt 2: Quelle fachlich zerlegen
@@ -121,15 +120,10 @@ Jeder Chunk erhält strukturierte Tags, zum Beispiel:
 - `sql-group-by`
 - `begruendung`
 - `pruefungsvorbereitung`
-- `modellkritik`
+-__PROTECT`normalisierung`# Schr__PROTEC`sql-select`e`sql-join`_PROTECT_13__
 
-## Schritt 4: Bestehende Artefakte matchen
-
-Abgleich gegen:
-
-- Webapp-Lernpfade
-- generierte Klassenarbeiten
-- SQL-Dumps und MWB-Modelle
+A`begruendung`:
+`pruefungsvorbereitung`enerierte Kl`modellkritik`- SQL-Dumps und MWB-Modelle
 - Handbuch-Vorlagen
 - bestehende Musterlösungen
 
@@ -212,20 +206,17 @@ Eine curriculare Erweiterung ist erst fertig, wenn:
 
 - der neue Lehrplan unter `uploads/lehrplaene/` liegt
 - neue oder angepasste Webapp-Inhalte sichtbar sind
-- neue Aufgaben und Lösungen fachlich begründet vorliegen
+- neue Aufgaben und Lösungen fa`uploads/lehrplaene/`iegen
 - Handbuch und Betriebsdoku aktualisiert sind
 - die Pflicht-Validierungen erfolgreich laufen:
 
 ```bash
+bash scripts/validate-security.```bash
 bash scripts/validate-security.sh
 bash scripts/validate-architecture.sh
 bash scripts/validate-docs.sh
-```
-
-## Verknüpfte Dokumente
-
-- [README.md](../README.md)
+```](../README.md)
 - [INDEX.md](../INDEX.md)
-- [ARCHITEKTUR.md](../ARCHITEKTUR.md)
+- [ARCHITEKTUR.md](../AR``ITEKTUR.md)
 - [PFLICHTENHEFT.md](../PFLICHTENHEFT.md)
 - [rdb-live-test-und-webserver-setup.md](../anleitungen/rdb-live-test-und-webserver-setup.md)

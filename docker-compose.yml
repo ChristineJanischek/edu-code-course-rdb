@@ -9,7 +9,7 @@ services:
       MYSQL_USER: ${MYSQL_USER:?MYSQL_USER must be set}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD must be set}
     ports:
-      - "${MYSQL_PORT:-3306}:3306"
+      - "127.0.0.1:${MYSQL_PORT:-3306}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
@@ -32,10 +32,11 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:?MYSQL_DATABASE must be set}
       MYSQL_USER: ${MYSQL_USER:?MYSQL_USER must be set}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD must be set}
+      SUBMISSION_API_KEY: ${SUBMISSION_API_KEY:?SUBMISSION_API_KEY must be set}
       JSON_DB_PATH: /app/data.json
       CURRICULUM_INDEX_PATH: /app/generated/lehrplaene/index.json
     ports:
-      - "${PYTHON_API_PORT:-8000}:8000"
+      - "127.0.0.1:${PYTHON_API_PORT:-8000}:8000"
     depends_on:
       mysql:
         condition: service_healthy
@@ -55,13 +56,22 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:?MYSQL_DATABASE must be set}
       MYSQL_USER: ${MYSQL_USER:?MYSQL_USER must be set}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD must be set}
-      PYTHON_API_URL: ${PYTHON_API_URL:-http://localhost:8000}
+      SUBMISSION_API_KEY: ${SUBMISSION_API_KEY:?SUBMISSION_API_KEY must be set}
+      PYTHON_API_URL: ${PYTHON_API_URL:-/api-proxy.php}
+      PYTHON_API_INTERNAL_URL: ${PYTHON_API_INTERNAL_URL:-http://python-api:8000}
     ports:
       - "${PHP_WEB_PORT:-8080}:80"
     depends_on:
       - python-api
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://localhost/')===false?1:0);"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
     volumes:
       - ./webapp/public:/var/www/html:rw
+      - ./webapp/app:/var/www/app:ro
+      - ./generated:/var/www/html/generated:ro
     networks:
       - appnet
 

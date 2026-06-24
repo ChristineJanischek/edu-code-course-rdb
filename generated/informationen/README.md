@@ -1,5 +1,8 @@
 # Informationen (Lernmaterial)
 
+> Hinweis: Zentraler Einstieg für Lernende ist [../README.md](../README.md).
+> Diese Seite ist eine Bereichsübersicht für den Informationsblock.
+
 ## Bereiche
 
 - [Teil B: Modellierung, Normalisierung, Integrität](./teil-b/01_grundlagen_modellierung_eerm.md)
@@ -10,9 +13,9 @@
 
 ## Übungen (SQL)
 
-- [UE01: FoodTruckNetz – SQL-Abfragen (HTML, interaktiv)](../uebungen/UE01_foodtrucknetz_sql_abfragen.html)
-- [UE02: Stadtfahrradverleih – SQL-Abfragen (HTML, interaktiv)](../uebungen/UE02_stadtfahrradverleih_sql_abfragen.html)
-- [Übungsübersicht und Datenbasis](../uebungen/README.md)
+- [UE01: FoodTruckNetz – SQL-Abfragen (HTML, interaktiv)](../übungen/UE01_foodtrucknetz_sql_abfragen.html)
+- [UE02: Stadtfahrradverleih – SQL-Abfragen (HTML, interaktiv)](../übungen/UE02_stadtfahrradverleih_sql_abfragen.html)
+- [Übungsübersicht und Datenbasis](../übungen/README.md)
 
 ## Hinweis
 

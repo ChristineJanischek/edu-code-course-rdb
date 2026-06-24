@@ -3,32 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - SQL-Abfragen über mehrere Tabellen</title>
-  <style>
-    :root { --bg:#f6fff9; --card:#fff; --text:#13301f; --accent:#1f8a4c; --tip:#e8fff0; --warn:#fff3e7; }
-    body { margin:0; font-family:"Segoe UI","Trebuchet MS",sans-serif; background:linear-gradient(125deg,#f6fff9,#f4f9ff); color:var(--text); }
-    .wrap { max-width:980px; margin:24px auto; padding:0 16px; }
-    .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent); }
-    h2 { border-bottom:2px solid #d8f2e2; padding-bottom:6px; }
-    pre { background:#0f172a; color:#e2e8f0; padding:12px; border-radius:8px; overflow:auto; }
-    .tip { background:var(--tip); border-left:5px solid #1f8a4c; padding:10px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #d9822b; padding:10px; border-radius:8px; }
-  </style>
+  <title>Informationsblatt Teil C: SQL-Abfragen über mehrere Tabellen</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-<div class="wrap"><div class="card">
-  <h1>Teil C: SQL-Abfragen über mehrere Tabellen</h1>
-  <p><strong>Kontext:</strong> FoodTruckNetz (separat von Teil B)</p>
-  <h2>Kernidee</h2>
-  <p>Normalisierte Daten verteilen sich auf mehrere Tabellen. JOIN verbindet sie über PK/FK-Beziehungen.</p>
-  <h2>Beispiel</h2>
-  <pre><code>SELECT f.Name, s.Stadt, e.Datum
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: SQL-Abfragen über mehrere Tabellen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: SQL-Abfragen über mehrere Tabellen</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz (separat von Teil B)</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du verbindest Tabellen fachlich korrekt mit JOIN.</li>
+<li>Du liest Join-Bedingungen sicher aus dem Schema.</li>
+<li>Du vermeidest ungewollte kartesische Produkte.</li>
+</ul>
+<h2>Kernidee</h2>
+<p>Daten liegen in normalisierten Tabellen verteilt. Für Auswertungen müssen Tabellen über Schlüssel verbunden werden.</p>
+<h2>Beispielkontext</h2>
+<ul>
+<li>FOODTRUCK(TruckID, Name)</li>
+<li>STANDORT(StandortID, Stadt)</li>
+<li>EINSATZ(EinsatzID, TruckID, StandortID, Datum)</li>
+</ul>
+<h2>Standardmuster</h2>
+<pre><code class="language-sql">SELECT f.Name, s.Stadt, e.Datum
 FROM EINSATZ e
 JOIN FOODTRUCK f ON f.TruckID = e.TruckID
-JOIN STANDORT s ON s.StandortID = e.StandortID;</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> JOIN immer über fachlich passende Schlüssel.</div>
-  <div class="warn"><strong>Fehlerquelle:</strong> Fehlende oder falsche ON-Bedingung.</div>
-</div></div>
+JOIN STANDORT s ON s.StandortID = e.StandortID;
+</code></pre>
+<h2>Merksätze</h2>
+<ul>
+<li>JOIN immer über PK/FK-Beziehungen.</li>
+<li>Ohne ON-Bedingung droht Datenexplosion.</li>
+<li>Erst FROM/JOIN sauber, dann WHERE ergänzen.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Falsche Join-Spalten.</li>
+<li>Alias vergessen oder uneinheitlich.</li>
+<li>Filterbedingungen in ON und WHERE unklar mischen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
 </body>
 </html>

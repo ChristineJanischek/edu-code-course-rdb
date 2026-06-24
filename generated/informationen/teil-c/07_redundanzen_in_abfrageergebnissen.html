@@ -1,27 +1,61 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Redundanzen in Abfrageergebnissen</title>
-  <style>
-    :root { --bg:#f4f7ff; --card:#fff; --text:#1c2340; --accent:#2f4bb2; --tip:#e9efff; --warn:#fff3e8; }
-    body { margin:0; font-family:"Segoe UI","Tahoma",sans-serif; background:linear-gradient(120deg,#f4f7ff,#f7fff8); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#111827; color:#e5e7eb; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #2f4bb2; padding:10px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #d9822b; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Redundanzen in Abfrageergebnissen</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Redundanzen in Abfrageergebnissen</h1>
-  <pre><code>SELECT f.Name
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Redundanzen in Abfrageergebnissen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/07_redundanzen_in_abfrageergebnissen.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Redundanzen in Abfrageergebnissen</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du erkennst doppelte Ergebnisse in SQL-Abfragen.</li>
+<li>Du erklärst Ursachen (JOIN-Struktur, Projektion).</li>
+<li>Du reduzierst Duplikate fachgerecht.</li>
+</ul>
+<h2>Warum entstehen Duplikate?</h2>
+<ul>
+<li>m:n-Beziehungen liefern pro Kombination eine Zeile.</li>
+<li>Zu wenige Spalten in der Projektion lassen Unterschiede „unsichtbar“.</li>
+<li>Falsche Join-Bedingungen vervielfachen Daten.</li>
+</ul>
+<h2>Beispiele</h2>
+<pre><code class="language-sql">SELECT f.Name
 FROM FOODTRUCK f
-JOIN EINSATZ e ON e.TruckID = f.TruckID;</code></pre>
-  <p>Ein Truck mit mehreren Einsätzen erscheint mehrfach.</p>
-  <pre><code>SELECT DISTINCT f.Name
+JOIN EINSATZ e ON e.TruckID = f.TruckID;
+</code></pre>
+<p>Ein Truck mit mehreren Einsätzen erscheint mehrfach.</p>
+<p>Duplikatbereinigung:
+<code>sql
+SELECT DISTINCT f.Name
 FROM FOODTRUCK f
-JOIN EINSATZ e ON e.TruckID = f.TruckID;</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> Erst Ursache klären, dann DISTINCT nutzen.</div>
-  <div class="warn"><strong>Hinweis:</strong> Doppelte Zeilen sind bei m:n oft fachlich korrekt.</div>
-</div></div></body>
+JOIN EINSATZ e ON e.Tr</code>sql
+SELECT DISTINCT f.Name
+FROM FOODTRUCK f
+JOIN EINSATZ e ON e.TruckID = f.TruckID;
+```omatisch Fehler.
+- DISTINCT ist ein Werkzeug, kein Ersatz für korrektes JOIN-Design.
+- Erst Ursache verstehen, dann bereinigen.</p>
+<h2>Typische Fehler</h2>
+<ul>
+<li>DISTINCT pauschal überall einsetzen.</li>
+<li>Join-Logik nicht am Datenmodell prüfen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

@@ -1,0 +1,23 @@
+[
+  {
+    "task_id": "task_eerm_context_to_model",
+    "context_id": "ctx_eerm_modelling",
+    "title": "Kontext in EERM ueberfuehren",
+    "prompt": "Extrahiere Entitaeten, Attribute und Beziehungen aus dem Fachtext und begruende die Kardinalitaeten.",
+    "difficulty": "mittel"
+  },
+  {
+    "task_id": "task_3nf_refactor",
+    "context_id": "ctx_eerm_modelling",
+    "title": "Bis 3NF normalisieren",
+    "prompt": "Fuehre ein Tabellenmodell in die 3. Normalform ueber und dokumentiere die aufgeloesten Abhaengigkeiten.",
+    "difficulty": "hoch"
+  },
+  {
+    "task_id": "task_sql_join_count",
+    "context_id": "ctx_sql_queries",
+    "title": "Buchungen pro Raum zaehlen",
+    "prompt": "Schreibe eine SQL-Abfrage mit JOIN und GROUP BY, die Buchungen je Raum ausgibt.",
+    "difficulty": "mittel"
+  }
+]

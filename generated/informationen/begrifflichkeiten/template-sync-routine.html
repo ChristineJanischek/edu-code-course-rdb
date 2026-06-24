@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Routine: Template-Repositories aktuell halten</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Routine: Template-Repositories aktuell halten</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/begrifflichkeiten/template-sync-routine.md</p>
+    </header>
+    <main class="content">
+<h1>Routine: Template-Repositories aktuell halten</h1>
+<p>Diese Routine richtet sich an Lehrkräfte oder Teams, die aus diesem Repository ein eigenes Template-Repository erzeugt haben.</p>
+<h2>Ziel</h2>
+<p>Neue Verbesserungen aus dem Original-Repository regelmäßig als Pull verfügbar machen.</p>
+<h2>Automatischer Weg (empfohlen): Sync-PR per GitHub Actions</h2>
+<p>Im Repository ist ein Workflow vorhanden:</p>
+<ul>
+<li><code>.github/workflows/template-sync-pr.yml</code></li>
+</ul>
+<p>Was dieser Workflow macht:</p>
+<ol>
+<li>Läuft automatisch jeden Montagmorgen (UTC) und zusätzlich manuell per "Run workflow".</li>
+<li>Holt Änderungen aus <code>upstream/main</code>.</li>
+<li>Erstellt bei neuen Änderungen automatisch einen Pull Request nach <code>main</code>.</li>
+</ol>
+<h3>Konfiguration für Template-Nutzer</h3>
+<p>Setze in deinem abgeleiteten Repository eine Variable unter
+<code>Settings -&gt; Secrets and variables -&gt; Actions -&gt; Variables</code>:</p>
+<ul>
+<li><code>TEMPLATE_UPSTREAM_REPO=ChristineJanischek/edu-code-course-rdb</code></li>
+</ul>
+<p>Falls die Variable fehlt, nutzt der Workflow diesen Wert als Standard.</p>
+<h3>Vorteil</h3>
+<ul>
+<li>Updates kommen als prüfbarer PR statt als stiller Direkt-Merge.</li>
+<li>Lehrkräfte können Änderungen didaktisch freigeben, bevor sie live sind.</li>
+</ul>
+<h2>Einmalig einrichten</h2>
+<ol>
+<li>In deinem abgeleiteten Repository das Original als zusätzliche Remote-Quelle eintragen:</li>
+</ol>
+<pre><code class="language-bash">git remote add upstream https://github.com/ChristineJanischek/edu-code-course-rdb.git
+</code></pre>
+<ol start="2">
+<li>Prüfen, ob die Remote vorhanden ist:</li>
+</ol>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<h2>Regelmäßige Sync-Routine</h2>
+<pre><code class="language-bash">git fetch upstream
+git checkout main
+git merge --no-ff upstream/main
+git push origin main
+</code></pre>
+<h2>Empfehlung für den Unterrichtsbetrieb</h2>
+<ul>
+<li>Führe die Sync-Routine mindestens 1x pro Woche aus.</li>
+<li>Führe sie zusätzlich vor Beginn einer neuen Klassenarbeits- oder Übungsphase aus.</li>
+<li>Nach dem Merge kurz prüfen:</li>
+<li><code>generated/informationen/begrifflichkeiten/</code></li>
+<li><code>generated/informationen/teil-b/</code></li>
+<li><code>generated/informationen/teil-c/</code></li>
+</ul>
+<p>Hinweis: Wenn der automatische Workflow aktiv ist, dient die manuelle Routine vor allem als Fallback bei Merge-Konflikten.</p>
+<h2>Optional: Team-Standard festlegen</h2>
+<p>Wenn mehrere Personen am Schul-Repository arbeiten, die Routine als festen Termin in den Teamkalender aufnehmen (z. B. Montag 07:30 Uhr).</p>
+    </main>
+  </div>
+</body>
+</html>

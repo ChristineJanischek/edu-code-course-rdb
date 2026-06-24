@@ -1,0 +1,34 @@
+[
+  {
+    "topic_id": "topic_eerm",
+    "keyword_id": "kw_eerm"
+  },
+  {
+    "topic_id": "topic_kardinalitaet",
+    "keyword_id": "kw_redundanz"
+  },
+  {
+    "topic_id": "topic_3nf",
+    "keyword_id": "kw_3nf"
+  },
+  {
+    "topic_id": "topic_3nf",
+    "keyword_id": "kw_redundanz"
+  },
+  {
+    "topic_id": "topic_sql_join",
+    "keyword_id": "kw_join"
+  },
+  {
+    "topic_id": "topic_sql_group",
+    "keyword_id": "kw_group_by"
+  },
+  {
+    "topic_id": "topic_governance",
+    "keyword_id": "kw_ssot"
+  },
+  {
+    "topic_id": "topic_governance",
+    "keyword_id": "kw_mvc"
+  }
+]

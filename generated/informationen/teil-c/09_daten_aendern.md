@@ -18,12 +18,11 @@ WHERE TruckID = 101;
 ## Mehrere Felder
 ```sql
 UPDATE FOODTRUCK
+SET Kategorie = 'Fusion', Ra```sql
+UPDATE FOODTRUCK
 SET Kategorie = 'Fusion', Rating = 4.6
 WHERE TruckID = 102;
-```
-
-## Merksätze
-- UPDATE ohne WHERE ändert alle Zeilen.
+```n.
 - Vor UPDATE die Zielmenge mit SELECT prüfen.
 - Schlüsselbasierte Bedingungen sind am sichersten.
 

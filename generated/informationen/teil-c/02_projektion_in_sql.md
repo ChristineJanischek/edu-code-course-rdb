@@ -22,11 +22,10 @@ Nur die Spalten Name und Kategorie werden ausgegeben.
 ## Mit DISTINCT
 ```sql
 SELECT DISTINCT Stadt
+FROM ST```sql
+SELECT DISTINCT Stadt
 FROM STANDORT;
-```
-
-## Merksätze
-- Projektion steuert Spalten, nicht Zeilen.
+```Spalten, nicht Zeilen.
 - SELECT * nur in der Analyse, nicht in der sauberen Lösung.
 - DISTINCT nur verwenden, wenn fachlich nötig.
 

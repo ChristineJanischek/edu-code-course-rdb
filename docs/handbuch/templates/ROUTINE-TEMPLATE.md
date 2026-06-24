@@ -14,7 +14,7 @@
 |------|------|
 | **ID** | ROUTINE-XXX (z.B. KF-ROUTINE-001 für kurzfristig) |
 | **Name** | Prägnanter, aussagekräftiger Name |
-| **Kategorie** | `kurzfristig` / `mittelfristig` / `langfristig` |
+| **Kategorie** | `kurzfristig` / `mittelfristig` / `l`langfristig`
 | **Häufigkeit** | täglich / wöchentlich / monatlich / quartalsweise / jährlich |
 | **Zeitaufwand** | XX Minuten / Stunden |
 | **Verantwortlicher** | Name/Team/Role |
@@ -115,9 +115,7 @@ Was soll damit erreicht werden? Welches Problem wird gelöst?
 - Ausgabe 3: Publikation / Verteilung
 
 **Artefakte:**
-- Dokument: `path/to/file`
-- Code: `path/to/code`
-- Report: Format / Ziel
+- Dokument: `p`path/to/file` Code: `pa`path/to/code`Report: Format / Ziel
 
 ---
 
@@ -200,7 +198,7 @@ Was soll damit erreicht werden? Welches Problem wird gelöst?
 
 ---
 
-**Tags:** `tag1` `tag2` `tag3` `kategorie`
+**Tags:** `tag__PROTE__PROTE__PROTE`kategorie`tag3` `kategorie`
 
 **Status:** 🟡 In Bearbeitung / 🟢 Aktiv / 🔴 Archiviert
 

@@ -1,0 +1,42 @@
+[
+  {
+    "document_id": "doc_architektur",
+    "topic_id": "topic_governance"
+  },
+  {
+    "document_id": "doc_redundanz_prozess",
+    "topic_id": "topic_governance"
+  },
+  {
+    "document_id": "doc_teilb_3nf",
+    "topic_id": "topic_3nf"
+  },
+  {
+    "document_id": "doc_teilb_3nf",
+    "topic_id": "topic_eerm"
+  },
+  {
+    "document_id": "doc_teilc_join",
+    "topic_id": "topic_sql_join"
+  },
+  {
+    "document_id": "doc_teilc_join",
+    "topic_id": "topic_sql_group"
+  },
+  {
+    "document_id": "doc_ka_v1_aufgabe",
+    "topic_id": "topic_eerm"
+  },
+  {
+    "document_id": "doc_ka_v1_aufgabe",
+    "topic_id": "topic_sql_join"
+  },
+  {
+    "document_id": "doc_ka_v1_loesung",
+    "topic_id": "topic_3nf"
+  },
+  {
+    "document_id": "doc_ka_v1_loesung",
+    "topic_id": "topic_sql_group"
+  }
+]

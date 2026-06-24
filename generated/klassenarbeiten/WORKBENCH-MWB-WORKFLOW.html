@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workflow: MWB-Dateien direkt aus SQL erzeugen</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Workflow: MWB-Dateien direkt aus SQL erzeugen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/klassenarbeiten/WORKBENCH-MWB-WORKFLOW.md</p>
+    </header>
+    <main class="content">
+<h1>Workflow: MWB-Dateien direkt aus SQL erzeugen</h1>
+<p>Diese Datei wurde automatisch erzeugt mit:</p>
+<p><code>bash scripts/prepare-workbench-mwb.sh</code></p>
+<p>Die Generierung läuft ohne MySQL Workbench. Sie liest die SQL-Strukturdumps, baut daraus native MWB-Archive und verwendet für die Containerstruktur eine Referenzvorlage aus dem Repository.</p>
+<h2>1) Erzeugte Modelle</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Schema</th>
+<th>Quelle</th>
+<th>Ziel-.mwb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kursplattform</td>
+<td>kursplattform</td>
+<td>generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md</td>
+<td>generated/klassenarbeiten/kursplattform_2025.mwb</td>
+</tr>
+</tbody>
+</table>
+<h2>2) Validierung</h2>
+<p>Die erzeugten Archive enthalten intern <code>document.mwb.xml</code>, <code>lock``document.mwb.xml</code>.</p>
+<p>Beis<code>lock</code>PROTECT_3__ash scripts/validate-m<code>bash scripts/validate-mwb-native.sh</code></p>
+    </main>
+  </div>
+</body>
+</html>

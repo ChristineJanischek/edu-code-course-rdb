@@ -1,5 +1,8 @@
 # Übungen: SQL-Abfragen über mehrere Tabellen
 
+> Hinweis: Zentraler Einstieg für Lernende ist [../README.md](../README.md).
+> Diese Seite ist die Detailübersicht für Übungen.
+
 ## Übungsblätter
 
 | Blatt | Kontext | Themen | Aufgaben | HTML |
@@ -17,7 +20,7 @@
 
 ## Datenbanken einrichten (MySQL Workbench)
 
-Für jedes Übungsblatt gibt es im Ordner `daten/` einen vollständigen SQL-Dump:
+Für jedes Übungsblatt gibt es im Ordner `daten/` einen vollständi`daten/`Dump:
 
 ```bash
 # 1. Struktur einlesen (aus generated/klassenarbeiten/)
@@ -28,20 +31,19 @@ mysql -u root -p < daten/foodtrucknetz_uebung_daten.sql
 ```
 
 ```bash
+mysql -u roo__`bash
 mysql -u root -p < ../klassenarbeiten/stadtfahrradverleih_struktur_2025.sql
 mysql -u root -p < daten/stadtfahrradverleih_uebung_daten.sql
-```
-
-## Themenabdeckung
+`emenabdeckung
 
 | Thema | UE01 | UE02 |
 |---|---|---|
-| WHERE + AND/OR | A1, A6 | A1 |
-| YEAR() / MONTH() | A2, A7 | A2, A7 |
-| SUM + GROUP BY | A3, A7, A8 | A4, A7 |
-| COUNT + GROUP BY | A4, A7, A8 | A3, A5, A6 |
+| WHERE +```bash
+mysql -u root -p < ../klassenarbeiten/stadtfahrradverleih_struktur_2025.sql
+mysql -u root -p < daten/stadtfahrradverleih_uebung_daten.sql
+```|
 | AVG + GROUP BY | A5, A10 | A7, A9 |
-| HAVING | A4, A10 | A5, A6 |
+| HAVING | A4, A1``| A5, A6 |
 | MAX / MIN | A9 | A10 |
 | LEFT JOIN + IS NULL | — | A8 |
 | ORDER BY | alle | alle |

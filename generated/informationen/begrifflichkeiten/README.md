@@ -1,5 +1,8 @@
 # Begrifflichkeiten: Relationale Datenbanken
 
+> Hinweis: Zentraler Einstieg für Lernende ist [../../README.md](../../README.md).
+> Diese Seite ist die Detailübersicht für das Stichwortverzeichnis.
+
 ## Dokumente
 
 - [Stichwortverzeichnis (Markdown)](./stichwortverzeichnis_relationale_datenbanken.md)
@@ -22,14 +25,12 @@ Sie ist im Codespace standardmäßig vorinstalliert. Falls nicht: Erweiterungen-
 3. Im Kontextmenü den Eintrag **„Open with Live Server"** auswählen.
 4. Der Browser öffnet sich automatisch mit der Suchseite.
 5. Im Suchfeld oben einfach einen Begriff eingeben, z. B. `JOIN`, `3NF` oder `Anomalie`.
-6. Die Tabelle filtert die Ergebnisse sofort live.
-
-**Hinweis:** Wenn kein Browser-Fenster aufgeht, schaue unten in der VS-Code-Statusleiste –
+6. Die Tabelle filtert die Ergebnisse sofort live__PROTEC`3NF`PROTECT_3__* Wenn kein Browser-Fenster aufgeht, schaue unten in der VS-Code-Statusleiste –
 dort erscheint nach dem Start von Live Server ein klickbarer Link (z. B. `Port 5500`).
 
 **Alternative ohne Live Server:**
 
-Falls Live Server nicht verfügbar ist, kannst du die Markdown-Version nutzen:
+Falls Live S`Port 5500` verfügbar ist, kannst du die Markdown-Version nutzen:
 [Stichwortverzeichnis (Markdown)](./stichwortverzeichnis_relationale_datenbanken.md)
 Dort sind alle Begriffe tabellarisch aufgelistet, aber ohne Suchfunktion.
 

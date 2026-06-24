@@ -1,3 +1,5 @@
+<!-- CENTRAL_ENTRYPOINT -->
+
 # 📚 Lernroutinen-Wissensdatenbank
 
 **Willkommen!** Dies ist die zentrale Dokumentation für alle Lernroutinen - systematisch, wartbar, redundanzfrei.

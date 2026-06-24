@@ -3,56 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil B - Kardinalitäten</title>
-  <style>
-    :root { --bg:#f8fbf2; --card:#fff; --text:#1d2c1f; --accent:#2f7d32; --note:#e9f8ea; --warn:#fff3e9; }
-    body { margin:0; font-family:"Segoe UI","Verdana",sans-serif; background:linear-gradient(120deg,#f8fbf2,#eef8ff); color:var(--text); }
-    .wrap { max-width:980px; margin:24px auto; padding:0 16px; }
-    .card { background:var(--card); border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent); }
-    h2 { border-bottom:2px solid #d9f0dc; padding-bottom:6px; }
-    .note { background:var(--note); border-left:5px solid #2f7d32; padding:12px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #d9822b; padding:12px; border-radius:8px; }
-    ul,ol { line-height:1.55; }
-  </style>
+  <title>Informationsblatt Teil B: Kardinalitäten (Eine-Sätze, mengenmäßiger Zusammenhang)</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Teil B: Kardinalitäten</h1>
-      <p><strong>Fokus:</strong> Eine-Sätze und mengenmäßiger Zusammenhang</p>
-
-      <h2>Lernziele</h2>
-      <ul>
-        <li>Kardinalitäten aus Texten korrekt ableiten.</li>
-        <li>Pro Beziehung zwei eindeutige Eine-Sätze formulieren.</li>
-        <li>Minimum und Maximum fachlich begründen.</li>
-      </ul>
-
-      <h2>Eine-Satz-Methode</h2>
-      <p>Formuliere immer je Richtung einen Satz:</p>
-      <ul>
-        <li>Von Entität A nach B</li>
-        <li>Von Entität B nach A</li>
-      </ul>
-
-      <h2>Beispiel Lernlabor</h2>
-      <p>LEHRKRAFT und WORKSHOP</p>
-      <ul>
-        <li>Eine Lehrkraft betreut mehrere Workshops.</li>
-        <li>Ein Workshop wird von genau einer Lehrkraft betreut.</li>
-      </ul>
-      <p>Ergebnis: <strong>1:n</strong></p>
-
-      <h2>Mengenmäßiger Zusammenhang</h2>
-      <ul>
-        <li>Minimum: 0 oder 1?</li>
-        <li>Maximum: 1 oder n?</li>
-      </ul>
-
-      <div class="note"><strong>Merksatz:</strong> Erst Sprache, dann Diagramm.</div>
-      <div class="warn"><strong>Typischer Fehler:</strong> Nur eine Richtung begründen.</div>
-    </div>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil B: Kardinalitäten (Eine-Sätze, mengenmäßiger Zusammenhang)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-b/02_kardinalitaeten_eine_saetze_mengenmaessig.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil B: Kardinalitäten (Eine-Sätze, mengenmäßiger Zusammenhang)</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil B: Schulisches Lernlabor</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du formulierst Kardinalitäten als präzise Eine-Sätze.</li>
+<li>Du leitest aus Texten den mengenmäßigen Zusammenhang korrekt ab.</li>
+<li>Du überträgst Kardinalitäten sicher in ein EERM.</li>
+</ul>
+<h2>Was bedeuten Kardinalitäten?</h2>
+<p>Kardinalitäten beschreiben, wie viele Entitäten einer Seite maximal/minimal mit Entitäten der anderen Seite verknüpft sind.</p>
+<p>Häufige Fälle:
+- 1:1
+- 1:n
+- m:n</p>
+<h2>Eine-Sätze als Methode</h2>
+<p>Formuliere immer zwei Sätze, je Richtung einen:
+- Von A nach B
+- Von B nach A</p>
+<h3>Beispiel aus dem Lernlabor</h3>
+<p>Entitätstypen: LEHRKRAFT und WORKSHOP</p>
+<p>Eine-Sätze:
+- Eine Lehrkraft betreut mehrere Workshops.
+- Ein Workshop wird von genau einer Lehrkraft betreut.</p>
+<p>Ergebnis: 1:n (LEHRKRAFT zu WORKSHOP)</p>
+<h2>Mengenmäßiger Zusammenhang</h2>
+<p>Frage dich systematisch:
+- Minimum: Muss eine Verknüpfung existieren? (0 oder 1)
+- Maximum: Wie viele sind möglich? (1 oder n)</p>
+<p>Beispiel:
+- Ein Schüler kann 0 bis n Workshops besuchen.
+- Ein Workshop hat 0 bis n Schüler.
+=&gt; m:n mit optionaler Teilnahme auf beiden Seiten.</p>
+<h2>Merksätze</h2>
+<ul>
+<li>Keine Kardinalität ohne begründenden Eine-Satz.</li>
+<li>Erst Sprache, dann Diagramm.</li>
+<li>Wenn „mehrere auf beiden Seiten“ gilt, ist es meist m:n.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Kardinalitäten „gefühlt“ statt begründet setzen.</li>
+<li>Mindest- und Maximalteil falsch lesen.</li>
+<li>Eine-Sätze nur in eine Richtung formulieren.</li>
+</ul>
+<h2>Mini-Übung</h2>
+<p>Aussage: „Jeder Raum kann zu verschiedenen Zeiten von mehreren Workshops genutzt werden; jeder Workshop findet in genau einem Raum statt.“</p>
+<p>Aufgabe:
+1. Formuliere zwei Eine-Sätze.
+2. Bestimme die Kardinalität.
+3. Begründe kurz.</p>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
   </div>
 </body>
 </html>

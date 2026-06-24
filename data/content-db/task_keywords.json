@@ -1,0 +1,26 @@
+[
+  {
+    "task_id": "task_eerm_context_to_model",
+    "keyword_id": "kw_eerm"
+  },
+  {
+    "task_id": "task_eerm_context_to_model",
+    "keyword_id": "kw_redundanz"
+  },
+  {
+    "task_id": "task_3nf_refactor",
+    "keyword_id": "kw_3nf"
+  },
+  {
+    "task_id": "task_3nf_refactor",
+    "keyword_id": "kw_redundanz"
+  },
+  {
+    "task_id": "task_sql_join_count",
+    "keyword_id": "kw_join"
+  },
+  {
+    "task_id": "task_sql_join_count",
+    "keyword_id": "kw_group_by"
+  }
+]

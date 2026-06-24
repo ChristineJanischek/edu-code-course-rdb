@@ -1,26 +1,60 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Datum-Funktionen in SQL</title>
-  <style>
-    :root { --bg:#f3fff8; --card:#fff; --text:#163326; --accent:#1b8f5a; --tip:#e7fff2; }
-    body { margin:0; font-family:"Segoe UI","Arial",sans-serif; background:linear-gradient(120deg,#f3fff8,#f5f9ff); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#10251b; color:#e6fff3; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #1b8f5a; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Datum-Funktionen in Datenbankabfragen (SQL)</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Datum-Funktionen in Datenbankabfragen</h1>
-  <h2>Beispiele</h2>
-  <pre><code>SELECT *
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Datum-Funktionen in Datenbankabfragen (SQL)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/05_datum_funktionen_in_datenbankabfragen_sql.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Datum-Funktionen in Datenbankabfragen (SQL)</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du filterst und berechnest Daten mit Datumsfunktionen.</li>
+<li>Du nutzt aktuelle Zeitbezüge sicher.</li>
+<li>Du formulierst Zeiträume korrekt.</li>
+</ul>
+<h2>Häufige Funktionen in MySQL</h2>
+<ul>
+<li>CURDATE()</li>
+<li>NOW()</li>
+<li>YEAR()</li>
+<li>MONTH()</li>
+<li>DATEDIFF()</li>
+<li>DATE_ADD()</li>
+</ul>
+<h2>Beispiele</h2>
+<pre><code class="language-sql">SELECT *
 FROM EINSATZ
-WHERE Datum &gt;= CURDATE();</code></pre>
-  <pre><code>SELECT EinsatzID, DATEDIFF(CURDATE(), Datum) AS TageSeitEinsatz
-FROM EINSATZ;</code></pre>
-  <h2>Wichtige Funktionen</h2>
-  <p>CURDATE(), NOW(), YEAR(), MONTH(), DATEDIFF(), DATE_ADD()</p>
-  <div class="tip"><strong>Merksatz:</strong> Zeitraumgrenzen immer eindeutig formulieren.</div>
-</div></div></body>
+WHERE Datum &gt;= CURDATE();
+</code></pre>
+<p><code>sql
+SELECT EinsatzID, DATEDIFF(CURDATE(),</code>sql
+SELECT EinsatzID, DATEDIFF(CURDATE(), Datum) AS TageSeitEinsatz
+FROM EINSATZ;
+```klären, dann codieren.
+- Bei Zeiträumen Grenzen eindeutig setzen.
+- Datum und Zeit nicht unbewusst mischen.</p>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Falscher Datentyp (TEXT statt DATE/DATETIME).</li>
+<li>Unscharfe Zeiträume („ab heute“) ohne genaue Bedingung.</li>
+<li>Jahres-/Monatsfilter ohne Indexbewusstsein bei großen Datenmengen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

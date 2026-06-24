@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilfsmittel Teil C: SQL-Abfragen über mehrere Tabellen</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Hilfsmittel Teil C: SQL-Abfragen über mehrere Tabellen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/anleitungen/KA02_2025_2026_VERSION1_teil-c-hilfsmittel.md</p>
+    </header>
+    <main class="content">
+<h1>Hilfsmittel Teil C: SQL-Abfragen über mehrere Tabellen</h1>
+<p>Diese Anleitung führt dich von der Aufgabenstellung über das Schema bis zur Abfrage. Der Fokus liegt auf der sauberen Join-Kette und auf den richtigen Filter- und Aggregationsschritten.</p>
+<h2>Ausgehend von diesen Quellen arbeiten</h2>
+<ul>
+<li><a href="../klassenarbeiten/KA02_2025_2026_VERSION1_aufg.html">Aufgaben VERSION1</a></li>
+<li><a href="../klassenarbeiten/KA02_2025_2026_VERSION1_lsg.html">Lösung VERSION1</a></li>
+<li><a href="../informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.html">Teil C: Abfragen über mehrere Tabellen</a></li>
+<li><a href="../informationen/teil-c/03_selektion_in_sql.html">Teil C: Selektion in SQL</a></li>
+<li><a href="../informationen/teil-c/06_gruppierung_in_sql.html">Teil C: Gruppierung in SQL</a></li>
+<li><a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+<li><a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis (suchbare HTML-Ansicht)</a></li>
+</ul>
+<h2>1. Zuerst das Schema lesen</h2>
+<p>Die technische Grundlage liegt getrennt in:</p>
+<ul>
+<li><a href="../klassenarbeiten/stadtfahrradverleih_struktur_2025.sql">SQL-Struktur</a></li>
+<li><a href="../klassenarbeiten/stadtfahrradverleih_daten_2025.sql">SQL-Daten</a></li>
+<li><a href="../klassenarbeiten/stadtfahrradverleih_2025.png">EERM-Referenzgrafik</a></li>
+</ul>
+<p>Wichtige Tabellen und Rollen:</p>
+<table>
+<thead>
+<tr>
+<th>Tabelle</th>
+<th>Wozu sie dient</th>
+<th>Wichtige Schlüsselspalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kunden</td>
+<td>Personen</td>
+<td>kunde_id</td>
+</tr>
+<tr>
+<td>stationen</td>
+<td>Start- und Zielorte</td>
+<td>station_id</td>
+</tr>
+<tr>
+<td>fahrraeder</td>
+<td>Fahrräder und Typen</td>
+<td>fahrrad_id, station_id</td>
+</tr>
+<tr>
+<td>ausleihen</td>
+<td>Vorgänge</td>
+<td>ausleihe_id, kunde_id, fahrrad_id, start_station_id, ziel_station_id</td>
+</tr>
+<tr>
+<td>wartungen</td>
+<td>Wartungshistorie</td>
+<td>wartung_id, fahrrad_id</td>
+</tr>
+<tr>
+<td>zahlungen</td>
+<td>Zahlungsdaten</td>
+<td>zahlung_id, ausleihe_id</td>
+</tr>
+</tbody>
+</table>
+<p>Wichtige Ergänzung aus dem Strukturdump:</p>
+<ul>
+<li>Der Zielkontext ist eine eigene 3NF-Datenbank mit dem Namen stadtfahrradverleihdb_2025.</li>
+<li>Start- und Zielstation sind zwei Rollen derselben Tabelle stationen, deshalb brauchst du zwei Aliase.</li>
+<li>Für Auswertungen zählen nur abgeschlossene Ausleihen.</li>
+</ul>
+<h2>2. Aufgabe 4.1 Schritt für Schritt</h2>
+<p>Ziel: Kundennamen, Fahrradnummer, Fahrradtyp, Start- und Zielstation sowie Zahlbetrag ausgeben.</p>
+<p>Arbeitsreihenfolge:</p>
+<ol>
+<li>Nimm ausleihen als Basistabelle.</li>
+<li>Verbinde kunden über kunde_id.</li>
+<li>Verbinde fahrraeder über fahrrad_id.</li>
+<li>Verbinde stationen zweimal, einmal für start_station_id und einmal für ziel_station_id.</li>
+<li>Verbinde zahlungen über ausleihe_id.</li>
+<li>Filtere auf status = abgeschlossen.</li>
+<li>Sortiere nach Kundennachname und startzeit.</li>
+</ol>
+<p>Kontrollfrage:</p>
+<ul>
+<li>Wenn ein Ausgabefeld aus einer anderen Tabelle kommt, fehlt meist genau dieser Join.</li>
+</ul>
+<h2>3. Aufgabe 4.2 Schritt für Schritt</h2>
+<p>Ziel: je Person die Anzahl abgeschlossener Ausleihen, aber nur ab 2.</p>
+<p>Arbeitsreihenfolge:</p>
+<ol>
+<li>Starte wieder bei kunden und ausleihen.</li>
+<li>Begrenze die Zeilen auf abgeschlossene Ausleihen.</li>
+<li>Bilde die Gruppen pro Person.</li>
+<li>Zähle die Ausleihen je Gruppe.</li>
+<li>Filtere die Gruppen mit mindestens 2 über HAVING.</li>
+</ol>
+<p>Merksatz:</p>
+<ul>
+<li>WHERE filtert Zeilen.</li>
+<li>HAVING filtert Gruppen.</li>
+</ul>
+<h2>4. Aufgabe 4.3 Schritt für Schritt</h2>
+<p>Ziel: pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen und Kunden.</p>
+<p>Arbeitsreihenfolge:</p>
+<ol>
+<li>Verbinde stationen mit ausleihen über start_station_id.</li>
+<li>Gib pro Station genau eine Ergebniszeile aus.</li>
+<li>Ermittle den letzten Start mit MAX(startzeit).</li>
+<li>Zähle unterschiedliche Personen mit COUNT(DISTINCT kunde_id).</li>
+<li>Gruppiere nach station_id und stationsname.</li>
+</ol>
+<p>Kontrollfrage:</p>
+<ul>
+<li>Wenn du mehr als eine Zeile pro Station erhältst, fehlt die Gruppierung oder sie ist zu grob.</li>
+</ul>
+<h2>5. Aufgabe 4.4 Schritt für Schritt</h2>
+<p>Ziel: Fahrräder ohne dokumentierte Wartung.</p>
+<p>Arbeitsreihenfolge:</p>
+<ol>
+<li>Nimm fahrraeder als Basistabelle.</li>
+<li>Verbinde wartungen per LEFT JOIN über fahrrad_id.</li>
+<li>Suche die Fahrräder, bei denen keine Wartung gefunden wurde.</li>
+<li>Prüfe dafür das NULL-Feld aus der Wartungstabelle.</li>
+</ol>
+<p>Merksatz:</p>
+<ul>
+<li>Ein LEFT JOIN behält die linke Tabelle vollständig und zeigt rechts NULL, wenn kein Treffer existiert.</li>
+</ul>
+<h2>6. Prüfstrategie vor dem Abgeben</h2>
+<ul>
+<li>Stimmen alle Join-Spalten mit den Fremdschlüsseln aus dem Strukturdump überein?</li>
+<li>Ist die Rolle der stationen-Tabelle zweimal sauber getrennt?</li>
+<li>Ist der Statusfilter nur bei abgeschlossenen Ausleihen gesetzt?</li>
+<li>Werden Gruppen erst nach dem GROUP BY mit HAVING geprüft?</li>
+<li>Ist die Abfrage ohne unnötige Wiederholungen gebaut?</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

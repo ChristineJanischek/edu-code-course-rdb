@@ -1,0 +1,56 @@
+[
+  {
+    "document_id": "doc_architektur",
+    "context_id": "ctx_governance",
+    "kind": "handbuch",
+    "title": "Architektur",
+    "source_path": "docs/handbuch/ARCHITEKTUR.md",
+    "summary": "Systemdesign, Schichten, Governance und Erweiterungspfade.",
+    "target_audience": "Lehrkraefte und Maintainer"
+  },
+  {
+    "document_id": "doc_redundanz_prozess",
+    "context_id": "ctx_governance",
+    "kind": "handbuch",
+    "title": "Redundanz-Management",
+    "source_path": "docs/handbuch/prozesse/redundanz-management.md",
+    "summary": "Vorgehen zur Erkennung und Elimination von inhaltlicher Doppelung.",
+    "target_audience": "Maintainer"
+  },
+  {
+    "document_id": "doc_teilb_3nf",
+    "context_id": "ctx_eerm_modelling",
+    "kind": "generated",
+    "title": "Normalisierung bis 3NF",
+    "source_path": "generated/informationen/teil-b/03_normalisierung_bis_3nf.md",
+    "summary": "Lernmaterial zu Normalformen, Abhaengigkeiten und Anomalien.",
+    "target_audience": "Lernende"
+  },
+  {
+    "document_id": "doc_teilc_join",
+    "context_id": "ctx_sql_queries",
+    "kind": "generated",
+    "title": "SQL ueber mehrere Tabellen",
+    "source_path": "generated/informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md",
+    "summary": "Lernmaterial fuer JOIN-basierte Abfragen.",
+    "target_audience": "Lernende"
+  },
+  {
+    "document_id": "doc_ka_v1_aufgabe",
+    "context_id": "ctx_exam_assets",
+    "kind": "generated",
+    "title": "KA02 VERSION1 Aufgabenstellung",
+    "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_aufg.md",
+    "summary": "Pruefungsaufgaben inkl. Kontextmaterialien.",
+    "target_audience": "Lernende"
+  },
+  {
+    "document_id": "doc_ka_v1_loesung",
+    "context_id": "ctx_exam_assets",
+    "kind": "generated",
+    "title": "KA02 VERSION1 Loesung",
+    "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md",
+    "summary": "Loesung und Erwartungshorizont fuer die Aufgabenstellung.",
+    "target_audience": "Lehrkraefte"
+  }
+]

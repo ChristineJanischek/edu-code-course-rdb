@@ -3,45 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil B - Referentielle Integrität</title>
-  <style>
-    :root { --bg:#f3fffd; --card:#fff; --text:#13302b; --accent:#00796b; --note:#e6fffa; --warn:#fff5ea; }
-    body { margin:0; font-family:"Segoe UI","Calibri",sans-serif; background:linear-gradient(120deg,#f3fffd,#f5f8ff); color:var(--text); }
-    .wrap { max-width:980px; margin:24px auto; padding:0 16px; }
-    .card { background:var(--card); border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent); }
-    h2 { border-bottom:2px solid #ccefe8; padding-bottom:6px; }
-    .note { background:var(--note); border-left:5px solid #00796b; padding:12px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #d9822b; padding:12px; border-radius:8px; }
-    ul { line-height:1.55; }
-  </style>
+  <title>Informationsblatt Teil B: Referentielle Integrität</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Teil B: Referentielle Integrität</h1>
-
-      <h2>Kernidee</h2>
-      <p>Ein Fremdschlüssel darf nur auf einen vorhandenen Primärschlüssel verweisen (oder auf NULL, wenn erlaubt).</p>
-
-      <h2>Beispiel Lernlabor</h2>
-      <ul>
-        <li>SCHUELER(SchuelerID PK, Name)</li>
-        <li>WORKSHOP(WorkshopID PK, Titel)</li>
-        <li>TEILNAHME(TeilnahmeID PK, SchuelerID FK, WorkshopID FK)</li>
-      </ul>
-      <p>Eine Teilnahme ist nur gültig, wenn Schüler und Workshop existieren.</p>
-
-      <h2>Integritätsaktionen</h2>
-      <ul>
-        <li>RESTRICT/NO ACTION</li>
-        <li>CASCADE</li>
-        <li>SET NULL</li>
-      </ul>
-
-      <div class="note"><strong>Merksatz:</strong> Beziehungen brauchen Regeln, sonst entstehen verwaiste Datensätze.</div>
-      <div class="warn"><strong>Typischer Fehler:</strong> FK und PK mit unpassenden Datentypen modellieren.</div>
-    </div>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil B: Referentielle Integrität</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-b/05_referentielle_integritaet.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil B: Referentielle Integrität</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil B: Schulisches Lernlabor</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du erklärst den Begriff referentielle Integrität korrekt.</li>
+<li>Du erkennst, wann Fremdschlüssel benötigt werden.</li>
+<li>Du beschreibst die Wirkung von Integritätsregeln.</li>
+</ul>
+<h2>Grundidee</h2>
+<p>Referentielle Integrität bedeutet: Ein Fremdschlüsselwert muss auf einen existierenden Primärschlüssel verweisen (oder NULL sein, falls erlaubt).</p>
+<h2>Beispiel aus dem Lernlabor</h2>
+<ul>
+<li>SCHUELER(SchuelerID PK, Name)</li>
+<li>WORKSHOP(WorkshopID PK, Titel)</li>
+<li>TEILNAHME(TeilnahmeID PK, SchuelerID FK, WorkshopID FK)</li>
+</ul>
+<p>Regel:
+- Eine Teilnahme darf nur existieren, wenn der zugehörige Schüler und der zugehörige Workshop existieren.</p>
+<h2>Warum ist das wichtig?</h2>
+<p>Ohne referentielle Integrität entstehen „verwaiste“ Datensätze.</p>
+<p>Beispiel:
+- In TEILNAHME steht WorkshopID=77, aber Workshop 77 existiert nicht.</p>
+<p>Das führt zu fehlerhaften Auswertungen und unzuverlässigen Daten.</p>
+<h2>Integritätsaktionen (fachlich verstehen)</h2>
+<ul>
+<li>RESTRICT/NO ACTION: Löschen/Ändern wird verhindert, wenn Verweise existieren.</li>
+<li>CASCADE: Änderungen/Löschungen werden auf abhängige Datensätze übertragen.</li>
+<li>SET NULL: FK wird auf NULL gesetzt (nur wenn erlaubt).</li>
+</ul>
+<h2>Merksätze</h2>
+<ul>
+<li>Kein Fremdschlüssel ohne gültiges Ziel.</li>
+<li>Beziehungen brauchen technische Absicherung durch FK-Regeln.</li>
+<li>Datenqualität ist kein Zufall, sondern Regelwerk.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Fremdschlüssel vergessen.</li>
+<li>Datentypen von PK und FK passen nicht zusammen.</li>
+<li>Löschregeln ohne fachliche Begründung wählen.</li>
+</ul>
+<h2>Klassenarbeitsfokus</h2>
+<p>Wenn ihr im EERM Beziehungen modelliert, denkt direkt mit:
+- Wo liegt später der Fremdschlüssel?
+- Welche Integritätsregel passt fachlich?</p>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
   </div>
 </body>
 </html>

@@ -24,12 +24,10 @@ WHERE Datum >= CURDATE();
 ```
 
 ```sql
+SELECT EinsatzID, DATEDIFF(CURDATE(), ```sql
 SELECT EinsatzID, DATEDIFF(CURDATE(), Datum) AS TageSeitEinsatz
 FROM EINSATZ;
-```
-
-## Merksätze
-- Datumslogik zuerst fachlich klären, dann codieren.
+```klären, dann codieren.
 - Bei Zeiträumen Grenzen eindeutig setzen.
 - Datum und Zeit nicht unbewusst mischen.
 

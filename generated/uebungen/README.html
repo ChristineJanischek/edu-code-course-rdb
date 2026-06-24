@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Übungen: SQL-Abfragen über mehrere Tabellen</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Übungen: SQL-Abfragen über mehrere Tabellen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/uebungen/README.md</p>
+    </header>
+    <main class="content">
+<h1>Übungen: SQL-Abfragen über mehrere Tabellen</h1>
+<blockquote>
+<p>Hinweis: Zentraler Einstieg für Lernende ist <a href="../README.html">../README.md</a>.
+Diese Seite ist die Detailübersicht für Übungen.</p>
+</blockquote>
+<h2>Übungsblätter</h2>
+<table>
+<thead>
+<tr>
+<th>Blatt</th>
+<th>Kontext</th>
+<th>Themen</th>
+<th>Aufgaben</th>
+<th>HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./UE01_foodtrucknetz_sql_abfragen.html">UE01 FoodTruckNetz</a></td>
+<td>foodtrucknetzdb_2025</td>
+<td>JOIN, WHERE, OR, GROUP BY, HAVING, AVG, SUM, MONTH</td>
+<td>10</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><a href="./UE02_stadtfahrradverleih_sql_abfragen.html">UE02 Stadtfahrradverleih</a></td>
+<td>stadtfahrradverleihdb_2025</td>
+<td>JOIN (5 Tabellen), LEFT JOIN, IS NULL, HAVING, AVG, MAX, MIN</td>
+<td>10</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<h2>So öffnest du ein Übungsblatt</h2>
+<ol>
+<li>Explorer öffnen (Symbol links oben in VS Code).</li>
+<li>Datei <code>UE01_foodtrucknetz_sql_abfragen.html</code> suchen.</li>
+<li>Rechtsklick → <strong>„Open with Live Server"</strong>.</li>
+<li>Aufgabe lesen, Lösung in das Textfeld schreiben.</li>
+<li><strong>„Musterlösung"</strong> oder <strong>„Erwartetes Ergebnis"</strong> aufklappen, um deine Antwort zu vergleichen.</li>
+</ol>
+<h2>Datenbanken einrichten (MySQL Workbench)</h2>
+<p>Für jedes Übungsblatt gibt es im Ordner <code>daten/</code> einen vollständi<code>daten/</code>Dump:</p>
+<pre><code class="language-bash"># 1. Struktur einlesen (aus generated/klassenarbeiten/)
+mysql -u root -p &lt; ../klassenarbeiten/foodtrucknetz_struktur_2025.sql
+
+# 2. Erweiterte Übungsdaten einlesen
+mysql -u root -p &lt; daten/foodtrucknetz_uebung_daten.sql
+</code></pre>
+<p><code>``bash
+mysql -u roo__</code>bash
+mysql -u root -p &lt; ../klassenarbeiten/stadtfahrradverleih_struktur_2025.sql
+mysql -u root -p &lt; daten/stadtfahrradverleih_uebung_daten.sql
+`emenabdeckung</p>
+<table>
+<thead>
+<tr>
+<th>Thema</th>
+<th>UE01</th>
+<th>UE02</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WHERE +```bash</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mysql -u root -p &lt; ../klassenarbeiten/stadtfahrradverleih_struktur_2025.sql</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mysql -u root -p &lt; daten/stadtfahrradverleih_uebung_daten.sql</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>```</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AVG + GROUP BY</td>
+<td>A5, A10</td>
+<td>A7, A9</td>
+</tr>
+<tr>
+<td>HAVING</td>
+<td>A4, A1``</td>
+<td>A5, A6</td>
+</tr>
+<tr>
+<td>MAX / MIN</td>
+<td>A9</td>
+<td>A10</td>
+</tr>
+<tr>
+<td>LEFT JOIN + IS NULL</td>
+<td>—</td>
+<td>A8</td>
+</tr>
+<tr>
+<td>ORDER BY</td>
+<td>alle</td>
+<td>alle</td>
+</tr>
+</tbody>
+</table>
+<h2>Lernziel</h2>
+<p>Nach Bearbeitung aller Aufgaben bist du in der Lage:
+- mehrtabellige SELECT-Abfragen sicher aufzubauen
+- WHERE, AND, OR korrekt zu kombinieren (mit Klammerung)
+- Aggregatfunktionen COUNT, SUM, AVG, MAX, MIN anzuwenden
+- Datumsfunktionen YEAR() und MONTH() für Zeitraumfilter einzusetzen
+- GROUP BY und HAVING zu unterscheiden und richtig einzusetzen
+- ORDER BY für Sortierung zu nutzen</p>
+<h2>Verknüpfte Hilfsmittel</h2>
+<ul>
+<li><a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+<li><a href="../informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.html">Informationsblatt: JOIN und mehrere Tabellen</a></li>
+<li><a href="../informationen/teil-c/06_gruppierung_in_sql.html">Informationsblatt: Gruppierung in SQL</a></li>
+<li><a href="../informationen/teil-c/03_selektion_in_sql.html">Informationsblatt: Selektion in SQL</a></li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

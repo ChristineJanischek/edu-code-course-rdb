@@ -3,63 +3,79 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil B - Grundlagen Modellierung (EERM)</title>
-  <style>
-    :root { --bg:#f4f8ff; --card:#ffffff; --text:#172033; --accent:#005f99; --accent-2:#00a3a3; --note:#e8fff8; --warn:#fff4e5; }
-    body { margin:0; font-family: "Segoe UI", "Trebuchet MS", sans-serif; background: linear-gradient(135deg,#f4f8ff,#eefaf8); color:var(--text); }
-    .wrap { max-width: 980px; margin: 24px auto; padding: 0 16px; }
-    .card { background:var(--card); border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1 { margin-top:0; color:var(--accent); }
-    h2 { color:var(--accent); border-bottom:2px solid #d8ecff; padding-bottom:6px; }
-    .badge { display:inline-block; background:var(--accent-2); color:#fff; border-radius:999px; padding:4px 12px; font-size:.9rem; }
-    .note { background:var(--note); border-left:5px solid #1ca37d; padding:12px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #d9822b; padding:12px; border-radius:8px; }
-    ul, ol { line-height:1.55; }
-  </style>
+  <title>Informationsblatt Teil B: Grundlagen Modellierung (EERM)</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <span class="badge">Sek II Abschlussjahr</span>
-      <h1>Teil B: Grundlagen Modellierung (EERM)</h1>
-      <p><strong>Kontext:</strong> Schulisches Lernlabor (Teil-B-Kontext)</p>
-
-      <h2>Lernziele</h2>
-      <ul>
-        <li>Zweck eines EERM sicher erklären.</li>
-        <li>Entitätstyp, Attribut und Beziehungstyp unterscheiden.</li>
-        <li>Einen Sachverhalt in MySQL Workbench als EERM modellieren.</li>
-      </ul>
-
-      <h2>Zentrale Begriffe</h2>
-      <ul>
-        <li><strong>Entitätstyp:</strong> Objektbereich, über den Daten gespeichert werden.</li>
-        <li><strong>Attribut:</strong> Eigenschaft eines Entitätstyps.</li>
-        <li><strong>Primärschlüssel:</strong> eindeutige Identifikation einer Entität.</li>
-        <li><strong>Beziehungstyp:</strong> fachliche Verknüpfung zwischen Entitätstypen.</li>
-      </ul>
-
-      <h2>Praktisches Beispiel</h2>
-      <p>Im Lernlabor wählen Schülerinnen und Schüler Workshops:</p>
-      <ul>
-        <li>SCHUELER(SchuelerID, Vorname, Nachname, Jahrgang)</li>
-        <li>WORKSHOP(WorkshopID, Titel, Raum)</li>
-        <li>NIMMT_TEIL(SchuelerID, WorkshopID)</li>
-      </ul>
-      <p>Ein Schüler kann mehrere Workshops wählen, ein Workshop hat mehrere Schüler: fachlich <strong>m:n</strong>.</p>
-
-      <h2>Vorgehen in Teil B</h2>
-      <ol>
-        <li>Nomen markieren: mögliche Entitätstypen.</li>
-        <li>Verben markieren: mögliche Beziehungstypen.</li>
-        <li>Attribute und Primärschlüssel festlegen.</li>
-        <li>Kardinalitäten begründen.</li>
-        <li>EERM sauber in Workbench zeichnen.</li>
-      </ol>
-
-      <div class="note"><strong>Merksatz:</strong> Fachlogik zuerst, Technik danach.</div>
-      <div class="warn"><strong>Typischer Fehler:</strong> Beziehung als Attribut modellieren.</div>
-    </div>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil B: Grundlagen Modellierung (EERM)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-b/01_grundlagen_modellierung_eerm.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil B: Grundlagen Modellierung (EERM)</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil B: Schulisches Lernlabor (anders als Teil C)</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du erklärst den Zweck von EERM in eigenen Worten.</li>
+<li>Du unterscheidest Entitätstyp, Attribut und Beziehungstyp sicher.</li>
+<li>Du modellierst einen einfachen Sachverhalt als EERM für MySQL Workbench.</li>
+</ul>
+<h2>Warum EERM?</h2>
+<p>Ein EERM hilft dir, einen realen Sachverhalt sauber zu strukturieren, bevor Tabellen erstellt werden.<br />
+Grundidee: Erst fachlich korrekt modellieren, dann technisch umsetzen.</p>
+<h2>Zentrale Begriffe</h2>
+<ul>
+<li>Entitätstyp: Ein Ding oder Objektbereich, über den Daten gespeichert werden.</li>
+<li>Attribut: Eine Eigenschaft eines Entitätstyps.</li>
+<li>Primärschlüssel (PK): Attribut, das jede Entität eindeutig identifiziert.</li>
+<li>Beziehungstyp: Verknüpfung zwischen Entitätstypen.</li>
+</ul>
+<h2>Praktisches Beispiel aus eurem Kontext (Lernlabor)</h2>
+<p>Sachverhalt: In einem Lernlabor wählen Schülerinnen und Schüler Workshops.</p>
+<ul>
+<li>Entitätstyp SCHUELER: SchuelerID (PK), Vorname, Nachname, Jahrgang</li>
+<li>Entitätstyp WORKSHOP: WorkshopID (PK), Titel, Raum</li>
+<li>Beziehungstyp NIMMT_TEIL zwischen SCHUELER und WORKSHOP</li>
+</ul>
+<p>Gedankengang:
+- Ein Schüler kann mehrere Workshops wählen.
+- Ein Workshop kann von mehreren Schülern besucht werden.
+- Damit liegt fachlich eine m:n-Beziehung vor.</p>
+<h2>Vorgehen in der Klassenarbeit (Teil B)</h2>
+<ol>
+<li>Aufgabenstellung markieren: Nomen als mögliche Entitätstypen.</li>
+<li>Verben prüfen: mögliche Beziehungstypen.</li>
+<li>Attribute ergänzen, dann Primärschlüssel festlegen.</li>
+<li>Kardinalitäten begründen (nicht raten).</li>
+<li>Ergebnis als EERM in MySQL Workbench zeichnen.</li>
+</ol>
+<h2>Merksätze</h2>
+<ul>
+<li>Fachlogik zuerst, Technik danach.</li>
+<li>Jeder Entitätstyp braucht einen eindeutigen Schlüssel.</li>
+<li>Beziehungen beschreiben immer einen fachlichen Zusammenhang.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Entitätstypen mit Attributen verwechseln.</li>
+<li>Beziehung als Attribut modellieren.</li>
+<li>Fehlender Primärschlüssel.</li>
+</ul>
+<h2>Mini-Check vor Abgabe</h2>
+<ul>
+<li>Sind alle Entitätstypen fachlich notwendig?</li>
+<li>Hat jeder Entitätstyp einen PK?</li>
+<li>Sind alle Beziehungen mit Kardinalitäten versehen?</li>
+<li>Ist das Modell konsistent und eindeutig lesbar?</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
   </div>
 </body>
 </html>

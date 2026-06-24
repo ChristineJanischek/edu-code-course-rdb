@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilfsmittel Teil B: EERM, Normalisierung und Anomalien</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Hilfsmittel Teil B: EERM, Normalisierung und Anomalien</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/anleitungen/KA02_2025_2026_VERSION1_teil-b-hilfsmittel.md</p>
+    </header>
+    <main class="content">
+<h1>Hilfsmittel Teil B: EERM, Normalisierung und Anomalien</h1>
+<p>Diese Anleitung hilft dir, die Lösung schrittweise selbst zu erarbeiten. Sie ersetzt nicht das sachliche Lesen der Aufgabe, sondern zeigt dir die Reihenfolge der Gedanken.</p>
+<h2>Ausgehend von diesen Quellen arbeiten</h2>
+<ul>
+<li><a href="../klassenarbeiten/KA02_2025_2026_VERSION1_aufg.html">Aufgaben VERSION1</a></li>
+<li><a href="../klassenarbeiten/KA02_2025_2026_VERSION1_lsg.html">Lösung VERSION1</a></li>
+<li><a href="../informationen/teil-b/01_grundlagen_modellierung_eerm.html">Grundlagen Modellierung</a></li>
+<li><a href="../informationen/teil-b/02_kardinalitaeten_eine_saetze_mengenmaessig.html">Kardinalitäten</a></li>
+<li><a href="../informationen/teil-b/03_normalisierung_bis_3nf.html">Normalisierung bis 3NF</a></li>
+<li><a href="../informationen/teil-b/04_redundanzen.html">Redundanzen</a></li>
+<li><a href="../informationen/teil-b/05_referentielle_integritaet.html">Referentielle Integrität</a></li>
+<li><a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+<li><a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis (suchbare HTML-Ansicht)</a></li>
+<li><a href="../klassenarbeiten/WORKBENCH-MWB-WORKFLOW.html">Workbench-Workflow</a></li>
+</ul>
+<h2>1. Sachverhalt in Fachbegriffe zerlegen</h2>
+<p>Lies den Text einmal nur fachlich. Markiere:</p>
+<ul>
+<li>Dinge, die als Entitätstypen infrage kommen</li>
+<li>Verben, die Beziehungen andeuten</li>
+<li>Eigenschaften, die als Attribute brauchbar sind</li>
+<li>Formulierungen wie mehrfach, gemeinsam, zu Terminen, im Team oder ohne aktive Zuordnung</li>
+</ul>
+<p>Für diesen Kontext führen die wichtigsten Kandidaten typischerweise zu:</p>
+<ul>
+<li>Teilnehmende</li>
+<li>Kurse</li>
+<li>Termine</li>
+<li>Lehrkräfte</li>
+<li>Buchungen</li>
+</ul>
+<h2>2. Beziehungen mit Eine-Sätzen absichern</h2>
+<p>Nutze die Methode aus dem Informationsblatt zu Kardinalitäten:</p>
+<ul>
+<li>Eine Teilnehmende kann mehrere Buchungen haben.</li>
+<li>Eine Buchung gehört zu genau einer teilnehmenden Person.</li>
+<li>Ein Kurs hat mehrere Termine.</li>
+<li>Ein Termin gehört zu genau einem Kurs.</li>
+<li>Eine Lehrkraft kann mehrere Kurse betreuen.</li>
+<li>Ein Kurs kann im Team von mehreren Lehrkräften betreut werden.</li>
+</ul>
+<p>Wenn du eine Beziehung in beide Richtungen mit mehreren Beteiligten formulieren kannst, prüfe zuerst eine n:m-Beziehung. Wenn eine Seite eindeutig genau eins ist, bleibt es bei 1:n.</p>
+<h2>3. Entitätstypen und Schlüssel festlegen</h2>
+<p>Arbeite erst die Fachstruktur aus, dann die Technik:</p>
+<ul>
+<li>Jeder Entitätstyp bekommt einen Primärschlüssel.</li>
+<li>Fachliche Namen bleiben lesbar und kurz.</li>
+<li>Vermeide doppelte Speicherung derselben Information.</li>
+</ul>
+<p>Für das Modell bedeutet das:</p>
+<ul>
+<li>Stammdaten wie Name oder Titel gehören in den passenden Entitätstyp.</li>
+<li>Buchungsinformationen gehören in die Buchung.</li>
+<li>Terminbezogene Angaben gehören in den Termin.</li>
+</ul>
+<p>Wenn dir bei Attributen etwas fehlt, ergänze nur das Nötige für die Fachlogik und die Auswertung. Nicht jedes denkbare Detail muss modelliert werden.</p>
+<h2>4. Das Modell in MySQL Workbench aufbauen</h2>
+<p>Baue das EERM in dieser Reihenfolge:</p>
+<ol>
+<li>Entitätstypen anlegen</li>
+<li>Primärschlüssel setzen</li>
+<li>Beziehungen modellieren</li>
+<li>Kardinalitäten eintragen</li>
+<li>Nur dann Attribute ergänzen, wenn sie fachlich gebraucht werden</li>
+</ol>
+<p>Für die Team-Betreuung gilt: Wenn ein Kurs von mehreren Lehrkräften betreut werden kann, dann muss die Beziehung zwischen Lehrkraft und Kurs fachlich als n:m gedacht werden. Eine Zwischentabelle oder Assoziation ist dann die saubere Lösung.</p>
+<h2>5. Normalisierung bis 3NF prüfen</h2>
+<p>Gehe mit den drei Prüfungen aus dem Infoblatt vor:</p>
+<ul>
+<li>1NF: keine Listenwerte und keine zusammengesetzten Zellen</li>
+<li>2NF: bei zusammengesetzten Schlüsseln müssen Nichtschlüsselattribute vom ganzen Schlüssel abhängen</li>
+<li>3NF: keine transitiven Abhängigkeiten</li>
+</ul>
+<p>Praktische Leitfrage:</p>
+<ul>
+<li>Steht eine Kurs- oder Lehrkraftinformation mehrfach in einer Buchung, ist das ein Warnsignal.</li>
+<li>Hängt ein Attribut nur indirekt über ein anderes Nichtschlüsselattribut ab, ist das kein 3NF-Zustand.</li>
+</ul>
+<p>Als Kontrollidee kannst du diese funktionalen Abhängigkeiten prüfen:</p>
+<ul>
+<li>termin_id bestimmt kurs_id</li>
+<li>buchung_id bestimmt teilnehmer_id und termin_id</li>
+</ul>
+<p>Wenn du solche Abhängigkeiten sauber trennen kannst, bist du auf dem richtigen Weg.</p>
+<h2>6. Redundanzen und Anomalien benennen</h2>
+<p>Nimm die drei Standardfragen aus dem Infoblatt:</p>
+<ul>
+<li>Welche Information würde mehrfach auftauchen?</li>
+<li>Was müsste bei einer Änderung an mehreren Stellen angepasst werden?</li>
+<li>Was geht verloren, wenn ein Datensatz gelöscht wird?</li>
+</ul>
+<p>Beispielhafte Formulierung für die Lösung:</p>
+<ul>
+<li>Einfügeanomalie: Eine neue Fachinformation lässt sich nicht unabhängig anlegen.</li>
+<li>Änderungsanomalie: Ein Kursname müsste an vielen Stellen gleichzeitig korrigiert werden.</li>
+<li>Löschanomalie: Beim Löschen eines Vorgangs verschwinden fachlich wichtige Restinformationen mit.</li>
+</ul>
+<h2>7. Abschlusskontrolle vor der Abgabe</h2>
+<ul>
+<li>Ist jeder Entitätstyp fachlich begründet?</li>
+<li>Sind alle Kardinalitäten mit Eine-Sätzen abgesichert?</li>
+<li>Gibt es keine doppelte Speicherung derselben Stammdaten?</li>
+<li>Sind die Fremdschlüsselbeziehungen fachlich nachvollziehbar?</li>
+<li>Ist die Modellierung unabhängig vom SQL-Teil gedacht?</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

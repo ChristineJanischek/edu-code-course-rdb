@@ -1,22 +1,53 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Daten einfügen</title>
-  <style>
-    :root { --bg:#f3fff9; --card:#fff; --text:#163326; --accent:#127a4d; --tip:#e5fff1; }
-    body { margin:0; font-family:"Segoe UI","Calibri",sans-serif; background:linear-gradient(120deg,#f3fff9,#f3f8ff); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#10251b; color:#e6fff3; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #127a4d; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Daten einfügen</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Daten einfügen</h1>
-  <pre><code>INSERT INTO FOODTRUCK (TruckID, Name, Kategorie, Rating)
-VALUES (101, 'Green Wheels', 'Vegan', 4.7);</code></pre>
-  <pre><code>INSERT INTO STANDORT (StandortID, Stadt)
-VALUES (1, 'Kiel'), (2, 'Luebeck');</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> Spaltenliste immer explizit angeben.</div>
-</div></div></body>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Daten einfügen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/08_daten_einfuegen.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Daten einfügen</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du fügst Datensätze mit INSERT korrekt ein.</li>
+<li>Du beachtest Datentypen und Pflichtfelder.</li>
+<li>Du vermeidest Integritätsverletzungen.</li>
+</ul>
+<h2>Grundmuster</h2>
+<pre><code class="language-sql">INSERT INTO FOODTRUCK (TruckID, Name, Kategorie, Rating)
+VALUES (101, 'Green Wheels', 'Vegan', 4.7);
+</code></pre>
+<h2>Mehrere Datensätze</h2>
+<p>__<code>sql
+INSERT INTO STANDORT (StandortID, Stadt)
+VALUES (1, 'Kiel'), (2, 'Luebeck');</code>uebeck');
+```</p>
+<h2>Merksä```sql</h2>
+<p>INSERT INTO STANDORT (StandortID, Stadt)
+VALUES (1, 'Kiel'), (2, 'Luebeck');
+<code>`ereinstimmen.
+- FK-Werte nur auf</code>istierende PKs setzen.</p>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Fehlende Pflichtspalten.</li>
+<li>Falsche Datumsformate.</li>
+<li>Fremdschlüssel auf nicht existente Datensätze.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

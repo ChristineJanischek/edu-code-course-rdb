@@ -1,0 +1,23 @@
+[
+  {
+    "solution_id": "solution_eerm_context_to_model",
+    "task_id": "task_eerm_context_to_model",
+    "version": "1.0",
+    "source_path": "generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.md",
+    "summary": "Referenz fuer modellierungsbezogene Ableitungen und Kardinalitaetsbegruendung."
+  },
+  {
+    "solution_id": "solution_3nf_refactor",
+    "task_id": "task_3nf_refactor",
+    "version": "1.0",
+    "source_path": "generated/informationen/teil-b/03_normalisierung_bis_3nf.md",
+    "summary": "Referenz fuer Normalisierungsschritte und Anomaliebegruendung."
+  },
+  {
+    "solution_id": "solution_sql_join_count",
+    "task_id": "task_sql_join_count",
+    "version": "1.0",
+    "source_path": "generated/informationen/teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md",
+    "summary": "Referenz fuer JOIN- und GROUP-BY-Struktur."
+  }
+]

@@ -24,7 +24,7 @@ gewichtung:
 - Gesamtpunkte: 34
 - Tool-Hinweis: Modellierung als EERM in MySQL Workbench
 - Abgabe-Artefakte:
-  - EERM-Modell Teil B als .mwb (von Schuelerinnen und Schuelern erstellt)
+  - EERM-Modell Teil B als .mwb (von Schuelerinnen und Schülern erstellt)
   - Struktur- und Datendump Teil C als .sql (separater Kontext)
   - EERM Teil C als .mwb (Lehrkraft-Referenz)
   - EERM-Grafik Teil C als .png (wenn aus Workbench exportiert)
@@ -98,7 +98,7 @@ Arbeitsgrundlage Teil C:
 2. Datei: KAxx_..._schema_data_dump.sql (Teil C, separater Kontext)
 3. Datei: KAxx_..._SQLDB_EERM.mwb (Lehrkraft-Referenz Teil C)
 4. Datei: KAxx_..._SQLDB_EERM.png (wenn aus Workbench exportiert)
-5. SQL-Loesungen als Text oder .sql
+5. SQL-Lösungen als Text oder .sql
 
 ## Hinweise für Lehrkraft
 

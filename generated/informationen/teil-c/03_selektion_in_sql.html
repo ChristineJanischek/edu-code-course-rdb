@@ -1,25 +1,61 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Selektion in SQL</title>
-  <style>
-    :root { --bg:#f8f6ff; --card:#fff; --text:#251a38; --accent:#5b3ea8; --tip:#eee7ff; }
-    body { margin:0; font-family:"Segoe UI","Tahoma",sans-serif; background:linear-gradient(120deg,#f8f6ff,#f4fff9); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#111827; color:#e5e7eb; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #5b3ea8; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Selektion in SQL</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Selektion in SQL</h1>
-  <h2>Kernidee</h2>
-  <p>Selektion filtert Zeilen über die WHERE-Klausel.</p>
-  <pre><code>SELECT Name, Kategorie
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Selektion in SQL</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/03_selektion_in_sql.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Selektion in SQL</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du filterst Datensätze mit WHERE korrekt.</li>
+<li>Du kombinierst Bedingungen mit AND, OR, NOT.</li>
+<li>Du nutzt Vergleichsoperatoren zielgerichtet.</li>
+</ul>
+<h2>Kernidee</h2>
+<p>Selektion bedeutet: Welche Zeilen sollen im Ergebnis enthalten sein?</p>
+<h2>Beispiele</h2>
+<pre><code class="language-sql">SELECT Name, Kategorie
 FROM FOODTRUCK
-WHERE Kategorie = 'Vegan' AND Rating &gt;= 4.5;</code></pre>
-  <h2>Wichtige Operatoren</h2>
-  <p>=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IN, BETWEEN, LIKE, IS NULL</p>
-  <div class="tip"><strong>Merksatz:</strong> Klammern machen komplexe Bedingungen sicherer und klarer.</div>
-</div></div></body>
+WHERE Kategorie = 'Vegan';
+</code></pre>
+<p><code>sql
+SELECT Name
+FROM FOODTRUCK
+WHERE Kategorie = 'Vegan' AN</code>sql
+SELECT Name
+FROM FOODTRUCK
+WHERE Kategorie = 'Vegan' AND Rating &gt;= 4.5;
+```- LIKE
+- IS NULL</p>
+<h2>Merksätze</h2>
+<ul>
+<li>WHERE filtert Zeilen vor Gruppierung.</li>
+<li>Klammern erhöhen Lesbarkeit und Sicherheit.</li>
+<li>Textwerte immer in Anführungszeichen.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>AND/OR ohne Klammern falsch kombinieren.</li>
+<li>NULL mit = statt IS NULL prüfen.</li>
+<li>Tippfehler in Literalen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

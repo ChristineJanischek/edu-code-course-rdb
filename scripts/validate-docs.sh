@@ -10,9 +10,26 @@ note_fail() {
 
 echo "[docs] Starte Dokumentationsvalidierung..."
 
+if ! bash scripts/validate-content-catalog.sh; then
+  echo "[docs] FAIL: normalisierte Content-DB oder abgeleitete Artefakte sind nicht synchron"
+  echo "[docs] HINT: bash scripts/generate-content-catalog.sh"
+  exit 1
+fi
+
+if ! bash scripts/sync-generated-html.sh --check; then
+  echo "[docs] FAIL: HTML-Exporte aus Markdown oder Stoffverlaufsplan sind nicht synchron"
+  echo "[docs] HINT: bash scripts/sync-generated-html.sh"
+  exit 1
+fi
+
 if ! python3 scripts/optimize_docs.py --check; then
   echo "[docs] FAIL: Dokumentation ist nicht wohlgeformt oder strukturell inkonsistent"
   echo "[docs] HINT: bash scripts/optimize-docs.sh"
+  exit 1
+fi
+
+if ! bash scripts/validate-central-entrypoints.sh; then
+  echo "[docs] FAIL: zentrale Einstiegspunkt-Regel fuer README-Dateien verletzt"
   exit 1
 fi
 

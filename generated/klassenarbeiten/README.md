@@ -8,26 +8,26 @@ Dieses Verzeichnis enthält Musterklassenarbeiten und Templates für den Unterri
 
 ### Klassenarbeits-Set 2025/2026 (drei Versionen)
 
-- **[KA02_BG12_2025_2026_VERSION1_aufg.md](./KA02_BG12_2025_2026_VERSION1_aufg.md)** / **[KA02_BG12_2025_2026_VERSION1_lsg.md](./KA02_BG12_2025_2026_VERSION1_lsg.md)**
+- **[KA02_2025_2026_VERSION1_aufg.md](./KA02_2025_2026_VERSION1_aufg.md)** / **[KA02_2025_2026_VERSION1_lsg.md](./KA02_2025_2026_VERSION1_lsg.md)**
   - VERSION1 (Haupttermin)
-- **[KA02_BG12_2025_2026_VERSION2_aufg.md](./KA02_BG12_2025_2026_VERSION2_aufg.md)** / **[KA02_BG12_2025_2026_VERSION2_lsg.md](./KA02_BG12_2025_2026_VERSION2_lsg.md)**
+- **[KA02_2025_2026_VERSION2_aufg.md](./KA02_2025_2026_VERSION2_aufg.md)** / **[KA02_2025_2026_VERSION2_lsg.md](./KA02_2025_2026_VERSION2_lsg.md)**
   - VERSION2 (Nachtermin)
-- **[KA02_BG12_2025_2026_VERSION3_aufg.md](./KA02_BG12_2025_2026_VERSION3_aufg.md)** / **[KA02_BG12_2025_2026_VERSION3_lsg.md](./KA02_BG12_2025_2026_VERSION3_lsg.md)**
+- **[KA02_2025_2026_VERSION3_aufg.md](./KA02_2025_2026_VERSION3_aufg.md)** / **[KA02_2025_2026_VERSION3_lsg.md](./KA02_2025_2026_VERSION3_lsg.md)**
   - VERSION3 (Muster/Uebung)
 
 Automatische Generierung/Pruefung des Dreier-Sets:
 ```bash
-bash ../../scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
+bash ../../scripts/generate-ka-varianten.sh KA02_2025_2026
 ```
 
 ### Musterklassenarbeit (60 Minuten / 34 Punkte / EERM + SQL)
 
-- **[KA02_BG12_2025_60min_34P_Muster_EERM_SQL.md](./KA02_BG12_2025_60min_34P_Muster_EERM_SQL.md)**
+- **[KA02_2025_60min_34P_Muster_EERM_SQL.md](./KA02_2025_60min_34P_Muster_EERM_SQL.md)**
    - Markdown-Version (kompakt fuer 60 Minuten)
    - ✅ Gesamtpunkte aus Vorgaben hergeleitet: 34
    - ✅ Verteilung: 40% Modellierung, 40% Abfragen, 10% Theorie, 10% Struktogramm
 
-- **KA02_BG12_2025_60min_34P_EERM.mwb**
+- **KA02_2025_60min_34P_EERM.mwb**
    - EERM-Modellspezifikation Teil B (Lehrkraft-Referenz)
 
 - **stadtfahrradverleih_struktur_2025.sql**
@@ -47,18 +47,18 @@ bash ../../scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
     - Wird direkt aus den SQL-Strukturdumps erzeugt:
        `bash scripts/prepare-workbench-mwb.sh`
 
-- **KA02_BG12_2025_60min_34P_SQLDB_EERM.png** (optional)
+- **KA02_2025_60min_34P_SQLDB_EERM.png** (optional)
    - SQL-basiert gerenderte Referenzgrafik (oder exportierte Workbench-Grafik) fuer Unterrichtsmaterial
 
 ### Musterklassenarbeit (Online-Bücherverleih)
 
-- **[KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md](./KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md)**
+- **[KA02_2024-2025_Muster_Online-Buecherverleih.md](./KA02_2024-2025_Muster_Online-Buecherverleih.md)**
   - Markdown-Version (vollständig bearbeitbar)
   - ✅ 6 Aufgaben, 30 Punkte
   - ✅ BPE 6 (90%) + BPE 5.1 (10%)
   - ✅ Mit Lösungen und Bewertungskriterien
 
-- **KA02_BG12_2024-2025_Muster_Online-Buecherverleih.html**
+- **KA02_2024-2025_Muster_Online-Buecherverleih.html**
   - HTML-Version (formatiert, druckbar)
   - Generiert von `convert_ka_markdown.py`
   - Verwendbar als Web-Version
@@ -71,8 +71,8 @@ bash ../../scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
 
 1. **Musterklassenarbeit als Template verwenden:**
    ```bash
-   cp KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md \
-      KA02_BG12_2025_SCHULJAHR_NEU_[SZENARIO].md
+   cp KA02_2024-2025_Muster_Online-Buecherverleih.md \
+      KA02_2025_SCHULJAHR_NEU_[SZENARIO].md
    ```
 
 2. **Szenario anpassen** (z.B. Hotel-Reservierung statt Bücherverleih)
@@ -87,7 +87,7 @@ bash ../../scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
 
 4. **Zu DOCX konvertieren:**
    ```bash
-   pandoc KA02_BG12_[...].html -o KA02_BG12_[...].docx
+   pandoc KA02_[...].html -o KA02_[...].docx
    ```
 
 ---
@@ -197,11 +197,11 @@ Alle Dateien in diesem Verzeichnis folgen einer strikten Benennungskonvention:
 
 ### Klassenarbeits-Dokumente (.md)
 - **Aufgaben-Version:** `KA0x_{Zielgruppe}_{Schuljahr}_{Version}_aufg.md`
-  - Beispiel: `KA02_BG12_2025_2026_VERSION1_aufg.md`
+  - Beispiel: `KA02_2025_2026_VERSION1_aufg.md`
   - Enthaelt: Aufgabenstellen + Artefakt-Verweise (OHNE Loesung)
 
 - **Loesung-Version:** `KA0x_{Zielgruppe}_{Schuljahr}_{Version}_lsg.md`
-  - Beispiel: `KA02_BG12_2025_2026_VERSION1_lsg.md`
+  - Beispiel: `KA02_2025_2026_VERSION1_lsg.md`
   - Enthaelt: Aufgabenstellung + Musterloesung + Erwartungshorizont + Bewertung
 
 **[Vollständige Dokumentation der Benennungskonvention](../../docs/handbuch/routinen/kurzfristig/KF-ROUTINE-010-datei-bezeichnungskonvention.md)**

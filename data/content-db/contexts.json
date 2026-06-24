@@ -1,0 +1,30 @@
+[
+  {
+    "context_id": "ctx_eerm_modelling",
+    "code": "CTX-EERM",
+    "title": "EERM und Modellierung",
+    "description": "Kontext fuer Entitaeten, Beziehungen, Kardinalitaeten und Schluessel.",
+    "time_horizon": "kurzfristig"
+  },
+  {
+    "context_id": "ctx_sql_queries",
+    "code": "CTX-SQL",
+    "title": "SQL und Abfragekompetenz",
+    "description": "Kontext fuer JOIN, Projektion, Selektion, Gruppierung und Auswertung.",
+    "time_horizon": "kurzfristig"
+  },
+  {
+    "context_id": "ctx_exam_assets",
+    "code": "CTX-KA",
+    "title": "Klassenarbeit und Pruefungsartefakte",
+    "description": "Kontext fuer Aufgaben, Loesungen, SQL-Dumps und Modellgrafiken.",
+    "time_horizon": "mittelfristig"
+  },
+  {
+    "context_id": "ctx_governance",
+    "code": "CTX-GOV",
+    "title": "Governance und Dokumentation",
+    "description": "Kontext fuer Architektur, Prozesse, Redundanzmanagement und Qualitaetsgates.",
+    "time_horizon": "langfristig"
+  }
+]

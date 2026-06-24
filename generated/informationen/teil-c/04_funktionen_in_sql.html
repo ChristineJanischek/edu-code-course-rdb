@@ -1,24 +1,59 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Funktionen in SQL</title>
-  <style>
-    :root { --bg:#f4fcff; --card:#fff; --text:#153041; --accent:#0077a6; --tip:#e6f7ff; }
-    body { margin:0; font-family:"Segoe UI","Calibri",sans-serif; background:linear-gradient(120deg,#f4fcff,#f6fff5); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#0b1220; color:#dbeafe; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #0077a6; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Funktionen in SQL</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Funktionen in SQL</h1>
-  <h2>Zeilenfunktionen</h2>
-  <pre><code>SELECT UPPER(Name) AS NameGross, ROUND(Rating, 1) AS Bewertet
-FROM FOODTRUCK;</code></pre>
-  <h2>Aggregatfunktionen</h2>
-  <pre><code>SELECT COUNT(*) AS Anzahl, AVG(Rating) AS Durchschnitt
-FROM FOODTRUCK;</code></pre>
-  <div class="tip"><strong>Merksatz:</strong> Aggregatfunktionen verdichten mehrere Zeilen zu Kennzahlen.</div>
-</div></div></body>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Funktionen in SQL</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/04_funktionen_in_sql.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Funktionen in SQL</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du setzt SQL-Funktionen zweckgerecht ein.</li>
+<li>Du unterscheidest Zeilenfunktionen und Aggregatfunktionen.</li>
+<li>Du formatierst Ergebnisse verständlich.</li>
+</ul>
+<h2>Beispiele für Zeilenfunktionen</h2>
+<pre><code class="language-sql">SELECT UPPER(Name) AS NameGross
+FROM FOODTRUCK;
+</code></pre>
+<pre><code class="language-sql">SELECT ROUND(Rating, 1) AS Bewertet
+FROM FOODTRUCK;
+</code></pre>
+<h2>Beispiele für Aggregatfunktionen</h2>
+<pre><code class="language-sql">SELECT COUNT(*) AS AnzahlTrucks
+FROM FOODTRUCK;
+</code></pre>
+<pre><code class="language-sql">SELECT AVG(Rating) AS Durchschnitt
+FROM FOODTRUCK;
+</code></pre>
+<h2>Merksätze</h2>
+<ul>
+<li>Aggregatfunktionen verdichten mehrere Zeilen.</li>
+<li>Aliasnamen machen Ergebnisse lesbar.</li>
+<li>Funktionseinsatz muss fachlich begründet sein.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Aggregat und Nicht-Aggregat ohne GROUP BY mischen.</li>
+<li>Rundung zu früh durchführen.</li>
+<li>Falsche Datentypannahmen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

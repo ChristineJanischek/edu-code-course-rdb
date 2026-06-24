@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MWB Reference Analysis</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>MWB Reference Analysis</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/klassenarbeiten/MWB-REFERENCE-ANALYSIS.md</p>
+    </header>
+    <main class="content">
+<h1>MWB Reference Analysis</h1>
+<p>Ausgewertet wurden native MySQL-Workbench-Archive aus dem Referenzordner.</p>
+<h2>Ableitbare Generatorregeln</h2>
+<ul>
+<li>Native Archive enthalten <code>document.mwb.xml</code>, <code>lock</code>lock<code>PROTECT_2__b</code>.</li>
+<li>Die Referenzmodelle verwende<code>utf8</code>PROTECT_4__neral_ci`.</li>
+<li>Das sichtbare Nutzschema ist vom leeren Workb<code>mydb</code>mydb`-Schema getrennt.</li>
+<li>Tabellen besitzen PRIMARY-Indexes und zu Fremdschluesseln passende Zusatzindizes.</li>
+</ul>
+<h2>betreuung.mwb</h2>
+<p>Archive-Entries:
+- @db/data.db
+- document.mwb.xml
+- lock</p>
+<ul>
+<li>Schema: mydb</li>
+<li>Charset: utf8</li>
+<li>Collation: utf8_general_ci</li>
+<li>Tabellen: 0</li>
+<li>Schema: moebelhaus</li>
+<li>Charset: (leer)</li>
+<li>Collation: (leer)</li>
+<li>Tabellen: 5<ul>
+<li>kinder: columns=4, fks=1, indices=2</li>
+<li>Spalten: idKind, name, vorname, Kunde_idKunde</li>
+<li>FKs: fk_Kind_Kunde1</li>
+<li>Indizes: PRIMARY, fk_Kind_Kunde1_idx</li>
+<li>kunden: columns=4, fks=0, indices=1</li>
+<li>Spalten: idKunde, name, vorname, mobil</li>
+<li>Indizes: PRIMARY</li>
+<li>aktivitaeten: columns=2, fks=0, indices=1</li>
+<li>Spalten: idAktivitaet, bezeichnung</li>
+<li>Indizes: PRIMARY</li>
+<li>betreuungen: columns=1, fks=0, indices=1</li>
+<li>Spalten: idBetreuung</li>
+<li>Indizes: PRIMARY</li>
+<li>teilnahmen: columns=3, fks=3, indices=4</li>
+<li>Spalten: Kind_idKind, Betreuung_idBetreuung, Aktivitaet_idAktivitaet</li>
+<li>FKs: fk_Kind_has_Betreuung_Kind, fk_Kind_has_Betreuung_Betreuung1, fk_Kind_has_Betreuung_Aktivitaet1</li>
+<li>Indizes: PRIMARY, fk_Kind_has_Betreuung_Betreuung1_idx, fk_Kind_has_Betreuung_Kind_idx, fk_Kind_has_Betreuung_Aktivitaet1_idx</li>
+</ul>
+</li>
+</ul>
+<h2>freizeitpark.mwb</h2>
+<p>Archive-Entries:
+- @db/data.db
+- document.mwb.xml
+- lock</p>
+<ul>
+<li>Schema: mydb</li>
+<li>Charset: utf8</li>
+<li>Collation: utf8_general_ci</li>
+<li>Tabellen: 0</li>
+<li>Schema: eurowater</li>
+<li>Charset: (leer)</li>
+<li>Collation: (leer)</li>
+<li>Tabellen: 5<ul>
+<li>attraktion: columns=6, fks=2, indices=3</li>
+<li>Spalten: idattraktion, bezeichnung, mindestgroesse, mindestalter, kategorie_nummer, themenbereich_idthemenbereich</li>
+<li>FKs: fk_attraktion_kategorie, fk_attraktion_themenbereich1</li>
+<li>Indizes: PRIMARY, fk_attraktion_kategorie_idx, fk_attraktion_themenbereich1_idx</li>
+<li>besucher: columns=4, fks=0, indices=1</li>
+<li>Spalten: idbesucher, vorname, nachname, geburtsdatum</li>
+<li>Indizes: PRIMARY</li>
+<li>kategorie: columns=2, fks=0, indices=1</li>
+<li>Spalten: nummer, kateogoriename</li>
+<li>Indizes: PRIMARY</li>
+<li>themenbereich: columns=2, fks=0, indices=1</li>
+<li>Spalten: idthemenbereich, thema</li>
+<li>Indizes: PRIMARY</li>
+<li>Besuchsposition: columns=2, fks=2, indices=3</li>
+<li>Spalten: attraktion_idattraktion, besucher_idbesucher</li>
+<li>FKs: fk_attraktion_has_besucher_attraktion1, fk_attraktion_has_besucher_besucher1</li>
+<li>Indizes: PRIMARY, fk_attraktion_has_besucher_besucher1_idx, fk_attraktion_has_besucher_attraktion1_idx</li>
+</ul>
+</li>
+</ul>
+<h2>parkplaetze.mwb</h2>
+<p>Archive-Entries:
+- @db/data.db
+- document.mwb.xml
+- lock</p>
+<ul>
+<li>Schema: mydb</li>
+<li>Charset: utf8</li>
+<li>Collation: utf8_general_ci</li>
+<li>Tabellen: 0</li>
+<li>Schema: freizeitpark_parkplatz</li>
+<li>Charset: (leer)</li>
+<li>Collation: (leer)</li>
+<li>Tabellen: 4<ul>
+<li>parklatz: columns=3, fks=1, indices=2</li>
+<li>Spalten: prakplatzNr, preis, kategorie_idkategorie</li>
+<li>FKs: fk_parklatz_kategorie1</li>
+<li>Indizes: PRIMARY, fk_parklatz_kategorie1_idx</li>
+<li>fahrzeug: columns=3, fks=0, indices=1</li>
+<li>Spalten: idfahrzeug, kennzeichen, breite</li>
+<li>Indizes: PRIMARY</li>
+<li>parklatz_has_fahrzeug: columns=3, fks=2, indices=3</li>
+<li>Spalten: parklatz_prakplatzNr, fahrzeug_idfahrzeug, datum</li>
+<li>FKs: fk_parklatz_has_fahrzeug_parklatz, fk_parklatz_has_fahrzeug_fahrzeug1</li>
+<li>Indizes: PRIMARY, fk_parklatz_has_fahrzeug_fahrzeug1_idx, fk_parklatz_has_fahrzeug_parklatz_idx</li>
+<li>kategorie: columns=2, fks=0, indices=1</li>
+<li>Spalten: idkategorie, bezeichnung</li>
+<li>Indizes: PRIMARY</li>
+</ul>
+</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

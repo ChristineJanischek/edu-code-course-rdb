@@ -6,29 +6,27 @@
 - Status: aktiv
 - Version: 1.1
 - Gueltig ab: 11.05.2026
-- Zielgruppe: Lehrkraefte und Autoren von Klassenarbeiten/Pruefungen
-- Abhaengigkeiten:
+- Zielgruppe: Lehrkräfte und Autoren von Klassenarbeiten/Pruefungen
+- Abhängigkeiten:
   - KF-ROUTINE-008-separater-sql-3nf-kontext.md
   - KF-ROUTINE-009-eerm-png-generator.md
 
 ## Ziel
-Einheitliche, aussagekraeftige Benennung aller Dateiartefakte im Klassenaarbeitsverzeichnis (`generated/klassenarbeiten`), damit Lehrkraefte und Schueler sofort erkennen, um welche Dateiart es sich handelt und fuer welchen Sachverhalt/Schuljahr.
+Einheitliche, aussagekraeftige Benennung aller Dateiartefakte im Klassenaarbeitsverzeichnis (`generated/klassenarbeiten`), damit Lehrkräfte und Schüler sofort erkennen, um welche Dateiart es sich handelt und für welchen Sachverhalt/Schuljahr.
 
 ## Namenskonvention
 
 ### A) Modell-Container (.mwb)
-**Format:** `{Systemname}_{Jahr}.mwb`
-**Beispiel:** `kursplattform_2025.mwb`
+**Format:** `{Systemname}_`{Systemname}_{Jahr}.mwb` `kursplattform_2025.mwb`
 
-- Systemname: ggf. mit Umlauten (z.B. `kursplattform`, `stadtfahrradverleih`)
-- Jahr: Schuljahrescode (z.B. 2025, 2026)
+`kursplattform_2025.mwb`mlauten (z.B. `kursplattform`, `stadtfahrradverleih`kursplattform`ljah`stadtfahrradverleih`026)
 - Kurz und aussagekraeftig, keine Jahrspannen oder Versionsindizes im Dateinamen
 
 ### B) SQL-Struktur-Dumps (.sql)
 **Format:** `{Systemname}_struktur_{Jahr}.sql`
-**Beispiel:** `stadtfahrradverleih_struktur_2025.sql`
+**Beispiel:*`{Systemname}_struktur_{Jahr}.sql`25.sql`
 
-- Enthaelt: CREATE DATABASE, DROP/CREATE TABLE und Constraints (Fremdschluessel, Indizes)
+- Enthaelt: CREATE DATABASE`stadtfahrradverleih_struktur_2025.sql`emdschluessel, Indizes)
 - KEINE INSERT/UPDATE/DELETE Statements
 - Eine Datei pro Sachverhalt/Modell
 - Klar identifizierbar als Struktur-Definition
@@ -37,80 +35,59 @@ Einheitliche, aussagekraeftige Benennung aller Dateiartefakte im Klassenaarbeits
 **Format:** `{Systemname}_daten_{Jahr}.sql`
 **Beispiel:** `stadtfahrradverleih_daten_2025.sql`
 
-- Enthaelt: USE-Statement und INSERT Statements
-- KEINE CREATE TABLE oder DROP Statements
-- Musterdatensaetze fuer Abfragen und Tests
+- Enthaelt`{Systemname}_daten_{Jahr}.sql`ements
+- KEINE CREATE TABLE oder `stadtfahrradverleih_daten_2025.sql`fuer Abfragen und Tests
 - Separate Datei von der Struktur
 
 ### D) Klassenarbeit-Aufgaben-Markdown (.md)
 **Format:** `KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_aufg.md`
-**Beispiel:** `KA02_BG12_2025_2026_VERSION1_aufg.md`
+**Beispiel:** `KA02_2025_2026_VERSION1_aufg.md`
 
-- KANummer: z.B. KA02 (2. Klassenarbeit des Schuljahres)
-- Zielgruppe: z.B. BG12 (Berufsgymnasium Klasse 12)
-- Schuljahr: z.B. 2025_2026 (von 2025 bis 2026)
-- Version: z.B. VERSION1, VERSION2 etc.
-- Suffix `_aufg`: kennzeichnet die Schuelerfassung (Aufgabenstellung + Artefakt-Hinweise, OHNE Loesung)
+- KANummer: z.B. KA02 (`KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_aufg.md` (Berufsgymnasium Klasse 12)
+- Schuljahr: z.B. 2025_2026 (v`KA02_2025_2026_VERSION1_aufg.md`ION1, VERSION2 etc.
+- Suffix `_aufg`: kennzeichnet die Schuelerfassung (Aufgabenstellung + Artefakt-Hinweise, OHNE Lösung)
 - Enthaelt: Aufgabenstellung, Arbeitsblatt-Hinweise, Artefakt-Verweise (mwb, PNG, SQL-Dumps)
 
-### E) Klassenarbeit-Loesung-Markdown (.md)
+### E) Klassen`_aufg`Loesung-Markdown (.md)
 **Format:** `KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_lsg.md`
-**Beispiel:** `KA02_BG12_2025_2026_VERSION1_lsg.md`
+**Beispiel:** `KA02_2025_2026_VERSION1_lsg.md`
 
 - Selbe Struktur wie `_aufg.md`, aber mit Suffix `_lsg`
-- Enthaelt: Aufgabenstellung + Musterloesung + Erwartungshorizont + Bewertungsraster
-- Lehrkraftfassung (vertraulich)
-- Dieselben Artefakt-Verweise wie die `_aufg`-Variante
+- Enthaelt: Aufgabenstellung +`KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_lsg.md` Lehrkraftfassung (vertraulich)
+- Dieselben Artefakt-Verw`KA02_2025_2026_VERSION1_lsg.md` Klassenarbeit-HTML-Export (.html)
+**Format Au`_aufg.md``KA{KANummer}_`_lsg`ruppe}_{Schuljahr}_{Version}_aufg.html`
+**Format Lösung:** `KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_lsg.html`
 
-### F) Klassenarbeit-HTML-Export (.html)
-**Format Aufgaben:** `KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_aufg.html`
-**Format Loesung:** `KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_lsg.html`
-
-- Fuer jede KA-Markdown-Datei (`*_aufg.md`, `*_lsg.md`) muss eine gleichnamige HTML-Datei existieren.
-- Es duerfen keine verwaisten HTML-Dateien ohne passende Markdown-Quelle im Verzeichnis liegen.
-- Erzeugung ueber: `python scripts/convert_ka_markdown.py`
-
-## Anwendung
-
-### In der Praxis:
-1. Neuer Sachverhalt erstellen (z.B. `Fahrradvermietung`, `Kursplattform`)
-2. SQL-Struktur schreiben -> speichern als `{System}_struktur_{Jahr}.sql`
+- Für jede KA-Markdown-Datei`_aufg`fg.md`, `*_lsg.md`) muss eine gleichnamige HTML-Datei existieren.
+`KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_aufg.html`rkdown-Quelle im Verzeichnis liegen.
+- Erzeugung über: `python sc`KA{KANummer}_{Zielgruppe}_{Schuljahr}_{Version}_lsg.html`axis:
+1. Neuer Sachverhalt erstellen (z.B. `Fahrradvermietung`, `Kursplattfor`*_aufg.md`_PROTECT_20__schreiben -> speichern als `{System}_struktur_{Jahr}.sql`
 3. SQL-Daten schreiben -> speichern als `{System}_daten_{Jahr}.sql`
-4. In Workbench modellieren oder manuell mwb-Datei vorbereiten -> `{System}_{Jahr}.mwb`
-5. PNG-Generator ausfuehren -> `{System}_{Jahr}.mwb` -> `{System}_{Jahr}.png`
-6. Aufgabenvorlage Schritt-für-Schritt ausfuellen -> `KA0x_{ZG}_{Jahr}_{Version}_aufg.md`
-7. Loesung + EH + Raster aus Aufgabe ableiten -> `KA0x_{ZG}_{Jahr}_{Version}_lsg.md`
-8. HTML-Exporte fuer Aufgaben- und Loesungsfassung erzeugen -> `KA0x_{ZG}_{Jahr}_{Version}_{aufg|lsg}.html`
+4. In Workbench modellieren oder `python scripts/convert_ka_markdown.py`em}_{Jahr}.mwb`
+5. PNG-Generator ausführen -> `{System}_{Jahr}.mwb` -> `{System}_{Jahr}.png`
+6. `Fahrradvermietung`ritt-fü`Kursplattform`ellen -> `KA0x_{ZG}_{Jahr}_{Version}_aufg.md`
+`{System}_struktur_{Jahr}.sql`ufgabe ableiten -> `KA0x_{ZG}_{Jahr}_{Version}_lsg.md`
+8.`{System}_daten_{Jahr}.sql`- und Loesungsfassung erzeugen -> `KA0x_{ZG}_{Jahr}_{Version}_{aufg|lsg}.html`
 
-### Generator und Validierungen:
-- Generatoren pruefen auf `*_struktur_{Jahr}.sql` + `*_daten_{Jahr}.sql`-Paare
-- Validierungsskripte pruefen auf eindeutige Benennung innerhalb des Verzeichnisses
-- Doppelte Versionen fuer denselben Sachverhalt/Schuljahr werden gekennzeichnet
+`{System}_{Jahr}.mwb`idierungen:
+- Generatoren pruefen auf ``{System}_{Jahr}.mwb`` + `*_date`{System}_{Jahr}.png` Validierungsskripte pruefen auf eindeutige Benennung innerha`KA0x_{ZG}_{Jahr}_{Version}_aufg.md`sionen für denselben Sachverhalt/Schuljahr werden gekennzeichnet
 
-## Erfolgskriterien
-- Alle `.mwb`-Dateien folgen Format `{Systemname}_{Jahr}.mwb`
-- Alle SQL-Dumps liegen als Struktur+Daten-Paar vor: `{System}_struktur_{Jahr}.sql` + `{System}_daten_{Jahr}.sql`
-- Alle Klassenarbeits-Markdown-Dateien folgen `KA0x_{ZG}_{Jahr}_{Version}_aufg/lsg.md`
-- Alle Klassenarbeits-HTML-Dateien folgen `KA0x_{ZG}_{Jahr}_{Version}_aufg/lsg.html`
+## Er`KA0x_{ZG}_{Jahr}_{Version}_lsg.md`n folgen Format `{Systemname}_{Jahr}.mwb`
+- Alle SQL-Dumps liegen als Struktur+Daten-`KA0x_{ZG}_{Jahr}_{Version}_{aufg|lsg}.html`{System}_daten_{Jahr}.sql`
+- Alle Klassenarbeits-Markdown-Dateien folgen `KA0x_{ZG}_{Jahr}_`*_struktur_{Jahr}.sql`- Alle Klass`*_daten_{Jahr}.sql`en folgen `KA0x_{ZG}_{Jahr}_{Version}_aufg/lsg.html`
 - Im Verzeichnis `generated/klassenarbeiten` keine veralteten oder abweichenden Namensmuster mehr
 - Pflicht-Gates laufen erfolgreich durch
 
-## Fehlerbehandlung
-- Datei mit altem Namensmuster gefunden: umbenennen oder loeschen
-- Struktur und Daten ungekoppelt: als Paar anlegen
-- Version mehrdeutig: Version im Dateinamen klarer numerieren
-- Markdown ohne HTML-Paar: `python scripts/convert_ka_markdown.py` ausfuehren
-- HTML ohne Markdown-Quelle: verwaiste HTML entfernen oder Quelle wiederherstellen
+## Fehlerbeh`.mwb`g
+- Datei mit a`{Systemname}_{Jahr}.mwb`n: umbenennen oder loeschen
+- Struktur und Daten ungekoppelt: als`{System}_struktur_{Jahr}.sql`utig: Version im Da`{System}_daten_{Jahr}.sql`- Markdown ohne HTML-Paar: `python scripts/convert_ka_markdo`KA0x_{ZG}_{Jahr}_{Version}_aufg/lsg.md`uelle: verwaiste HTML entfernen oder Quelle wiederherstellen
 
-## LLM-Prompt-Baustein (verbindlich)
-"Benennung aller neuen Artefakte in `generated/klassenarbeiten` folgt strikter Konvention: `.mwb`-Dateien als `{System}_{Jahr}.mwb`, SQL-Dumps immer als Struktur+Daten-Paar (`{System}_struktur_{Jahr}.sql` und `{System}_daten_{Jahr}.sql`), KA-Markdown-Dateien als `KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.md`, HTML-Dateien als `KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.html`. Im Verzeichnis gibt es keine Duplikate, keine verwaisten HTML-Dateien und keine gemischten Dumpformate."
+## LLM-`KA0x_{ZG}_{Jahr}_{Version}_aufg/lsg.html`ller neuen Artefakte in `generated/klassenarbe`generated/klassenarbeiten`tion: `.mwb`-Dateien als `{System}_{Jahr}.mwb`, SQL-Dumps immer als Struktur+Daten-Paar (`{System}_struktur_{Jahr}.sql` und `{System}_daten_{Jahr}.sql`), KA-Markdown-Dateien als `KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.md`, HTML-Dateien als `KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.html`. Im Verzeichnis gibt es keine Duplikate, kein`python scripts/convert_ka_markdown.py`ischten Dumpformate."
 
 ## Verknuepfungen
 - [KF-ROUTINE-008-separater-sql-3nf-kontext.md](./KF-ROUTINE-008-separater-sql-3nf-kontext.md)
-- [KF-ROUTINE-009-eerm-png-generator.md](./KF-ROUTINE-009-eerm-png-generator.md)
-- [../templates/KLASSENARBEIT-TEMPLATE-AUFGABEN-ARTEFAKTE-BPE6-BPE5.md](../../templates/KLASSENARBEIT-TEMPLATE-AUFGABEN-ARTEFAKTE-BPE6-BPE5.md)
-- [../templates/KLASSENARBEIT-TEMPLATE-LOESUNG-ERWARTUNGSHORIZONT-BPE6-BPE5.md](../../templates/KLASSENARBEIT-TEMPLATE-LOESUNG-ERWARTUNGSHORIZONT-BPE6-BPE5.md)
+- [KF-ROUTINE-009-eerm-png-generator.md](./KF-ROUTINE-009-`generated/klassenarbeiten`./templates/KLASSENARBEIT-TEMPLATE-AUFGAB`.mwb`EFAKT`{System}_{Jahr}.mwb`/templates/KLASSENARBEIT-TEMPLATE-AUFGABEN-ARTEFAK`{System}_struktur_{Jahr}.sql`es/KLASSENARBEIT-TEMP`{System}_daten_{Jahr}.sql`ZONT-BPE6-BPE5.md](../../templates/KLASS`KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.md`BPE6-BPE5.md)
 
 ## Changelog
-- 1.0 (11.05.2026): Benennungskonvention eingefuehrt fuer Modelle, SQL-Dumps (Struktur+Daten), und KA-Markdown-Dateien.
+- 1.0 (11.05.2026): Be`KA0x_{ZG}_{Schuljahr}_{Version}_aufg/lsg.html`L-Dumps (Struktur+Daten), und KA-Markdown-Dateien.
 - 1.1 (11.05.2026): HTML-Benennung und Pflicht-Paarung (MD/HTML) als verbindliche Regel ergaenzt.

@@ -4,9 +4,9 @@ Ausgewertet wurden native MySQL-Workbench-Archive aus dem Referenzordner.
 
 ## Ableitbare Generatorregeln
 
-- Native Archive enthalten `document.mwb.xml`, `lock` und `@db/data.db`.
-- Die Referenzmodelle verwenden `utf8` mit `utf8_general_ci`.
-- Das sichtbare Nutzschema ist vom leeren Workbench-`mydb`-Schema getrennt.
+- Native Archive enthalten `document.mwb.xml`, `lock`lock`PROTECT_2__b`.
+- Die Referenzmodelle verwende`utf8`PROTECT_4__neral_ci`.
+- Das sichtbare Nutzschema ist vom leeren Workb`mydb`mydb`-Schema getrennt.
 - Tabellen besitzen PRIMARY-Indexes und zu Fremdschluesseln passende Zusatzindizes.
 
 ## betreuung.mwb

@@ -33,5 +33,19 @@
       ]
     }
   },
+  "forwardPorts": [
+    8080,
+    8000
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "edu-code Webapp",
+      "onAutoForward": "notify"
+    },
+    "8000": {
+      "label": "edu-code Python API",
+      "onAutoForward": "silent"
+    }
+  },
   "postCreateCommand": "bash scripts/bootstrap.sh"
 }

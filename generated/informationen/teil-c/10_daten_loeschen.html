@@ -1,23 +1,55 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil C - Daten löschen</title>
-  <style>
-    :root { --bg:#fff4f4; --card:#fff; --text:#3c1d1d; --accent:#b73232; --tip:#ffe7e7; --warn:#ffd8d8; }
-    body { margin:0; font-family:"Segoe UI","Verdana",sans-serif; background:linear-gradient(120deg,#fff4f4,#f4f9ff); color:var(--text); }
-    .wrap { max-width:960px; margin:24px auto; padding:0 16px; } .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent);} pre { background:#351515; color:#ffe9e9; padding:12px; border-radius:8px; }
-    .tip { background:var(--tip); border-left:5px solid #b73232; padding:10px; border-radius:8px; }
-    .warn { background:var(--warn); border-left:5px solid #8f1f1f; padding:10px; border-radius:8px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informationsblatt Teil C: Daten löschen</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
-<body><div class="wrap"><div class="card">
-  <h1>Teil C: Daten löschen</h1>
-  <pre><code>DELETE FROM EINSATZ
-WHERE EinsatzID = 5001;</code></pre>
-  <p>Sicherheitsroutine: SELECT prüfen, FK-Beziehungen prüfen, dann DELETE.</p>
-  <div class="tip"><strong>Merksatz:</strong> Integrität geht vor Geschwindigkeit.</div>
-  <div class="warn"><strong>Achtung:</strong> DELETE ohne WHERE löscht alle Zeilen.</div>
-</div></div></body>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil C: Daten löschen</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-c/10_daten_loeschen.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil C: Daten löschen</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil C: FoodTruckNetz</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du löschst Datensätze mit DELETE kontrolliert.</li>
+<li>Du beachtest referentielle Integrität.</li>
+<li>Du unterscheidest fachlich sinnvolles Löschen von Archivieren.</li>
+</ul>
+<h2>Grundmuster</h2>
+<pre><code class="language-sql">DELETE FROM EINSATZ
+WHERE EinsatzID = 5001;
+</code></pre>
+<h2>Sicherheitsroutine</h2>
+<ol>
+<li>Mit SELECT prüfen, welche Zeilen betroffen sind.</li>
+<li>FK-Beziehungen prüfen.</li>
+<li>Erst dann DELETE ausführen.</li>
+</ol>
+<h2>Merksätze</h2>
+<ul>
+<li>DELETE ohne WHERE entfernt alle Zeilen.</li>
+<li>Integritätsregeln können Löschungen blockieren.</li>
+<li>In realen Systemen ist „deaktivieren“ oft besser als endgültig löschen.</li>
+</ul>
+<h2>Typische Fehler</h2>
+<ul>
+<li>Falsche Reihenfolge bei abhängigen Datensätzen.</li>
+<li>Löschung ohne Vorprüfung.</li>
+<li>Fachlich wichtige Historie unabsichtlich entfernen.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
+  </div>
+</body>
 </html>

@@ -98,7 +98,7 @@ def analyze_docx(filepath):
     return content
 
 def main():
-    ka_file = "/workspaces/edu-code-course-rdb/uploads/klassenarbeiten-und-unterrichtsmaterialien/KA02_INF_BG12_2024_2025_CJ_LSG_VERSION3.docx"
+    ka_file = "/workspaces/edu-code-course-rdb/uploads/klassenarbeiten-und-unterrichtsmaterialien/KA02_INF_2024_2025_CJ_LSG_VERSION3.docx"
     
     print("🔍 Analysiere Klassenarbeit...")
     try:

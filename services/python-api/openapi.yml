@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: edu-code-course-rdb API
+  version: 1.0.0
+  description: Versionierte Schnittstelle fuer Lernabgaben, Gesundheitschecks und curriculare Inhalte.
+servers:
+  - url: http://localhost:8000
+components:
+  securitySchemes:
+    InternalApiKey:
+      type: apiKey
+      in: header
+      name: X-Internal-Api-Key
+paths:
+  /api/v1/health:
+    get:
+      summary: Gesundheitscheck der Python-API
+      responses:
+        "200":
+          description: OK
+  /api/v1/json-items:
+    get:
+      summary: Gibt die JSON-SSOT-Daten aus
+      responses:
+        "200":
+          description: OK
+  /api/v1/submissions:
+    post:
+      summary: Speichert eine Lernabgabe
+      security:
+        - InternalApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                learner_alias:
+                  type: string
+                task_id:
+                  type: string
+                response_text:
+                  type: string
+                response_kind:
+                  type: string
+                source_context:
+                  type: string
+                metadata:
+                  type: object
+                teacher_note:
+                  type: string
+                status:
+                  type: string
+              required:
+                - learner_alias
+                - task_id
+                - response_text
+                - response_kind
+      responses:
+        "201":
+          description: Erstellt
+        "400":
+          description: Validierungsfehler
+  /api/v1/submissions/by-student/{student_id}:
+    get:
+      summary: Listet Abgaben eines Lernenden
+      security:
+        - InternalApiKey: []
+      parameters:
+        - in: path
+          name: student_id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/curricula:
+    get:
+      summary: Liefert die Lehrplanuebersicht
+      responses:
+        "200":
+          description: OK
+  /api/v1/curricula/{slug}:
+    get:
+      summary: Liefert einen Lehrplandatensatz
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Nicht gefunden

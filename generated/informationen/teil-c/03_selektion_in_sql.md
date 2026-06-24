@@ -21,14 +21,11 @@ WHERE Kategorie = 'Vegan';
 ```sql
 SELECT Name
 FROM FOODTRUCK
+WHERE Kategorie = 'Vegan' AN```sql
+SELECT Name
+FROM FOODTRUCK
 WHERE Kategorie = 'Vegan' AND Rating >= 4.5;
-```
-
-## Wichtige Operatoren
-- =, <>, >, >=, <, <=
-- BETWEEN
-- IN
-- LIKE
+```- LIKE
 - IS NULL
 
 ## Merksätze

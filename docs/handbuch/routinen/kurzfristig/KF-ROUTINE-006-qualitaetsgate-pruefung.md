@@ -3,10 +3,10 @@
 ## Metadata
 - **ID:** KF-ROUTINE-006
 - **Kategorie:** kurzfristig
-- **Haeufigkeit:** bei jedem PR
+- **Häufigkeit:** bei jedem PR
 - **Zeitaufwand:** 10-15 Minuten
-- **Verantwortlicher:** Autor der Aenderung
-- **Abhaengigkeiten:** review-prozess.md, qualitaets-gates-automatisierung.md
+- **Verantwortlicher:** Autor der Änderung
+- **Abhängigkeiten:** review-prozess.md, qualitaets-gates-automatisierung.md
 - **Version:** 1.0
 - **Letzte Aktualisierung:** 25.03.2026
 
@@ -18,10 +18,9 @@ Vor jedem Merge automatisiert sicherstellen, dass Design-Prinzipien und Dokument
 - Branch ist aktuell.
 
 ## Schritte
-1. Security-Gate ausfuehren: `bash scripts/validate-security.sh`
-2. Architecture-Gate ausfuehren: `bash scripts/validate-architecture.sh`
-3. Documentation-Gate ausfuehren: `bash scripts/validate-docs.sh`
-4. Bei Fehlern Ursachen beheben und Gates erneut starten.
+1. Security-Gate ausführen: `bash scripts/validate-security.sh`
+2. Architecture-Gate ausführen: `bash scripts/validate`bash scripts/validate-architecture.sh` ausführen: `bash scripts/validate-docs.sh`
+4. Bei Fehlern U`bash scripts/validate-docs.sh`t starten.
 5. PR mit Checklist ausfuellen und einreichen.
 
 ## Erfolgskriterien

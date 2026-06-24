@@ -42,6 +42,10 @@ jobs:
         with:
           node-version: "20"
       - name: JavaScript syntax check
-        run: node --check webapp/public/app.js
+        run: |
+          node --check webapp/public/app.js
+          for file in webapp/public/js/*.mjs; do
+            node --check "$file"
+          done
       - name: PHP syntax check
         run: php -l webapp/public/index.php

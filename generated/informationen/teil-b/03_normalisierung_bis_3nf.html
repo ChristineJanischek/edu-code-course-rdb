@@ -3,43 +3,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teil B - Normalisierung bis 3NF</title>
-  <style>
-    :root { --bg:#fffaf3; --card:#fff; --text:#2d2213; --accent:#a15b00; --note:#fff2df; --ok:#ecfff3; }
-    body { margin:0; font-family:"Segoe UI","Tahoma",sans-serif; background:linear-gradient(130deg,#fffaf3,#f4fff8); color:var(--text); }
-    .wrap { max-width:980px; margin:24px auto; padding:0 16px; }
-    .card { background:var(--card); border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,.08); }
-    h1,h2 { color:var(--accent); }
-    h2 { border-bottom:2px solid #f3ddbf; padding-bottom:6px; }
-    .note { background:var(--note); border-left:5px solid #a15b00; padding:12px; border-radius:8px; }
-    .ok { background:var(--ok); border-left:5px solid #2f9e60; padding:12px; border-radius:8px; }
-    ul,ol { line-height:1.55; }
-  </style>
+  <title>Informationsblatt Teil B: Normalisierung bis zur 3. Normalform</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Teil B: Normalisierung bis zur 3. Normalform</h1>
-
-      <h2>1NF</h2>
-      <p>Alle Werte sind atomar, keine Listen in einem Feld.</p>
-
-      <h2>2NF</h2>
-      <p>Jedes Nichtschlüsselattribut hängt vollständig vom gesamten Schlüssel ab.</p>
-
-      <h2>3NF</h2>
-      <p>Keine transitiven Abhängigkeiten zwischen Nichtschlüsselattributen.</p>
-
-      <h2>Beispiel Lernlabor</h2>
-      <ul>
-        <li>Ungünstig: TEILNAHME(SchuelerID, WorkshopID, SchuelerName)</li>
-        <li>Problem: SchuelerName hängt nur von SchuelerID ab</li>
-        <li>Verbesserung: SCHUELER auslagern</li>
-      </ul>
-
-      <div class="note"><strong>Merksätze:</strong> 1NF = keine Listen, 2NF = volle Schlüsselabhängigkeit, 3NF = keine indirekten Abhängigkeiten.</div>
-      <div class="ok"><strong>Klausurtipp:</strong> Immer zuerst Schlüssel und funktionale Abhängigkeiten notieren.</div>
-    </div>
+  <div class="page">
+    <header class="hero">
+      <h1>Informationsblatt Teil B: Normalisierung bis zur 3. Normalform</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/teil-b/03_normalisierung_bis_3nf.md</p>
+    </header>
+    <main class="content">
+<h1>Informationsblatt Teil B: Normalisierung bis zur 3. Normalform</h1>
+<p>Zielgruppe: Sekundarstufe II (Abschlussjahr)<br />
+Kontext Teil B: Schulisches Lernlabor</p>
+<h2>Lernziele</h2>
+<ul>
+<li>Du erklärst 1NF, 2NF und 3NF verständlich.</li>
+<li>Du erkennst Verstöße gegen Normalformen.</li>
+<li>Du leitest ein verbessertes Modell bis 3NF ab.</li>
+</ul>
+<h2>Warum normalisieren?</h2>
+<p>Normalisierung reduziert Redundanzen und verhindert Änderungs-, Einfüge- und Löschanomalien.</p>
+<h2>1. Normalform (1NF)</h2>
+<p>Regel: Alle Attributwerte sind atomar (nicht mehrteilig, keine Listen in einem Feld).</p>
+<p>Falsch:
+- SCHUELER( SchuelerID, Name, Workshops="SQL;Python" )</p>
+<p>Richtig:
+- SCHUELER( SchuelerID, Name )
+- TEILNAHME( SchuelerID, WorkshopID )</p>
+<h2>2. Normalform (2NF)</h2>
+<p>Regel: Jedes Nichtschlüsselattribut hängt vollständig vom gesamten Primärschlüssel ab.</p>
+<p>Typischer Fall bei zusammengesetztem Schlüssel:
+- TEILNAHME( SchuelerID, WorkshopID, SchuelerName )</p>
+<p>Problem:
+- SchuelerName hängt nur von SchuelerID ab, nicht von (SchuelerID, WorkshopID).</p>
+<p>Lösung:
+- SchuelerName in SCHUELER auslagern.</p>
+<h2>3. Normalform (3NF)</h2>
+<p>Regel: Keine transitiven Abhängigkeiten von Nichtschlüsselattributen.</p>
+<p>Beispiel:
+- WORKSHOP( WorkshopID, RaumID, RaumBezeichnung )</p>
+<p>Problem:
+- RaumBezeichnung hängt über RaumID ab, nicht direkt über WorkshopID.</p>
+<p>Lösung:
+- RAUM( RaumID, RaumBezeichnung )
+- WORKSHOP( WorkshopID, RaumID )</p>
+<h2>Merksätze</h2>
+<ul>
+<li>1NF: Keine Listen im Feld.</li>
+<li>2NF: Volle Abhängigkeit vom ganzen Schlüssel.</li>
+<li>3NF: Keine indirekten Abhängigkeiten.</li>
+</ul>
+<h2>Klassenarbeitsstrategie</h2>
+<ol>
+<li>Schlüssel bestimmen.</li>
+<li>Abhängigkeiten prüfen.</li>
+<li>Schrittweise zerlegen.</li>
+<li>Fachliche Bedeutung jeder Tabelle prüfen.</li>
+</ol>
+<h2>Typische Fehler</h2>
+<ul>
+<li>2NF ohne zusammengesetzten Schlüssel prüfen.</li>
+<li>3NF mit 2NF verwechseln.</li>
+<li>Zu früh technisch denken statt fachlich.</li>
+</ul>
+<h2>Begriffshilfe</h2>
+<ul>
+<li><a href="../begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">Stichwortverzeichnis Relationale Datenbanken</a></li>
+</ul>
+    </main>
   </div>
 </body>
 </html>

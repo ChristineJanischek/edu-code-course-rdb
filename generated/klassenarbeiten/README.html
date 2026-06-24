@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📚 Klassenarbeiten-Sammlung</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>📚 Klassenarbeiten-Sammlung</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/klassenarbeiten/README.md</p>
+    </header>
+    <main class="content">
+<h1>📚 Klassenarbeiten-Sammlung</h1>
+<p>Dieses Verzeichnis enthält Musterklassenarbeiten und Templates für den Unterricht im Fach Informatik (BG12), speziell für die Themen <strong>Relationale Datenbanken (BPE 6)</strong> und <strong>Programmierung (BPE 5.1)</strong>.</p>
+<hr />
+<h2>📁 Dateien</h2>
+<h3>Klassenarbeits-Set 2025/2026 (drei Versionen)</h3>
+<ul>
+<li><strong><a href="KA02_2025_2026_VERSION1_aufg.html">KA02_2025_2026_VERSION1_aufg.md</a></strong> / <strong><a href="KA02_2025_2026_VERSION1_lsg.html">KA02_2025_2026_VERSION1_lsg.md</a></strong></li>
+<li>VERSION1 (Haupttermin)</li>
+<li><strong><a href="KA02_2025_2026_VERSION2_aufg.html">KA02_2025_2026_VERSION2_aufg.md</a></strong> / <strong><a href="KA02_2025_2026_VERSION2_lsg.html">KA02_2025_2026_VERSION2_lsg.md</a></strong></li>
+<li>VERSION2 (Nachtermin)</li>
+<li><strong><a href="KA02_2025_2026_VERSION3_aufg.html">KA02_2025_2026_VERSION3_aufg.md</a></strong> / <strong><a href="KA02_2025_2026_VERSION3_lsg.html">KA02_2025_2026_VERSION3_lsg.md</a></strong></li>
+<li>VERSION3 (Muster/Uebung)</li>
+</ul>
+<p>Automatische Generierung/Pruefung des Dreier-Sets:</p>
+<pre><code class="language-bash">bash ../../scripts/generate-ka-varianten.sh KA02_2025_2026
+</code></pre>
+<h3>Musterklassenarbeit (60 Minuten / 34 Punkte / EERM + SQL)</h3>
+<ul>
+<li><strong><a href="KA02_2025_60min_34P_Muster_EERM_SQL.html">KA02_2025_60min_34P_Muster_EERM_SQL.md</a></strong></li>
+<li>Markdown-Version (kompakt fuer 60 Minuten)</li>
+<li>✅ Gesamtpunkte aus Vorgaben hergeleitet: 34</li>
+<li>
+<p>✅ Verteilung: 40% Modellierung, 40% Abfragen, 10% Theorie, 10% Struktogramm</p>
+</li>
+<li>
+<p><strong>KA02_2025_60min_34P_EERM.mwb</strong></p>
+</li>
+<li>
+<p>EERM-Modellspezifikation Teil B (Lehrkraft-Referenz)</p>
+</li>
+<li>
+<p><strong>stadtfahrradverleih_struktur_2025.sql</strong></p>
+</li>
+<li>SQL-Struktur-Definition fuer Teil C (separater 3NF-Kontext: Stadtfahrradverleih)</li>
+<li>Enthaelt: CREATE DATABASE, CREATE TABLE, Constraints (FK, Indizes)</li>
+<li>
+<p>✅ Struktur-only (keine Daten)</p>
+</li>
+<li>
+<p><strong>stadtfahrradverleih_daten_2025.sql</strong></p>
+</li>
+<li>SQL-Daten fuer Teil C (Musterdatensaetze fuer Abfragen)</li>
+<li>Enthaelt: USE-Statement, INSERT Statements</li>
+<li>✅ Parent-Tabellen mit ca. 20 Datensaetzen (<code>kunden</code>, <code>mitarbeitende</code>)</li>
+<li>
+<p>✅ Separate Datei von der Struktur (KF-ROUTINE-010)</p>
+</li>
+<li>
+<p><strong>stadtfahrradverleih_2025.mwb</strong></p>
+</li>
+<li>EERM-Modellspezifikation fuer die SQL-Datenbank in Teil C</li>
+<li>
+<p>Muss als natives Workbench-Modell vorliegen (keine Platzhalterdatei)</p>
+<ul>
+<li>Wird direkt aus den SQL-Strukturdumps erzeugt:
+   <code>bash scripts/prepare-workbench-mwb.sh</code></li>
+</ul>
+</li>
+<li>
+<p><strong>KA02_2025_60min_34P_SQLDB_EERM.png</strong> (optional)</p>
+</li>
+<li>SQL-basiert gerenderte Referenzgrafik (oder exportierte Workbench-Grafik) fuer Unterrichtsmaterial</li>
+</ul>
+<h3>Musterklassenarbeit (Online-Bücherverleih)</h3>
+<ul>
+<li><strong><a href="KA02_2024-2025_Muster_Online-Buecherverleih.html">KA02_2024-2025_Muster_Online-Buecherverleih.md</a></strong></li>
+<li>Markdown-Version (vollständig bearbeitbar)</li>
+<li>✅ 6 Aufgaben, 30 Punkte</li>
+<li>✅ BPE 6 (90%) + BPE 5.1 (10%)</li>
+<li>
+<p>✅ Mit Lösungen und Bewertungskriterien</p>
+</li>
+<li>
+<p><strong>KA02_2024-2025_Muster_Online-Buecherverleih.html</strong></p>
+</li>
+<li>HTML-Version (formatiert, druckbar)</li>
+<li>Generiert von <code>convert_ka_markdown.py</code></li>
+<li>Verwendbar als Web-Version</li>
+</ul>
+<hr />
+<h2>📋 Schnelleinstieg</h2>
+<h3>Neue Klassenarbeit erstellen</h3>
+<ol>
+<li>
+<p><strong>Musterklassenarbeit als Template verwenden:</strong>
+   <code>bash
+   cp KA02_2024-2025_Muster_Online-Buecherverleih.md \
+      KA02_2025_SCHULJAHR_NEU_[SZENARIO].md</code></p>
+</li>
+<li>
+<p><strong>Szenario anpassen</strong> (z.B. Hotel-Reservierung statt Bücherverleih)
+   - Ändern Sie die Datenbankentitäten
+   - Passen Sie die Aufgaben an
+   - Behalten Sie die Struktur und Punkteverteilung</p>
+</li>
+<li>
+<p><strong>Validierung durchführen:</strong>
+   <code>bash
+   python ../../scripts/convert_ka_markdown.py</code></p>
+</li>
+<li>
+<p><strong>Zu DOCX konvertieren:</strong>
+   <code>bash
+   pandoc KA02_[...].html -o KA02_[...].docx</code></p>
+</li>
+</ol>
+<hr />
+<h2>📖 Dokumentation</h2>
+<ul>
+<li><strong><a href="../KLASSENAARBEIT-HANDBUCH.html">Handbuch</a></strong> – Vollständige Anleitung zur Verwendung</li>
+<li><strong><a href="../templates/KLASSENAARBEIT-TEMPLATE-BPE6-BPE5.html">Template</a></strong> – Vorlage für neue Klassenarbeiten</li>
+<li><strong><a href="../../docs/handbuch/templates/KLASSENARBEIT-TEMPLATE-60MIN-34P-BPE6-BPE5.html">Template 60 Min / 34 Punkte</a></strong> – Kompakte Vorlage mit neuer Gewichtung</li>
+</ul>
+<hr />
+<h2>🎯 Aufbau einer Klassenarbeit</h2>
+<h3>BPE 6: Relationale Datenbanken (27 Punkte / 90%)</h3>
+<ol>
+<li><strong>Aufgabe 1</strong> (3 Pkt) – Grundkonzepte (wahr/falsch)</li>
+<li><strong>Aufgabe 2</strong> (4 Pkt) – Datenbankdesign &amp; Normalisierung</li>
+<li><strong>Aufgabe 3</strong> (5 Pkt) – SQL SELECT/JOIN</li>
+<li><strong>Aufgabe 4</strong> (6 Pkt) – Fehleranalyse &amp; Integrität</li>
+<li><strong>Aufgabe 5</strong> (9 Pkt) – Performance &amp; Indizes</li>
+</ol>
+<h3>BPE 5.1: Programmierung (3 Punkte / 10%)</h3>
+<ol start="6">
+<li><strong>Aufgabe 6</strong> (3 Pkt) – I/O &amp; Struktogramme</li>
+</ol>
+<hr />
+<h2>✨ Features</h2>
+<p>✅ <strong>Strukturiert &amp; Modular</strong>
+- Jede Aufgabe klar definiert
+- Lösungen und Bewertungskriterien
+- Checklisten für Lehrende</p>
+<p>✅ <strong>Kopierfertig</strong>
+- Markdown-Format (GitHub-kompatibel)
+- HTML für Web/Print
+- Leicht zu DOCX konvertierbar</p>
+<p>✅ <strong>Skalierbar</strong>
+- Template für neue Szenarien
+- Konsistente Formatierung
+- Versionskontrolle möglich</p>
+<p>✅ <strong>Best Practices</strong>
+- Basierend auf langjähriger Unterrichtserfahrung
+- Lehrplan-konform (Baden-Württemberg)
+- Mit Musterlösungen und Bewertungsrichtlinien</p>
+<p>✅ <strong>Didaktische Trennung</strong>
+- Teil B (Modellierung) und Teil C (SQL-Abfragen) nutzen unterschiedliche Kontexte.
+- Dadurch wird keine Modellierungsloesung indirekt durch den SQL-Teil vorweggenommen.</p>
+<hr />
+<h2>🔄 Konvertierungs-Tools</h2>
+<p><strong>Script:</strong> <a href="../../scripts/convert_ka_markdown.py">../../scripts/convert_ka_markdown.py</a></p>
+<p>Konvertiert Markdown zu HTML und validiert die Struktur:</p>
+<pre><code class="language-bash">python ../../scripts/convert_ka_markdown.py
+</code></pre>
+<p><strong>Output:</strong>
+- HTML-Version mit Styling
+- Validierungsbericht
+- Metadaten-Extraktion</p>
+<hr />
+<h2>📊 Beispiel-Szenarien</h2>
+<p>Die Musterklassenarbeit kann leicht angepasst werden. Hier sind Ideen:</p>
+<ul>
+<li>🏨 <strong>Hotel-Reservierungssystem</strong> – Zimmer, Gäste, Buchungen</li>
+<li>🏪 <strong>Supermarkt-Verwaltung</strong> – Artikel, Bestände, Verkäufe</li>
+<li>🎓 <strong>Schulverwaltung</strong> – Schüler, Kurse, Noten</li>
+<li>🚗 <strong>Autovermietung</strong> – Fahrzeuge, Kunden, Mietverträge</li>
+<li>📚 <strong>Bibliotheks-System</strong> – Bücher, Mitglieder, Ausleihvorgänge (bereits vorhanden!)</li>
+</ul>
+<hr />
+<h2>� Benennungskonvention (KF-ROUTINE-010)</h2>
+<p>Alle Dateien in diesem Verzeichnis folgen einer strikten Benennungskonvention:</p>
+<h3>Modell-Container (.mwb)</h3>
+<ul>
+<li>Format: <code>{Systemname}_{Jahr}.mwb</code></li>
+<li>Beispiel: <code>kursplattform_2025.mwb</code>, <code>stadtfahrradverleih_2025.mwb</code></li>
+<li>Hinweis: Ein echter Workbench-Container enthaelt intern <code>document.mwb.xml</code>.</li>
+<li>Platzhalterdateien sind nicht zulaessig.</li>
+<li>Pruefung: <code>bash scripts/validate-mwb-native.sh</code></li>
+<li>Falls nur Spezifikation vorliegt: <code>bash scripts/prepare-workbench-mwb.sh</code> ausfuehren und Anleitung in <code>WORKBENCH-MWB-WORKFLOW.md</code> verwenden.</li>
+</ul>
+<h3>SQL-Struktur-Dumps (.sql)</h3>
+<ul>
+<li>Format: <code>{Systemname}_struktur_{Jahr}.sql</code></li>
+<li>Beispiel: <code>stadtfahrradverleih_struktur_2025.sql</code></li>
+<li>Enthaelt: CREATE DATABASE, CREATE TABLE, Constraints</li>
+</ul>
+<h3>SQL-Daten-Dumps (.sql)</h3>
+<ul>
+<li>Format: <code>{Systemname}_daten_{Jahr}.sql</code></li>
+<li>Beispiel: <code>stadtfahrradverleih_daten_2025.sql</code></li>
+<li>Enthaelt: USE, INSERT Statements (Musterdaten)</li>
+<li><strong>Wichtig:</strong> Struktur und Daten sind immer in separaten Dateien!</li>
+</ul>
+<h3>Klassenarbeits-Dokumente (.md)</h3>
+<ul>
+<li><strong>Aufgaben-Version:</strong> <code>KA0x_{Zielgruppe}_{Schuljahr}_{Version}_aufg.md</code></li>
+<li>Beispiel: <code>KA02_2025_2026_VERSION1_aufg.md</code></li>
+<li>
+<p>Enthaelt: Aufgabenstellen + Artefakt-Verweise (OHNE Loesung)</p>
+</li>
+<li>
+<p><strong>Loesung-Version:</strong> <code>KA0x_{Zielgruppe}_{Schuljahr}_{Version}_lsg.md</code></p>
+</li>
+<li>Beispiel: <code>KA02_2025_2026_VERSION1_lsg.md</code></li>
+<li>Enthaelt: Aufgabenstellung + Musterloesung + Erwartungshorizont + Bewertung</li>
+</ul>
+<p><strong><a href="../../docs/handbuch/routinen/kurzfristig/KF-ROUTINE-010-datei-bezeichnungskonvention.html">Vollständige Dokumentation der Benennungskonvention</a></strong></p>
+<hr />
+<h2>�📞 Support</h2>
+<p>Bei Fragen oder Verbesserungsvorschlägen:
+- Siehe <a href="../KLASSENAARBEIT-HANDBUCH.html">KLASSENAARBEIT-HANDBUCH.md</a>
+- Repository: <a href="https://github.com/ChristineJanischek/edu-code-course-rdb">GitHub</a></p>
+<hr />
+<h2>📝 Lizenz &amp; Attribution</h2>
+<p>Diese Klassenarbeiten basieren auf:
+- Lehrplan Baden-Württemberg (BPE 6: Relationale Datenbanken, BPE 5.1: Programmierung)
+- Best Practices aus dem Repository <a href="https://github.com/ChristineJanischek/python-algorithmen-datenstrukturen">python-algorithmen-datenstrukturen</a>
+- Jahrelanger Unterrichtserfahrung</p>
+<hr />
+<p><strong>Erstellt:</strong> 2025-05-09
+<strong>Versio:</strong> 1.0</p>
+    </main>
+  </div>
+</body>
+</html>

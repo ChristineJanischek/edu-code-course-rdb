@@ -1,0 +1,38 @@
+[
+  {
+    "topic_id": "topic_eerm",
+    "code": "TOP-EERM",
+    "title": "EERM Grundlagen",
+    "description": "Entitaeten, Attribute und Beziehungen im Fachkontext."
+  },
+  {
+    "topic_id": "topic_kardinalitaet",
+    "code": "TOP-CARD",
+    "title": "Kardinalitaeten",
+    "description": "Eine-Saetze und Mengenaussagen fuer Beziehungen."
+  },
+  {
+    "topic_id": "topic_3nf",
+    "code": "TOP-3NF",
+    "title": "Normalisierung bis 3NF",
+    "description": "Vermeidung transitativer Abhaengigkeiten und Redundanzen."
+  },
+  {
+    "topic_id": "topic_sql_join",
+    "code": "TOP-JOIN",
+    "title": "SQL ueber mehrere Tabellen",
+    "description": "JOIN-Ketten, Selektion und fachlich korrekte Ergebnismengen."
+  },
+  {
+    "topic_id": "topic_sql_group",
+    "code": "TOP-GROUP",
+    "title": "Aggregation und Gruppierung",
+    "description": "GROUP BY, HAVING und Doppelzaehlungsvermeidung."
+  },
+  {
+    "topic_id": "topic_governance",
+    "code": "TOP-GOV",
+    "title": "Governance und Redundanzmanagement",
+    "description": "SSOT, Review, Quality Gates und Dokumentationspflege."
+  }
+]

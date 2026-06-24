@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klassenarbeit (60 Minuten)</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Klassenarbeit (60 Minuten)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/klassenarbeiten/KA02_2025_2026_VERSION1_aufg.md</p>
+    </header>
+    <main class="content">
+<hr />
+<p>titel: "Klassenarbeit BG12 2025/2026: EERM und SQL (60 Min)"
+klasse: "BG12"
+schuljahr: "2025-2026"
+fach: "Informatik"
+bearbeitungszeit: "60 Minuten"
+erreichbare_punkte: 34
+verteilung:
+  modellierung_normalisierung_anomalien: 14
+  abfragen_mehrtabellen: 14
+  theorie_mc: 3
+  struktogramm: 3
+artefakte:
+  modellierung_eerm_lehrkraft: "kursplattform_2025.mwb"
+  sql_db_dump: "stadtfahrradverleih_struktur_2025.sql"
+  sql_db_daten: "stadtfahrradverleih_daten_2025.sql"
+  sql_db_eerm: "stadtfahrradverleih_2025.mwb"
+  sql_db_eerm_grafik: "stadtfahrradverleih_2025.png"
+fassung: aufgaben</p>
+<hr />
+<h1>Klassenarbeit (60 Minuten)</h1>
+<p><strong>Klasse/Kurs:</strong> BG12 | <strong>Schuljahr:</strong> 2025/2026 | <strong>Bearbeitungszeit:</strong> 60 Minuten | <strong>Erreichbare Punkte:</strong> 34</p>
+<hr />
+<h2>Struktur</h2>
+<table>
+<thead>
+<tr>
+<th>Teil</th>
+<th>Inhalte</th>
+<th style="text-align: right;">Punkte</th>
+<th style="text-align: right;">Zeit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Theorie (MC)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5 Min</td>
+</tr>
+<tr>
+<td>B</td>
+<td>EERM, Normalisierung, Anomalien</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">25 Min</td>
+</tr>
+<tr>
+<td>C</td>
+<td>SQL-Abfragen über mehrere Tabellen</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">25 Min</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Grundlagen Programmierung (Struktogramm)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5 Min</td>
+</tr>
+<tr>
+<td><strong>Gesamt</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>34</strong></td>
+<td style="text-align: right;"><strong>60 Min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Teil A (3 Punkte)</h2>
+<h3>Aufgabe 1: Theorie (Multiple Choice) – 3 Punkte</h3>
+<p>Markieren Sie richtig/falsch. (0,5 Punkte je Aussage)</p>
+<table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Aussage</th>
+<th>r/f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ein Fremdschlüssel darf mehrfach vorkommen.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Eine N:M-Beziehung wird in relationalen Modellen direkt ohne Zwischentabelle gespeichert.</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ein LEFT JOIN kann Datensätze ohne Partner auf der rechten Seite sichtbar machen.</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Die 3NF reduziert Redundanz und Anomalien.</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ein Primärschlüssel darf NULL sein.</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>HAVING filtert Gruppen nach GROUP BY.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Teil B (14 Punkte): EERM in MySQL Workbench</h2>
+<p><strong>Wichtig:</strong> Teil B ist eine reine Modellierungsaufgabe. Es wird bewusst kein fertiges SQL-Schema vorgegeben. Die Struktur muss selbst aus dem Sachverhalt entwickelt werden.</p>
+<h3>Aufgabe 3.1: EERM modellieren – 8 Punkte</h3>
+<p><strong>Sachverhalt Modellierung (Kontext 1):</strong></p>
+<p>Eine Bildungseinrichtung betreibt eine Kursplattform. Teilnehmende buchen Kurse zu konkreten Terminen. Lehrkräfte betreuen Kurse, zum Teil im Team. Die Schulleitung benötigt später Auswertungen zu Buchungen pro Person, Terminen pro Kurs und Lehrkräften ohne aktive Zuordnung.</p>
+<p><strong>Auftrag:</strong> Leiten Sie aus dem Sachverhalt ein geeignetes EERM in MySQL Workbench ab. Begründen Sie Ihre Modellierungsentscheidungen kurz.</p>
+<h3>Aufgabe 3.2: Normalisierung bis 3NF – 4 Punkte</h3>
+<ul>
+<li>Benennen Sie 2 funktionale Abhängigkeiten.</li>
+<li>Begründen Sie, warum das Modell in 3NF liegt.</li>
+</ul>
+<h3>Aufgabe 3.3: Anomalien – 2 Punkte</h3>
+<p>Nennen Sie je ein Beispiel:
+- Einfügeanomalie
+- Änderungsanomalie
+- Löschanomalie</p>
+<hr />
+<h2>Teil C (14 Punkte): SQL-Abfragen über mehrere Tabellen</h2>
+<p><strong>Separater SQL-Kontext (3NF, Kontext 2) – anderen Kontext als Modellierung:</strong>
+Für Teil C wird absichtlich einen anderen Kontext verwendet als in Teil B (Kontext 1), damit die Modellierungslösung aus Teil B nicht indirekt vorgegeben wird.
+Die didaktische Trennung ist essenziell für die Unabhaengigkeit der Aufgabenteile.</p>
+<p><strong>Konkreter Sachverhalt:</strong>
+Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fahrräder, Ausleihen, Zahlungen und Wartungen (6 Entitätstypen). Die bereitgestellte Übungsdatenbank ist bereits in 3NF modelliert.</p>
+<p><strong>Arbeitsgrundlage:</strong>
+- SQL-Struktur: <code>stadtfahrradverleih_struktur_2025.sql</code>
+- SQL-Daten: <code>stadtfahrradverleih_daten</code>stadtfahrradverleih_daten_2025.sql<code>tadtfahrradverleih_2025.png</code></p>
+<p>![EERM Teil C - s<code>stadtfahrradverleih_2025.png</code>ahrradverleih_2025.png)</p>
+<h3>Aufgabe 4.1 (4 Punkte)</h3>
+<p>Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.
+Sortierung: Kundennachname, Startzeit.</p>
+<h3>Aufgabe 4.2 (4 Punkte)</h3>
+<p>Ermitteln Sie je Kundin/Kunde die Anzahl abgeschlossener Ausleihen. Zeigen Sie nur Personen mit mindestens 2 abgeschlossenen Ausleihen.</p>
+<h3>Aufgabe 4.3 (3 Punkte)</h3>
+<p>Geben Sie pro Station den letzten Ausleihstart und die Anzahl unterschiedlicher Kundinnen/Kunden aus, die dort gestartet sind.</p>
+<h3>Aufgabe 4.4 (3 Punkte)</h3>
+<p>Finden Sie Fahrräder ohne dokumentierte Wartung (LEFT JOIN).</p>
+<hr />
+<h2>Teil D (3 Punkte): Grundlagen Programmierung</h2>
+<h3>Aufgabe: Struktogramm – Fahrradverleih Kostenberechnung</h3>
+<p>Ein Kunde möchte wissen, wie viel eine Fahrradausleihe kostet.
+Erstellen Sie ein <strong>Struktogramm</strong> (gemäß Operatorenliste für Struktogramme) für folgende Verarbeitung:</p>
+<ul>
+<li><strong>Eingabe:</strong> Anzahl der Ausleih-Tage und Tagespreis in Euro</li>
+<li><strong>Verarbeitung:</strong> Berechnung der Gesamtkosten</li>
+<li><strong>Ausgabe:</strong> Gesamtkosten in Euro</li>
+</ul>
+<p><strong>Hinweis:</strong> Verwenden Sie ausschließlich Sequenz-Blöcke (EVA-Prinzip).
+Kontrollstrukturen (Schleifen, Verzweigungen) werden <strong>nicht</strong> bewertet und sind nicht erforderlich.</p>
+<table>
+<thead>
+<tr>
+<th>Bewertungskriterium</th>
+<th style="text-align: right;">Punkte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Struktogramm-Rahmen (ANFANG/ENDE) und 3 Sequenzblöcke vollständig</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>Berechnungsformel korrekt (Zuweisung mit :=)</td>
+<td style="text-align: right;">1,5</td>
+</tr>
+<tr>
+<td>Variablennamen und Lesbarkeit</td>
+<td style="text-align: right;">0,5</td>
+</tr>
+<tr>
+<td><strong>Gesamt</strong></td>
+<td style="text-align: right;"><strong>3,0</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Abgabe</h2>
+<ul>
+<li>EERM-Modellierung Teil B (von Schülern erstellt): als <code>.mwb</code>-Datei abgeben</li>
+<li>SQL-Lösungen Teil C: als Datei oder Text
+<code>.mwb</code></li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

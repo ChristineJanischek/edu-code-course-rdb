@@ -1,0 +1,30 @@
+[
+  {
+    "keyword_id": "kw_eerm",
+    "label": "EERM"
+  },
+  {
+    "keyword_id": "kw_3nf",
+    "label": "3NF"
+  },
+  {
+    "keyword_id": "kw_redundanz",
+    "label": "Redundanz"
+  },
+  {
+    "keyword_id": "kw_join",
+    "label": "JOIN"
+  },
+  {
+    "keyword_id": "kw_group_by",
+    "label": "GROUP BY"
+  },
+  {
+    "keyword_id": "kw_ssot",
+    "label": "SSOT"
+  },
+  {
+    "keyword_id": "kw_mvc",
+    "label": "MVC"
+  }
+]

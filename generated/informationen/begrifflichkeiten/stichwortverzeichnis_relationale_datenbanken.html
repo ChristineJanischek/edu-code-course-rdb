@@ -3,340 +3,463 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stichwortverzeichnis Relationale Datenbanken</title>
-  <style>
-    :root {
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --text: #13263a;
-      --muted: #52667a;
-      --accent: #0a7d5c;
-      --accent-2: #0b5fa5;
-      --border: #d7e2ec;
-      --highlight: #fff5cc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Segoe UI", "Calibri", "Verdana", sans-serif;
-      background: radial-gradient(circle at top right, #e6f7ef 0%, var(--bg) 45%, #eef4ff 100%);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 12px 30px rgba(7, 36, 69, 0.08);
-    }
-
-    h1 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: clamp(1.4rem, 2.4vw, 2rem);
-      color: var(--accent-2);
-    }
-
-    p {
-      margin-top: 0;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .search-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      margin: 16px 0;
-    }
-
-    input[type="search"] {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    input[type="search"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(10, 125, 92, 0.15);
-    }
-
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 0.95rem;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(120deg, var(--accent), #159c74);
-    }
-
-    .stats {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .table-wrap {
-      overflow: auto;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #fff;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 900px;
-    }
-
-    th,
-    td {
-      text-align: left;
-      vertical-align: top;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background: #eff5fb;
-      color: #17324b;
-      font-weight: 700;
-    }
-
-    tr mark {
-      background: var(--highlight);
-      padding: 0 2px;
-    }
-
-    .links {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .links a {
-      color: var(--accent-2);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 700px) {
-      .search-row {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 14px;
-      }
-    }
-  </style>
+  <title>Stichwortverzeichnis Relationale Datenbanken (BPE 3)</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>Stichwortverzeichnis Relationale Datenbanken</h1>
-      <p>Alle Begriffe sind alphabetisch sortiert. Suche nach Begriff, Definition oder Beispiel (z. B. 3NF, JOIN, Fremdschlüssel, Anomalie).</p>
-      <p class="meta">Didaktischer Fokus: Bildungsplaneinheit BPE 3 (Relationale Datenbanken), inklusive 1NF bis 3NF, Integrität und SQL-Klauseln.</p>
-
-      <details style="margin:12px 0;border:1px solid var(--border);border-radius:10px;padding:10px 14px;background:#f0f8ff;">
-        <summary style="font-weight:700;cursor:pointer;color:var(--accent-2);">So öffnest du diese Seite im Codespace (Schritt für Schritt)</summary>
-        <ol style="margin:10px 0 4px;padding-left:20px;line-height:1.8;">
-          <li><strong>Explorer öffnen:</strong> Klicke oben links in VS Code auf das Explorer-Symbol (zwei übereinanderliegende Seiten).</li>
-          <li><strong>Datei suchen:</strong> Navigiere zu<br>
-            <code>generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html</code></li>
-          <li><strong>Rechtsklick</strong> auf die Datei → Menüpunkt <strong>„Open with Live Server"</strong> auswählen.</li>
-          <li>Der Browser öffnet sich automatisch mit dieser Seite.</li>
-          <li><strong>Suche nutzen:</strong> Begriff in das Suchfeld oben eintippen, z. B. <code>JOIN</code>, <code>3NF</code> oder <code>Anomalie</code>.</li>
-        </ol>
-        <p style="margin:6px 0 0;font-size:0.92rem;color:var(--muted);">
-          <strong>Kein Browser-Fenster?</strong> Schaue unten in der VS-Code-Statusleiste – dort erscheint ein klickbarer Link, z. B. <code>Port 5500</code>.<br>
-          <strong>Live Server fehlt?</strong> Erweiterungen-Symbol → nach „Live Server" suchen → installieren.
-        </p>
-      </details>
-
-      <div class="search-row">
-        <input id="search" type="search" placeholder="Stichwort suchen ..." aria-label="Stichwort suchen">
-        <button id="clear" type="button">Suche löschen</button>
-      </div>
-
-      <p id="stats" class="stats"></p>
-
-      <div class="table-wrap">
-        <table id="glossary">
-          <thead>
-            <tr>
-              <th>Begriff</th>
-              <th>Definition</th>
-              <th>Beispiel</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1. Normalform (1NF)</td><td>In jeder Zelle steht genau ein einzelner Wert.</td><td>Keine Listenwerte in einer Spalte.</td></tr>
-            <tr><td>2. Normalform (2NF)</td><td>Nichtschlüsselattribute hängen vom gesamten Primärschlüssel ab.</td><td>Bei (SchülerID, KursID) steht Schülername nicht mit in derselben Tabelle.</td></tr>
-            <tr><td>3. Normalform (3NF)</td><td>Keine transitiven Abhängigkeiten zwischen Nichtschlüsselattributen.</td><td>Raumname nicht direkt in KURS, sondern in RAUM.</td></tr>
-            <tr><td>Aggregatfunktion</td><td>Fasst viele Zeilen zu einem Ergebnis zusammen.</td><td>COUNT(*), SUM(preis), AVG(punkte).</td></tr>
-            <tr><td>ALTER TABLE</td><td>Ändert die Struktur einer bestehenden Tabelle.</td><td>Spalte hinzufügen mit ALTER TABLE.</td></tr>
-            <tr><td>AND</td><td>Alle Bedingungen müssen wahr sein.</td><td>WHERE ort='Stuttgart' AND aktiv=1</td></tr>
-            <tr><td>Anomalie</td><td>Unerwünschter Nebeneffekt durch schlechte Struktur.</td><td>Beim Löschen gehen fachlich wichtige Infos verloren.</td></tr>
-            <tr><td>AS (Alias)</td><td>Vergibt Kurznamen für Tabellen oder Spalten.</td><td>SELECT k.name AS kundenname FROM kunden k</td></tr>
-            <tr><td>Attribut</td><td>Eigenschaft einer Entität.</td><td>Geburtsdatum, Nachname, Preis.</td></tr>
-            <tr><td>Atomarität</td><td>Ein Feld enthält nur einen unteilbaren Einzelwert.</td><td>Keine zwei Telefonnummern in einer Zelle.</td></tr>
-            <tr><td>BETWEEN</td><td>Prüft, ob ein Wert in einem Bereich liegt.</td><td>WHERE preis BETWEEN 10 AND 50</td></tr>
-            <tr><td>Beziehung</td><td>Zusammenhang zwischen Entitäten.</td><td>Ein Kunde hat viele Bestellungen.</td></tr>
-            <tr><td>CHECK</td><td>Regel für erlaubte Werte in einer Spalte.</td><td>CHECK (punkte &gt;= 0)</td></tr>
-            <tr><td>COUNT</td><td>Zählt Datensätze oder Werte.</td><td>SELECT COUNT(*) FROM bestellung</td></tr>
-            <tr><td>CREATE DATABASE</td><td>Erstellt eine neue Datenbank.</td><td>CREATE DATABASE schulshop_db;</td></tr>
-            <tr><td>CREATE TABLE</td><td>Erstellt eine neue Tabelle.</td><td>CREATE TABLE kunde (...)</td></tr>
-            <tr><td>Datenkonsistenz</td><td>Daten sind widerspruchsfrei und regelkonform.</td><td>Keine Bestellung mit unbekannter Kunde-ID.</td></tr>
-            <tr><td>Datensatz (Tupel)</td><td>Eine Zeile in einer Tabelle.</td><td>Eine konkrete Ausleihe mit Datum.</td></tr>
-            <tr><td>Datentyp</td><td>Legt fest, welche Art von Daten gespeichert wird.</td><td>INT, DATE, VARCHAR.</td></tr>
-            <tr><td>DELETE</td><td>Löscht Datensätze aus einer Tabelle.</td><td>DELETE FROM bestellung WHERE id=17</td></tr>
-            <tr><td>DISTINCT</td><td>Entfernt Duplikate in Abfrageergebnissen.</td><td>SELECT DISTINCT ort FROM kunden</td></tr>
-            <tr><td>DDL</td><td>SQL-Befehle für Datenbankstruktur.</td><td>CREATE, ALTER, DROP.</td></tr>
-            <tr><td>DML</td><td>SQL-Befehle für Dateninhalte.</td><td>INSERT, UPDATE, DELETE.</td></tr>
-            <tr><td>Einfügeanomalie</td><td>Daten können nur unvollständig oder künstlich eingefügt werden.</td><td>Kurs erst anlegbar, wenn schon Teilnehmer existiert.</td></tr>
-            <tr><td>Entität</td><td>Konkretes Objekt der realen Welt.</td><td>Eine Kundin oder ein Fahrrad.</td></tr>
-            <tr><td>Entitätstyp</td><td>Klasse ähnlicher Entitäten (oft eine Tabelle).</td><td>KUNDE, PRODUKT, BUCHUNG.</td></tr>
-            <tr><td>ER-Modell / EERM</td><td>Modell zur fachlichen Datenbankplanung.</td><td>Vor SQL wird ein EERM in Workbench gezeichnet.</td></tr>
-            <tr><td>Fremdschlüssel (FOREIGN KEY)</td><td>Verweis auf Primärschlüssel einer anderen Tabelle.</td><td>bestellung.kunde_id → kunde.kunde_id</td></tr>
-            <tr><td>FROM</td><td>Legt die Ausgangstabelle einer Abfrage fest.</td><td>SELECT * FROM kunde</td></tr>
-            <tr><td>GROUP BY</td><td>Bildet Gruppen für Auswertungen.</td><td>GROUP BY stadt</td></tr>
-            <tr><td>HAVING</td><td>Filtert Gruppen nach GROUP BY.</td><td>HAVING COUNT(*) &gt;= 2</td></tr>
-            <tr><td>IN</td><td>Prüft auf Mitgliedschaft in einer Werteliste.</td><td>WHERE stadt IN ('Ulm','Heilbronn')</td></tr>
-            <tr><td>Index</td><td>Beschleunigt das Finden von Datensätzen.</td><td>Index auf kundennummer.</td></tr>
-            <tr><td>INNER JOIN</td><td>Nur Treffer in beiden Tabellen.</td><td>Kunden mit vorhandenen Bestellungen.</td></tr>
-            <tr><td>INSERT</td><td>Fügt neue Datensätze ein.</td><td>INSERT INTO kunde (...) VALUES (...)</td></tr>
-            <tr><td>Integritätsregel</td><td>Regel zur Sicherung gültiger Daten.</td><td>Primärschlüssel darf nicht NULL sein.</td></tr>
-            <tr><td>IS NULL</td><td>Prüft auf fehlende Werte.</td><td>WHERE lieferdatum IS NULL</td></tr>
-            <tr><td>JOIN</td><td>Verbindet Tabellen über Schlüsselbeziehungen.</td><td>kunde JOIN bestellung ON ...</td></tr>
-            <tr><td>Kardinalität</td><td>Anzahl möglicher Zuordnungen zwischen Entitäten.</td><td>1:1, 1:n, n:m.</td></tr>
-            <tr><td>Kandidatenschlüssel</td><td>Möglicher eindeutiger Schlüssel einer Tabelle.</td><td>E-Mail kann eindeutig sein.</td></tr>
-            <tr><td>LEFT JOIN</td><td>Alle Zeilen links bleiben erhalten.</td><td>Alle Kunden, auch ohne Bestellung.</td></tr>
-            <tr><td>LIKE</td><td>Mustervergleich in Texten.</td><td>WHERE name LIKE 'Sch%'</td></tr>
-            <tr><td>Löschanomalie</td><td>Beim Löschen verschwinden ungewollt weitere Informationen.</td><td>Letzte Ausleihe gelöscht, Stamminfo geht mit verloren.</td></tr>
-            <tr><td>MAX</td><td>Größter Wert.</td><td>MAX(preis)</td></tr>
-            <tr><td>MIN</td><td>Kleinster Wert.</td><td>MIN(preis)</td></tr>
-            <tr><td>n:m-Beziehung</td><td>Viele Entitäten sind mit vielen anderen verknüpft.</td><td>Viele Schüler besuchen viele Kurse.</td></tr>
-            <tr><td>Normalisierung</td><td>Schrittweises Verbessern zur Redundanzvermeidung.</td><td>Von Sammel-Tabelle zu 3NF-Modell.</td></tr>
-            <tr><td>NOT</td><td>Negiert eine Bedingung.</td><td>WHERE NOT status='inaktiv'</td></tr>
-            <tr><td>NOT NULL</td><td>Wert ist verpflichtend.</td><td>name VARCHAR(100) NOT NULL</td></tr>
-            <tr><td>ON</td><td>Definiert Join-Bedingung.</td><td>ON b.kunde_id = k.kunde_id</td></tr>
-            <tr><td>OR</td><td>Mindestens eine Bedingung muss wahr sein.</td><td>WHERE ort='Freiburg' OR ort='Karlsruhe'</td></tr>
-            <tr><td>ORDER BY</td><td>Sortiert Abfrageergebnisse.</td><td>ORDER BY nachname ASC</td></tr>
-            <tr><td>Primärschlüssel (PRIMARY KEY)</td><td>Eindeutiger Identifikator eines Datensatzes.</td><td>kunde_id identifiziert jeden Kunden genau einmal.</td></tr>
-            <tr><td>Projektion</td><td>Auswahl von Spalten.</td><td>SELECT name, stadt FROM kunde</td></tr>
-            <tr><td>Redundanz</td><td>Mehrfachspeicherung gleicher Information.</td><td>Kundename steht unnötig in vielen Zeilen.</td></tr>
-            <tr><td>Referentielle Integrität</td><td>Fremdschlüssel dürfen nur auf vorhandene Primärschlüssel zeigen.</td><td>Bestellung mit Kunde-ID nur, wenn Kunde existiert.</td></tr>
-            <tr><td>Relation</td><td>Tabellenartige Struktur im relationalen Modell.</td><td>Die Tabelle KUNDE ist eine Relation.</td></tr>
-            <tr><td>Schema</td><td>Gesamtstruktur einer Datenbank.</td><td>Tabellen, Spalten, Schlüssel und Beziehungen.</td></tr>
-            <tr><td>Selektion</td><td>Auswahl von Zeilen über Bedingungen.</td><td>SELECT * FROM kunde WHERE ort='Mannheim'</td></tr>
-            <tr><td>SELECT</td><td>Liest Daten aus Tabellen.</td><td>SELECT name FROM kunde</td></tr>
-            <tr><td>SQL</td><td>Standardsprache für relationale Datenbanken.</td><td>Mit SQL werden Daten erstellt, geändert und ausgewertet.</td></tr>
-            <tr><td>Subquery (Unterabfrage)</td><td>Abfrage innerhalb einer anderen Abfrage.</td><td>WHERE preis &gt; (SELECT AVG(preis) FROM produkt)</td></tr>
-            <tr><td>SUM</td><td>Summiert Zahlenwerte.</td><td>SUM(umsatz)</td></tr>
-            <tr><td>Tabelle</td><td>Struktur aus Spalten und Zeilen.</td><td>Tabelle AUSLEIHE mit Start- und Endzeit.</td></tr>
-            <tr><td>Transitive Abhängigkeit</td><td>Indirekte Abhängigkeit über ein Nichtschlüsselattribut.</td><td>kurs_id → raum_id → raumname</td></tr>
-            <tr><td>UNION</td><td>Vereint Ergebnisse zweier SELECT-Abfragen.</td><td>SELECT ... UNION SELECT ...</td></tr>
-            <tr><td>UNIQUE</td><td>Werte in einer Spalte müssen eindeutig sein.</td><td>E-Mail nur einmal vorhanden.</td></tr>
-            <tr><td>UPDATE</td><td>Ändert vorhandene Datensätze.</td><td>UPDATE kunde SET ort='Ulm' WHERE kunde_id=3</td></tr>
-            <tr><td>WHERE</td><td>Filtert Zeilen vor Gruppierung.</td><td>WHERE aktiv=1</td></tr>
-            <tr><td>Änderungsanomalie</td><td>Eine fachliche Änderung muss mehrfach gepflegt werden.</td><td>Telefonnummer muss in vielen Zeilen korrigiert werden.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="links">
-        <a href="../teil-b/03_normalisierung_bis_3nf.md">Vertiefung 3NF (Teil B)</a>
-        <a href="../teil-b/05_referentielle_integritaet.md">Vertiefung Integrität (Teil B)</a>
-        <a href="../teil-c/01_sql_abfragen_ueber_mehrere_tabellen.md">Vertiefung JOIN (Teil C)</a>
-        <a href="../teil-c/06_gruppierung_in_sql.md">Vertiefung GROUP BY/HAVING (Teil C)</a>
-        <a href="https://www.w3schools.com/sql/">SQL-Referenz (W3Schools)</a>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    (function () {
-      const search = document.getElementById('search');
-      const clear = document.getElementById('clear');
-      const stats = document.getElementById('stats');
-      const rows = Array.from(document.querySelectorAll('#glossary tbody tr'));
-
-      function escapeHtml(value) {
-        return value
-          .replaceAll('&', '&amp;')
-          .replaceAll('<', '&lt;')
-          .replaceAll('>', '&gt;');
-      }
-
-      function highlight(text, term) {
-        if (!term) {
-          return escapeHtml(text);
-        }
-        const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp('(' + escaped + ')', 'ig');
-        return escapeHtml(text).replace(regex, '<mark>$1</mark>');
-      }
-
-      function update() {
-        const term = search.value.trim();
-        const termLower = term.toLowerCase();
-        let visible = 0;
-
-        for (const row of rows) {
-          const cells = Array.from(row.cells);
-          const raw = cells.map((c) => c.textContent || '');
-          const haystack = raw.join(' ').toLowerCase();
-          const match = !termLower || haystack.includes(termLower);
-          row.style.display = match ? '' : 'none';
-
-          if (match) {
-            visible += 1;
-            cells.forEach((cell, idx) => {
-              cell.innerHTML = highlight(raw[idx], term);
-            });
-          }
-        }
-
-        stats.textContent = `${visible} von ${rows.length} Begriffen sichtbar.`;
-      }
-
-      search.addEventListener('input', update);
-      clear.addEventListener('click', function () {
-        search.value = '';
-        update();
-        search.focus();
-      });
-
-      update();
-    }());
-  </script>
+  <div class="page">
+    <header class="hero">
+      <h1>Stichwortverzeichnis Relationale Datenbanken (BPE 3)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.md</p>
+    </header>
+    <main class="content">
+<h1>Stichwortverzeichnis Relationale Datenbanken (BPE 3)</h1>
+<p>Dieses Dokument unterstützt dich beim selbstgesteuerten Lernen im Fernstudium.
+Alle Begriffe sind alphabetisch sortiert und schülergerecht erklärt.</p>
+<h2>So nutzt du dieses Dokument</h2>
+<ul>
+<li>Lese bei einer Aufgabe zuerst den Begriff nach, den du nicht verstehst.</li>
+<li>Nutze danach die Beispielzeile, um den Begriff direkt in SQL oder im EERM wiederzuerkennen.</li>
+<li>Arbeite beim Modellieren immer mit dem 3NF-Fokus: erst fachlich korrekt, dann technisch umsetzen.</li>
+</ul>
+<blockquote>
+<p><strong>Tipp: Suchfunktion nutzen</strong>
+Die durchsuchbare Version mit Live-Filter findest du in der HTML-Datei:
+<code>stichwortverzeichnis_relationale_datenbanken.html</code>
+Rechtsklick auf die Datei im Explorer → <strong>„Open with Live Server"</strong> → Begriff eintippen, fertig.
+Eine ausführliche Schritt-für-Schritt-Anleitung steht in der <a href="README.html">README.md</a>.</p>
+</blockquote>
+<h2>Lernweg zur 3. Normalform (3NF)</h2>
+<ol>
+<li>Sachverhalt in Entitäten, Attribute und Beziehungen zerlegen.</li>
+<li>Primärschlüssel und Fremdschlüssel sauber festlegen.</li>
+<li>Redundanzen und Anomalien sichtbar machen.</li>
+<li>1NF, 2NF und 3NF nacheinander prüfen.</li>
+<li>Danach SQL für Erfassung, Änderung, Löschung und Auswertung formulieren.</li>
+</ol>
+<h2>Alphabetisches Stichwortverzeichnis</h2>
+<table>
+<thead>
+<tr>
+<th>Begriff</th>
+<th>Definition (verständlich)</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Normalform (1NF)</td>
+<td>In jeder Zelle steht genau ein einzelner Wert, keine Liste und kein Mehrfachwert.</td>
+<td>Statt "Mathe, Informatik" in einer Zelle: eigene Tabelle mit mehreren Zeilen je Person.</td>
+</tr>
+<tr>
+<td>2. Normalform (2NF)</td>
+<td>Alle Nichtschlüsselattribute hängen vom gesamten Primärschlüssel ab, nicht nur von einem Teil.</td>
+<td>Bei (SchülerID, KursID) darf "Schülername" nicht in derselben Tabelle stehen.</td>
+</tr>
+<tr>
+<td>3. Normalform (3NF)</td>
+<td>Es gibt keine indirekten Abhängigkeiten zwischen Nichtschlüsselattributen.</td>
+<td>Raumname gehört in die Tabelle RAUM, nicht zusätzlich in KURS.</td>
+</tr>
+<tr>
+<td>Aggregatfunktion</td>
+<td>Funktion, die viele Zeilen zu einem Ergebnis zusammenfasst.</td>
+<td>COUNT(*), SUM(preis), AVG(punkte).</td>
+</tr>
+<tr>
+<td>ALTER TABLE</td>
+<td>SQL-Befehl zum Ändern einer vorhandenen Tabelle.</td>
+<td>Spalte hinzufügen: ALTER TABLE kunde ADD telefon VARCHAR(30).</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>Verknüpft Bedingungen, sodass alle Bedingungen wahr sein müssen.</td>
+<td>WHERE ort='Stuttgart' AND aktiv=1</td>
+</tr>
+<tr>
+<td>Anomalie</td>
+<td>Unerwünschter Nebeneffekt durch schlechte Datenstruktur.</td>
+<td>Beim Löschen einer Bestellung verschwindet versehentlich auch die letzte Produktinfo.</td>
+</tr>
+<tr>
+<td>AS (Alias)</td>
+<td>Vergibt einen Kurznamen für Spalten oder Tabellen.</td>
+<td>SELECT k.name AS kundenname FROM kunden k</td>
+</tr>
+<tr>
+<td>Attribut</td>
+<td>Eigenschaft einer Entität oder Tabelle.</td>
+<td>Kundennummer, Nachname, Geburtsdatum.</td>
+</tr>
+<tr>
+<td>Atomarität</td>
+<td>Eigenschaft, dass ein Attribut nicht weiter zerlegt als Einzelwert gespeichert ist.</td>
+<td>Telefon nur als ein Wert pro Feld, nicht mehrere Nummern in einer Zelle.</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>Prüft, ob ein Wert in einem Bereich liegt.</td>
+<td>WHERE preis BETWEEN 10 AND 50</td>
+</tr>
+<tr>
+<td>Beziehung (Relationship)</td>
+<td>Fachlicher Zusammenhang zwischen Entitäten.</td>
+<td>Ein Kunde hat viele Bestellungen.</td>
+</tr>
+<tr>
+<td>Cardinality/Kardinalität</td>
+<td>Gibt an, wie viele Objekte auf beiden Seiten einer Beziehung möglich sind.</td>
+<td>1:1, 1:n, n:m.</td>
+</tr>
+<tr>
+<td>CHECK</td>
+<td>Bedingung auf Spaltenebene für gültige Werte.</td>
+<td>CHECK (punkte &gt;= 0)</td>
+</tr>
+<tr>
+<td>COUNT</td>
+<td>Zählt Datensätze oder Werte.</td>
+<td>SELECT COUNT(*) FROM bestellung</td>
+</tr>
+<tr>
+<td>CREATE DATABASE</td>
+<td>Erstellt eine neue Datenbank.</td>
+<td>CREATE DATABASE schulshop_db;</td>
+</tr>
+<tr>
+<td>CREATE TABLE</td>
+<td>Erstellt eine neue Tabelle mit Spalten und Datentypen.</td>
+<td>CREATE TABLE kunde (kunde_id INT PRIMARY KEY, name VARCHAR(100));</td>
+</tr>
+<tr>
+<td>Datenbank</td>
+<td>Strukturierte, dauerhaft gespeicherte Datensammlung.</td>
+<td>Eine Schulverwaltung mit Tabellen für Schüler, Klassen und Noten.</td>
+</tr>
+<tr>
+<td>Datenbankmanagementsystem (DBMS)</td>
+<td>Software zum Verwalten von Datenbanken.</td>
+<td>MySQL, MariaDB, PostgreSQL.</td>
+</tr>
+<tr>
+<td>Datenkonsistenz</td>
+<td>Daten widersprechen sich nicht und erfüllen die Regeln.</td>
+<td>Kunde hat genau eine gültige Kundennummer in allen Tabellen.</td>
+</tr>
+<tr>
+<td>Datensatz (Tupel)</td>
+<td>Eine Zeile in einer Tabelle.</td>
+<td>Eine konkrete Bestellung mit Datum und Betrag.</td>
+</tr>
+<tr>
+<td>Datentyp</td>
+<td>Legt fest, welche Art Wert gespeichert wird.</td>
+<td>INT, VARCHAR, DATE, BOOLEAN.</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Löscht Datensätze aus einer Tabelle.</td>
+<td>DELETE FROM bestellung WHERE bestellung_id=17;</td>
+</tr>
+<tr>
+<td>DISTINCT</td>
+<td>Entfernt doppelte Werte im Ergebnis.</td>
+<td>SELECT DISTINCT ort FROM kunden</td>
+</tr>
+<tr>
+<td>DDL (Data Definition Language)</td>
+<td>SQL-Befehle für Strukturänderungen.</td>
+<td>CREATE, ALTER, DROP.</td>
+</tr>
+<tr>
+<td>DML (Data Manipulation Language)</td>
+<td>SQL-Befehle für Inhalte/Datensätze.</td>
+<td>INSERT, UPDATE, DELETE.</td>
+</tr>
+<tr>
+<td>DROP TABLE</td>
+<td>Entfernt eine Tabelle komplett aus der Datenbank.</td>
+<td>DROP TABLE archiv_bestellungen;</td>
+</tr>
+<tr>
+<td>Einfügeanomalie</td>
+<td>Problem: Daten können nicht sinnvoll eingefügt werden, ohne andere Daten zu erfinden.</td>
+<td>Neuer Kurs kann nicht angelegt werden, weil noch kein Teilnehmer existiert.</td>
+</tr>
+<tr>
+<td>Entität</td>
+<td>Konkretes Objekt der realen Welt.</td>
+<td>Eine bestimmte Kundin, ein konkretes Fahrrad.</td>
+</tr>
+<tr>
+<td>Entitätstyp</td>
+<td>Klasse ähnlicher Entitäten, wird meist als Tabelle modelliert.</td>
+<td>KUNDE, PRODUKT, RECHNUNG.</td>
+</tr>
+<tr>
+<td>ER-Modell/EERM</td>
+<td>Modell zur Planung von Entitäten, Attributen und Beziehungen.</td>
+<td>Vor dem SQL-Umsetzen wird ein EERM in Workbench gezeichnet.</td>
+</tr>
+<tr>
+<td>FD (Funktionale Abhängigkeit)</td>
+<td>Ein Attribut bestimmt ein anderes eindeutig.</td>
+<td>kunde_id -&gt; kundename</td>
+</tr>
+<tr>
+<td>Feld (Spalte)</td>
+<td>Eine Spalte in einer Tabelle.</td>
+<td>"email" in der Tabelle "kunde".</td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>Fremdschlüssel, der auf Primärschlüssel einer anderen Tabelle zeigt.</td>
+<td>bestellung.kunde_id verweist auf kunde.kunde_id</td>
+</tr>
+<tr>
+<td>FROM</td>
+<td>Legt fest, aus welcher Tabelle Daten gelesen werden.</td>
+<td>SELECT * FROM kunde</td>
+</tr>
+<tr>
+<td>GROUP BY</td>
+<td>Bildet Gruppen mit gleichen Werten für Auswertungen.</td>
+<td>GROUP BY stadt</td>
+</tr>
+<tr>
+<td>HAVING</td>
+<td>Filtert Gruppen nach GROUP BY.</td>
+<td>HAVING COUNT(*) &gt;= 2</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>Prüft, ob ein Wert in einer vorgegebenen Liste enthalten ist.</td>
+<td>WHERE stadt IN ('Ulm','Heilbronn')</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>Beschleunigt Suchzugriffe auf Spalten.</td>
+<td>Index auf kundennummer für schnelle Suche.</td>
+</tr>
+<tr>
+<td>INNER JOIN</td>
+<td>Liefert nur Zeilen mit Treffern in beiden Tabellen.</td>
+<td>Kunden mit vorhandenen Bestellungen.</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>Fügt neue Datensätze in eine Tabelle ein.</td>
+<td>INSERT INTO kunde (kunde_id, name) VALUES (1, 'Mina');</td>
+</tr>
+<tr>
+<td>Integritätsregel</td>
+<td>Regel, die gültige Daten sicherstellt.</td>
+<td>Primärschlüssel darf nicht NULL sein.</td>
+</tr>
+<tr>
+<td>IS NULL</td>
+<td>Prüft auf fehlende Werte.</td>
+<td>WHERE lieferdatum IS NULL</td>
+</tr>
+<tr>
+<td>JOIN</td>
+<td>Verbindet Tabellen über Schlüsselbeziehungen.</td>
+<td>kunde JOIN bestellung ON ...</td>
+</tr>
+<tr>
+<td>Kardinalität</td>
+<td>Anzahl möglicher Zuordnungen zwischen Entitäten.</td>
+<td>Ein Kurs hat viele Termine (1:n).</td>
+</tr>
+<tr>
+<td>Kandidatenschlüssel</td>
+<td>Attribut oder Attributkombination, die einen Datensatz eindeutig identifiziert.</td>
+<td>E-Mail kann Kandidatenschlüssel sein, wenn sie eindeutig ist.</td>
+</tr>
+<tr>
+<td>LEFT JOIN</td>
+<td>Liefert alle Zeilen links, auch ohne Treffer rechts.</td>
+<td>Alle Kunden, auch wenn sie nichts bestellt haben.</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>Mustervergleich für Texte.</td>
+<td>WHERE name LIKE 'Sch%';</td>
+</tr>
+<tr>
+<td>Löschanomalie</td>
+<td>Beim Löschen gehen unbeabsichtigt weitere wichtige Informationen verloren.</td>
+<td>Löschen der letzten Ausleihe löscht indirekt Infos zum Fahrradtyp.</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>Größter Wert in einer Spalte.</td>
+<td>MAX(preis)</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>Kleinster Wert in einer Spalte.</td>
+<td>MIN(preis)</td>
+</tr>
+<tr>
+<td>n:m-Beziehung</td>
+<td>Viele Objekte stehen mit vielen anderen in Beziehung.</td>
+<td>Viele Schüler besuchen viele Kurse.</td>
+</tr>
+<tr>
+<td>Normalisierung</td>
+<td>Schrittweises Verbessern der Tabellenstruktur zur Redundanzvermeidung.</td>
+<td>Zerlegung einer großen Sammel-Tabelle in mehrere 3NF-Tabellen.</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>Negiert eine Bedingung.</td>
+<td>WHERE NOT status='inaktiv'</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>Spalte darf keinen leeren Wert enthalten.</td>
+<td>name VARCHAR(100) NOT NULL</td>
+</tr>
+<tr>
+<td>ON</td>
+<td>Definiert die Verknüpfungsbedingung bei JOIN.</td>
+<td>ON b.kunde_id = k.kunde_id</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>Verknüpft Bedingungen, sodass mindestens eine wahr sein muss.</td>
+<td>WHERE ort='Freiburg' OR ort='Karlsruhe'</td>
+</tr>
+<tr>
+<td>ORDER BY</td>
+<td>Sortiert Ergebnisse auf- oder absteigend.</td>
+<td>ORDER BY nachname ASC</td>
+</tr>
+<tr>
+<td>OUTER JOIN</td>
+<td>Liefert zusätzlich Zeilen ohne Treffer (je nach LEFT/RIGHT/FULL).</td>
+<td>LEFT JOIN zeigt auch Datensätze ohne Beziehung.</td>
+</tr>
+<tr>
+<td>Primärschlüssel (PRIMARY KEY)</td>
+<td>Eindeutiger Schlüssel einer Tabelle.</td>
+<td>kunde_id identifiziert jeden Kunden genau einmal.</td>
+</tr>
+<tr>
+<td>Projektion</td>
+<td>Auswahl bestimmter Spalten in einer Abfrage.</td>
+<td>SELECT name, stadt FROM kunde</td>
+</tr>
+<tr>
+<td>Redundanz</td>
+<td>Mehrfachspeicherung derselben Information.</td>
+<td>Kundename steht unnötig in mehreren Tabellenzeilen.</td>
+</tr>
+<tr>
+<td>Referentielle Integrität</td>
+<td>Fremdschlüssel darf nur auf vorhandene Primärschlüssel zeigen.</td>
+<td>Bestellung darf nur existierende Kunde-ID enthalten.</td>
+</tr>
+<tr>
+<td>Relation</td>
+<td>Tabellenartige Darstellung von Daten im relationalen Modell.</td>
+<td>Tabelle KUNDE ist eine Relation.</td>
+</tr>
+<tr>
+<td>RIGHT JOIN</td>
+<td>Liefert alle Zeilen rechts, auch ohne Treffer links.</td>
+<td>Alle Datensätze der rechten Tabelle bleiben erhalten.</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Gesamter Strukturplan der Datenbank.</td>
+<td>Enthält Tabellen, Spalten, Schlüssel und Beziehungen.</td>
+</tr>
+<tr>
+<td>Selektion</td>
+<td>Auswahl von Zeilen über Bedingungen.</td>
+<td>SELECT * FROM kunde WHERE ort='Mannheim'</td>
+</tr>
+<tr>
+<td>SELECT</td>
+<td>Liest Daten aus einer oder mehreren Tabellen.</td>
+<td>SELECT name FROM kunde</td>
+</tr>
+<tr>
+<td>SQL (Structured Query Language)</td>
+<td>Standardsprache für relationale Datenbanken.</td>
+<td>Mit SQL werden Daten definiert, geändert und ausgewertet.</td>
+</tr>
+<tr>
+<td>Subquery (Unterabfrage)</td>
+<td>Abfrage innerhalb einer anderen Abfrage.</td>
+<td>WHERE preis &gt; (SELECT AVG(preis) FROM produkt)</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>Bildet die Summe numerischer Werte.</td>
+<td>SUM(umsatz) pro Monat.</td>
+</tr>
+<tr>
+<td>Tabelle</td>
+<td>Struktur aus Spalten und Zeilen.</td>
+<td>Tabelle "ausleihe" mit Startzeit und Endzeit.</td>
+</tr>
+<tr>
+<td>Transitive Abhängigkeit</td>
+<td>Attribut hängt über ein anderes Nichtschlüsselattribut ab.</td>
+<td>kurs_id -&gt; raum_id -&gt; raumname</td>
+</tr>
+<tr>
+<td>Tupel</td>
+<td>Fachbegriff für einen Datensatz (eine Zeile).</td>
+<td>Eine einzelne Zeile in BESTELLUNG.</td>
+</tr>
+<tr>
+<td>UNION</td>
+<td>Vereint Ergebnisse zweier SELECTs ohne Duplikate.</td>
+<td>Kundenorte aus zwei Tabellen zusammenführen.</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>Erzwingt eindeutige Werte in einer Spalte.</td>
+<td>E-Mail darf nur einmal vorkommen.</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>Ändert bestehende Datensätze.</td>
+<td>UPDATE kunde SET ort='Ulm' WHERE kunde_id=3;</td>
+</tr>
+<tr>
+<td>WHERE</td>
+<td>Filtert Zeilen vor Gruppierung.</td>
+<td>WHERE aktiv=1</td>
+</tr>
+<tr>
+<td>Änderungsanomalie</td>
+<td>Eine Änderung muss an vielen Stellen erfolgen und erzeugt leicht Widersprüche.</td>
+<td>Neue Telefonnummer müsste in 20 Zeilen korrigiert werden.</td>
+</tr>
+</tbody>
+</table>
+<h2>SQL-Klausel-Kompass (schneller Überblick)</h2>
+<ul>
+<li>Struktur aufbauen: CREATE DATABASE, CREATE TABLE, ALTER TABLE, DROP TABLE</li>
+<li>Daten erfassen: INSERT</li>
+<li>Daten ändern: UPDATE</li>
+<li>Daten löschen: DELETE</li>
+<li>Daten auswerten: SELECT, FROM, JOIN, WHERE, GROUP BY, HAVING, ORDER BY</li>
+<li>Logik und Filter: AND, OR, NOT, IN, BETWEEN, LIKE, IS NULL</li>
+<li>Auswertung: COUNT, SUM, AVG, MIN, MAX, DISTINCT</li>
+</ul>
+<h2>Externe Ergänzung</h2>
+<p>Wenn du zusätzliche Beispiele brauchst, kannst du SQL-Befehle auch in kompakter Form bei W3Schools nachschlagen:
+https://www.w3schools.com/sql/</p>
+<p>Wichtig: Dieses Stichwortverzeichnis bleibt deine primäre Quelle, weil es an eure Aufgabenkontexte, den 3NF-Fokus und den Bildungsplan angepasst ist.</p>
+    </main>
+  </div>
 </body>
 </html>

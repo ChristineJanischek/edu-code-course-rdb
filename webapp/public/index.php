@@ -1,246 +1,223 @@
 <?php
-$mysqlHost = getenv('MYSQL_HOST') ?: 'mysql';
-$mysqlPort = getenv('MYSQL_PORT') ?: '3306';
-$mysqlDb = getenv('MYSQL_DATABASE') ?: 'appdb';
-$mysqlUser = getenv('MYSQL_USER') ?: 'appuser';
-$mysqlPass = getenv('MYSQL_PASSWORD') ?: 'apppassword';
-$pythonApiUrl = getenv('PYTHON_API_URL') ?: 'http://localhost:8000';
-$curriculumPath = '/uploads/lehrplaene/BG2-AG-EG-SG-WG_Informatik_18_3992k_NEU_Abitur2021.pdf';
+declare(strict_types=1);
 
-$learningPaths = [
-  [
-    'title' => 'Lernpfad 1: Von Anforderungen zum Datenmodell',
-    'focus' => 'EERM, Kardinalitaeten, Schluessel und fachliche Begruendung',
-    'steps' => [
-      'Kontext lesen und fachliche Objekte markieren',
-      'Entitaeten, Attribute und Beziehungen als EERM entwerfen',
-      'Primaer- und Fremdschluessel fachlich begruenden',
-      'Das Modell gegen Redundanzen und Mehrdeutigkeiten pruefen',
-    ],
-  ],
-  [
-    'title' => 'Lernpfad 2: Zur 3. Normalform und SQL-Abfragen',
-    'focus' => '3NF, Datenkonsistenz, SELECT, JOIN, GROUP BY, Unterabfragen',
-    'steps' => [
-      'Tabellen in 1NF, 2NF und 3NF ueberfuehren',
-      'Begruendete Tabellenstruktur in MySQL anlegen',
-      'Abfragen schrittweise von einfach nach komplex entwickeln',
-      'Ergebnisse mit Testdaten und fachlichen Erwartungen abgleichen',
-    ],
-  ],
-];
+require_once __DIR__ . '/../app/Repository/LearningContentRepository.php';
+require_once __DIR__ . '/../app/Controller/StudentPortalController.php';
 
-$practiceCards = [
-  [
-    'title' => 'Praxisfall Coworking-Campus',
-    'goal' => 'Ein EERM fuer Raumbuchungen, Tarife und Buchungsfenster entwickeln.',
-    'selfCheck' => 'Sind Mehrfachbuchungen technisch ausgeschlossen und alle Beziehungen fachlich begruendet?',
-    'hint' => 'Pruefe, ob Tarifdetails wirklich an die Buchung oder an einen Tarifkatalog gehoeren.',
-  ],
-  [
-    'title' => 'Praxisfall Lernlabor',
-    'goal' => 'Eine 3NF-Struktur fuer Kurse, Lehrkraefte, Räume und Materialausgaben entwerfen.',
-    'selfCheck' => 'Haengen alle Nichtschluesselattribute voll funktional vom Schluessel ab?',
-    'hint' => 'Achte auf transitive Abhaengigkeiten bei Raum- und Materialinformationen.',
-  ],
-  [
-    'title' => 'Praxisfall Foodtruck-Netz',
-    'goal' => 'SQL-Abfragen fuer Umsatz, Standorte und Zutatenbedarf begruendet formulieren.',
-    'selfCheck' => 'Liefert deine Abfrage wirklich nur die benoetigten Tupel und vermeidet sie Doppelzaehlungen?',
-    'hint' => 'Teste JOINs zuerst mit wenigen Tabellen und kontrolliere Zwischenergebnisse.',
-  ],
-];
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('Referrer-Policy: no-referrer');
+header('Cache-Control: no-store');
+header("Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
 
-$interactiveExercises = [
-  [
-    'id' => 'sql-join',
-    'title' => 'SQL-Training: Buchungen pro Raum',
-    'prompt' => 'Formuliere eine SQL-Abfrage, die fuer jeden Raum die Anzahl seiner Buchungen ausgibt. Nutze JOIN und GROUP BY.',
-    'placeholder' => "SELECT r.raumname, COUNT(*) AS anzahl\nFROM raum r\nJOIN buchung b ON ...\nGROUP BY r.raumname;",
-    'checks' => ['SELECT', 'JOIN', 'GROUP BY'],
-  ],
-  [
-    'id' => 'normalform',
-    'title' => 'Begruendung: Warum 3. Normalform?',
-    'prompt' => 'Erklaere in 2-4 Saetzen, welche Redundanz oder transitive Abhaengigkeit du in deinem Modell beseitigt hast.',
-    'placeholder' => "Die Tabelle ... wurde aufgeteilt, weil ...",
-    'checks' => ['3NF', 'Abhaengigkeit', 'Redundanz'],
-  ],
-];
+$pythonApiUrl = getenv('PYTHON_API_URL') ?: '/api-proxy.php';
+$submissionApiBaseUrl = '/api-proxy.php';
 
-$mysqlMessage = 'Nicht getestet';
+$contentRepository = new LearningContentRepository(__DIR__ . '/data/learning-content.json');
+$studentPortalController = new StudentPortalController($contentRepository);
+$viewModel = $studentPortalController->buildViewModel();
 
-try {
-    $mysqli = @new mysqli($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb, (int)$mysqlPort);
-    if ($mysqli->connect_error) {
-        $mysqlMessage = 'Fehler: ' . $mysqli->connect_error;
-    } else {
-        $result = $mysqli->query('SELECT COUNT(*) AS cnt FROM demo_items');
-        $row = $result ? $result->fetch_assoc() : ['cnt' => 'n/a'];
-        $mysqlMessage = 'OK, demo_items=' . $row['cnt'];
-        $mysqli->close();
-    }
-} catch (Throwable $e) {
-    $mysqlMessage = 'Exception: ' . $e->getMessage();
-}
+$learningPaths = $viewModel['learningPaths'];
+$curriculumTopics = $viewModel['curriculumTopics'];
+$learningPlanLinks = $viewModel['learningPlanLinks'];
+$exerciseLinks = $viewModel['exerciseLinks'];
+$indexLinks = $viewModel['indexLinks'];
+$catalogMeta = $viewModel['catalogMeta'];
 ?>
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>edu-code Live-Test Dashboard</title>
+    <title>eLearning RDB Portal</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="app-header">
-        <div class="logo-strip" aria-hidden="true"></div>
-        <div class="brand-area">
-          <div class="brand-copy">
-            <p class="eyebrow">Relationale Datenbanken</p>
-            <h1>Lernpfade, Live-Test und Selbstkontrolle</h1>
-            <p class="hero-text">Die Webapp verbindet curriculare Vorgaben, technische Laufzeitpruefung und didaktisch aufbereitete Uebungsimpulse fuer EERM, 3. Normalform und SQL.</p>
-          </div>
-        </div>
-
-        <div class="header-actions">
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menü</button>
-          <a class="hero-link" href="<?php echo htmlspecialchars($curriculumPath, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Lehrplan oeffnen</a>
+        <div class="hero-surface">
+          <p class="eyebrow">Schülerportal</p>
+          <h1>Relationale Datenbanken: Lernpfade, Übungen und Abgaben</h1>
+          <p class="hero-text">Fokussiert auf die für dich relevanten Bausteine: Themen nach Lehrplan, Stoffverlaufsplan, Übungen mit Lösungen, Stichwortindex und Upload für Schülerlösungen.</p>
         </div>
 
         <nav id="primaryNav" class="primary-nav" aria-label="Hauptnavigation">
-          <a href="#curriculum-section">Lehrplan</a>
           <a href="#learning-paths-section">Lernpfade</a>
-          <a href="#exercise-section">Uebungen</a>
-          <a href="#tech-section">Live-Test</a>
+          <a href="#exercise-section">Übungen</a>
+          <a href="#index-section">Stichwortindex</a>
+          <a href="#submission-section">Upload</a>
         </nav>
       </header>
 
-      <main class="container">
+      <main class="page">
         <div class="content-layout">
           <aside class="course-nav" aria-label="Kursnavigation">
-            <h2>Kursnavigation</h2>
-            <ul>
-              <li><a href="#learning-paths-section">Lernpfade</a></li>
-              <li><a href="#exercise-section">Uebungsbereich</a></li>
-              <li><a href="#curriculum-section">Lehrplananalyse</a></li>
-              <li><a href="#tech-section">Technik-Checks</a></li>
-            </ul>
-            <h3>Didaktische Linie</h3>
-            <p>Verstehen → Modellieren → Normalisieren → SQL anwenden → reflektieren.</p>
+            <div class="card sticky-card">
+              <h2>Kursnavigation</h2>
+              <ul>
+                <li><a href="#learning-paths-section">Lernpfade</a></li>
+                <li><a href="#exercise-section">Übungen</a></li>
+                <li><a href="#index-section">Stichwortindex</a></li>
+                <li><a href="#submission-section">Upload</a></li>
+              </ul>
+              <h3>Direkt zu den Quellen</h3>
+              <ul>
+                <li><a href="/generated/anleitungen/stoffverlaufsplan_rdb_3wochen.html" target="_blank" rel="noopener">Stoffverlaufsplan</a></li>
+                <li><a href="/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html" target="_blank" rel="noopener">Stichwortverzeichnis</a></li>
+                <li><a href="/generated/uebungen/README.md" target="_blank" rel="noopener">Übungsübersicht</a></li>
+              </ul>
+              <p class="muted">Verstehenslinie: verstehen → modellieren → normalisieren → anwenden → reflektieren.</p>
+            </div>
           </aside>
 
           <div class="content-column">
-      <section class="card grid two-col intro-section">
-        <div>
-          <h2>Didaktischer Fokus</h2>
-          <p>Die Lernpfade folgen einem selbstgesteuerten Aufbau: verstehen, modellieren, pruefen, verbessern. Alle Aufgaben bleiben beim Fachthema relationale Datenbanken und verknuepfen Modellierung mit fachlich begruendeten SQL-Loesungen.</p>
-        </div>
-        <div>
-          <h2>Ad-hoc verfuegbare Hilfen</h2>
-          <ul class="check-list">
-            <li>Lehrplan als verbindliche Referenz</li>
-            <li>Direkte Live-Checks fuer PHP, MySQL und Python-API</li>
-            <li>Aufgaben mit Selbstkontrolle, Tipps und Loesungshinweisen</li>
-          </ul>
-        </div>
-      </section>
+            <section class="card intro-card">
+              <div class="split-grid">
+                <div>
+                  <p class="eyebrow">MVC im Frontend</p>
+                  <h2>Schlanke Struktur mit klarer Rollenverteilung</h2>
+                  <p>Das Repository liefert die Inhalte, der Controller bereitet die Schülerdaten auf und die View rendert nur die Oberfläche. Das JavaScript übernimmt nur Interaktion wie Filter und Upload.</p>
+                </div>
+                <div>
+                  <h3>Nur Schüler-relevant</h3>
+                  <ul class="check-list">
+                    <li>Lernpfade mit Lehrplanbezug</li>
+                    <li>Übungen und Lösungszugang</li>
+                    <li>Stichwortindex für Modellierung, Normalisierung und SQL</li>
+                    <li>Upload für Schülerlösungen</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
 
-      <section class="section-block" id="learning-paths-section">
-        <div class="section-head">
-          <p class="eyebrow">Lernpfade</p>
-          <h2>Selbstgesteuert vom Kontext zur Loesung</h2>
-        </div>
-        <div class="path-grid">
-          <?php foreach ($learningPaths as $path): ?>
-            <article class="card path-card">
-              <h3><?php echo htmlspecialchars($path['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
-              <p class="muted"><?php echo htmlspecialchars($path['focus'], ENT_QUOTES, 'UTF-8'); ?></p>
-              <ol>
-                <?php foreach ($path['steps'] as $step): ?>
-                  <li><?php echo htmlspecialchars($step, ENT_QUOTES, 'UTF-8'); ?></li>
+            <section class="section-block" id="learning-paths-section">
+              <div class="section-head">
+                <p class="eyebrow">Lernpfade</p>
+                <h2>Themen laut Lehrplan und Stoffverlaufsplan</h2>
+              </div>
+
+              <div class="card-grid">
+                <?php foreach ($curriculumTopics as $topic): ?>
+                  <article class="card">
+                    <h3><?php echo htmlspecialchars(($topic['code'] ?? '') . ': ' . ($topic['title'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></h3>
+                    <p><?php echo htmlspecialchars($topic['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p class="muted">Zeithorizont: <?php echo htmlspecialchars($topic['time_horizon'] ?? '-', ENT_QUOTES, 'UTF-8'); ?></p>
+                  </article>
                 <?php endforeach; ?>
-              </ol>
-            </article>
-          <?php endforeach; ?>
-        </div>
-      </section>
-
-      <section class="card status-card" id="tech-section">
-        <h2>PHP -> MySQL</h2>
-        <p id="phpMysqlStatus"><?php echo htmlspecialchars($mysqlMessage, ENT_QUOTES, 'UTF-8'); ?></p>
-      </section>
-
-      <section class="card status-card">
-        <h2>JavaScript -> Python-API</h2>
-        <button id="refreshBtn">Status laden</button>
-        <pre id="apiOutput">Noch kein API-Call ausgefuehrt.</pre>
-      </section>
-
-      <section class="section-block" id="curriculum-section">
-        <div class="section-head">
-          <p class="eyebrow">Lehrplananalyse</p>
-          <h2>Automatisch abgeleitete Schwerpunkte</h2>
-        </div>
-        <div id="curriculumCards" class="practice-grid">
-          <article class="card">
-            <h3>Analyse wird geladen</h3>
-            <p>Die Webapp liest die erzeugten Curricula-Artefakte ueber die Python-API ein.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-block" id="exercise-section">
-        <div class="section-head">
-          <p class="eyebrow">Uebungsbereich</p>
-          <h2>Praxisnahe Sachverhalte mit Selbstkontrolle</h2>
-        </div>
-        <div class="practice-grid">
-          <?php foreach ($practiceCards as $card): ?>
-            <article class="card practice-card">
-              <h3><?php echo htmlspecialchars($card['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
-              <p><?php echo htmlspecialchars($card['goal'], ENT_QUOTES, 'UTF-8'); ?></p>
-              <div class="info-box">
-                <strong>Selbstkontrolle</strong>
-                <p><?php echo htmlspecialchars($card['selfCheck'], ENT_QUOTES, 'UTF-8'); ?></p>
               </div>
-              <details>
-                <summary>Tipps und Loesungshinweise</summary>
-                <p><?php echo htmlspecialchars($card['hint'], ENT_QUOTES, 'UTF-8'); ?></p>
-              </details>
-            </article>
-          <?php endforeach; ?>
-        </div>
-      </section>
 
-      <section class="section-block">
-        <div class="section-head">
-          <p class="eyebrow">Code-Inboxen</p>
-          <h2>Direkte Selbstkontrolle mit konstruktivem Feedback</h2>
-        </div>
-        <div class="practice-grid">
-          <?php foreach ($interactiveExercises as $exercise): ?>
-            <article class="card exercise-card" data-exercise-id="<?php echo htmlspecialchars($exercise['id'], ENT_QUOTES, 'UTF-8'); ?>" data-checks="<?php echo htmlspecialchars(implode('|', $exercise['checks']), ENT_QUOTES, 'UTF-8'); ?>">
-              <h3><?php echo htmlspecialchars($exercise['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
-              <p><?php echo htmlspecialchars($exercise['prompt'], ENT_QUOTES, 'UTF-8'); ?></p>
-              <textarea class="exercise-input" rows="8" placeholder="<?php echo htmlspecialchars($exercise['placeholder'], ENT_QUOTES, 'UTF-8'); ?>"></textarea>
-              <div class="exercise-actions">
-                <button class="exercise-check" type="button">Antwort prüfen</button>
+              <div class="card-grid compact">
+                <?php foreach ($learningPlanLinks as $item): ?>
+                  <article class="card link-card">
+                    <h3><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                    <p><?php echo htmlspecialchars($item['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <a class="action-link" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Öffnen</a>
+                  </article>
+                <?php endforeach; ?>
               </div>
-              <div class="info-box feedback-box" aria-live="polite">
-                <strong>Feedback</strong>
-                <p>Schreibe deine Lösung und prüfe sie direkt. Das Feedback weist auf fehlende Bausteine hin und gibt passende Hinweise.</p>
-              </div>
-            </article>
-          <?php endforeach; ?>
-        </div>
-      </section>
 
-      <section class="card info-strip">
-        <h2>Naechster Ausbauschritt</h2>
-        <p>Neue Lehrplaene werden kuenftig im Verzeichnis <strong>uploads/lehrplaene</strong> verortet. Darauf aufbauend koennen Analyse- und Generierungsprozesse curriculare Anforderungen gezielt auf Lernpfade, Aufgabenformate, Hilfsmittel und Musterloesungen fuer relationale Datenbanken abbilden.</p>
-      </section>
+              <?php if (!empty($learningPaths)): ?>
+                <div class="card-grid compact">
+                  <?php foreach ($learningPaths as $path): ?>
+                    <article class="card">
+                      <h3><?php echo htmlspecialchars($path['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h3>
+                      <p class="muted"><?php echo htmlspecialchars($path['focus'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                      <ol>
+                        <?php foreach (($path['steps'] ?? []) as $step): ?>
+                          <li><?php echo htmlspecialchars((string) $step, ENT_QUOTES, 'UTF-8'); ?></li>
+                        <?php endforeach; ?>
+                      </ol>
+                    </article>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
+            </section>
+
+            <section class="section-block" id="exercise-section">
+              <div class="section-head">
+                <p class="eyebrow">Übungen</p>
+                <h2>Aufgaben und Lösungen</h2>
+              </div>
+              <div class="card-grid compact">
+                <?php foreach ($exerciseLinks as $item): ?>
+                  <article class="card link-card">
+                    <h3><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                    <p><?php echo htmlspecialchars($item['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <a class="action-link" href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Öffnen</a>
+                  </article>
+                <?php endforeach; ?>
+              </div>
+            </section>
+
+            <section class="section-block" id="index-section">
+              <div class="section-head">
+                <p class="eyebrow">Stichwortsuche</p>
+                <h2>Index für Modellierung, Normalisierung und SQL</h2>
+              </div>
+
+              <article class="card">
+                <label for="keywordSearch" class="field-label">Suchbegriff</label>
+                <input id="keywordSearch" class="keyword-search" type="search" placeholder="z. B. 3NF, Kardinalität, JOIN" autocomplete="off" />
+                <ul id="keywordList" class="keyword-list">
+                  <?php foreach ($indexLinks as $item): ?>
+                    <li data-topic="<?php echo htmlspecialchars(strtolower($item['topic']), ENT_QUOTES, 'UTF-8'); ?>" data-title="<?php echo htmlspecialchars(strtolower($item['title']), ENT_QUOTES, 'UTF-8'); ?>">
+                      <span class="topic-pill"><?php echo htmlspecialchars($item['topic'], ENT_QUOTES, 'UTF-8'); ?></span>
+                      <a href="<?php echo htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></a>
+                    </li>
+                  <?php endforeach; ?>
+                </ul>
+              </article>
+            </section>
+
+            <section class="section-block" id="submission-section">
+              <div class="section-head">
+                <p class="eyebrow">Upload</p>
+                <h2>Schülerlösungen sicher einreichen</h2>
+              </div>
+              <article class="card submission-card">
+                <form id="submissionForm" class="submission-form">
+                  <label>
+                    <span>Schüler-ID</span>
+                    <input type="text" name="student_id" autocomplete="off" required maxlength="128" placeholder="z. B. s-1024" />
+                  </label>
+                  <label>
+                    <span>Aufgaben-ID</span>
+                    <input type="text" name="task_id" autocomplete="off" required maxlength="128" placeholder="z. B. task_sql_join_count" />
+                  </label>
+                  <label class="submission-content">
+                    <span>Antwort</span>
+                    <textarea name="content" rows="8" required placeholder="Hier kann Code, Text, Zusammenfassung oder Übersetzung eingetragen werden."></textarea>
+                  </label>
+                  <div class="submission-meta-grid">
+                    <label>
+                      <span>Inhaltstyp</span>
+                      <select name="content_type">
+                        <option value="text">Text</option>
+                        <option value="code">Code</option>
+                        <option value="summary">Zusammenfassung</option>
+                        <option value="translation">Übersetzung</option>
+                        <option value="transcript">Transkript</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span>Quelle</span>
+                      <input type="text" name="source" maxlength="32" value="webapp" />
+                    </label>
+                  </div>
+                  <div class="exercise-actions">
+                    <button type="submit">Abgabe senden</button>
+                  </div>
+                  <div class="info-box feedback-box" aria-live="polite">
+                    <strong>Status</strong>
+                    <p id="submissionStatus">Noch keine Abgabe gesendet.</p>
+                  </div>
+                </form>
+              </article>
+            </section>
+
+            <?php if (!empty($catalogMeta)): ?>
+              <p class="meta-note">Inhaltsquelle: <?php echo htmlspecialchars($catalogMeta['managed_by'] ?? 'unbekannt', ENT_QUOTES, 'UTF-8'); ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </main>
@@ -248,7 +225,9 @@ try {
 
     <script>
       window.PYTHON_API_URL = <?php echo json_encode($pythonApiUrl, JSON_UNESCAPED_SLASHES); ?>;
+      window.SUBMISSION_API_BASE_URL = <?php echo json_encode($submissionApiBaseUrl, JSON_UNESCAPED_SLASHES); ?>;
+      window.LEARNING_CONTENT = <?php echo json_encode($viewModel, JSON_UNESCAPED_SLASHES); ?>;
     </script>
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </body>
 </html>

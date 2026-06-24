@@ -206,6 +206,7 @@ Vor dem Review sicherstellen:
 **Optimaler Workflow:**
 
 ```
+Tag 1 __`
 Tag 1 (Morgens):
   → Autor öffnet PR
 
@@ -226,23 +227,30 @@ Tag 2 (Nachmittag):
 
 Tag 3 (Morgens):
   → In Produktion
-```
+````
 
-**Maximale Dauer:** 5 Arbeitstage (sonst Eskalation)
+**Maximale Dauer:** 5 Arbeitstage (s```
+Tag 1 (Morgens):
+  → Autor öffnet PR
 
----
+Tag 1 (Mittags):
+  → Reviewer macht erste Review (1-2h)
 
-## ✅ Approval-Kriterien
+Tag 1-2 (Nachmittag):
+  → Autor sieht Feedback & plant Changes
 
-Eine Routine wird approved, wenn:
+Tag 2 (Morgens):
+  → Autor macht Änderungen & pushed
 
-1. ✅ **Alle BLOCKER** sind behoben
-2. ✅ **Template** ist vollständig & korrekt
-3. ✅ **Keine Redundanzen** identifiziert oder wurden gemanagt
-4. ✅ **Links & Formatierung** sind korrekt
-5. ✅ **Ziel & Schritte** sind klar & nachvollziehbar
-6. ✅ **Erfolgskriterien** sind messbar
-7. ✅ **Changelog** ist dokumentiert
+Tag 2 (Mittags):
+  → Reviewer macht Final-Review (30 Min)
+
+Tag 2 (Nachmittag):
+  → Approver kann mergen
+
+Tag 3 (Morgens):
+  → In Produktion
+```. ✅ **Changelog** ist dokumentiert
 8. ✅ **Mindestens 1 Reviewer** hat `Approved` geclickt
 
 ---
@@ -253,10 +261,9 @@ Eine Routine wird **REJECTED** (müssen Überarbeitungen erfolgen), wenn:
 
 - 🔴 **Massive Redundanz** mit anderer Routine
 - 🔴 **Sicherheits-Bedenken** nicht adressiert
-- 🔴 **Template gravierend nicht** genutzt
+- 🔴 *``emplate gravierend nicht** genutzt
 - 🔴 **Inhalt ist unleserlich** oder unklar
-- 🔴 **Keine Erfolgskriterien** definiert
-- 🔴 **Kritische Fehler** im Prozess/Technik
+- 🔴 **Keine Erfolgskriterien** d`Approved` 🔴 **Kritische Fehler** im Prozess/Technik
 
 **Feedback dann:** "Bitte komplett überarbeiten und neu einreichen"
 
@@ -284,36 +291,43 @@ Merge & Publish
 
 ## 📊 Review-Metriken
 
-**Track diese Metriken:**
-
-- `Durchschnittliche Review-Dauer` → Ziel: < 2 Tage
-- `% Routinen mit >1 Review` → Ziel: 100%
-- `% Routinen mit Redundanzen` → Ziel: < 5%
-- `Review-Feedback-Kategorien` → Trending
-- `Rejection Rate` → Ziel: < 10%
-
----
-
-## 🆘 Häufige Review-Probleme
-
-| Problem | Lösung |
+**Track diese M__`
+PR opened
+  ↓
+Review #1
+  ├─ BLOCKER found → Autor macht Changes
+  ├─ Return to Step 2
+  ├─ SOLLTE Punkte: Autor kann optional ändern
+  └─ KÖNNTE Punkte: Ignorieren erlaubt
+  ↓
+Review #2 (Final)
+  ├─ All fixed? → Approved ✅
+  └─ Still issues? → Rejection 🔴
+  ↓
+Merge & Publish
+`| Lösung |
 |---------|--------|
 | Reviewer hat keine Zeit | Anderen Reviewer zuweisen / Deadline verlängern |
-| Feedback ist zu harsch | Direkt besprechen / Tone verbessern |
-| Autor verhält sich abwehrend | Team Lead Einigung herbeiführen |
-| Endlose Review-Zyklen | Max 2 Review-Runden, dann Escalation |
-| Processuale Konflikte | Process Owner macht finale Entscheidung |
+| Feedback ist zu harsch | Direkt be```
+PR opened
+  ↓
+Review #1
+  ├─ BLOCKER found → Autor macht Changes
+  ├─ Return to Step 2
+  ├─ SOLLTE Punkte: Autor kann optional ändern
+  └─ KÖNNTE Punkte: Ignorieren erlaubt
+  ↓
+Review #2 (Final)
+  ├─ All fixed? → Approved ✅
+  └─ Still issues? → Rejection 🔴
+  ↓
+Merge & Publish
+```len.md](neue-routine-erstellen.md) - Kurz-Anleitung nächster Schritt
+- 📖 [redundanz-management.md](redundanz``anagement.md) - Redundanz behandeln
+- 📖 [PFLIC`Durchschnittliche Review-Dauer`) - Anforderungen
+- 📖 [ARCHITEKTUR.md]`% Routinen mit >1 Review`em-Design
 
 ---
 
-## 📚 Weitere Ressourcen
-
-- 📖 [neue-routine-erstellen.md](neue-routine-erstellen.md) - Kurz-Anleitung nächster Schritt
-- 📖 [redundanz-management.md](redundanz-management.md) - Redundanz behandeln
-- 📖 [PFLICHTENHEFT.md](../PFLICHTENHEFT.md) - Anforderungen
-- 📖 [ARCHITEKTUR.md](../ARCHITEKTUR.md) - System-Design
-
----
-
-**Version:** 1.0
-**Letzte Aktualisierung:** 23.03.2026
+**Version:**`% Routinen mit Redundanzen`:** 23.03.2026
+`Review-Feedback-Kategorien``Rejection Rate`

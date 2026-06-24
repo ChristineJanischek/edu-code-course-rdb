@@ -34,11 +34,11 @@ Dieses Handbuch erklärt:
 - **Generator-Plugin fuer Modellgrafik (.png):** [scripts/plugins/eerm_grafik_generator/generate_eerm_png.py](../../scripts/plugins/eerm_grafik_generator/generate_eerm_png.py)
 
 ### 60-Minuten-Muster inkl. Datenartefakte
-- **Pruefungsdatei:** [generated/klassenarbeiten/KA02_BG12_2025_60min_34P_Muster_EERM_SQL.md](../generated/klassenarbeiten/KA02_BG12_2025_60min_34P_Muster_EERM_SQL.md)
-- **EERM Teil B (Lehrkraft-Referenz, .mwb):** [generated/klassenarbeiten/KA02_BG12_2025_60min_34P_EERM.mwb](../generated/klassenarbeiten/KA02_BG12_2025_60min_34P_EERM.mwb)
-- **Struktur- und Datendump Teil C (.sql):** [generated/klassenarbeiten/KA02_BG12_2025_60min_34P_schema_data_dump.sql](../generated/klassenarbeiten/KA02_BG12_2025_60min_34P_schema_data_dump.sql)
-- **EERM Teil C (separate SQL-Datenbank, .mwb):** [generated/klassenarbeiten/KA02_BG12_2025_60min_34P_SQLDB_EERM.mwb](../generated/klassenarbeiten/KA02_BG12_2025_60min_34P_SQLDB_EERM.mwb)
-- **EERM-Grafik Teil C (.png, Workbench-Export oder SQL-basiert gerendert):** `generated/klassenarbeiten/KA02_BG12_2025_60min_34P_SQLDB_EERM.png`
+- **Pruefungsdatei:** [generated/klassenarbeiten/KA02_2025_60min_34P_Muster_EERM_SQL.md](../generated/klassenarbeiten/KA02_2025_60min_34P_Muster_EERM_SQL.md)
+- **EERM Teil B (Lehrkraft-Referenz, .mwb):** [generated/klassenarbeiten/KA02_2025_60min_34P_EERM.mwb](../generated/klassenarbeiten/KA02_2025_60min_34P_EERM.mwb)
+- **Struktur- und Datendump Teil C (.sql):** [generated/klassenarbeiten/KA02_2025_60min_34P_schema_data_dump.sql](../generated/klassenarbeiten/KA02_2025_60min_34P_schema_data_dump.sql)
+- **EERM Teil C (separate SQL-Datenbank, .mwb):** [generated/klassenarbeiten/KA02_2025_60min_34P_SQLDB_EERM.mwb](../generated/klassenarbeiten/KA02_2025_60min_34P_SQLDB_EERM.mwb)
+- **EERM-Grafik Teil C (.png, Workbench-Export oder SQL-basiert gerendert):** `generated/klassenarbeiten/KA02_2025_60min_34P_SQLDB_EERM.png`
 - **Datentiefe:** Parent-Tabellen enthalten ca. 20 Datensaetze.
 
 Didaktikregel:
@@ -56,7 +56,7 @@ Didaktikregel:
 - **Zweck:** Als Schablone für neue Klassenarbeiten
 
 ### Musterklassenarbeit
-- **Pfad:** [generated/klassenarbeiten/KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md](../KA02_BG12_2024-2025_Muster_Online-Buecherverleih.md)
+- **Pfad:** [generated/klassenarbeiten/KA02_2024-2025_Muster_Online-Buecherverleih.md](../KA02_2024-2025_Muster_Online-Buecherverleih.md)
 - **Format:** Markdown (.md) + HTML (.html)
 - **Inhalt:**
   - Konkrete Aufgaben mit Lösungen
@@ -191,7 +191,7 @@ Empfohlen (dauerhaft automatisiert):
 
 ```bash
 # Erzeugt Struktogramm-SVG, EERM-PNG-Referenzen und HTML in einem Ablauf
-bash scripts/generate-ka-varianten.sh KA02_BG12_2025_2026
+bash scripts/generate-ka-varianten.sh KA02_2025_2026
 ```
 
 Dieser Ablauf stellt sicher:
@@ -314,8 +314,8 @@ python /workspaces/edu-code-course-rdb/scripts/convert_ka_markdown.py
 apt update && apt install pandoc texlive-latex-extra -y
 
 # Konvertieren
-pandoc KA02_BG12_2024-2025_Muster_Online-Buecherverleih.html \
-       -o KA02_BG12_2024-2025_Muster_Online-Buecherverleih.docx \
+pandoc KA02_2024-2025_Muster_Online-Buecherverleih.html \
+       -o KA02_2024-2025_Muster_Online-Buecherverleih.docx \
        --reference-doc=template.docx  # Optional: Template verwenden
 ```
 

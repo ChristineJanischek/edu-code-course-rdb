@@ -25,11 +25,11 @@ Duplikatbereinigung:
 ```sql
 SELECT DISTINCT f.Name
 FROM FOODTRUCK f
+JOIN EINSATZ e ON e.Tr```sql
+SELECT DISTINCT f.Name
+FROM FOODTRUCK f
 JOIN EINSATZ e ON e.TruckID = f.TruckID;
-```
-
-## Merksätze
-- Doppelte Zeilen sind oft fachlich korrekt, nicht automatisch Fehler.
+```omatisch Fehler.
 - DISTINCT ist ein Werkzeug, kein Ersatz für korrektes JOIN-Design.
 - Erst Ursache verstehen, dann bereinigen.
 

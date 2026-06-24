@@ -125,6 +125,7 @@ docs/handbuch/
 ### 3.2 Datenfluss
 
 ```
+Neue__`
 Neue Anforderung
     ↓
 Leitfaden nutzen (neue-routine-erstellen.md)
@@ -142,6 +143,7 @@ Genehmigung & Veröffentlichung
 Changelog aktualisieren
     ↓
 Git Commit & Push
+`h
 ```
 
 ### 3.3 Abhängigkeitsmodell
@@ -158,7 +160,7 @@ Git Commit & Push
 ### 4.1 Phase 1: Grundstruktur (Wochen 1-2)
 - [ ] Alle Verzeichnisse erstellt
 - [ ] Alle Template-Dokumente vorliegen
-- [ ] Prozess-Dokumentation vollständig
+- [ ] Prozess-Do``mentation vollständig
 - [ ] Review-Prozess definiert
 
 ### 4.2 Phase 2: Erste Routinen (Wochen 3-4)
@@ -173,23 +175,25 @@ Git Commit & Push
 - [ ] Automatisierte Validierung implementiert
 - [ ] Vollständige Dokumentation aller Entscheidungen
 
-### 4.4 Phase 4: Wartung (Laufend)
-- [ ] Monatliche Audits durchführen
-- [ ] Backups regelmäßig erstellen
-- [ ] Feedback-Prozess implementiert
-- [ ] Kontinuierliche Verbesserung
-
----
-
-## 5. Umfang & Abgrenzung
-
-### 5.1 In Scope
-- Dokumentation aller Lernroutinen
-- Templates und Vorlagen
-- Prozess-Dokumentation
-- Marschpläne und Meilensteine
-- Versionskontrolle via Git
-- Redundanz-Management
+```
+Neue Anforderung
+    ↓
+Leitfaden nutzen (neue-routine-erstellen.md)
+    ↓
+Template ausfüllen (routine-template.md)
+    ↓
+Review Process (review-prozess.md)
+    ↓
+In Kategorie einordnen (kurzfristig/mittelfristig/langfristig)
+    ↓
+Redundanzen-Analyse (redundanz-management.md)
+    ↓
+Genehmigung & Veröffentlichung
+    ↓
+Changelog aktualisieren
+    ↓
+Git Commit & Push
+```dundanz-Management
 - Curriculare Lehrplanablage und lehrplangestützte Inhaltsentwicklung für relationale Datenbanken
 - Webapp mit selbstgesteuerten Lernpfaden und Selbstkontrolle
 - Docker-Testumgebung für relationale Datenbanken, EERM- und SQL-Lernszenarien

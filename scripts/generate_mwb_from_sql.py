@@ -535,19 +535,19 @@ def parse_system_name_and_year(filename: str) -> tuple[str, str]:
 def manual_fallback_models(input_dir: pathlib.Path) -> dict[str, SqlModel]:
     return {
         "kursplattform": SqlModel(
-            source_sql=input_dir / "KA02_BG12_2025_2026_VERSION1_lsg.md",
+            source_sql=input_dir / "KA02_2025_2026_VERSION1_lsg.md",
             database_name="kursplattform",
             schema_name="kursplattform",
             tables=_kursplattform_tables(),
         ),
         "lernlabor": SqlModel(
-            source_sql=input_dir / "KA02_BG12_2025_2026_VERSION2_lsg.md",
+            source_sql=input_dir / "KA02_2025_2026_VERSION2_lsg.md",
             database_name="lernlabor",
             schema_name="lernlabor",
             tables=_lernlabor_tables(),
         ),
         "startupwerkstatt": SqlModel(
-            source_sql=input_dir / "KA02_BG12_2025_2026_VERSION3_lsg.md",
+            source_sql=input_dir / "KA02_2025_2026_VERSION3_lsg.md",
             database_name="startupwerkstatt",
             schema_name="startupwerkstatt",
             tables=_startupwerkstatt_tables(),
