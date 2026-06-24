@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live-Server starten</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Live-Server starten</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/anleitungen/live-server-starten.md</p>
+    </header>
+    <main class="content">
+<h1>Live-Server starten</h1>
+<p>Diese Anleitung zeigt Schritt für Schritt, wie das Lernportal in diesem Repository lokal oder im Codespace gestartet wird.</p>
+<h2>Ziel</h2>
+<p>Am Ende läuft die Weboberfläche im Browser über Port 8080.</p>
+<p>Wichtig:</p>
+<ul>
+<li>Port 8080 ist die Weboberfläche.</li>
+<li>Port 8000 ist die Python-API.</li>
+<li>Port 3306 ist MySQL und kein Browser-Ziel.</li>
+</ul>
+<h2>Schritt für Schritt</h2>
+<ol>
+<li>Terminal im Repository öffnen.</li>
+<li>In das Projektverzeichnis wechseln:</li>
+</ol>
+<pre><code class="language-bash">cd /workspaces/edu-code-course-rdb
+</code></pre>
+<ol start="3">
+<li>Falls nötig, die lokale Umgebung vorbereiten:</li>
+</ol>
+<pre><code class="language-bash">cp .env.example .env
+</code></pre>
+<ol start="4">
+<li>In der Datei <code>.env</code> sichere Werte für <code>MYSQL_ROOT_PASSWORD</code>, <code>MYSQL_PASSWORD</code> und <code>SUBMISSION_API_KEY</code> setzen.</li>
+<li>Alle Dienste starten:</li>
+</ol>
+<pre><code class="language-bash">bash scripts/start-services.sh
+</code></pre>
+<ol start="6">
+<li>Warten, bis im Terminal die Meldung erscheint, dass die Dienste gestartet wurden.</li>
+<li>Die Weboberfläche öffnen:</li>
+</ol>
+<pre><code class="language-text">http://localhost:8080
+</code></pre>
+<ol start="8">
+<li>Im GitHub Codespace stattdessen den weitergeleiteten Port 8080 öffnen.</li>
+</ol>
+<p>Beispiel:</p>
+<pre><code class="language-text">https://CODESPACE-NAME-8080.app.github.dev
+</code></pre>
+<h2>Funktion prüfen</h2>
+<p>Optional kann anschließend geprüft werden, ob alle Dienste korrekt antworten:</p>
+<pre><code class="language-bash">bash scripts/test-services.sh
+</code></pre>
+<h2>Fehlerbehebung</h2>
+<h3>Im Browser erscheint eine Fehlermeldung</h3>
+<ul>
+<li>Prüfen, ob wirklich Port 8080 geöffnet wurde.</li>
+<li>Nicht Port 3306 im Browser verwenden.</li>
+<li>Falls der Start abbricht, die Werte in <code>.env</code> prüfen.</li>
+</ul>
+<h3>Die API antwortet, aber die Webseite nicht</h3>
+<ul>
+<li>Prüfen, ob der Container <code>php-web</code> läuft.</li>
+<li>Prüfen, ob Port 8080 im Codespace freigegeben ist.</li>
+</ul>
+<h3>Die Dienste sollen neu gestartet werden</h3>
+<pre><code class="language-bash">bash scripts/stop-services.sh
+bash scripts/start-services.sh
+</code></pre>
+    </main>
+  </div>
+</body>
+</html>
