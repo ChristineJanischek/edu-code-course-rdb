@@ -39,6 +39,13 @@ Eine ausführliche Schritt-für-Schritt-Anleitung steht in der <a href="README.h
 <li>Danach SQL für Erfassung, Änderung, Löschung und Auswertung formulieren.</li>
 </ol>
 <h2>Alphabetisches Stichwortverzeichnis</h2>
+<div>
+    <label for="stichwortSuche"><strong>Stichwortsuche:</strong></label><br>
+    <input id="stichwortSuche" type="search" placeholder="Begriff, Definition oder Beispiel durchsuchen" style="width:100%;max-width:560px;padding:8px;">
+    <p id="suchStatus" aria-live="polite">Alle Einträge sichtbar.</p>
+    <p id="suchKeineTreffer" hidden><strong>Keine Treffer.</strong> Nutze allgemeinere Begriffe.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -445,6 +452,8 @@ Eine ausführliche Schritt-für-Schritt-Anleitung steht in der <a href="README.h
 </tr>
 </tbody>
 </table>
+<script type="module" src="../../assets/js/stichwortverzeichnis/SearchController.js"></script>
+
 <h2>SQL-Klausel-Kompass (schneller Überblick)</h2>
 <ul>
 <li>Struktur aufbauen: CREATE DATABASE, CREATE TABLE, ALTER TABLE, DROP TABLE</li>

@@ -26,12 +26,14 @@ if git ls-files --error-unmatch .env >/dev/null 2>&1 && [[ -f .env ]]; then
   note_fail ".env ist versioniert. Lokale Secrets duerfen nicht im Repo liegen."
 fi
 
-if search "MYSQL_ROOT_PASSWORD=root|MYSQL_PASSWORD=apppassword" docker-compose.yml .env.example services/python-api/app.py; then
-  print_matches "MYSQL_ROOT_PASSWORD=root|MYSQL_PASSWORD=apppassword" docker-compose.yml .env.example services/python-api/app.py
+mapfile -t python_api_files < <(find services/python-api -type f -name "*.py" | sort)
+
+if search "MYSQL_ROOT_PASSWORD=root|MYSQL_PASSWORD=apppassword" docker-compose.yml .env.example "${python_api_files[@]}"; then
+  print_matches "MYSQL_ROOT_PASSWORD=root|MYSQL_PASSWORD=apppassword" docker-compose.yml .env.example "${python_api_files[@]}"
   note_fail "Unsichere Default-Credentials gefunden."
 fi
 
-if search '"error": str\(exc\)' services/python-api/app.py; then
+if search '"error": str\(exc\)' "${python_api_files[@]}"; then
   note_fail "Interne Exceptions werden ungefiltert an API-Clients geleakt."
 fi
 

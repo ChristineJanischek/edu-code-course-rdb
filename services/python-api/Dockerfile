@@ -10,6 +10,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py data.json ./
+COPY learning_api ./learning_api
 
 EXPOSE 8000
 

@@ -105,6 +105,13 @@ Fuer dieses Repository ist die fachliche Domäne strikt auf relationale Datenban
 - **MySQL:** Ausführungs- und Testumgebung für 3NF-Strukturen, Abfragen, Referenzdaten und fachliche Validierung.
 - **Docker Compose:** Reproduzierbarer Live-Test für Schulen, Lehrkräfte und lokale Entwicklungsumgebungen.
 
+Architekturregel fuer Interaktivitaet und API-Implementierung:
+
+- **Frontend-Bootstrap:** `webapp/public/app.js` und `webapp/public/js/main.mjs` enthalten nur Initialisierung.
+- **Frontend-MVC:** Fachlogik in `webapp/public/js/models/`, DOM-Darstellung in `webapp/public/js/views/`, Steuerlogik in `webapp/public/js/controllers/`.
+- **Python-API-Bootstrap:** `services/python-api/app.py` bleibt schlanker Einstiegspunkt.
+- **Python-API-Schichten:** Routing/Controller in `services/python-api/learning_api/routes.py`, Services in `services/python-api/learning_api/*_service.py`, DB/Repository-nahe Logik in `services/python-api/learning_api/db.py`.
+
 ---
 
 ## 3. Prozess-Schichten

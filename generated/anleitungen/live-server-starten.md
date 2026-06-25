@@ -48,6 +48,9 @@ Beispiel:
 ```text
 https://CODESPACE-NAME-8080.app.github.dev
 ```
+```text
+Beispiel: https://silver-spork-v6w4x495v6wc6xj4-8080.app.github.dev
+```
 
 ## Funktion prüfen
 

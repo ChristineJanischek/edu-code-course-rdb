@@ -44,6 +44,8 @@
 - **[routinen/kurzfristig/KF-ROUTINE-009-eerm-png-generator.md](routinen/kurzfristig/KF-ROUTINE-009-eerm-png-generator.md)** - Generator für eingebettete Teil-C-Modellgrafik (.png)
 - **[routinen/kurzfristig/KF-ROUTINE-010-datei-bezeichnungskonvention.md](routinen/kurzfristig/KF-ROUTINE-010-datei-bezeichnungskonvention.md)** - Verbindliche Datei-Bezeichnungskonvention für alle Artefakte
 - **[routinen/kurzfristig/KF-ROUTINE-011-drei-versionen-klassenarbeit.md](routinen/kurzfristig/KF-ROUTINE-011-drei-versionen-klassenarbeit.md)** - Automatismus für VERSION1/2/3 mit gleicher Schwierigkeit und variierenden Kontexten
+- **[routinen/kurzfristig/KF-ROUTINE-012-mvc-oo-businesslogik-trennung.md](routinen/kurzfristig/KF-ROUTINE-012-mvc-oo-businesslogik-trennung.md)** - Verbindliche Trennung von Business-Logik nach MVC/OOP fuer interaktive Oberflaechen
+- **[routinen/kurzfristig/KF-ROUTINE-013-repo-oop-mvc-guardrails.md](routinen/kurzfristig/KF-ROUTINE-013-repo-oop-mvc-guardrails.md)** - Repo-weite Guardrails fuer OOP/MVC inklusive Pflichtchecks
 
 ---
 

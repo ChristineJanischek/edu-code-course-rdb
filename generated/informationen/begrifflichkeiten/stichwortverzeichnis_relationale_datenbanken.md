@@ -25,6 +25,13 @@ Alle Begriffe sind alphabetisch sortiert und schülergerecht erklärt.
 
 ## Alphabetisches Stichwortverzeichnis
 
+<div>
+	<label for="stichwortSuche"><strong>Stichwortsuche:</strong></label><br>
+	<input id="stichwortSuche" type="search" placeholder="Begriff, Definition oder Beispiel durchsuchen" style="width:100%;max-width:560px;padding:8px;">
+	<p id="suchStatus" aria-live="polite">Alle Einträge sichtbar.</p>
+	<p id="suchKeineTreffer" hidden><strong>Keine Treffer.</strong> Nutze allgemeinere Begriffe.</p>
+</div>
+
 | Begriff | Definition (verständlich) | Beispiel |
 |---|---|---|
 | 1. Normalform (1NF) | In jeder Zelle steht genau ein einzelner Wert, keine Liste und kein Mehrfachwert. | Statt "Mathe, Informatik" in einer Zelle: eigene Tabelle mit mehreren Zeilen je Person. |
@@ -106,6 +113,8 @@ Alle Begriffe sind alphabetisch sortiert und schülergerecht erklärt.
 | UPDATE | Ändert bestehende Datensätze. | UPDATE kunde SET ort='Ulm' WHERE kunde_id=3; |
 | WHERE | Filtert Zeilen vor Gruppierung. | WHERE aktiv=1 |
 | Änderungsanomalie | Eine Änderung muss an vielen Stellen erfolgen und erzeugt leicht Widersprüche. | Neue Telefonnummer müsste in 20 Zeilen korrigiert werden. |
+
+<script type="module" src="../../assets/js/stichwortverzeichnis/SearchController.js"></script>
 
 ## SQL-Klausel-Kompass (schneller Überblick)
 
