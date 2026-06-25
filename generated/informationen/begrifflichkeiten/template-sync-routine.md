@@ -2,6 +2,9 @@
 
 Diese Routine richtet sich an Lehrkräfte oder Teams, die aus diesem Repository ein eigenes Template-Repository erzeugt haben.
 
+Für Lernende mit eigenem Arbeitsrepo gibt es eine Kurzroutine unter:
+[generated/anleitungen/template-sync-fuer-schueler.md](../../anleitungen/template-sync-fuer-schueler.md)
+
 ## Ziel
 
 Neue Verbesserungen aus dem Original-Repository regelmäßig als Pull verfügbar machen.

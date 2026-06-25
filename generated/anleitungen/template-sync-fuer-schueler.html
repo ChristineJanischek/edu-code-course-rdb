@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Template-Sync für Schülerinnen und Schüler (vor jedem Start)</title>
+  <link rel="stylesheet" href="../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Template-Sync für Schülerinnen und Schüler (vor jedem Start)</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/anleitungen/template-sync-fuer-schueler.md</p>
+    </header>
+    <main class="content">
+<h1>Template-Sync für Schülerinnen und Schüler (vor jedem Start)</h1>
+<p>Nutze diese Kurzroutine immer <strong>vor Arbeitsbeginn</strong>, damit du mit der aktuellen Version arbeitest.</p>
+<h2>Müssen Schüler aktiv etwas tun?</h2>
+<p>Ja, in den meisten Fällen kurz prüfen und aktualisieren.</p>
+<ul>
+<li>Wenn du direkt im Klassenrepository arbeitest: <code>git pull</code> reicht meistens.</li>
+<li>Wenn du in einem eigenen Fork arbeitest: zuerst Fork synchronisieren, dann lokal aktualisieren.</li>
+<li>Wenn Lehrkraft-Updates automatisch eingespielt wurden, musst du nur noch lokal nachziehen.</li>
+</ul>
+<h2>60-Sekunden-Routine vor jeder Stunde</h2>
+<ol>
+<li>Terminal im Projekt öffnen.</li>
+<li>Auf <code>main</code> wechseln:
+   <code>bash
+   git checkout main</code></li>
+<li>Änderungen holen:
+   <code>bash
+   git pull origin main</code></li>
+<li>Prüfen, ob alles aktuell ist:
+   <code>bash
+   git status -sb</code></li>
+<li>Ergebnis lesen:
+   - <code>## main...origin/main</code> ohne <code>behind</code> =&gt; aktuell.
+   - <code>behind X</code> =&gt; nochmal <code>git pull origin main</code> ausführen.</li>
+</ol>
+<h2>Falls du in einem eigenen Fork arbeitest</h2>
+<ol>
+<li>Auf GitHub deinen Fork öffnen.</li>
+<li>Oben auf <strong>Sync fork</strong> klicken und bestätigen.</li>
+<li>Danach lokal im Codespace/Terminal:
+   <code>bash
+   git checkout main
+   git pull origin main</code></li>
+</ol>
+<h2>Wenn <code>git pull</code> wegen eigener Änderungen fehlschlägt</h2>
+<p>Nutze diesen sicheren Ablauf:</p>
+<pre><code class="language-bash">git add -A
+git commit -m &quot;WIP: mein Zwischenstand&quot;
+git pull --rebase origin main
+</code></pre>
+<p>Danach weiterarbeiten.</p>
+<h2>Mindestregel</h2>
+<ul>
+<li><strong>Immer vor dem Start syncen.</strong></li>
+<li><strong>Nicht</strong> mit altem Stand in Aufgaben/Übungen starten.</li>
+<li>Bei Konflikten früh Lehrkraft fragen.</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

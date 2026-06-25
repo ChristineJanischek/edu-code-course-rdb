@@ -6,6 +6,7 @@ Dies ist der zentrale Einstiegspunkt für alle eLearning-relevanten Inhalte in `
 ## Start für Schülerinnen und Schüler
 
 1. Live-Server starten: [anleitungen/live-server-starten.md](anleitungen/live-server-starten.md)
+1. Vor jeder Stunde aktualisieren: [anleitungen/template-sync-fuer-schueler.md](anleitungen/template-sync-fuer-schueler.md)
 1. Stoffverlaufsplan öffnen: [anleitungen/stoffverlaufsplan_rdb_3wochen.html](anleitungen/stoffverlaufsplan_rdb_3wochen.html)
 1. Aufgaben bearbeiten: [klassenarbeiten/KA02_2025_2026_VERSION1_aufg.html](klassenarbeiten/KA02_2025_2026_VERSION1_aufg.html)
 1. Mit Lösung abgleichen: [klassenarbeiten/KA02_2025_2026_VERSION1_lsg.html](klassenarbeiten/KA02_2025_2026_VERSION1_lsg.html)

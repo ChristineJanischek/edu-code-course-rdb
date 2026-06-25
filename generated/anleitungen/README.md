@@ -8,6 +8,7 @@ Diese Seiten führen Schülerinnen und Schüler Schritt für Schritt durch die T
 ## Dokumente
 
 - [Live-Server starten](live-server-starten.md)
+- [Template-Sync für Schülerinnen und Schüler](template-sync-fuer-schueler.md)
 - [Teil B: EERM, Normalisierung und Anomalien](KA02_2025_2026_VERSION1_teil-b-hilfsmittel.md)
 - [Teil C: SQL-Abfragen über mehrere Tabellen](KA02_2025_2026_VERSION1_teil-c-hilfsmittel.md)
 
