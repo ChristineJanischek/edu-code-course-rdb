@@ -22,6 +22,12 @@ if ! bash scripts/sync-generated-html.sh --check; then
   exit 1
 fi
 
+if ! bash scripts/augment-sql-practice-pages.sh --check; then
+  echo "[docs] FAIL: SQL-Praxis-Runtime fehlt in UE/KA-Teil-C-Seiten"
+  echo "[docs] HINT: bash scripts/augment-sql-practice-pages.sh --write"
+  exit 1
+fi
+
 if ! python3 scripts/optimize_docs.py --check; then
   echo "[docs] FAIL: Dokumentation ist nicht wohlgeformt oder strukturell inkonsistent"
   echo "[docs] HINT: bash scripts/optimize-docs.sh"

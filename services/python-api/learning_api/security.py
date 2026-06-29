@@ -11,7 +11,12 @@ def configured_submission_api_key() -> str:
 
 
 def is_sensitive_submission_route(path: str) -> bool:
-    return path.startswith("/submissions") or path.startswith(f"/api/{API_VERSION}/submissions")
+    return (
+        path.startswith("/submissions")
+        or path.startswith(f"/api/{API_VERSION}/submissions")
+        or path.startswith("/sql-sandbox")
+        or path.startswith(f"/api/{API_VERSION}/sql-sandbox")
+    )
 
 
 def authorize_sensitive_submission_route():

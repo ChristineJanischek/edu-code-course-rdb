@@ -1,5 +1,15 @@
 import { ApiError } from "./api-client.mjs";
 
+export function sanitizeStudentFacingMessage(message) {
+  const normalized = String(message || "");
+  return normalized
+    .replace(/^\s*#{1,6}\s*CTX-GOV\b.*$/gim, "")
+    .replace(/^\s*CTX-GOV\s*:\s*.*$/gim, "")
+    .replace(/\bCTX-GOV\b[^\r\n]*/gi, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 export function classifyError(error) {
   if (error instanceof ApiError) {
     if (error.code === "REQUEST_TIMEOUT" || error.code === "NETWORK_ERROR") {
@@ -53,7 +63,8 @@ export async function withRetry(operation, { attempts = 3, baseDelayMs = 300 } =
 
 export function renderStatus(targetElement, error) {
   const info = classifyError(error);
-  targetElement.textContent = `${info.headline}: ${info.message}`;
+  const message = sanitizeStudentFacingMessage(`${info.headline}: ${info.message}`) || "Fehler bei der Anfrage.";
+  targetElement.textContent = message;
   targetElement.dataset.state = info.retryable ? "warning" : "error";
   targetElement.closest(".feedback-box")?.setAttribute("data-state", info.retryable ? "warning" : "error");
 }

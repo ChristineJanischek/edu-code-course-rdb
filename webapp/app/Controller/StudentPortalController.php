@@ -5,10 +5,12 @@ declare(strict_types=1);
 final class StudentPortalController
 {
     private LearningContentRepository $repository;
+    private string $generatedBasePath;
 
-    public function __construct(LearningContentRepository $repository)
+    public function __construct(LearningContentRepository $repository, ?string $generatedBasePath = null)
     {
         $this->repository = $repository;
+        $this->generatedBasePath = $generatedBasePath ?? '/var/www/html/generated';
     }
 
     /**
@@ -77,28 +79,85 @@ final class StudentPortalController
      */
     private function exerciseLinks(): array
     {
+        $links = array_merge(
+            $this->discoverUeSqlLinks(),
+            $this->discoverKaLinks('aufg'),
+            $this->discoverKaLinks('lsg')
+        );
+
+        if (!empty($links)) {
+            return $links;
+        }
+
         return [
             [
-                'title' => 'UE01 Foodtrucknetz: Aufgaben',
-                'href' => '/generated/uebungen/UE01_foodtrucknetz_sql_abfragen.html',
-                'description' => 'SQL-Aufgaben mit Bezug auf JOIN, Filter und Auswertung.',
-            ],
-            [
-                'title' => 'UE02 Stadtfahrradverleih: Aufgaben',
-                'href' => '/generated/uebungen/UE02_stadtfahrradverleih_sql_abfragen.html',
-                'description' => 'Uebungsserie fuer SELECT, GROUP BY und fachliche Interpretation.',
-            ],
-            [
-                'title' => 'Klassenarbeit V1: Aufgaben',
-                'href' => '/generated/klassenarbeiten/KA02_2025_2026_VERSION1_aufg.html',
-                'description' => 'Kompletter Aufgabenblock fuer Modellierung und SQL.',
-            ],
-            [
-                'title' => 'Klassenarbeit V1: Loesungen',
-                'href' => '/generated/klassenarbeiten/KA02_2025_2026_VERSION1_lsg.html',
-                'description' => 'Musterloesung zur Selbstkontrolle und Nachbereitung.',
+                'title' => 'Uebungen: SQL-Abfragen',
+                'href' => '/generated/uebungen/README.md',
+                'description' => 'Uebungsuebersicht fuer SQL-Abfragen ueber mehrere Tabellen.',
             ],
         ];
+    }
+
+    /**
+     * @return array<int,array<string,string>>
+     */
+    private function discoverUeSqlLinks(): array
+    {
+        $paths = glob($this->generatedBasePath . '/uebungen/UE*_sql_abfragen.html') ?: [];
+        sort($paths, SORT_NATURAL);
+
+        $links = [];
+        foreach ($paths as $absolutePath) {
+            $fileName = basename($absolutePath, '.html');
+            $title = str_replace('_', ' ', $fileName);
+            $title = preg_replace('/\bUE(\d+)\b/i', 'UE$1', $title) ?? $title;
+
+            $links[] = [
+                'title' => trim($title) . ': Aufgaben',
+                'href' => $this->toWebPath($absolutePath),
+                'description' => 'Interaktive SQL-Uebungen mit Schritt-fuer-Schritt-Assistenz.',
+            ];
+        }
+
+        return $links;
+    }
+
+    /**
+     * @return array<int,array<string,string>>
+     */
+    private function discoverKaLinks(string $kind): array
+    {
+        $paths = glob($this->generatedBasePath . '/klassenarbeiten/KA*_'. $kind .'.html') ?: [];
+        sort($paths, SORT_NATURAL);
+
+        $links = [];
+        foreach ($paths as $absolutePath) {
+            $fileName = basename($absolutePath, '.html');
+            $titleBase = str_replace('_', ' ', $fileName);
+            $suffix = $kind === 'aufg' ? 'Aufgaben' : 'Loesungen';
+
+            $links[] = [
+                'title' => trim($titleBase) . ': ' . $suffix,
+                'href' => $this->toWebPath($absolutePath),
+                'description' => $kind === 'aufg'
+                    ? 'Klassenarbeit mit trainierbarem Teil-C-SQL-Assistenten.'
+                    : 'Musterloesung zur fachlichen Selbstkontrolle.',
+            ];
+        }
+
+        return $links;
+    }
+
+    private function toWebPath(string $absolutePath): string
+    {
+        $normalized = str_replace('\\', '/', $absolutePath);
+        $generatedMarker = '/generated/';
+        $markerPosition = strpos($normalized, $generatedMarker);
+        if ($markerPosition === false) {
+            return '/generated/';
+        }
+
+        return substr($normalized, $markerPosition);
     }
 
     /**

@@ -20,6 +20,12 @@ Die technische Grundlage liegt getrennt in:
 - [SQL-Daten](../klassenarbeiten/stadtfahrradverleih_daten_2025.sql)
 - [EERM-Referenzgrafik](../klassenarbeiten/stadtfahrradverleih_2025.png)
 
+EERM direkt im Dokument (mit Attributen sowie PK/FK-Verbindungen):
+
+![EERM Stadtfahrradverleih mit Attributen und PK/FK-Verbindungen](../klassenarbeiten/stadtfahrradverleih_2025.png)
+
+Tipp für die Klassenarbeit: Du kannst die Join-Kette auch handschriftlich vorplanen, indem du die beteiligten Tabellen im EERM markierst und die PK/FK-Verbindungen als Pfad nachzeichnest.
+
 Wichtige Tabellen und Rollen:
 
 | Tabelle | Wozu sie dient | Wichtige Schlüsselspalten |

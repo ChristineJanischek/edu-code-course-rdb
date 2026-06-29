@@ -88,9 +88,9 @@ Ein kommunaler Stadtfahrradverleih verwaltet Kundinnen und Kunden, Stationen, Fa
 
 **Arbeitsgrundlage:**
 - SQL-Struktur: `stadtfahrradverleih_struktur_2025.sql`
-- SQL-Daten: `stadtfahrradverleih_daten`stadtfahrradverleih_daten_2025.sql`tadtfahrradverleih_2025.png`
+- SQL-Daten: `stadtfahrradverleih_daten_2025.sql`
 
-![EERM Teil C - s`stadtfahrradverleih_2025.png`ahrradverleih_2025.png)
+![EERM Teil C - separater SQL-Kontext](./stadtfahrradverleih_2025.png)
 
 ### Aufgabe 4.1 (4 Punkte)
 Geben Sie für jede abgeschlossene Ausleihe den Kundennamen, die Fahrradnummer, den Fahrradtyp, Start- und Zielstation sowie den Zahlbetrag aus.

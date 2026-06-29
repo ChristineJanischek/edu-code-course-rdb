@@ -1,3 +1,5 @@
+import { sanitizeStudentFacingMessage } from "../error-handler.mjs";
+
 export class SubmissionView {
   constructor(formElement, statusElement) {
     this.formElement = formElement;
@@ -9,7 +11,8 @@ export class SubmissionView {
       return;
     }
 
-    this.statusElement.textContent = message;
+    const safeMessage = sanitizeStudentFacingMessage(message) || "Status aktualisiert.";
+    this.statusElement.textContent = safeMessage;
     this.statusElement.dataset.state = state;
     this.statusElement.closest(".feedback-box")?.setAttribute("data-state", state);
   }

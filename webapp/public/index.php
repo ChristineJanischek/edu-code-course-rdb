@@ -14,8 +14,61 @@ $pythonApiUrl = getenv('PYTHON_API_URL') ?: '/api-proxy.php';
 $submissionApiBaseUrl = '/api-proxy.php';
 
 $contentRepository = new LearningContentRepository(__DIR__ . '/data/learning-content.json');
-$studentPortalController = new StudentPortalController($contentRepository);
+$studentPortalController = new StudentPortalController($contentRepository, __DIR__ . '/generated');
 $viewModel = $studentPortalController->buildViewModel();
+
+/**
+ * Remove internal governance markers from all student-facing strings.
+ * This keeps the portal focused on learner content only.
+ */
+function sanitizeStudentText(string $text): string
+{
+  $text = preg_replace('/^\s*#{1,6}\s*CTX-GOV\b.*$/im', '', $text) ?? $text;
+  $text = preg_replace('/^\s*CTX-GOV\s*:\s*.*$/im', '', $text) ?? $text;
+  $text = preg_replace('/\bCTX-GOV\b[^\r\n]*/i', '', $text) ?? $text;
+  $text = preg_replace('/\n{3,}/', "\n\n", $text) ?? $text;
+
+  return trim($text);
+}
+
+function sanitizeStudentValue(mixed $value): mixed
+{
+  if (is_string($value)) {
+    return sanitizeStudentText($value);
+  }
+
+  if (!is_array($value)) {
+    return $value;
+  }
+
+  $sanitized = [];
+  foreach ($value as $key => $child) {
+    $sanitized[$key] = sanitizeStudentValue($child);
+  }
+
+  return $sanitized;
+}
+
+function hasCtxGovMarker(mixed $value): bool
+{
+  if (is_string($value)) {
+    return (bool) preg_match('/\bCTX-GOV\b/i', $value);
+  }
+
+  if (!is_array($value)) {
+    return false;
+  }
+
+  foreach ($value as $child) {
+    if (hasCtxGovMarker($child)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+$viewModel = sanitizeStudentValue($viewModel);
 
 $learningPaths = $viewModel['learningPaths'];
 $curriculumTopics = $viewModel['curriculumTopics'];
@@ -23,6 +76,18 @@ $learningPlanLinks = $viewModel['learningPlanLinks'];
 $exerciseLinks = $viewModel['exerciseLinks'];
 $indexLinks = $viewModel['indexLinks'];
 $catalogMeta = $viewModel['catalogMeta'];
+
+$learningPaths = array_values(array_filter($learningPaths, static fn ($item): bool => !hasCtxGovMarker($item)));
+$curriculumTopics = array_values(array_filter($curriculumTopics, static fn ($item): bool => !hasCtxGovMarker($item)));
+$learningPlanLinks = array_values(array_filter($learningPlanLinks, static fn ($item): bool => !hasCtxGovMarker($item)));
+$exerciseLinks = array_values(array_filter($exerciseLinks, static fn ($item): bool => !hasCtxGovMarker($item)));
+$indexLinks = array_values(array_filter($indexLinks, static fn ($item): bool => !hasCtxGovMarker($item)));
+
+$viewModel['learningPaths'] = $learningPaths;
+$viewModel['curriculumTopics'] = $curriculumTopics;
+$viewModel['learningPlanLinks'] = $learningPlanLinks;
+$viewModel['exerciseLinks'] = $exerciseLinks;
+$viewModel['indexLinks'] = $indexLinks;
 ?>
 <!doctype html>
 <html lang="de">

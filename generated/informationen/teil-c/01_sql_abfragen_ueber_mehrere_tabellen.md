@@ -11,6 +11,17 @@ Kontext Teil C: FoodTruckNetz (separat von Teil B)
 ## Kernidee
 Daten liegen in normalisierten Tabellen verteilt. Für Auswertungen müssen Tabellen über Schlüssel verbunden werden.
 
+## EERM-Übersicht für Teil C (PK/FK sichtbar)
+
+Nutze diese Grafik während der Bearbeitung als Arbeitsgrundlage für JOIN-Ketten und Fremdschlüsselpfade:
+
+![EERM Stadtfahrradverleih mit Attributen und PK/FK-Verbindungen](../../klassenarbeiten/stadtfahrradverleih_2025.png)
+
+Arbeitsroutine mit der Grafik:
+- Markiere zuerst Starttabelle und Zielattribute aus der Aufgabe.
+- Verfolge danach den PK/FK-Pfad im EERM und notiere die Join-Reihenfolge.
+- Formuliere erst dann `FROM` und `JOIN`, anschließend Filter, Gruppierung und Sortierung.
+
 ## Beispielkontext
 - FOODTRUCK(TruckID, Name)
 - STANDORT(StandortID, Stadt)

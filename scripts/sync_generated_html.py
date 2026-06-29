@@ -15,6 +15,7 @@ import markdown
 LINK_RE = re.compile(r'(?P<attr>href|src)="(?P<target>[^"]+)"', re.IGNORECASE)
 PLAN_PATH = Path("generated/anleitungen/stoffverlaufsplan_rdb_3wochen.html")
 STYLESHEET_PATH = Path("generated/assets/generated-docs.css")
+SQL_RUNTIME_TAG = '<script type="module" src="/js/sql-practice-runtime.mjs"></script>'
 
 
 def parse_args() -> argparse.Namespace:
@@ -121,6 +122,27 @@ def wrap_html_document(title: str, source_path: Path, body_html: str, stylesheet
 """
 
 
+def should_inject_sql_runtime(md_file: Path, markdown_text: str) -> bool:
+    md_path = md_file.as_posix()
+    if re.search(r"generated/klassenarbeiten/KA\d+_.*_aufg\.md$", md_path, re.IGNORECASE):
+        return True
+    if re.search(r"generated/uebungen/UE\d+_.*_sql_abfragen\.md$", md_path, re.IGNORECASE):
+        return True
+
+    lowered = markdown_text.lower()
+    return "teil c" in lowered and "sql" in lowered and "aufgabe 4." in lowered
+
+
+def inject_sql_runtime_tag(html_text: str) -> str:
+    if SQL_RUNTIME_TAG in html_text:
+        return html_text
+
+    if "</body>" in html_text:
+        return html_text.replace("</body>", f"{SQL_RUNTIME_TAG}\n</body>")
+
+    return html_text + "\n" + SQL_RUNTIME_TAG + "\n"
+
+
 def render_file(md_file: Path, write: bool, repo_root: Path) -> tuple[bool, Path]:
     markdown_text = md_file.read_text(encoding="utf-8")
     html_file = md_file.with_suffix(".html")
@@ -129,6 +151,8 @@ def render_file(md_file: Path, write: bool, repo_root: Path) -> tuple[bool, Path
     body_html = rewrite_local_links(body_html)
     stylesheet_href = Path(os.path.relpath((repo_root / STYLESHEET_PATH).resolve(), md_file.parent.resolve())).as_posix()
     generated_html = wrap_html_document(title, md_file, body_html, stylesheet_href)
+    if should_inject_sql_runtime(md_file, markdown_text):
+        generated_html = inject_sql_runtime_tag(generated_html)
     current_html = html_file.read_text(encoding="utf-8") if html_file.exists() else None
     changed = current_html != generated_html
     if write and changed:

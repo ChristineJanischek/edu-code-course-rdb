@@ -4,6 +4,7 @@ from .constants import API_VERSION
 from .curriculum_service import enrich_curriculum_index_documents, load_curriculum_document
 from .db import mysql_status
 from .responses import api_error, api_success, is_versioned_api_request
+from .sql_sandbox_service import execute_sql_sandbox
 from .storage import load_curriculum_index, load_json_db
 from .submission_service import create_submission, list_submissions, normalize_submission_payload, submission_detail
 
@@ -48,6 +49,14 @@ def register_routes(app):
 
     app.add_url_rule(f"/api/{API_VERSION}/curricula/<slug>", "curriculum_detail_v1", curriculum_detail)
     app.add_url_rule("/curricula/<slug>", "curriculum_detail", curriculum_detail)
+
+    app.add_url_rule(
+        f"/api/{API_VERSION}/sql-sandbox/execute",
+        "sql_sandbox_execute_v1",
+        sql_sandbox_execute_route,
+        methods=["POST"],
+    )
+    app.add_url_rule("/sql-sandbox/execute", "sql_sandbox_execute", sql_sandbox_execute_route, methods=["POST"])
 
 
 def health():
@@ -128,3 +137,22 @@ def curriculum_detail(slug):
         return dual_error("CURRICULUM_NOT_FOUND", curriculum_doc["error"], status_code=404)
 
     return dual_response(curriculum_doc)
+
+
+def sql_sandbox_execute_route():
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return dual_error("SQL_SANDBOX_INVALID_PAYLOAD", "Invalid JSON payload", status_code=400)
+
+    response_payload, error_message = execute_sql_sandbox(payload)
+    if error_message:
+        lowered = error_message.lower()
+        if "unsupported dataset" in lowered or "empty" in lowered or "forbidden" in lowered or "only" in lowered:
+            return dual_error("SQL_SANDBOX_VALIDATION_FAILED", error_message, status_code=400)
+
+        if "too many rows" in lowered:
+            return dual_error("SQL_SANDBOX_RESULT_TOO_LARGE", error_message, status_code=400)
+
+        return dual_error("SQL_SANDBOX_EXECUTION_FAILED", error_message, status_code=500)
+
+    return dual_response(response_payload)
