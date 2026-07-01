@@ -116,7 +116,7 @@ h3 {
 
 .workspace-frames {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 1rem;
   align-items: start;
 }
@@ -533,7 +533,36 @@ button:focus-visible {
 .footer-inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 1rem 1rem 1.4rem;
+  padding: 0.85rem 1rem 1rem;
+}
+
+.footer-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-actions a {
+  color: var(--student-accent);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  padding: 0.1rem 0;
+}
+
+.footer-actions a:hover,
+.footer-actions a:focus-visible {
+  color: var(--student-accent-2);
+  border-bottom-color: currentColor;
+}
+
+.footer-status {
+  margin: 0.55rem 0 0;
+  text-align: right;
+  color: var(--student-muted);
+  font-size: 0.9rem;
 }
 
 .assistant-dock {
@@ -691,6 +720,16 @@ button:focus-visible {
 
   .action-row button {
     width: 100%;
+  }
+
+  .footer-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.8rem 1rem;
+  }
+
+  .footer-status {
+    text-align: left;
   }
 
   .assistant-dock {

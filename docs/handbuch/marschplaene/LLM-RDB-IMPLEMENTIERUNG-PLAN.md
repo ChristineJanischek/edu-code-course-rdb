@@ -38,6 +38,13 @@ Status-Checkpoint (01.07.2026):
 - UI-Workspace ist auf zwei Hauptreiter erweitert: Reiter 1 fuer Information/Aufgaben/Stichwortsuche und Reiter 2 fuer Editor/Assistenz.
 - Praxisbereich enthaelt zusaetzlichen Datei-Reiter sowie Weiter- und Check-Funktion fuer Selbstkontrolle.
 
+Status-Checkpoint (01.07.2026, UI-Revision):
+- Kursnavigation auf einen klaren Einstieg reduziert: Kurs: RDB.
+- Linke Box auf 1/3 gesetzt und in die Fenster Aufgabe, Information, Stichwortsuche getrennt.
+- Rechte Box auf 2/3 gesetzt und auf Dateifenster plus Upload, Export und ModellEERM umgestellt.
+- Footer auf rechtsbündige Link-Aktionen (zurück, weiter, testen, speichern) reduziert; Reiter 2 und Assistenz-Funktionen in der Kursnavigation entfernt.
+- Linearer Lernpfad mit lokaler Wiederaufnahme vorbereitet: Weiter lädt das nächste Kursmodul, Arbeitsstand wird lokal persistiert und exportierbar abgelegt.
+
 ---
 
 ## Phase 2: Wissensanbindung RDB (Woche 2-3)
@@ -119,3 +126,4 @@ Definition of Done:
 - v1.0 (01.07.2026): Erstanlage Marschplan fuer RDB-LLM-Implementierung.
 - v1.1 (01.07.2026): Phase-1-Checkpoint mit erfolgreicher API-Validierung und sichtbarer Frontend-Integration des Assistant-Panels ergaenzt.
 - v1.2 (01.07.2026): UX-Ausbau auf 2-Reiter-Workspace inkl. Datei-Reiter und Selbstkontroll-Assistenz dokumentiert.
+- v1.3 (01.07.2026): UI-Revision auf Kurslayout mit 1/3-2/3-Aufteilung, Fensterbenennung ohne Präfix Fenster:, Footer-Linkaktionen und linearem Modulfluss dokumentiert.
