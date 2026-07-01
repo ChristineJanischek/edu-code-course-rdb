@@ -44,7 +44,7 @@ export class KeywordIndexView {
 
     if (this.statusElement) {
       this.statusElement.textContent = statusText;
-    });
+    }
   }
 
   renderStatus(message) {

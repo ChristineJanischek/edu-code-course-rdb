@@ -72,18 +72,34 @@ class KeywordIndexController {
       const ranked = Array.isArray(response?.results) ? response.results : [];
       if (ranked.length === 0) {
         this.view.render(visibilityMap);
-        this.view.renderStatus(response?.summary || "Keine LLM-Treffer. Lokaler Index bleibt aktiv.");
+        this.view.renderStatus(this.buildStatusText(normalizedTerm, [], response?.summary));
         return;
       }
 
       const rankedVisibility = this.model.visibilityByHref(ranked);
-      this.view.renderRanked(rankedVisibility, ranked, response?.summary || "LLM-Treffer geladen.");
+      this.view.renderRanked(rankedVisibility, ranked, this.buildStatusText(normalizedTerm, ranked, response?.summary));
     } catch (error) {
       if (this.statusElement) {
         renderStatus(this.statusElement, error);
       }
       this.view.render(visibilityMap);
     }
+  }
+
+  buildStatusText(searchTerm, rankedResults = [], summaryText = "") {
+    if (!Array.isArray(rankedResults) || rankedResults.length === 0) {
+      const fallbackSummary = summaryText || "Keine LLM-Treffer. Lokaler Index bleibt aktiv.";
+      return `Suche '${searchTerm}': ${fallbackSummary}`;
+    }
+
+    const topTitles = rankedResults
+      .slice(0, 3)
+      .map((entry) => String(entry?.title || "").trim())
+      .filter(Boolean)
+      .join(" | ");
+
+    const prefix = summaryText || `${rankedResults.length} Treffer gefunden.`;
+    return `Suche '${searchTerm}': ${prefix}${topTitles ? ` Top: ${topTitles}` : ""}`;
   }
 }
 
