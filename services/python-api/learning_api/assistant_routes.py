@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from flask import request
@@ -8,7 +9,8 @@ from .assistant_service import AssistantTutoringService, TutoringSafetyPolicy
 
 
 def _build_tutoring_service() -> AssistantTutoringService:
-    storage_file = Path("generated/assistant/interactions.jsonl")
+    storage_path = os.getenv("ASSISTANT_INTERACTIONS_PATH", "/tmp/assistant/interactions.jsonl")
+    storage_file = Path(storage_path)
     repository = AssistantKnowledgeRepository(storage_file)
     policy = TutoringSafetyPolicy()
     return AssistantTutoringService(repository, policy)
