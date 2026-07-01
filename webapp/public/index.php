@@ -110,6 +110,7 @@ $viewModel['indexLinks'] = $indexLinks;
           <a href="#learning-paths-section">Lernpfade</a>
           <a href="#exercise-section">Übungen</a>
           <a href="#index-section">Stichwortindex</a>
+          <a href="#assistant-section">KI-Assistent</a>
           <a href="#submission-section">Upload</a>
         </nav>
       </header>
@@ -123,6 +124,7 @@ $viewModel['indexLinks'] = $indexLinks;
                 <li><a href="#learning-paths-section">Lernpfade</a></li>
                 <li><a href="#exercise-section">Übungen</a></li>
                 <li><a href="#index-section">Stichwortindex</a></li>
+                <li><a href="#assistant-section">KI-Assistent</a></li>
                 <li><a href="#submission-section">Upload</a></li>
               </ul>
               <h3>Direkt zu den Quellen</h3>
@@ -277,6 +279,43 @@ $viewModel['indexLinks'] = $indexLinks;
                     <p id="submissionStatus">Noch keine Abgabe gesendet.</p>
                   </div>
                 </form>
+              </article>
+            </section>
+
+            <section class="section-block" id="assistant-section">
+              <div class="section-head">
+                <p class="eyebrow">Lernhilfe</p>
+                <h2>KI-Assistent für verständnisorientierte Hinweise</h2>
+              </div>
+              <article class="card assistant-card">
+                <p class="muted">Der Assistent unterstützt dich mit Leitfragen und Zwischenschritten, ohne komplette Lösungen vorwegzunehmen.</p>
+                <form id="assistantHintForm" class="assistant-form">
+                  <label>
+                    <span>Frage zu SQL, Normalisierung oder Modellierung</span>
+                    <textarea
+                      name="question"
+                      rows="5"
+                      required
+                      maxlength="4000"
+                      placeholder="z. B. Wie entscheide ich, ob eine Bedingung in WHERE oder HAVING gehört?"
+                    ></textarea>
+                  </label>
+                  <label>
+                    <span>Rolle</span>
+                    <select name="actor_role">
+                      <option value="student" selected>Schüler</option>
+                      <option value="teacher">Lehrkraft</option>
+                    </select>
+                  </label>
+                  <div class="exercise-actions">
+                    <button type="submit">Hinweis anfordern</button>
+                  </div>
+                </form>
+                <div class="info-box feedback-box" aria-live="polite" data-state="warning">
+                  <strong>Status</strong>
+                  <p id="assistantHintStatus">Noch keine Anfrage gesendet.</p>
+                </div>
+                <div id="assistantHintOutput" class="assistant-output" aria-live="polite"></div>
               </article>
             </section>
 

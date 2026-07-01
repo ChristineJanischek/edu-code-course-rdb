@@ -32,6 +32,10 @@ Definition of Done:
 - POST /api/v1/assistant/hint liefert robuste didaktische Hinweise
 - Frontend kann Hinweisanfrage ausfuehren
 
+Status-Checkpoint (01.07.2026):
+- API-Endpunkt fuer den Hint-Modus ist aktiv und ueber Python-API sowie PHP-Proxy validiert.
+- Sichtbares Assistant-Panel mit Formular, Statusanzeige und Hinweis-Ausgabe ist in der Webapp integriert.
+
 ---
 
 ## Phase 2: Wissensanbindung RDB (Woche 2-3)
@@ -111,3 +115,4 @@ Definition of Done:
 ## Changelog
 
 - v1.0 (01.07.2026): Erstanlage Marschplan fuer RDB-LLM-Implementierung.
+- v1.1 (01.07.2026): Phase-1-Checkpoint mit erfolgreicher API-Validierung und sichtbarer Frontend-Integration des Assistant-Panels ergaenzt.
