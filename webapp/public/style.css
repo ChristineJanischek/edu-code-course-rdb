@@ -149,6 +149,133 @@ h3 {
   margin-top: 1.25rem;
 }
 
+.workspace-switcher {
+  margin-bottom: 1rem;
+}
+
+.tab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.tab-toolbar.compact {
+  margin-top: 0.4rem;
+}
+
+.tab-button {
+  border: 1px solid #c9d7e6;
+  border-radius: 999px;
+  background: #ecf3fb;
+  color: var(--student-accent);
+  font: inherit;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+}
+
+.tab-button.is-active,
+.tab-button[aria-selected="true"] {
+  background: linear-gradient(120deg, var(--student-accent), var(--student-accent-2));
+  color: #fff;
+  border-color: transparent;
+}
+
+.tab-button:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 2px;
+}
+
+.workspace-panel {
+  margin-top: 0.5rem;
+}
+
+.workspace-subpanel {
+  margin-top: 0.8rem;
+}
+
+.practice-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+  gap: 1rem;
+  align-items: start;
+}
+
+.practice-main {
+  min-width: 0;
+}
+
+.practice-side {
+  position: sticky;
+  top: 7.5rem;
+}
+
+.editor-card {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.practice-editor {
+  width: 100%;
+  border: 1px solid #c8d6e5;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  font-family: "Consolas", "Liberation Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: vertical;
+  background: #fdfefe;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.self-check-card {
+  border-style: dashed;
+}
+
+.self-check-card h4 {
+  margin: 0 0 0.5rem;
+}
+
+.self-check-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.self-check-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-list,
+.resource-list {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.file-list li,
+.resource-list li {
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: #f5f9fe;
+  border: 1px solid #d3e0ee;
+}
+
+.primary-nav a.is-active {
+  color: #fff;
+  background: linear-gradient(120deg, var(--student-accent), var(--student-accent-2));
+  border-color: transparent;
+}
+
 .section-head h2 {
   margin: 0.4rem 0 0;
 }
@@ -392,6 +519,14 @@ button:focus-visible {
   .course-nav {
     position: static;
   }
+
+  .practice-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-side {
+    position: static;
+  }
 }
 
 @media (max-width: 760px) {
@@ -408,5 +543,18 @@ button:focus-visible {
 
   .card {
     border-radius: 12px;
+  }
+
+  .tab-toolbar {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: left;
+  }
+
+  .action-row button {
+    width: 100%;
   }
 }

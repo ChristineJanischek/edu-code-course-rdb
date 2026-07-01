@@ -30,4 +30,29 @@ export class AssistantModel {
     }
     return [];
   }
+
+  createGuidedPayload(mode, editorText, fileName) {
+    const normalizedEditorText = (editorText || "").toString().trim();
+    const normalizedFileName = (fileName || "").toString().trim() || "unbenannt";
+
+    const basePrompt = mode === "check"
+      ? "Bitte prüfe meinen aktuellen Stand didaktisch und nenne nur Verbesserungshinweise, keine fertige Lösung."
+      : "Bitte gib mir den nächsten sinnvollen Schritt für meine eigenständige Lösungsfindung, ohne die komplette Antwort vorwegzunehmen.";
+
+    const draftSnippet = normalizedEditorText
+      ? ` Aktueller Stand in ${normalizedFileName}: ${normalizedEditorText.slice(0, 1400)}`
+      : ` Es liegt noch kein Entwurf in ${normalizedFileName} vor.`;
+
+    return {
+      question: `${basePrompt}${draftSnippet}`,
+      actor_role: "student",
+      topic: "relationale-datenbanken",
+      language: "de",
+      learner_level: "sek2",
+      metadata: {
+        mode,
+        file_name: normalizedFileName,
+      },
+    };
+  }
 }

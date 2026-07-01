@@ -35,6 +35,8 @@ Definition of Done:
 Status-Checkpoint (01.07.2026):
 - API-Endpunkt fuer den Hint-Modus ist aktiv und ueber Python-API sowie PHP-Proxy validiert.
 - Sichtbares Assistant-Panel mit Formular, Statusanzeige und Hinweis-Ausgabe ist in der Webapp integriert.
+- UI-Workspace ist auf zwei Hauptreiter erweitert: Reiter 1 fuer Information/Aufgaben/Stichwortsuche und Reiter 2 fuer Editor/Assistenz.
+- Praxisbereich enthaelt zusaetzlichen Datei-Reiter sowie Weiter- und Check-Funktion fuer Selbstkontrolle.
 
 ---
 
@@ -116,3 +118,4 @@ Definition of Done:
 
 - v1.0 (01.07.2026): Erstanlage Marschplan fuer RDB-LLM-Implementierung.
 - v1.1 (01.07.2026): Phase-1-Checkpoint mit erfolgreicher API-Validierung und sichtbarer Frontend-Integration des Assistant-Panels ergaenzt.
+- v1.2 (01.07.2026): UX-Ausbau auf 2-Reiter-Workspace inkl. Datei-Reiter und Selbstkontroll-Assistenz dokumentiert.
