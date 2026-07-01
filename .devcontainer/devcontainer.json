@@ -40,11 +40,13 @@
   "portsAttributes": {
     "8080": {
       "label": "edu-code Webapp",
-      "onAutoForward": "notify"
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
     },
     "8000": {
       "label": "edu-code Python API",
-      "onAutoForward": "silent"
+      "onAutoForward": "silent",
+      "visibility": "public"
     }
   },
   "postCreateCommand": "bash scripts/bootstrap.sh"

@@ -112,6 +112,11 @@ Architekturregel fuer Interaktivitaet und API-Implementierung:
 - **Python-API-Bootstrap:** `services/python-api/app.py` bleibt schlanker Einstiegspunkt.
 - **Python-API-Schichten:** Routing/Controller in `services/python-api/learning_api/routes.py`, Services in `services/python-api/learning_api/*_service.py`, DB/Repository-nahe Logik in `services/python-api/learning_api/db.py`.
 
+Devcontainer- und Port-Richtlinie für lokale Nutzung:
+
+- **Webapp-Port 8080:** wird beim Start automatisch im Browser geöffnet (`onAutoForward=openBrowser`) und als öffentlich sichtbar markiert (`visibility=public`), damit Unterrichts-Demos ohne zusätzliche VS-Code-Klickpfade starten.
+- **Python-API-Port 8000:** bleibt auf stille Weiterleitung (`onAutoForward=silent`), ist aber ebenfalls öffentlich sichtbar (`visibility=public`), damit externe Aufrufer und Integrations-Tests konsistent erreichbar bleiben.
+
 ---
 
 ## 3. Prozess-Schichten
