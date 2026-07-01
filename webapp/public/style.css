@@ -366,8 +366,19 @@ ol {
   background: #fdfefe;
 }
 
+.keyword-search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
 .keyword-search {
   margin-bottom: 0.75rem;
+}
+
+.keyword-search-row .keyword-search {
+  margin-bottom: 0;
 }
 
 .keyword-list {
@@ -383,6 +394,18 @@ ol {
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
+}
+
+.keyword-list li[data-score]::after {
+  content: "Score " attr(data-score);
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--student-accent);
+  background: #e9f1f8;
+  border: 1px solid #c9d7e6;
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
 }
 
 .topic-pill {
@@ -716,6 +739,14 @@ button:focus-visible {
   .tab-button {
     width: 100%;
     text-align: left;
+  }
+
+  .keyword-search-row {
+    grid-template-columns: 1fr;
+  }
+
+  .keyword-search-row button {
+    width: 100%;
   }
 
   .action-row button {

@@ -1,6 +1,6 @@
 from flask import jsonify, request
 
-from .assistant_routes import assistant_hint_route
+from .assistant_routes import assistant_hint_route, assistant_keyword_search_route
 from .constants import API_VERSION
 from .curriculum_service import enrich_curriculum_index_documents, load_curriculum_document
 from .db import mysql_status
@@ -61,6 +61,18 @@ def register_routes(app):
 
     app.add_url_rule(f"/api/{API_VERSION}/assistant/hint", "assistant_hint_v1", assistant_hint_entry, methods=["POST"])
     app.add_url_rule("/assistant/hint", "assistant_hint", assistant_hint_entry, methods=["POST"])
+    app.add_url_rule(
+        f"/api/{API_VERSION}/assistant/keyword-search",
+        "assistant_keyword_search_v1",
+        assistant_keyword_search_entry,
+        methods=["POST"],
+    )
+    app.add_url_rule(
+        "/assistant/keyword-search",
+        "assistant_keyword_search",
+        assistant_keyword_search_entry,
+        methods=["POST"],
+    )
 
 
 def health():
@@ -164,3 +176,7 @@ def sql_sandbox_execute_route():
 
 def assistant_hint_entry():
     return assistant_hint_route(dual_response, dual_error)
+
+
+def assistant_keyword_search_entry():
+    return assistant_keyword_search_route(dual_response, dual_error)

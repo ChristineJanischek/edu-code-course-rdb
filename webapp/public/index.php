@@ -159,7 +159,14 @@ $viewModel['indexLinks'] = $indexLinks;
 
                   <article class="card">
                     <label for="keywordSearch" class="field-label">Suchbegriff</label>
-                    <input id="keywordSearch" class="keyword-search" type="search" placeholder="z. B. 3NF, Kardinalität, JOIN" autocomplete="off" />
+                    <form id="keywordSearchForm" class="keyword-search-row" novalidate>
+                      <input id="keywordSearch" class="keyword-search" type="search" placeholder="z. B. 3NF, Kardinalität, JOIN" autocomplete="off" />
+                      <button type="submit" id="keywordSearchButton">Suchen</button>
+                    </form>
+                    <div class="info-box feedback-box" data-state="warning" aria-live="polite">
+                      <strong>Stichwortsuche</strong>
+                      <p id="keywordStatus">Lokale Stichwortsuche aktiv.</p>
+                    </div>
                     <ul id="keywordList" class="keyword-list">
                       <?php foreach ($indexLinks as $item): ?>
                         <li data-topic="<?php echo htmlspecialchars(strtolower($item['topic']), ENT_QUOTES, 'UTF-8'); ?>" data-title="<?php echo htmlspecialchars(strtolower($item['title']), ENT_QUOTES, 'UTF-8'); ?>">

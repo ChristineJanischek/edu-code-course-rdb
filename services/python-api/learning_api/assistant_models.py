@@ -30,3 +30,35 @@ class AssistantInteraction:
     topic: str
     metadata: dict[str, Any]
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
+@dataclass(slots=True)
+class KeywordCandidate:
+    title: str
+    topic: str
+    href: str
+
+
+@dataclass(slots=True)
+class AssistantKeywordSearchRequest:
+    search_term: str
+    language: str = "de"
+    topic: str = "relationale-datenbanken"
+    candidates: list[KeywordCandidate] = field(default_factory=list)
+
+
+@dataclass(slots=True)
+class AssistantKeywordSearchItem:
+    title: str
+    topic: str
+    href: str
+    score: float
+    rationale: str
+
+
+@dataclass(slots=True)
+class AssistantKeywordSearchResponse:
+    search_term: str
+    summary: str
+    results: list[AssistantKeywordSearchItem]
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
