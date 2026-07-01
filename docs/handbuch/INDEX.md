@@ -14,8 +14,10 @@
 
 ### 📖 Kernliteratur (Lesen in dieser Reihenfolge!)
 1. **[PFLICHTENHEFT.md](PFLICHTENHEFT.md)** - Anforderungen, Ziele, Umfang
-2. **[ARCHITEKTUR.md](ARCHITEKTUR.md)** - System-Design, Komponenten, Datenfluss
-3. **[MARSCHPLAN.md](marschplaene/HAUPTMARSCHPLAN.md)** - Phasen, Milestones, Zeitplan
+2. **[PFLICHTENHEFT-ELEARNING-KURSEDITOR.md](PFLICHTENHEFT-ELEARNING-KURSEDITOR.md)** - Fachliches Zielbild fuer den KI-gestuetzten eLearning-Kurseditor
+3. **[ARCHITEKTUR.md](ARCHITEKTUR.md)** - System-Design, Komponenten, Datenfluss
+4. **[MARSCHPLAN.md](marschplaene/HAUPTMARSCHPLAN.md)** - Phasen, Milestones, Zeitplan
+5. **[marschplaene/LLM-RDB-IMPLEMENTIERUNG-PLAN.md](marschplaene/LLM-RDB-IMPLEMENTIERUNG-PLAN.md)** - Umsetzungsplan fuer den RDB-KI-Assistenten
 
 ### 🧪 Anleitungen & Live-Tests
 - **[anleitungen/java-live-test.md](anleitungen/java-live-test.md)** - Java-App kompilieren, Modell-Tests & GUI starten
@@ -24,6 +26,7 @@
 ### 🔧 Prozesse & Governance
 - **[prozesse/neue-routine-erstellen.md](prozesse/neue-routine-erstellen.md)** - Schritt-für-Schritt Anleitung
 - **[prozesse/lehrplanbasierte-inhaltserweiterung.md](prozesse/lehrplanbasierte-inhaltserweiterung.md)** - Curriculare Inhaltsanalyse, didaktische Ableitung und ML/RAG-Workflow
+- **[prozesse/llm-assistent-implementierungsroutine.md](prozesse/llm-assistent-implementierungsroutine.md)** - Wiederholbare Schrittfolge fuer KI-Assistenten in neuen Fachthemen
 - **[prozesse/routine-aktualisieren.md](prozesse/routine-aktualisieren.md)** - Update & Wartung
 - **[prozesse/redundanz-management.md](prozesse/redundanz-management.md)** - Redundanzen finden & beheben
 - **[prozesse/content-ssot-normalisierung-und-generierung.md](prozesse/content-ssot-normalisierung-und-generierung.md)** - 3NF-Content-DB, SSOT und Artefakt-Generierung
@@ -32,6 +35,7 @@
 
 ### 📐 Templates & Beispiele
 - **[templates/ROUTINE-TEMPLATE.md](templates/ROUTINE-TEMPLATE.md)** - Standard-Vorlage (MUSS gedacht werden!)
+- **[templates/ELEARNING-PFLICHTENHEFT-TEMPLATE.md](templates/ELEARNING-PFLICHTENHEFT-TEMPLATE.md)** - Wiederverwendbare Vorlage fuer neue Fachthemen
 - **[templates/beispiel-routine.md](templates/beispiel-routine.md)** - Dokumentiertes Beispiel
 - **[templates/KLASSENARBEIT-TEMPLATE-AUFGABEN-ARTEFAKTE-BPE6-BPE5.md](templates/KLASSENARBEIT-TEMPLATE-AUFGABEN-ARTEFAKTE-BPE6-BPE5.md)** - Schuelervorlage (nur Aufgabenstellung + Artefakte)
 - **[templates/KLASSENARBEIT-TEMPLATE-LOESUNG-ERWARTUNGSHORIZONT-BPE6-BPE5.md](templates/KLASSENARBEIT-TEMPLATE-LOESUNG-ERWARTUNGSHORIZONT-BPE6-BPE5.md)** - Lehrkraftvorlage (Lösung + Bewertung + Erwartungshorizont)

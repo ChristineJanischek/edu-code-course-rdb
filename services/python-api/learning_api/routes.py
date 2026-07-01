@@ -1,5 +1,6 @@
 from flask import jsonify, request
 
+from .assistant_routes import assistant_hint_route
 from .constants import API_VERSION
 from .curriculum_service import enrich_curriculum_index_documents, load_curriculum_document
 from .db import mysql_status
@@ -57,6 +58,9 @@ def register_routes(app):
         methods=["POST"],
     )
     app.add_url_rule("/sql-sandbox/execute", "sql_sandbox_execute", sql_sandbox_execute_route, methods=["POST"])
+
+    app.add_url_rule(f"/api/{API_VERSION}/assistant/hint", "assistant_hint_v1", assistant_hint_entry, methods=["POST"])
+    app.add_url_rule("/assistant/hint", "assistant_hint", assistant_hint_entry, methods=["POST"])
 
 
 def health():
@@ -156,3 +160,7 @@ def sql_sandbox_execute_route():
         return dual_error("SQL_SANDBOX_EXECUTION_FAILED", error_message, status_code=500)
 
     return dual_response(response_payload)
+
+
+def assistant_hint_entry():
+    return assistant_hint_route(dual_response, dual_error)
