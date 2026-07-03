@@ -304,11 +304,40 @@ def _run_select_query(dataset: SandboxDataset, sql: str) -> tuple[list[str], lis
 
             connection.rollback()
             return columns, normalized_rows, None
+    except pymysql.MySQLError as exc:
+        connection.rollback()
+        return [], [], _format_student_sql_error(exc)
     except Exception:
         connection.rollback()
         return [], [], "SQL execution failed"
     finally:
         connection.close()
+
+
+def _format_student_sql_error(exc: pymysql.MySQLError) -> str:
+    message = "SQL execution failed"
+
+    if isinstance(exc.args, tuple) and len(exc.args) >= 2:
+        message = str(exc.args[1]).strip() or message
+    else:
+        message = str(exc).strip() or message
+
+    message = re.sub(r"\s+", " ", message).strip()
+    if len(message) > 220:
+        message = message[:220].rstrip() + "..."
+
+    hint = "Pruefe SELECT, FROM/JOIN, WHERE und GROUP BY Reihenfolge."
+    lowered = message.lower()
+    if "unknown column" in lowered:
+        hint = "Spaltenname oder Tabellenalias ist nicht gueltig."
+    elif "unknown table" in lowered:
+        hint = "Tabellenname in FROM/JOIN ist nicht gueltig."
+    elif "group by" in lowered:
+        hint = "Nicht aggregierte Ausgabespalten muessen in GROUP BY enthalten sein."
+    elif "syntax" in lowered:
+        hint = "Syntaxfehler: Klammern, Kommas und Schluesselwoerter pruefen."
+
+    return f"SQL error: {message} Hinweis: {hint}"
 
 
 def _canonical_row(row: list[Any]) -> str:

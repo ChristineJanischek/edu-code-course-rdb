@@ -124,16 +124,17 @@ $viewModel['indexLinks'] = $indexLinks;
           <section class="workspace-pane" id="left-window" aria-label="Kursfenster links">
             <section class="window-shell">
               <div class="tab-toolbar window-tabs" role="tablist" aria-label="Linke Fenster" data-tab-group="workspace-left-window">
-                <button type="button" role="tab" id="tab-left-task" aria-controls="panel-left-task" aria-selected="false" data-tab-target="panel-left-task" class="tab-button">Aufgabe</button>
+                <button type="button" role="tab" id="tab-left-task" aria-controls="panel-left-task" aria-selected="true" data-tab-target="panel-left-task" class="tab-button is-active">Aufgabe</button>
                 <button type="button" role="tab" id="tab-left-info" aria-controls="panel-left-info" aria-selected="false" data-tab-target="panel-left-info" class="tab-button">Information</button>
-                <button type="button" role="tab" id="tab-left-keywords" aria-controls="panel-left-keywords" aria-selected="true" data-tab-target="panel-left-keywords" class="tab-button is-active">Stichwortsuche</button>
+                <button type="button" role="tab" id="tab-left-keywords" aria-controls="panel-left-keywords" aria-selected="false" data-tab-target="panel-left-keywords" class="tab-button">Stichwortsuche</button>
               </div>
 
-              <section class="workspace-panel" id="panel-left-task" role="tabpanel" aria-labelledby="tab-left-task" hidden>
+              <section class="workspace-panel is-active" id="panel-left-task" role="tabpanel" aria-labelledby="tab-left-task">
                 <article class="card">
                   <p class="eyebrow" id="currentCourseName">Kurs: RDB</p>
                   <h2 id="currentTaskTitle">Keine Aufgabe geladen</h2>
                   <p id="currentTaskDescription">Beim späteren Login wird die zuletzt bearbeitete Aufgabe automatisch geladen. Bis dahin wird der lokale Arbeitsstand verwendet.</p>
+                  <p class="muted" id="currentTaskTopic">Thema: -</p>
                   <p class="muted" id="currentModulePosition">Modul 0 von 0</p>
                   <a class="action-link" id="currentTaskLink" href="#" target="_blank" rel="noopener">Modul öffnen</a>
                 </article>
@@ -143,6 +144,7 @@ $viewModel['indexLinks'] = $indexLinks;
                 <article class="card">
                   <h2>Information</h2>
                   <p id="currentInfoText">Zu jeder Aufgabe wird die passende Information geladen.</p>
+                  <div id="currentInfoContent" class="info-rich-content"></div>
                   <div class="info-box" id="sessionBehaviorNote" data-state="warning">
                     <strong>Hinweis</strong>
                     <p>Finaler Login-Prozess folgt später. Vorbereitung ist bereits enthalten: Aufgabe, Information und Dateistand werden lokal fortgeführt.</p>
@@ -150,7 +152,7 @@ $viewModel['indexLinks'] = $indexLinks;
                 </article>
               </section>
 
-              <section class="workspace-panel is-active" id="panel-left-keywords" role="tabpanel" aria-labelledby="tab-left-keywords">
+              <section class="workspace-panel" id="panel-left-keywords" role="tabpanel" aria-labelledby="tab-left-keywords" hidden>
                 <section class="section-block" id="index-section">
                   <div class="section-head">
                     <p class="eyebrow">Stichwortsuche</p>
@@ -200,6 +202,14 @@ $viewModel['indexLinks'] = $indexLinks;
                     <p class="muted">Datei: <?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?></p>
                     <label for="practiceEditor-<?php echo $index; ?>" class="field-label">Code-In Box</label>
                     <textarea id="practiceEditor-<?php echo $index; ?>" class="practice-editor js-course-editor" data-editor-file="<?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?>" rows="14" placeholder="Schreibe hier deinen Entwurf für <?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?>."></textarea>
+                    <?php if ($index === 0): ?>
+                      <div class="info-box feedback-box" id="sqlTestLogBox" data-state="warning" aria-live="polite">
+                        <strong>SQL-Testprotokoll</strong>
+                        <p id="sqlTestLog">Noch kein Test gestartet.</p>
+                        <p id="sqlTestHint" class="muted">Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.</p>
+                      </div>
+                      <div id="sqlResultGrid" class="sql-result-grid" hidden></div>
+                    <?php endif; ?>
                   </article>
                 </section>
               <?php endforeach; ?>
@@ -237,7 +247,7 @@ $viewModel['indexLinks'] = $indexLinks;
                     <button type="button">N:M</button>
                     <button type="button">Export</button>
                   </div>
-                  <div class="modeler-canvas" aria-label="EERM Zeichenfläche" tabindex="0">
+                  <div class="modeler-canvas" id="modelerCanvas" aria-label="EERM Zeichenfläche" tabindex="0">
                     Platzhalter für den EERM-Designer. Hier kann ein bestehender Designer oder eine Canvas-Komponente angebunden werden.
                   </div>
                 </article>

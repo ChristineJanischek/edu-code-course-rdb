@@ -166,6 +166,9 @@ def sql_sandbox_execute_route():
         if "unsupported dataset" in lowered or "empty" in lowered or "forbidden" in lowered or "only" in lowered:
             return dual_error("SQL_SANDBOX_VALIDATION_FAILED", error_message, status_code=400)
 
+        if "sql error:" in lowered:
+            return dual_error("SQL_SANDBOX_VALIDATION_FAILED", error_message, status_code=400)
+
         if "too many rows" in lowered:
             return dual_error("SQL_SANDBOX_RESULT_TOO_LARGE", error_message, status_code=400)
 
