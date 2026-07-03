@@ -57,8 +57,22 @@ class AssistantKeywordSearchItem:
 
 
 @dataclass(slots=True)
+class AssistantKeywordInsight:
+    title: str
+    category: str
+    summary: str
+    syntax: str = ""
+    example_sql: str = ""
+    example_view: str = ""
+    source_label: str = ""
+    source_url: str = ""
+
+
+@dataclass(slots=True)
 class AssistantKeywordSearchResponse:
     search_term: str
     summary: str
     results: list[AssistantKeywordSearchItem]
+    insights: list[AssistantKeywordInsight] = field(default_factory=list)
+    knowledge_sources: list[str] = field(default_factory=list)
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())

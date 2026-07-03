@@ -100,6 +100,20 @@ def assistant_keyword_search_route(dual_response, dual_error):
             }
             for item in response_dto.results
         ],
+        "insights": [
+            {
+                "title": item.title,
+                "category": item.category,
+                "summary": item.summary,
+                "syntax": item.syntax,
+                "example_sql": item.example_sql,
+                "example_view": item.example_view,
+                "source_label": item.source_label,
+                "source_url": item.source_url,
+            }
+            for item in response_dto.insights
+        ],
+        "knowledge_sources": response_dto.knowledge_sources,
         "created_at": response_dto.created_at,
     }
     return dual_response(response_payload, status_code=200)

@@ -175,6 +175,7 @@ $viewModel['indexLinks'] = $indexLinks;
                         </li>
                       <?php endforeach; ?>
                     </ul>
+                    <div id="keywordInsights" class="keyword-insights" hidden aria-live="polite"></div>
                   </article>
                 </section>
               </section>

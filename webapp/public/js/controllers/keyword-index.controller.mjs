@@ -12,8 +12,9 @@ class KeywordIndexController {
     this.statusElement = statusElement;
     this.apiClient = apiClient;
     this.model = new KeywordIndexModel(items);
-    this.view = new KeywordIndexView(items, statusElement);
+    this.view = new KeywordIndexView(items, statusElement, document.getElementById("keywordInsights"));
     this.searchDebounceId = null;
+    this.activeRequestId = 0;
   }
 
   bind() {
@@ -57,9 +58,14 @@ class KeywordIndexController {
 
     const normalizedTerm = String(term || "").trim();
     if (normalizedTerm.length < 1) {
+      this.activeRequestId += 1;
+      this.view.renderInsights([]);
       this.view.renderStatus("Lokale Stichwortsuche aktiv.");
       return;
     }
+
+    const requestId = this.activeRequestId + 1;
+    this.activeRequestId = requestId;
 
     try {
       this.view.renderStatus("LLM-Suche läuft...");
@@ -69,27 +75,40 @@ class KeywordIndexController {
         baseDelayMs: 220,
       });
 
+      if (requestId !== this.activeRequestId) {
+        return;
+      }
+
       const ranked = Array.isArray(response?.results) ? response.results : [];
+      const insights = Array.isArray(response?.insights) ? response.insights : [];
+      const knowledgeSources = Array.isArray(response?.knowledge_sources) ? response.knowledge_sources : [];
       if (ranked.length === 0) {
         this.view.render(visibilityMap);
-        this.view.renderStatus(this.buildStatusText(normalizedTerm, [], response?.summary));
+        this.view.renderInsights(insights);
+        this.view.renderStatus(this.buildStatusText(normalizedTerm, [], response?.summary, insights, knowledgeSources));
         return;
       }
 
       const rankedVisibility = this.model.visibilityByHref(ranked);
-      this.view.renderRanked(rankedVisibility, ranked, this.buildStatusText(normalizedTerm, ranked, response?.summary));
+      this.view.renderRanked(rankedVisibility, ranked, this.buildStatusText(normalizedTerm, ranked, response?.summary, insights, knowledgeSources));
+      this.view.renderInsights(insights);
     } catch (error) {
       if (this.statusElement) {
         renderStatus(this.statusElement, error);
       }
       this.view.render(visibilityMap);
+      this.view.renderInsights([]);
     }
   }
 
-  buildStatusText(searchTerm, rankedResults = [], summaryText = "") {
-    if (!Array.isArray(rankedResults) || rankedResults.length === 0) {
+  buildStatusText(searchTerm, rankedResults = [], summaryText = "", insights = [], knowledgeSources = []) {
+    const sourceSuffix = Array.isArray(knowledgeSources) && knowledgeSources.length > 0
+      ? ` Quellen: ${knowledgeSources.join(" | ")}`
+      : "";
+
+    if ((!Array.isArray(rankedResults) || rankedResults.length === 0) && (!Array.isArray(insights) || insights.length === 0)) {
       const fallbackSummary = summaryText || "Keine LLM-Treffer. Lokaler Index bleibt aktiv.";
-      return `Suche '${searchTerm}': ${fallbackSummary}`;
+      return `Suche '${searchTerm}': ${fallbackSummary}${sourceSuffix}`;
     }
 
     const topTitles = rankedResults
@@ -98,8 +117,26 @@ class KeywordIndexController {
       .filter(Boolean)
       .join(" | ");
 
+    const insightTitles = Array.isArray(insights)
+      ? insights
+        .slice(0, 2)
+        .map((entry) => String(entry?.title || "").trim())
+        .filter(Boolean)
+        .join(" | ")
+      : "";
+
     const prefix = summaryText || `${rankedResults.length} Treffer gefunden.`;
-    return `Suche '${searchTerm}': ${prefix}${topTitles ? ` Top: ${topTitles}` : ""}`;
+    const parts = [prefix];
+    if (topTitles) {
+      parts.push(`Top-Links: ${topTitles}`);
+    }
+    if (insightTitles) {
+      parts.push(`Beispiele: ${insightTitles}`);
+    }
+    if (sourceSuffix) {
+      parts.push(sourceSuffix.trim());
+    }
+    return `Suche '${searchTerm}': ${parts.join(" ")}`;
   }
 }
 

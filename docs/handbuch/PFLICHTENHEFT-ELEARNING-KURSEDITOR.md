@@ -94,6 +94,8 @@ Quellenanbindung:
 - Antworten sind didaktisch fuehrend, ohne komplette Musterloesung vorwegzunehmen.
 - Fragen und Hinweise werden systematisch erfasst und strukturiert gespeichert.
 - Wissensdatenbank wird aus internen Quellen und kontrollierten externen Quellen gepflegt.
+- Die linke Stichwortsuche im Lernportal liefert fuer Modellierung, Normalisierung und SQL kontextbezogene Index-Treffer sowie didaktische Beispielkarten.
+- Bei SQL-Klauseln enthaelt die Stichwortsuche konkrete Syntax-, SQL-Abfrage- und VIEW-Beispiele und beruecksichtigt W3Schools-SQL als externe Referenzquelle.
 - Lehrkraftfunktionen: Aufgabenstellung, Loesung, didaktische Hilfen, Bewertung, Projektbegleitung, Dokumentenverwaltung (Upload/Download).
 - Avatar-Konfiguration fuer den Assistenten.
 - Chatfunktionen und Uploadfunktionen.

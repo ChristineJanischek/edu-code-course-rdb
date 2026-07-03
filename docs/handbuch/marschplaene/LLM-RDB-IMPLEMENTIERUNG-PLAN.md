@@ -45,6 +45,10 @@ Status-Checkpoint (01.07.2026, UI-Revision):
 - Footer auf rechtsbündige Link-Aktionen (zurück, weiter, testen, speichern) reduziert; Reiter 2 und Assistenz-Funktionen in der Kursnavigation entfernt.
 - Linearer Lernpfad mit lokaler Wiederaufnahme vorbereitet: Weiter lädt das nächste Kursmodul, Arbeitsstand wird lokal persistiert und exportierbar abgelegt.
 
+Status-Checkpoint (03.07.2026, Stichwortsuche):
+- Die LLM-gestützte Stichwortsuche liefert für Modellierung, Normalisierung und SQL jetzt neben Index-Treffern auch didaktische Beispielkarten.
+- Bei SQL-Klauseln werden Syntax, konkrete SQL-Abfragen und VIEW-Beispiele angezeigt; W3Schools-SQL wird als externe Quelle in den Ergebnissen berücksichtigt.
+
 ---
 
 ## Phase 2: Wissensanbindung RDB (Woche 2-3)
