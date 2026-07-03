@@ -116,6 +116,17 @@ $learningPlanLinks = array_values(array_filter($learningPlanLinks, static fn ($i
 $exerciseLinks = array_values(array_filter($exerciseLinks, static fn ($item): bool => !hasCtxGovMarker($item)));
 $indexLinks = array_values(array_filter($indexLinks, static fn ($item): bool => !hasCtxGovMarker($item)));
 
+$initialExerciseLink = $exerciseLinks[0] ?? null;
+$initialTaskHref = is_array($initialExerciseLink) && !empty($initialExerciseLink['href'])
+  ? (string) $initialExerciseLink['href']
+  : '#';
+$initialTaskTitle = is_array($initialExerciseLink) && !empty($initialExerciseLink['title'])
+  ? (string) $initialExerciseLink['title']
+  : 'Keine Aufgabe geladen';
+$initialTaskDescription = is_array($initialExerciseLink) && !empty($initialExerciseLink['description'])
+  ? (string) $initialExerciseLink['description']
+  : 'Beim späteren Login wird die zuletzt bearbeitete Aufgabe automatisch geladen. Bis dahin wird der lokale Arbeitsstand verwendet.';
+
 $viewModel['learningPaths'] = $learningPaths;
 $viewModel['curriculumTopics'] = $curriculumTopics;
 $viewModel['learningPlanLinks'] = $learningPlanLinks;
@@ -160,11 +171,11 @@ $viewModel['indexLinks'] = $indexLinks;
               <section class="workspace-panel is-active" id="panel-left-task" role="tabpanel" aria-labelledby="tab-left-task">
                 <article class="card">
                   <p class="eyebrow" id="currentCourseName">Kurs: RDB</p>
-                  <h2 id="currentTaskTitle">Keine Aufgabe geladen</h2>
-                  <p id="currentTaskDescription">Beim späteren Login wird die zuletzt bearbeitete Aufgabe automatisch geladen. Bis dahin wird der lokale Arbeitsstand verwendet.</p>
+                  <h2 id="currentTaskTitle"><?php echo htmlspecialchars($initialTaskTitle, ENT_QUOTES, 'UTF-8'); ?></h2>
+                  <p id="currentTaskDescription"><?php echo htmlspecialchars($initialTaskDescription, ENT_QUOTES, 'UTF-8'); ?></p>
                   <p class="muted" id="currentTaskTopic">Thema: -</p>
                   <p class="muted" id="currentModulePosition">Modul 0 von 0</p>
-                  <a class="action-link" id="currentTaskLink" href="#" target="_blank" rel="noopener">Modul öffnen</a>
+                  <a class="action-link" id="currentTaskLink" href="<?php echo htmlspecialchars($initialTaskHref, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Modul öffnen</a>
                 </article>
               </section>
 
