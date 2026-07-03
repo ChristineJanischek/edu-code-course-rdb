@@ -82,22 +82,36 @@ export class KeywordIndexView {
       this.appendCodeBlock(article, "SQL-Beispiel", insight?.example_sql);
       this.appendCodeBlock(article, "VIEW-Beispiel", insight?.example_view);
 
-      const sourceLabel = String(insight?.source_label || "").trim();
-      const sourceUrl = String(insight?.source_url || "").trim();
-      if (sourceLabel || sourceUrl) {
-        const sourceRow = document.createElement("p");
-        sourceRow.className = "keyword-source";
-        if (sourceUrl) {
-          const link = document.createElement("a");
-          link.href = sourceUrl;
-          link.target = "_blank";
-          link.rel = "noopener";
-          link.textContent = sourceLabel || sourceUrl;
-          sourceRow.append("Quelle: ", link);
-        } else {
-          sourceRow.textContent = `Quelle: ${sourceLabel}`;
+      const sources = Array.isArray(insight?.related_sources) ? insight.related_sources : [];
+      if (sources.length > 0) {
+        const sourcesList = document.createElement("ul");
+        sourcesList.className = "keyword-sources";
+        sources.forEach((source) => {
+          const label = String(source?.label || "").trim();
+          const url = String(source?.url || "").trim();
+          if (!label && !url) {
+            return;
+          }
+          const li = document.createElement("li");
+          if (url) {
+            const link = document.createElement("a");
+            link.href = url;
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.textContent = label || url;
+            li.appendChild(link);
+          } else {
+            li.textContent = label;
+          }
+          sourcesList.appendChild(li);
+        });
+        if (sourcesList.hasChildNodes()) {
+          const sourceSection = document.createElement("p");
+          sourceSection.className = "keyword-source";
+          sourceSection.textContent = "Quellen:";
+          article.appendChild(sourceSection);
+          article.appendChild(sourcesList);
         }
-        article.appendChild(sourceRow);
       }
 
       fragment.appendChild(article);

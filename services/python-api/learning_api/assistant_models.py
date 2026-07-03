@@ -64,8 +64,7 @@ class AssistantKeywordInsight:
     syntax: str = ""
     example_sql: str = ""
     example_view: str = ""
-    source_label: str = ""
-    source_url: str = ""
+    related_sources: list[dict] = field(default_factory=list)
 
 
 @dataclass(slots=True)

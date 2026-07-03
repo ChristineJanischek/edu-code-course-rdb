@@ -5,14 +5,18 @@
   "chunk_count": 39,
   "tag_summary": {
     "eerm": 6,
+    "sql-order-by": 5,
     "begruendung": 4,
     "relationale-datenbanken": 3,
+    "sql-where": 3,
     "pruefung": 2,
+    "sql-from": 2,
     "sql-select": 2,
     "datenintegritaet": 1,
     "normalisierung": 1,
     "sql-dml": 1,
     "sql-group-by": 1,
+    "sql-having": 1,
     "sql-join": 1
   },
   "chunks": [
@@ -146,7 +150,8 @@
       "page_end": 7,
       "text": "BPE 1.1 Die Schülerinnen und Schüler wenden grundl egende Funktionen eines Tabellenkalkulationsprogramms an und erstellen Tabellen aus vorgegebenen Sachverhalten. Eingabe von Daten und Formeln z. B. Grundrechenarten, Prozentrechnen Datentypen z. B. Text, Zahl, Währung, Datum Kopieren, Ausschneiden und E infügen von Inhalten Formatierung von Inhalten Aufbau, Logik und Design von Tabellen Bedingte Formatierung\n\nBPE 1.2 Die Schülerinnen und Schüler begründen die Notwendigkeit verschiedener Adressierungsarten und wenden diese an. Relative und absolut e Adressierung z. B. Kopierfähigkeit von Formeln\n\nBPE 1.3 Die Schülerinnen und Schüler werten mit Funktionen Daten aus. Summe, Mittelwert, Min, Max Wenn, auch geschachtelt Verweise S-Verweis",
       "tags": [
-        "sql-group-by"
+        "sql-group-by",
+        "sql-having"
       ]
     },
     {
@@ -183,7 +188,8 @@
       "page_end": 9,
       "text": "Berufliches Gymnasium der dreijährigen Aufbauform Erprobungsbildungsplan 44–6512. -2421/8 vom 12.04.2019 FB 4 10 .04.19/Ba BG2-AG-EG-SG-WG_Informatik_18_3992k.doc BPE 3.2 Die Schülerinnen und Schüler beurteilen die individuellen und gesellschaftlichen Chancen und Risiken der Nutzung von Netzwerken. Datenschutz persönliche Daten, unterschiedliche Rechtsnormen in verschiedenen Länd ern z. B. Landesdatenschutzgesetz (LDSG), Europäische Datenschutzgrundverordnung (EU - DSGVO) Privatsphäre Suchen von Daten verschiedene Suchmaschinentypen Bewerten von Suchergebnissen\n\nBPE 4 Darstellung von Informationen 6 Die Schülerinnen und Schü ler beurteilen die Codierung und Veränderung von Daten.",
       "tags": [
-        "begruendung"
+        "begruendung",
+        "sql-order-by"
       ]
     },
     {
@@ -191,7 +197,9 @@
       "page_start": 9,
       "page_end": 10,
       "text": "BPE 4.1 Die Schülerinnen und Schüler stellen Zahlen in unterschiedlichen Zahlensystemen dar und erklären deren Relevanz in der Informationstechnologie, z. B. bei der Codierung von Zeichen. Dezimal -, Binär -, Hexadezimalsystem z. B. RGB -Farbcode Bit und Byte ASCII -Code\n\nBPE 4.2 Die Schülerinnen und Schüler erklären die Möglichkeiten der Veränderung an einem exemplarischen Medieninhalt und beurteilen deren Relevanz. Aufbau einer Mediendatei z. B. Bild- oder Audiodatei Verändernde verborgene Eingriffe in die Codierung z. B. Steganographie, Metadaten Gesellschaftliche Auswirkungen von manipulierten Daten\n\nBerufliches Gymnasium der dreijährige n Aufbauform Erprobungs bildungs plan 44–6512. -2421/8 vom 12.04.2019 FB 4 10 .04.19/Ba BG2-AG-EG-SG-WG_Informatik_18_3992k.doc Jahrgangsstufe 1",
-      "tags": []
+      "tags": [
+        "sql-order-by"
+      ]
     },
     {
       "chunk_id": "chunk-023",
@@ -240,7 +248,10 @@
         "datenintegritaet",
         "normalisierung",
         "sql-dml",
-        "sql-select"
+        "sql-from",
+        "sql-order-by",
+        "sql-select",
+        "sql-where"
       ]
     },
     {
@@ -255,7 +266,9 @@
       "page_start": 12,
       "page_end": 12,
       "text": "Vertiefung – Individualisiertes Lernen – Projektunterricht (VIP) 16 Vertiefung Individualisiertes Lernen Projektunterricht z. B. Übungen Anwendungen Wiederholungen z. B. Selbstorganisiertes Lernen Lernvereinbaru ngen Binnendifferenzierung z. B. Anwenden und Vergleichen von Verschlüsselungsalgorithmen Lösen von Optimierungsproblemen in Graphen (Dijkstra -Algorithmus, Breiten - und Tiefensuche) Die Themenauswahl des Projektunterrichts hat aus den nachfolgenden Bildun gsplaneinheiten unter Beachtung Fächer verbindender Aspekte zu erfolgen.\n\nBPE 7 Algorithmen und Datenstrukturen 30 Die Schülerinnen und Schüler beschreiben die Datenstrukturen Array, verkettete Liste, Stapelspeicher, Warteschlange und Baum. Unter Verwen dung einer Programmiersprache am Gerät implementieren die Schülerinnen und Schüler Arrays und wenden Such - und Sortieralgorithmen zur Problemlösung an.",
-      "tags": []
+      "tags": [
+        "sql-where"
+      ]
     },
     {
       "chunk_id": "chunk-031",
@@ -263,6 +276,8 @@
       "page_end": 12,
       "text": "BPE 7.1 Die Schülerinnen und Schüler beschreiben und implementieren eindimensionale Arrays. Sie entwer fen mit der Datenstruktur Array Algorithmen zur Problemlösung in einer Programmiersprache. Deklaration und Initialisierung eines Arrays Grundlagen von Arrays z. B. Länge des Arrays Zugriff auf Array -Felder – Index -Operator – Zugriff über Schleife\n\nBPE 7.2 Die Schülerinnen und Schüler erläutern Sortier - und Suchalgorithmen anhand der Datenstruktur Array. Sie wenden die Sortier - und Suchalgorithmen zur Lösung von Problemstellungen an und implementieren diese. Sortierung – Selection Sort – Bubble Sort Suche – Lineare Suche – Binäre Suche",
       "tags": [
+        "sql-from",
+        "sql-order-by",
         "sql-select"
       ]
     },
@@ -278,7 +293,9 @@
       "page_start": 13,
       "page_end": 13,
       "text": "BPE 8.1 Die Schülerinnen und Schüler identifi zieren Bereiche in ihrem Leben, in denen Algorithmen einen wichtigen Einfluss haben. Informationsvorauswahl durch Algorithmen – Suchmaschinen – Soziale Netzwerke Entscheidungen durch Algorithmen z. B. autonomes Fahren, Bonitätsprüfungen, Auswahlverfahren\n\nBPE 8.2 Die Schülerinnen und Schüler beschreiben und entwerfen Modelle der Datenstruktur Graph als Darstellungsform ausgewählter lebensnaher Situationen. Eigenschaften von Graphen – Knoten und Kanten – Grad eines Knotens – Gerichtete und gewichtete Kanten – Weg und Kreis Modellierung von Graphen Einsatz von Graphen in der Praxis z. B. soziales Netzwerk, Verkehrsplan\n\nBPE 8.3 Die Schülerinnen und Schüler beurteilen die Chancen und Risiken des Einsatzes von Algorithmen anhand ausgewählter Beispiele. Chance n von Algorithmen z. B. künstliche Intelligenz Risiken von Algorithmen",
-      "tags": []
+      "tags": [
+        "sql-order-by"
+      ]
     },
     {
       "chunk_id": "chunk-034",
@@ -292,7 +309,9 @@
       "page_start": 14,
       "page_end": 14,
       "text": "Anforderungsbereich I umfasst die Wiedergabe von bekannten Sachverhalten aus einem abgegrenzten Gebiet im gelernten Zusammenhang, die Beschreibung und Darstellung bekannter Verfahren, Methoden und Prinzipie n der Informatik, die Beschreibung und Verwendung gelernter und geübter Arbeitstechniken und Verfahrensweisen in einem begrenzten Gebiet und in einem wiederholenden Zusammenhang. Anforderungsbereich II umfasst die selbstständige Verwendung bekannter Sachve rhalte zur Bearbeitung neuer Frage - oder Problemstellungen unter vorgegebenen Gesichtspunkten in einem durch Übung bekannten Zusammenhang, die selbstständige Übertragung des Gelernten auf vergleichbare neue Situationen, wobei es um veränderte Fragestellung en, veränderte Sachzusammenhänge oder um abgewandelte Verfahrensweisen gehen kann, die Anwendung bekannter Verfahren, Methoden und Prinzipien der Informatik zur Lösung eines neuen Problems aus einem bekannten Problemkreis. Anforderungsbereich III umfasst d as planmäßige Verarbeiten komplexer Gegebenheiten mit dem Ziel, zu selbstständigen Gestaltungen bzw. Deutungen, Folgerungen, Begründungen, Wertungen zu gelangen, die bewusste und selbstständige Auswahl und Anpassung geeigneter gelernter Methoden und Verfah ren in neuartigen Situationen. Dabei werden aus gelernten Denkmethoden bzw. Lösungsverfahren die zur Bewältigung der Aufgabe geeigneten selbstständig ausgewählt und einer neuen Problemstellung angepasst.",
-      "tags": []
+      "tags": [
+        "sql-where"
+      ]
     },
     {
       "chunk_id": "chunk-036",

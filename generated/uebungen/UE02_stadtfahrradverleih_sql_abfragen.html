@@ -64,7 +64,7 @@
 <main class="wrap">
 
   <h1>Übungsblatt UE02 – SQL-Abfragen: Stadtfahrradverleih</h1>
-  <p class="subtitle">10 Aufgaben · Kontext: Stadtfahrradverleih (stadtfahrradverleihdb_2025) · Themen: JOIN, WHERE, AND/OR, ORDER BY, GROUP BY, HAVING, Aggregatfunktionen, Datumsfunktionen</p>
+  <p class="subtitle">14 Aufgaben · Kontext: Stadtfahrradverleih (stadtfahrradverleihdb_2025) · Themen: SELECT/FROM, JOIN/LEFT JOIN, WHERE, DISTINCT, AND/OR, ORDER BY, GROUP BY, HAVING, Aggregatfunktionen, Datumsfunktionen</p>
 
   <div class="nav">
     <a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">📖 Stichwortverzeichnis öffnen</a>
@@ -501,6 +501,153 @@ ORDER BY hoechstbetrag DESC, k.nachname ASC;</pre></div>
         <tr><td>Lina</td><td>Bauer</td><td>4.20</td><td>2.10</td><td>3</td></tr>
       </table>
       <p class="row-count">6 Zeilen</p>
+    </div>
+  </div>
+
+  <!-- AUFGABE 11 -->
+  <div class="card exercise" id="a11">
+    <div class="ex-header">
+      <span class="ex-num">Aufgabe 11</span>
+      <span class="badge easy">★☆☆ Einfach</span>
+      <span class="topic-badge">SELECT · FROM · ORDER BY</span>
+    </div>
+    <div class="task">
+      <strong>Stationsuebersicht</strong>
+      Gib alle Stationen mit Grunddaten aus.
+      Ausgabe: stationsname, stadtteil, kapazitaet, aktiv.
+      Sortiere nach Stadtteil, dann nach Stationsname.
+    </div>
+    <div class="hint">💡 Tipp: Diese Aufgabe kommt ohne JOIN aus und staerkt das sichere Grundgeruest mit SELECT + FROM.</div>
+    <p class="sql-label">Dein SQL-Entwurf:</p>
+    <textarea class="sql-input" placeholder="SELECT stationsname, stadtteil, kapazitaet, aktiv&#10;FROM stationen&#10;ORDER BY stadtteil, stationsname"></textarea>
+    <div class="btn-row">
+      <button class="reveal btn-sol" onclick="toggle('sol11')">✔ Musterlösung</button>
+      <button class="reveal btn-res" onclick="toggle('res11')">📋 Erwartetes Ergebnis</button>
+    </div>
+    <div id="sol11" class="sol-box hidden"><pre>SELECT stationsname, stadtteil, kapazitaet, aktiv
+FROM stationen
+ORDER BY stadtteil ASC, stationsname ASC;</pre></div>
+    <div id="res11" class="res-box hidden">
+      <table>
+        <tr><th>stationsname</th><th>stadtteil</th><th>kapazitaet</th><th>aktiv</th></tr>
+        <tr><td>Hauptbahnhof</td><td>Mitte</td><td>24</td><td>1</td></tr>
+        <tr><td>Campus Nord</td><td>Nord</td><td>18</td><td>1</td></tr>
+        <tr><td>Rathaus</td><td>Sued</td><td>20</td><td>1</td></tr>
+        <tr><td>Stadtpark</td><td>West</td><td>16</td><td>1</td></tr>
+      </table>
+      <p class="row-count">4 Zeilen</p>
+    </div>
+  </div>
+
+  <!-- AUFGABE 12 -->
+  <div class="card exercise" id="a12">
+    <div class="ex-header">
+      <span class="ex-num">Aufgabe 12</span>
+      <span class="badge easy">★☆☆ Einfach</span>
+      <span class="topic-badge">SELECT DISTINCT · WHERE · ORDER BY</span>
+    </div>
+    <div class="task">
+      <strong>Wohnorte aktiver Kunden (ohne Duplikate)</strong>
+      Liste alle Wohnorte auf, in denen aktive Kunden wohnen.
+      Ausgabe: wohnort.
+      Sortiere alphabetisch.
+    </div>
+    <div class="hint">💡 Tipp: <code>DISTINCT</code> entfernt Mehrfachnennungen desselben Wohnorts.</div>
+    <p class="sql-label">Dein SQL-Entwurf:</p>
+    <textarea class="sql-input" placeholder="SELECT DISTINCT wohnort&#10;FROM kunden&#10;WHERE aktiv = 1&#10;ORDER BY wohnort ASC"></textarea>
+    <div class="btn-row">
+      <button class="reveal btn-sol" onclick="toggle('sol12')">✔ Musterlösung</button>
+      <button class="reveal btn-res" onclick="toggle('res12')">📋 Erwartetes Ergebnis</button>
+    </div>
+    <div id="sol12" class="sol-box hidden"><pre>SELECT DISTINCT wohnort
+FROM kunden
+WHERE aktiv = 1
+ORDER BY wohnort ASC;</pre></div>
+    <div id="res12" class="res-box hidden">
+      <table>
+        <tr><th>wohnort</th></tr>
+        <tr><td>Auenstadt</td></tr>
+        <tr><td>Neustadt</td></tr>
+        <tr><td>Rheindorf</td></tr>
+        <tr><td>Sonnenfeld</td></tr>
+      </table>
+      <p class="row-count">4 Zeilen</p>
+    </div>
+  </div>
+
+    <!-- AUFGABE 13 -->
+    <div class="card exercise" id="a13">
+      <div class="ex-header">
+        <span class="ex-num">Aufgabe 13</span>
+        <span class="badge med">★★☆ Mittel</span>
+        <span class="topic-badge">LEFT JOIN · IS NULL · ORDER BY</span>
+      </div>
+      <div class="task">
+        <strong>Aktive Kunden ohne Ausleihe</strong>
+        Ermittle alle aktiven Kunden, die noch keine Ausleihe erfasst haben.
+        Ausgabe: kunde_id, vorname, nachname, wohnort.
+        Sortiere nach Nachname und Vorname.
+      </div>
+      <div class="hint">💡 Tipp: Verwende <code>LEFT JOIN</code> von <code>kunden</code> auf <code>ausleihen</code> und filtere auf <code>IS NULL</code> auf der Ausleihseite.</div>
+      <p class="sql-label">Dein SQL-Entwurf:</p>
+      <textarea class="sql-input" placeholder="SELECT k.kunde_id, k.vorname, k.nachname, k.wohnort&#10;FROM kunden k&#10;LEFT JOIN ausleihen a ON a.kunde_id = k.kunde_id&#10;WHERE k.aktiv = 1 AND a.ausleihe_id IS NULL&#10;ORDER BY ..."></textarea>
+      <div class="btn-row">
+        <button class="reveal btn-sol" onclick="toggle('sol13')">✔ Musterlösung</button>
+        <button class="reveal btn-res" onclick="toggle('res13')">📋 Erwartetes Ergebnis</button>
+      </div>
+      <div id="sol13" class="sol-box hidden"><pre>SELECT k.kunde_id, k.vorname, k.nachname, k.wohnort
+  FROM kunden k
+  LEFT JOIN ausleihen a ON a.kunde_id = k.kunde_id
+  WHERE k.aktiv = 1
+    AND a.ausleihe_id IS NULL
+  ORDER BY k.nachname ASC, k.vorname ASC;</pre></div>
+      <div id="res13" class="res-box hidden">
+        <table>
+          <tr><th>kunde_id</th><th>vorname</th><th>nachname</th><th>wohnort</th></tr>
+          <tr><td>8</td><td>Nina</td><td>Braun</td><td>Auenstadt</td></tr>
+          <tr><td>3</td><td>Tom</td><td>Huber</td><td>Sonnenfeld</td></tr>
+        </table>
+        <p class="row-count">2 Zeilen</p>
+      </div>
+    </div>
+
+  <!-- AUFGABE 14 -->
+  <div class="card exercise" id="a14">
+    <div class="ex-header">
+      <span class="ex-num">Aufgabe 14</span>
+      <span class="badge hard">★★★ Anspruchsvoll</span>
+      <span class="topic-badge">LEFT JOIN · GROUP BY · COUNT(*) · COUNT(spalte)</span>
+    </div>
+    <div class="task">
+      <strong>COUNT-Vergleich bei fehlenden Ausleihen</strong>
+      Vergleiche fuer aktive Kunden ohne Ausleihe den Unterschied zwischen <code>COUNT(*)</code> und <code>COUNT(a.ausleihe_id)</code>.
+      Ausgabe: kunde_id, nachname, zeilen_count, ausleihen_count.
+      Sortiere nach Nachname.
+    </div>
+    <div class="hint">💡 Tipp: Bei LEFT JOIN ohne Treffer liefert <code>COUNT(*)</code> pro Gruppe meist 1, aber <code>COUNT(a.ausleihe_id)</code> bleibt 0.</div>
+    <p class="sql-label">Dein SQL-Entwurf:</p>
+    <textarea class="sql-input" placeholder="SELECT k.kunde_id, k.nachname, COUNT(*) AS zeilen_count, COUNT(a.ausleihe_id) AS ausleihen_count&#10;FROM kunden k&#10;LEFT JOIN ausleihen a ON a.kunde_id = k.kunde_id&#10;WHERE k.aktiv = 1 AND a.ausleihe_id IS NULL&#10;GROUP BY ...&#10;ORDER BY ..."></textarea>
+    <div class="btn-row">
+      <button class="reveal btn-sol" onclick="toggle('sol14')">✔ Musterlösung</button>
+      <button class="reveal btn-res" onclick="toggle('res14')">📋 Erwartetes Ergebnis</button>
+    </div>
+    <div id="sol14" class="sol-box hidden"><pre>SELECT k.kunde_id,
+       k.nachname,
+       COUNT(*) AS zeilen_count,
+       COUNT(a.ausleihe_id) AS ausleihen_count
+FROM kunden k
+LEFT JOIN ausleihen a ON a.kunde_id = k.kunde_id
+WHERE k.aktiv = 1
+  AND a.ausleihe_id IS NULL
+GROUP BY k.kunde_id, k.nachname
+ORDER BY k.nachname ASC;</pre></div>
+    <div id="res14" class="res-box hidden">
+      <table>
+        <tr><th>kunde_id</th><th>nachname</th><th>zeilen_count</th><th>ausleihen_count</th></tr>
+        <tr><td>8</td><td>Braun</td><td>1</td><td>0</td></tr>
+        <tr><td>3</td><td>Huber</td><td>1</td><td>0</td></tr>
+      </table>
+      <p class="row-count">2 Zeilen</p>
     </div>
   </div>
 

@@ -8,15 +8,40 @@
       "chunk_count": 39,
       "tag_summary": {
         "eerm": 6,
+        "sql-order-by": 5,
         "begruendung": 4,
         "relationale-datenbanken": 3,
+        "sql-where": 3,
         "pruefung": 2,
+        "sql-from": 2,
         "sql-select": 2,
         "datenintegritaet": 1,
         "normalisierung": 1,
         "sql-dml": 1,
         "sql-group-by": 1,
+        "sql-having": 1,
         "sql-join": 1
+      }
+    },
+    {
+      "slug": "neuer-bildungsplan-bkwi-wirtschaftsinformatik-090925",
+      "source_pdf": "uploads/lehrplaene/Neuer Bildungsplan BKWI-Wirtschaftsinformatik-090925.pdf",
+      "document_json": "generated/lehrplaene/neuer-bildungsplan-bkwi-wirtschaftsinformatik-090925.json",
+      "page_count": 41,
+      "chunk_count": 49,
+      "tag_summary": {
+        "eerm": 14,
+        "sql-where": 14,
+        "sql-from": 6,
+        "begruendung": 5,
+        "sql-order-by": 5,
+        "sql-select": 5,
+        "relationale-datenbanken": 4,
+        "sql-dml": 2,
+        "sql-group-by": 2,
+        "sql-having": 2,
+        "datenintegritaet": 1,
+        "normalisierung": 1
       }
     }
   ]

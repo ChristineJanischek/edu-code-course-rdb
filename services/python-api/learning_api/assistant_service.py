@@ -1,5 +1,6 @@
 import re
 
+from . import keyword_knowledge
 from .assistant_models import (
     AssistantHintRequest,
     AssistantHintResponse,
@@ -56,101 +57,29 @@ class AssistantTutoringService:
     @staticmethod
     def _derive_hint_from_question(question: str) -> str:
         lowered = question.lower()
+        if "select" in lowered or "projektion" in lowered:
+            return "Beginne mit der Ergebnissicht: Welche Spalten braucht die Aufgabe wirklich? Formuliere dann zuerst SELECT, bevor du Filter oder Aggregation ergänzt."
+        if "from" in lowered or "basistabelle" in lowered or "quelltabelle" in lowered:
+            return "Lege zuerst die Basistabelle in FROM fest. Prüfe danach, welche weiteren Tabellen wirklich benötigt werden und ergänze nur diese per JOIN."
+        if "left join" in lowered or "left outer join" in lowered or "linker join" in lowered:
+            return "Denke bei LEFT JOIN von links nach rechts: Alle Zeilen der linken Tabelle bleiben erhalten; rechte Treffer können NULL sein."
         if "join" in lowered:
             return "Starte mit zwei Tabellen und notiere zuerst Primar- und Fremdschluessel. Formuliere danach den Join Schritt fuer Schritt."
+        if "where" in lowered or "filter" in lowered or "bedingung" in lowered:
+            return "Trenne Zeilenfilter und Gruppenfilter sauber: Bedingungen auf Einzelzeilen gehören in WHERE, nicht in HAVING."
         if "normal" in lowered or "3nf" in lowered:
             return "Suche funktionale Abhaengigkeiten und pruefe, ob Nicht-Schluesselattribute transitiv von einem Schluessel abhaengen."
-        if "group by" in lowered or "aggregation" in lowered:
+        if "group by" in lowered or "aggregation" in lowered or "gruppierung" in lowered:
             return "Trenne zuerst Detailspalten und Aggregatspalten. Jede nicht aggregierte Spalte muss in GROUP BY stehen."
+        if "having" in lowered or "gruppenfilter" in lowered:
+            return "Nutze HAVING nur für Bedingungen auf Aggregatwerte (z. B. COUNT(*) >= 2). Rohdaten-Filter bleiben in WHERE."
+        if "order by" in lowered or "sortierung" in lowered:
+            return "Sortiere erst ganz am Ende mit ORDER BY. Prüfe dabei explizit ASC oder DESC, damit die Ergebnisreihenfolge fachlich passt."
         return "Beschreibe zuerst in eigenen Worten den Datenbedarf der Aufgabe und leite daraus dann die SQL-Bausteine SELECT, FROM und WHERE ab."
 
 
 class AssistantKeywordSearchService:
     """Rangt Stichwort-Kandidaten mit einer lernorientierten, LLM-aehnlichen Heuristik."""
-
-    _SYNONYMS: dict[str, set[str]] = {
-        "join": {"verbund", "verknuepfung", "verknüpfung", "tabellenverbund"},
-        "normalisierung": {"1nf", "2nf", "3nf", "boyce-codd", "bcnf", "anomalie"},
-        "3nf": {"normalisierung", "transitiv", "anomalie"},
-        "kardinalitaet": {"kardinalität", "1:n", "n:m", "beziehung"},
-        "kardinalität": {"kardinalitaet", "1:n", "n:m", "beziehung"},
-        "aggregation": {"group by", "having", "sum", "count", "avg", "min", "max"},
-        "group": {"aggregation", "having"},
-        "having": {"aggregation", "group by"},
-        "fremdschluessel": {"fremdschlüssel", "foreign key", "fk", "beziehung"},
-        "fremdschlüssel": {"fremdschluessel", "foreign key", "fk", "beziehung"},
-        "primarschluessel": {"primärschlüssel", "primary key", "pk", "schluessel"},
-        "primärschlüssel": {"primarschluessel", "primary key", "pk", "schlüssel"},
-    }
-
-    _INSIGHT_CARDS: tuple[dict[str, object], ...] = (
-        {
-            "key": "group-by",
-            "category": "SQL-Klausel",
-            "aliases": {"group by", "group", "aggregation", "gruppierung", "having", "count"},
-            "summary": "GROUP BY verdichtet Datensaetze nach gemeinsamen Attributen und wird haeufig mit Aggregatfunktionen kombiniert.",
-            "syntax": "SELECT spalte, AGGREGAT(feld) AS wert\nFROM tabelle\nGROUP BY spalte;",
-            "example_sql": "SELECT kunde_id, COUNT(*) AS buchungen_gesamt\nFROM buchung\nGROUP BY kunde_id\nHAVING COUNT(*) >= 2;",
-            "example_view": "CREATE VIEW v_buchungen_pro_kunde AS\nSELECT kunde_id, COUNT(*) AS buchungen_gesamt\nFROM buchung\nGROUP BY kunde_id;",
-            "source_label": "W3Schools SQL GROUP BY",
-            "source_url": "https://www.w3schools.com/sql/sql_groupby.asp",
-        },
-        {
-            "key": "having",
-            "category": "SQL-Klausel",
-            "aliases": {"having", "aggregation", "gruppenfilter", "sum", "count"},
-            "summary": "HAVING filtert Gruppen nach der Aggregation und ergaenzt GROUP BY, wenn Bedingungen auf Summen oder Anzahlen benoetigt werden.",
-            "syntax": "SELECT spalte, COUNT(*) AS anzahl\nFROM tabelle\nGROUP BY spalte\nHAVING COUNT(*) > 1;",
-            "example_sql": "SELECT raum_id, COUNT(*) AS buchungen_gesamt\nFROM buchung\nGROUP BY raum_id\nHAVING COUNT(*) >= 3;",
-            "example_view": "CREATE VIEW v_stark_genutzte_raeume AS\nSELECT raum_id, COUNT(*) AS buchungen_gesamt\nFROM buchung\nGROUP BY raum_id\nHAVING COUNT(*) >= 3;",
-            "source_label": "W3Schools SQL HAVING",
-            "source_url": "https://www.w3schools.com/sql/sql_having.asp",
-        },
-        {
-            "key": "join",
-            "category": "SQL-Klausel",
-            "aliases": {"join", "inner join", "left join", "verbund", "verknuepfung", "verknüpfung"},
-            "summary": "JOIN verbindet Datensaetze aus mehreren Tabellen ueber zusammenpassende Schluesselwerte.",
-            "syntax": "SELECT a.spalte, b.spalte\nFROM tabelle_a AS a\nINNER JOIN tabelle_b AS b ON b.fk = a.id;",
-            "example_sql": "SELECT k.name, COUNT(b.id) AS buchungen_gesamt\nFROM kunde AS k\nLEFT JOIN buchung AS b ON b.kunde_id = k.id\nGROUP BY k.id, k.name;",
-            "example_view": "CREATE VIEW v_kunden_mit_buchungen AS\nSELECT k.id, k.name, COUNT(b.id) AS buchungen_gesamt\nFROM kunde AS k\nLEFT JOIN buchung AS b ON b.kunde_id = k.id\nGROUP BY k.id, k.name;",
-            "source_label": "W3Schools SQL JOIN",
-            "source_url": "https://www.w3schools.com/sql/sql_join.asp",
-        },
-        {
-            "key": "where",
-            "category": "SQL-Klausel",
-            "aliases": {"where", "filter", "bedingung", "vergleich", "like"},
-            "summary": "WHERE schraenkt Zeilen vor einer Gruppierung oder Sortierung anhand von Bedingungen ein.",
-            "syntax": "SELECT spalten\nFROM tabelle\nWHERE bedingung;",
-            "example_sql": "SELECT titel, startdatum\nFROM kurs\nWHERE startdatum >= '2026-09-01' AND status = 'aktiv';",
-            "example_view": "CREATE VIEW v_aktive_kurse AS\nSELECT titel, startdatum\nFROM kurs\nWHERE startdatum >= '2026-09-01' AND status = 'aktiv';",
-            "source_label": "W3Schools SQL WHERE",
-            "source_url": "https://www.w3schools.com/sql/sql_where.asp",
-        },
-        {
-            "key": "3nf",
-            "category": "Normalisierung",
-            "aliases": {"3nf", "normalisierung", "transitiv", "anomalie"},
-            "summary": "Die 3. Normalform trennt Attribute, die nur ueber ein Nichtschluesselattribut abhaengen, in eigene Tabellen aus.",
-            "syntax": "Regel: Kein Nichtschluesselattribut darf transitiv vom Primaerschluessel abhaengen.",
-            "example_sql": "-- Vor der Zerlegung\nstudent(student_id, kurs_id, kursname, dozent_name)\n\n-- Nach 3NF\nstudent(student_id, kurs_id)\nkurs(kurs_id, kursname, dozent_id)\ndozent(dozent_id, dozent_name)",
-            "example_view": "CREATE VIEW v_student_kurs_dozent AS\nSELECT s.student_id, k.kursname, d.dozent_name\nFROM student AS s\nINNER JOIN kurs AS k ON k.kurs_id = s.kurs_id\nINNER JOIN dozent AS d ON d.dozent_id = k.dozent_id;",
-            "source_label": "Lokales RDB-Wissen",
-            "source_url": "",
-        },
-        {
-            "key": "kardinalitaet",
-            "category": "Modellierung",
-            "aliases": {"kardinalitaet", "kardinalität", "1:n", "n:m", "beziehung"},
-            "summary": "Kardinalitaeten beschreiben, wie viele Datensaetze einer Entitaet mit Datensaetzen einer anderen Entitaet verbunden sein duerfen.",
-            "syntax": "Beispiele: 1:1, 1:n, n:m. Eine n:m-Beziehung wird in relationalen Modellen ueber eine Zwischentabelle aufgeloest.",
-            "example_sql": "CREATE TABLE teilnahme (\n  schueler_id INT NOT NULL,\n  kurs_id INT NOT NULL,\n  PRIMARY KEY (schueler_id, kurs_id),\n  FOREIGN KEY (schueler_id) REFERENCES schueler(id),\n  FOREIGN KEY (kurs_id) REFERENCES kurs(id)\n);",
-            "example_view": "CREATE VIEW v_teilnahmen AS\nSELECT s.name AS schueler, k.titel AS kurs\nFROM teilnahme AS t\nINNER JOIN schueler AS s ON s.id = t.schueler_id\nINNER JOIN kurs AS k ON k.id = t.kurs_id;",
-            "source_label": "Lokales RDB-Wissen",
-            "source_url": "",
-        },
-    )
 
     def search(self, request: AssistantKeywordSearchRequest) -> AssistantKeywordSearchResponse:
         normalized_term = self._normalize_text(request.search_term)
@@ -199,7 +128,7 @@ class AssistantKeywordSearchService:
 
     def _build_insights(self, normalized_term: str, expanded_terms: set[str]) -> list[AssistantKeywordInsight]:
         ranked_cards: list[tuple[float, AssistantKeywordInsight]] = []
-        for card in self._INSIGHT_CARDS:
+        for card in keyword_knowledge.INSIGHT_CARDS:
             score = self._score_insight_card(card, normalized_term, expanded_terms)
             if score <= 0:
                 continue
@@ -214,8 +143,11 @@ class AssistantKeywordSearchService:
                         syntax=str(card.get("syntax", "")),
                         example_sql=str(card.get("example_sql", "")),
                         example_view=str(card.get("example_view", "")),
-                        source_label=str(card.get("source_label", "")),
-                        source_url=str(card.get("source_url", "")),
+                        related_sources=[
+                            {"label": str(s.get("label", "")), "url": str(s.get("url", ""))}
+                            for s in (card.get("related_sources") or [])
+                            if isinstance(s, dict)
+                        ],
                     ),
                 )
             )
@@ -291,19 +223,25 @@ class AssistantKeywordSearchService:
             labels.append("Lokaler Index")
 
         for insight in insights:
-            label = insight.source_label.strip()
-            if label and label not in labels:
-                labels.append(label)
+            for source in insight.related_sources:
+                label = str(source.get("label", "")).strip()
+                if label and label not in labels:
+                    labels.append(label)
 
         return labels
 
     @staticmethod
     def _format_insight_title(key: str) -> str:
         mapping = {
+            "select-from": "SELECT + FROM",
             "group-by": "GROUP BY",
             "having": "HAVING",
             "join": "JOIN",
+            "left-join": "LEFT JOIN",
             "where": "WHERE",
+            "order-by": "ORDER BY",
+            "distinct": "DISTINCT",
+            "select": "SELECT",
             "3nf": "3NF",
             "kardinalitaet": "Kardinalität",
         }
@@ -328,7 +266,7 @@ class AssistantKeywordSearchService:
 
         expanded = set(tokens)
         for token in tokens:
-            expanded.update(self._SYNONYMS.get(token, set()))
+            expanded.update(keyword_knowledge.SYNONYMS.get(token, set()))
 
         # Einfache Wortvarianten in Suche aufnehmen.
         for token in list(expanded):

@@ -1,0 +1,460 @@
+{
+  "source_pdf": "uploads/lehrplaene/Neuer Bildungsplan BKWI-Wirtschaftsinformatik-090925.pdf",
+  "slug": "neuer-bildungsplan-bkwi-wirtschaftsinformatik-090925",
+  "page_count": 41,
+  "chunk_count": 49,
+  "tag_summary": {
+    "eerm": 14,
+    "sql-where": 14,
+    "sql-from": 6,
+    "begruendung": 5,
+    "sql-order-by": 5,
+    "sql-select": 5,
+    "relationale-datenbanken": 4,
+    "sql-dml": 2,
+    "sql-group-by": 2,
+    "sql-having": 2,
+    "datenintegritaet": 1,
+    "normalisierung": 1
+  },
+  "chunks": [
+    {
+      "chunk_id": "chunk-001",
+      "page_start": 1,
+      "page_end": 1,
+      "text": "Bildungsplan zur Erprobung Bildungsplan für das zweijährige Berufskolleg Berufskolleg Wirtschaftsinformatik Wirtschaftsinformatik 13. März 2025 Lehrplanheft 3/2025LEHRPLANHEFTE REIHE K Nr. 101 REIHE L Nr. 132 REIHE M Nr. 80KULTUS UND UNTERRICHT AMTSBLATT DES MINISTERIUMS FÜR KULTUS, JUGEND UND SPORT BADEN-WÜRTTEMBERG AUSGABE C",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-002",
+      "page_start": 2,
+      "page_end": 2,
+      "text": "BILDUNGSPLAN FÜR DAS ZWEIJÄHRIGE BERUFSKOLLEG; HIER: BERUFSKOLLEG WIRTSCHAFTSINFORMATIK Vom 13. März 2025 Az. KM43-6512-101/2/1 I. Für das Berufskolleg gilt der als Anlage beigefügte Bildungsplan. II. Der Bildungsplan gilt für das Schuljahr 1 ab 1. August 2025 für das Schuljahr 2 ab 1. August 2026 K.u.U., LPH 3/2025 Impressum Kultus und Unterricht Amtsblatt des Ministeriums für Kultus, Jugend und Sport Baden-Württemberg Ausgabe C Lehrplanhefte Herausgeber Ministerium für Kultus, Jugend und Sport Baden-Württemberg, Postfach 10 34 42, 70029 Stuttgart Lehrplanerstellung: Zentrum für Schulqualität und Lehrerbildung (ZSL), Abteilung 4, Heilbronner Str. 314, 70469 Stuttgart Internet www.bildungsplaene-bw.de Verlag Neckar-Verlag GmbH, Klosterring 1, 78050 Villingen-Schwenningen, www.neckar-verlag.de Die fotomechanische oder anderweitig technisch mögliche Reproduktion des Satzes beziehungsweise der Satzordnung für kommerzielle Zwecke nur mit Genehmigung des Herausgebers. Das vorliegende LPH 3/2025 erscheint in den Reihen K Nr. 101, L Nr. 132, M Nr. 80 und kann auch schriftlich bei der Neckar-Verlag GmbH bezogen werden.KULTUS UND UNTERRICHT AMTSBLATT DES MINISTERIUMS FÜR KULTUS, JUGEND UND SPORT BADEN-WÜRTTEMBERG AUSGABE C",
+      "tags": [
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-003",
+      "page_start": 3,
+      "page_end": 3,
+      "text": "Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/20251 InhaltsverzeichnisBerufskolleg WirtschaftsinformatikInhaltsverzeichnis 1 Vorbemerkungen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 1 .1 Bildungsziel des Berufskollegs Wirtschaftsinformatik . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 1 .2 Fachliche Vorbemerkungen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 2 Hinweise zum Umgang mit dem Bildungsplan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 3 Bildungsplaneinheiten (BPE) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4 3 .1 Schuljahr 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4 BPE 1 Tabellenkalkulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4 BPE 2 Geschäftsprozesse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 BPE 3 Relationale Datenbanken . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7 BPE 4 Webentwicklung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10 BPE 5 Grundlagen der Programmierung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12 BPE 6 Einführung in Machine Learning und Künstliche Intelligenz . . . . . . . . . . . . . . . . . . . . . . . 13 3 .2 Schuljahr 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 BPE 7 Vertiefung in Machine Learning und Künstliche Intelligenz . . . . . . . . . . . . . . . . . . . . . . . 15 BPE 8 Objektorientierte Systementwicklung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16 BPE 9 Planung und Durchführung eines DV-Projektes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18 BPE 10 Verträge im Online-Vertrieb anbahnen und bearbeiten . . . . . . . . . . . . . . . . . . . . . . . . . . . 19 BPE 11 Sortimente im Online-Vertrieb gestalten . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21 BPE 12 Online-Marketing-Maßnahmen umsetzen und bewerten . . . . . . . . . . . . . . . . . . . . . . . . . 23 BPE 13 Kommunikation über digitale Kanäle kundenorientiert gestalten . . . . . . . . . . . . . . . . . . 25 BPE 14 Online-Vertriebskanäle auswählen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26 BPE 15 Online-Vertrieb kennzahlengestützt optimieren . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27 BPE 16 Digitalisierungsmöglichkeiten in der Beschaffung beurteilen . . . . . . . . . . . . . . . . . . . . . 29 BPE 17 Projekt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30 4 Operatorenliste . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32",
+      "tags": [
+        "begruendung",
+        "relationale-datenbanken"
+      ]
+    },
+    {
+      "chunk_id": "chunk-004",
+      "page_start": 4,
+      "page_end": 4,
+      "text": "2 VorbemerkungenWirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/20251 Vorbemerkungen 1.1 Bildungsziel des Berufskollegs Wirtschaftsinformatik Der technologische Fortschritt, insbesondere die Entwicklungen im Bereich der Informations - technologie, verändern die Lebens- und Arbeitswelt rasant . Im Zuge dieser anhaltenden digitalen Transforma tion verändern sich traditionelle Unternehmensstrukturen, Geschäftsmodelle, Prozesse und Kompetenz anforderungen durch den Einsatz neuer digitaler Technologien grundlegend . Dabei geht es sowohl um die konkrete Gestaltung des Privatlebens, des Berufs- und Arbeitslebens als auch um gesellschaftliche und umweltpolitische Entscheidungen . Das kaufmännische Berufskolleg Wirtschafts - informatik bildet hier mit seinen auf die Kompetenzbereiche der Informatik und der Betriebswirt - schaftslehre ausgerichteten Bildungszielen die verbindende Brücke zwischen den unternehmerischen Handlungskompetenzen und den Kompetenzanforderungen zum Einsatz strategischer Informations - technologien . Handlungskompetenz und Persönlichkeitsbildung als Bildungsziele erfordern Lehr- und Lernprozesse, die praxisnahes und problemlösungsorientiertes Lernen in konkreten Situationen innerhalb und außer - halb der Schule ermöglichen, die Sachverhalte aus mehreren Perspektiven betrachten und gleichzeitig zur Auseinandersetzung mit eigenen und fremden Wertvorstellungen anregen . Im Vordergrund der Qualifizierung am Kaufmännischen Berufskolleg Wirtschaftsinformatik stehen dabei praxisorientier - te, unternehmerische Handlungssituationen, die zu selbstständigem Beschaffen von Informationen, Planen, Durchführen, Beurteilen und Reflektieren von Arbeitsaufgaben befähigen . Sie umfassen dabei sowohl eigenverantwortliches als auch im Team abgestimmtes und gemeinschaftlich durchgeführtes Handeln und beziehen technische, ökonomische, ökologische, soziale und kulturelle Aspekte mit ein . 1.2 Fachliche Vorbemerkungen Die Schülerinnen und Schüler stehen vor der Herausforderung, sich in einer dynamisch wandelnden Welt der Informationstechnologien zurechtzufinden . Unabdingbar ist ein sicherer und konstruktiver Umgang mit geeigneten Werkzeugen der Informationstechnologie, da nur so eine produktive Nutzung der sich eröffnenden Möglichkeiten erreicht werden kann . Voraussetzung dafür ist ein Verständnis für die grundlegenden Funktionsweisen und wesentlichen Merkmale der zentralen Felder der Wirt - schaftsinformatik . Deshalb ist es wichtig, Interesse für diese Technologien und ihre Funktionsweisen zu wecken . Die Möglichkeiten der Nutzung von Künstlicher Intelligenz sollen in einem angemessenen Rahmen für die Planung, Umsetzung und Qualitätssicherung von Softwareprojekten genutzt werden, ohne dabei den schulischen Lernprozess zu vernachlässigen . An geeigneten Stellen findet ein Bezug zu betriebswirtschaftlichen Abläufen von Unternehmen statt . Geschäftsprozesse machen den Schülerinnen und Schülern betriebswirtschaftliche Abläufe und ihre Strukturen transparent . Die standardisierte Betrachtungsweise der Geschäftsprozesse ermöglicht es, die Komplexität betrieblicher Prozesse fein zu strukturieren . Neben den konkreten fachspezifischen Inhalten sind auch Methoden und Verhaltensweisen zu vermitteln, wie sie im Rahmen projektbezogener kaufmännischer Problemlösungen praxisüblich sind . Die Schülerinnen und Schüler dokumentieren und präsentieren erarbeitete Ergebnisse mit geeigneten Mitteln, welche den Anforderungen an Mitarbeiterinnen und Mitarbeiter in IT-Berufen entsprechen .",
+      "tags": [
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-005",
+      "page_start": 5,
+      "page_end": 5,
+      "text": "3 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Hinweise2 Hinweise zum Umgang mit dem Bildungsplan Der Bildungsplan in Wirtschaftsinformatik umfasst die beiden Schwerpunkte „Anwendungsentwicklung“ und „Digital Business“ . Die Bildungsplaneinheiten BPE 1, BPE 2, BPE 3, BPE 4, BPE 5 und BPE 6 des ersten Schuljahres sind in beiden Schwerpunkten identisch . Dadurch ergibt sich für Schulen die Möglich - keit eines flexiblen Schwerpunktangebots am Ende des ersten Schuljahres . Im zweiten Schuljahr unterscheiden sich die Bildungsplaneinheiten in Wirtschaftsinformatik . Der Schwerpunkt „Anwendungsentwicklung“ mit den BPE 7, BPE 8 und BPE 9 richtet sich an Schülerinnen und Schüler, die ihre Fähigkeiten im Bereich der objektorientierten Softwareentwicklung vertiefen wol - len . Der Schwerpunkt „Digital Business“ mit den BPE 10, BPE 11 BPE 12, BPE 13, BPE 14, BPE 15, BPE 16 und BPE 17 richtet sich an Schülerinnen und Schüler, die ihre Kenntnis der kaufmännischen und techni - schen Prozesse von E-Commerce-Unternehmen vertiefen wollen . Aufgrund des fortlaufenden Aufbaus der Bildungsplaneinheiten innerhalb eines Schwerpunkts, ist die Vermischung der beiden Schwer - punkte nicht möglich . Der Bildungsplan zeichnet sich durch eine Inhalts- und eine Kompetenzorientierung aus . In jeder Bildungsplaneinheit (BPE) werden in kursiver Schrift die übergeordneten Ziele beschrieben, die durch Zielformulierungen sowie Inhalts- und Hinweisspalten konkretisiert werden . In den Zielformulierungen werden die jeweiligen fachspezifischen Operatoren als Verben verwendet . Operatoren sind hand - lungsinitiierende Verben, die signalisieren, welche Tätigkeiten beim Bearbeiten von Aufgaben erwartet werden . Die für das jeweilige Fach relevanten Operatoren sowie deren fachspezifische Bedeutung sind jedem Bildungsplan im Anhang beigefügt . Durch die kompetenzorientierte Zielformulierung mittels dieser Operatoren wird das Anforderungsniveau bezüglich der Inhalte und der zu erwerbenden Kompetenzen definiert . Die formulierten Ziele und Inhalte sind verbindlich und damit prüfungsrelevant . Sie stellen die Regelanforderungen im jeweiligen Fach dar . Die Inhalte der Hinweisspalte sind unver - bindliche Ergänzungen zur Inhaltsspalte und umfassen Beispiele, didaktische Hinweise und Quer - verweise auf andere Fächer bzw . BPE .",
+      "tags": [
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-006",
+      "page_start": 6,
+      "page_end": 6,
+      "text": "4 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)3 Bildungsplaneinheiten (BPE) 3.1 Schuljahr 1 BPE 1 Tabellenkalkulation Zeitrichtwert 20 Die Schülerinnen und Schüler wenden Funktionen eines Tabellenkalkulationsprogramms zur Daten - beschreibung, Datenaufarbeitung und Datenanalyse an. Sie werten Daten zur Lösung von realen Problemstellungen aus. BPE 1.1 Die Schülerinnen und Schüler identifizieren grundlegende Funktionen eines Tabellenkalkulations - programms und gestalten Tabellen zu vorgegebenen Sachverhalten. Verpflichtende Inhalte Hinweise Aufbau, Logik und Design von Tabellen Dateneingabe z . B . Kopieren, Ausschneiden und Einfügen von Inhalten Datentypen z . B . Text, Zahl, Währung, Datum Formatierung von Inhalten bedingte Formatierung BPE 1.2 Die Schülerinnen und Schüler stellen Formeln auf, begründen die Notwendigkeit verschiedener Ad - ressierungsarten und wenden diese an. Verpflichtende Inhalte Hinweise Formeln z . B . Grundrechenarten, Prozentrechnen Adressierung: •relativ •absolut z . B . Kopierfähigkeit von Formeln",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-007",
+      "page_start": 7,
+      "page_end": 7,
+      "text": "5 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 1.3 Die Schülerinnen und Schüler werten mit Funktionen Daten aus. Verpflichtende Inhalte Hinweise Funktionen: •Summe •Mittelwert •Min •Max •Runden •Anzahl z . B . Summewenn",
+      "tags": [
+        "sql-group-by",
+        "sql-having"
+      ]
+    },
+    {
+      "chunk_id": "chunk-008",
+      "page_start": 7,
+      "page_end": 7,
+      "text": "z . B . Zählenwenn wenn, auch geschachtelt Verweise z . B . SVerweis BPE 1.4 Die Schülerinnen und Schüler optimieren eine vorhandene Tabelle durch Schutzmechanismen und Steuerungselemente. Verpflichtende Inhalte Hinweise Steuerungselemente z . B . Kontrollkästchen, Schieberegler Schutz von: •Zellen •Tabellen •Dokumentenz . B . Zellschutz, Datenüberprüfung, Passwortschutz BPE 1.5 Die Schülerinnen und Schüler stellen Daten in geeigneten Diagrammen dar. Verpflichtende Inhalte Hinweise Balken-, Säulen-, Linien-, Kreis- und Punktdiagrammz . B . Regression, Punktdiagramm mit Trendlinie Gestaltung von Diagrammen z . B . Titel, Achsenbeschriftung, Skalierung, Legende",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-009",
+      "page_start": 8,
+      "page_end": 8,
+      "text": "6 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 1.6 Die Schülerinnen und Schüler wenden Vorgehensweisen zum Austausch von Daten mit anderen Anwendungen an. Verpflichtende Inhalte Hinweise Datenimport z . B . Zwischenablage, Textdateien, Trennzeichen Datenexport z . B . CSV-Format, Zeichensatz BPE 2 Geschäftsprozesse Zeitrichtwert 18 Die Schülerinnen und Schüler ordnen die Disziplin Wirtschaftsinformatik in den betrieblichen Kontext ein. Sie zeichnen Geschäftsprozesse in geeigneten Modellierungssprachen als Grundlage für die Entwicklung von Informationssystemen. BPE 2.1 Die Schülerinnen und Schüler beschreiben betriebliche Anwendungs- und Informationssysteme. Sie erklären die interdisziplinäre Aufgabe der Wirtschaftsinformatik. Verpflichtende Inhalte Hinweise betriebliche Anwendungs- und Informations - systeme: •Unterstützung betrieblicher Aufgaben durch Anwendungs- und Informationssysteme •Daten und Informationen •Vernetzung von Systemenz . B . Office-Programme, Lagerverwaltung, POS-Systeme Aufgabengebiete der Wirtschaftsinformatik als Bindeglied zwischen Wirtschaft und ITz . B . Anwendungsentwicklung auf Grundlage von Geschäftsprozessen",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-010",
+      "page_start": 9,
+      "page_end": 9,
+      "text": "7 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 2.2 Die Schülerinnen und Schüler beschreiben Geschäftsprozesse als Ausgangspunkt für System- entwicklung. Sie zeichnen beschriebene Geschäftsprozesse unter Einhaltung gültiger Konventionen. Verpflichtende Inhalte Hinweise Geschäftsprozessmodellierung: •Analyse •Elemente •Zuständigkeiten •Input- und Outputdaten z . B . Analyse verschiedener Situationen aus Beschreibungen/IST-Aufnahmen z . B . Ereignisgesteuerte Prozesskette mit Funktionen, Ereignissen und Konnektoren z . B . Organisationseinheiten z . B . Informationsobjekte BPE 3 Relationale Datenbanken Zeitrichtwert 45 Die Schülerinnen und Schüler skizzieren durch Abstraktion und Reduktion Datenmodelle in Form von Entity-Relationship-Modellen. Die Überführung der Modelle in ein Datenbanksystem führen sie ebenso wie die Speicherung, Auswertung und Veränderung komplexer Datenbestände softwaregestützt durch. BPE 3.1 Die Schülerinnen und Schüler legen Zusammenhänge der realen Welt durch ein Entity-Relationship- Modell dar. Verpflichtende Inhalte Hinweise Entität Entitätstyp Attribut Kardinalität Relation Datentypen: •Text •Ganzzahl •Fließkommazahl •Datum •Wahrheitswert Primärschlüssel Fremdschlüssel",
+      "tags": [
+        "eerm",
+        "relationale-datenbanken"
+      ]
+    },
+    {
+      "chunk_id": "chunk-011",
+      "page_start": 10,
+      "page_end": 10,
+      "text": "8 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 3.2 Die Schülerinnen und Schüler planen ein redundanzfreies und normalisiertes Datenbankmodell. Verpflichtende Inhalte Hinweise Redundanzen Anomalien z . B . Einfügeanomalie Normalisierung: •1 . Normalform •2 . Normalform •3 . Normalformz . B . Grenzen der Normalisierung BPE 3.3 Die Schülerinnen und Schüler implementieren Entity-Relationship-Modelle in eine relationale Daten - bank mit mehreren Tabellen. Sie wenden SQL-Statements zur Erfassung, Veränderung und Löschung von Daten an. Verpflichtende Inhalte Hinweise Tabelle CREATE INSERT Datenkonsistenz DELETE UPDATE Referentielle Integrität BPE 3.4 Die Schülerinnen und Schüler wenden SQL-Statements zur Auswertung von Datenbeständen über mehrere Tabellen an. Verpflichtende Inhalte Hinweise SELECT Sortierung Bedingungen",
+      "tags": [
+        "datenintegritaet",
+        "normalisierung",
+        "sql-dml",
+        "sql-from",
+        "sql-order-by",
+        "sql-select",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-012",
+      "page_start": 11,
+      "page_end": 11,
+      "text": "9 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)Verpflichtende Inhalte Hinweise Operatoren: •AND •OR •NOT Funktionen: •SUM •COUNT •AVG •MIN •MAX Abfragen von Datumsbereichen z . B . MONTH-Funktion, YEAR-Funktion Unterabfragen Gruppierung BPE 3.5 Die Schülerinnen und Schüler diskutieren die Chancen und Risiken der Speicherung von Massen - daten. Verpflichtende Inhalte Hinweise personalisierte Daten: •Vorratsdatenspeicherung •Geschäftsmodelle von Internetkonzernen Erkennen von Zusammenhängen z . B . Bewegungsdatenanalyse",
+      "tags": [
+        "sql-from",
+        "sql-select"
+      ]
+    },
+    {
+      "chunk_id": "chunk-013",
+      "page_start": 12,
+      "page_end": 12,
+      "text": "10 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 4 Webentwicklung Zeitrichtwert 40 Die Schülerinnen und Schüler entwerfen Webseiten auf Grundlage von aktuellen technischen und gestalterischen Anforderungen. Unter Berücksichtigung von rechtlichen Anforderungen und den Vorgaben zur Barrierefreiheit diskutieren sie den Einsatz aktueller Technologien. BPE 4.1 Die Schülerinnen und Schüler implementieren den Entwurf einer Webseite unter Verwendung geeigneter Elemente zur Seitenstrukturierung. Sie überprüfen mithilfe eines geeigneten Validierungs- Tools die Syntax des entwickelten Quellcodes. Verpflichtende Inhalte Hinweise Grundgerüst einer HTML-Seite Semantische Seitenstrukturierung: •main •footer •header •nav weitere Strukturierungselemente z . B . section, article, aside Textauszeichnungen: •Überschriften •Absätze •Aufzählungen •Links/Verweise •Tabellen Einbindung von Multimedia-Elementen: •absolute Adressierung •relative Adressierungz . B . Bild-, Sound-, Video-Dateien Formatierungsanweisungen in einer Style sheet- Sprache: •Selektoren •Box-Modell •farbliche Gestaltung responsives Design zweidimensionales Gestaltungsraster z . B . Grid, Flexbox Medienabfragen Einsatz benutzerdefinierter Selektoren: •div •span •class, id",
+      "tags": [
+        "sql-from",
+        "sql-select"
+      ]
+    },
+    {
+      "chunk_id": "chunk-014",
+      "page_start": 13,
+      "page_end": 13,
+      "text": "11 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)Verpflichtende Inhalte Hinweise Menü und Seitennavigation: •einheitliche Gestaltung des Navigations- bereichs •Gestaltung von Links\n\nz . B . Hover-Effekte, Toggle-Menü Validierung z . B . Validator des W3C BPE 4.2 Die Schülerinnen und Schüler identifizieren gestalterische Merkmale eines Corporate Designs. Sie überprüfen die Umsetzung der Zielgruppenbezogenheit. Verpflichtende Inhalte Hinweise Corporate Design: •Begriff •Analyse vergleichbarer Webseiten",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-015",
+      "page_start": 13,
+      "page_end": 13,
+      "text": "z . B . Farbkonzepte, Logos, Seitenstruktur Zielgruppenbezogenheit: •Analyse der Zielgruppe •Navigation •Inhalte z . B . Schüler, Lehrer, Eltern BPE 4.3 Die Schülerinnen und Schüler ordnen die rechtlichen Anforderungen an eine veröffentlichte Webseite ein. Sie diskutieren die Anforderungen der Barrierefreiheit. Verpflichtende Inhalte Hinweise rechtliche Aspekte: •Impressumspflicht •Bildrechte •weitere Aspekte z . B . privat vs . gewerblich z . B . Creative Commons z . B . Datenschutzerklärung, Cookie-Banner Barrierefreiheit: •Richtlinien •Hilfsmittel z . B . WCAG Guidelines z . B . Screenreader, Braillezeile",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-016",
+      "page_start": 14,
+      "page_end": 14,
+      "text": "12 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 5 Grundlagen der Programmierung Zeitrichtwert 42 Die Schülerinnen und Schüler verwenden grundlegende Elemente der Programmierung in einfachen Programmen. Es muss eine Programmiersprache Verwendung finden, mit der Programme am Gerät implementiert und getestet werden. Im Vordergrund steht das Verständnis und zielgerichtete Einsetzen der Strukturen. Die Schülerinnen und Schüler verwenden integrativ Künstliche Intelligenz (KI). Diese dient in ihrer Assistenzrolle als Lernunterstützung. BPE 5.1 Die Schülerinnen und Schüler entwickeln Programme mit Benutzereingabe und Ausgabe sowie grundlegenden Berechnungen. Verpflichtende Inhalte Hinweise Variable: •Deklaration •Initialisierung Nutzung von Variablen: •Zuweisen von Werten •Auslesen von Werten •Berechnen von Werten Programmierkonventionen z . B . Variablennamen, Kommentare, Formatierung BPE 5.2 Die Schülerinnen und Schüler entwickeln eigene Programme unter Nutzung der Kontrollstrukturen Alternative und Wiederholung. Sie implementieren den Import von externen Daten aus verschiedenen Quellen. Verpflichtende Inhalte Hinweise Alternative: •einseitig •zweiseitig •geschachtelt •logische Operatoren Wiederholungsstrukturen: •kopfgesteuerte Schleifen •zählergesteuerte Schleifen Grundlagen von Listen: •Deklaration •Initialisierungz . B . statische Listen, dynamische Listen",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-017",
+      "page_start": 15,
+      "page_end": 15,
+      "text": "13 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)Verpflichtende Inhalte Hinweise Zugriff auf Listen: •Index-Operator •Mapping •Zugriff über Schleife",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-018",
+      "page_start": 15,
+      "page_end": 15,
+      "text": "z . B . Index, key/value Einsatz von Algorithmen z . B . Min/Max, Tausch, Suchen, Sortieren Unterprogramme: •Übergabeparameter •Rückgabewertz . B . Funktionen Import externer Daten: •Austauschformate •Quellen z . B . CSV , json, XML z . B . aus Dateien, Webservices, Datenbanken Fehlersuche, Testing z . B . Debugger, KI-Assistenz BPE 6 Einführung in Machine Learning und Künstliche Intelligenz Zeitrichtwert 15 Die Schülerinnen und Schüler identifizieren Konzepte von Machine Learning und Künstlicher Intelli - genz. Mithilfe grundlegender algorithmischer Verfahren ordnen sie die Bedeutung von großen Daten - mengen für Machine Learning und Künstliche Intelligenz ein. BPE 6.1 Die Schülerinnen und Schüler stellen anhand von Beispielen grundlegende algorithmische Verfahren von Machine Learning dar. Verpflichtende Inhalte Hinweise Regression Entscheidungsbaum Clustering z . B . k-Means Klassifikation z . B . k-Nearest Neighbor",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-019",
+      "page_start": 16,
+      "page_end": 16,
+      "text": "14 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 6.2 Die Schülerinnen und Schüler beurteilen die Bedeutung von Daten für Machine Learning. Verpflichtende Inhalte Hinweise Training von Modellen: •Trainingsdaten •Testdaten •labeled Data •unlabeled Data Zusammenhang Datenmenge und Vorhersagequalität BPE 6.3 Die Schülerinnen und Schüler beschreiben die Zusammenhänge einzelner Themenbereiche von Künstlicher Intelligenz. Sie identifizieren Arbeitsweisen von KI-Tools. Verpflichtende Inhalte Hinweise Themenbereiche Künstlicher Intelligenz z . B . Machine Learning, Deep Learning, Language Processing Funktionsweise neuronaler Netze aktuelle Entwicklungen Übersicht Schuljahr 1 Stundenübersicht Zeiteinheiten Gesamtstunden BPE 180 Zeit zur Leistungsfeststellung und zur möglichen Vertiefung60",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-020",
+      "page_start": 17,
+      "page_end": 17,
+      "text": "15 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)3.2 Schuljahr 2 BPE 7 Vertiefung in Machine Learning und Künstliche Intelligenz Zeitrichtwert 15 Die Schülerinnen und Schüler werten große Datenmengen softwaregestützt aus. Sie übertragen ihre Erkenntnisse auf betriebswirtschaftliche Probleme. BPE 7.1 Die Schülerinnen und Schüler wenden Software zur Auswertung und Visualisierung großer Datenmengen an. Verpflichtende Inhalte Hinweise grafische Auswertungstools Einsatz von KI-Programmbibliotheken BPE 7.2 Die Schülerinnen und Schüler wenden verfügbare KI-Tools zur Lösung betriebswirtschaftlicher Pro - bleme an. Verpflichtende Inhalte Hinweise Identifizierung verfügbarer KI-Tools zur Lösung betriebswirtschaftlicher Probleme Einsatz verfügbarer KI-Tools zur Lösung betriebswirtschaftlicher Probleme",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-021",
+      "page_start": 18,
+      "page_end": 18,
+      "text": "16 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 8 Objektorientierte Systementwicklung Zeitrichtwert 135 Die Schülerinnen und Schüler entwickeln objektorientiert Softwarelösungen unter Verwendung einer Programmiersprache. Dabei erstellen sie Quellcode und entwerfen Modelle in einer geeigneten Modellierungssprache. Sie gestalten grafische Benutzeroberflächen unter besonderer Berücksichtigung der Benutzer - freundlichkeit. Dabei setzen sie das Prinzip der Ereignisverarbeitung ein, steuern den Programmfluss gezielt und nutzen den objektorientierten Ansatz, um Quellcode effizient zu strukturieren und umzusetzen. Die Schülerinnen und Schüler implementieren den Zugriff auf relationale Datenbanken und andere Datenquellen. Sie nutzen dazu vorgegebene Schnittstellen und Programmbibliotheken. Integrativ nutzen die Schülerinnen und Schüler Künstliche Intelligenz (KI) als Assistenzsystem zur Lernunterstützung. BPE 8.1 Die Schülerinnen und Schüler entwerfen Klassen und implementieren strukturierten Quellcode in einer objektorientierten Programmiersprache. Verpflichtende Inhalte Hinweise Erzeugen von Klassen und Objekten: •Grundgedanke der Objektorientierung •primitive und komplexe Datentypen •Eigenschaften (Attribute) •Konstruktor •Start- und Fachklassen •Assoziationen (Erzeugen von Objekten) z . B . Separation of Concerns (SoC)",
+      "tags": [
+        "relationale-datenbanken",
+        "sql-from"
+      ]
+    },
+    {
+      "chunk_id": "chunk-022",
+      "page_start": 18,
+      "page_end": 19,
+      "text": "z . B . main-Methode, Grundgerüst einer Fachklasse Methoden: •Modularisierung von Code •Parameterübergabe •Rückgabewerte •Gültigkeitsbereiche von Variablen •Kontrollstrukturen •Polymorphie\n\nz . B . Überladen von Methoden Prinzip der Datenkapselung: •Kapselung von Attributen und Methoden •Zugriffsmodifikatoren Vererbung: •Super- und Subklassen •Überschreiben von Methoden •Interfaces und abstrakte Klassen\n\n17 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)Verpflichtende Inhalte Hinweise Modellierung: •Klassen •Assoziation •Vererbungz . B . UML",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-023",
+      "page_start": 19,
+      "page_end": 19,
+      "text": "z . B . Multiplizitäten BPE 8.2 Die Schülerinnen und Schüler gestalten mithilfe geeigneter Werkzeuge grafische Benutzeroberflächen unter Berücksichtigung der Benutzerfreundlichkeit. Sie erweitern den Quellcode, um Fehleingaben und Fehler abzufangen. Verpflichtende Inhalte Hinweise Entwurf grafische Benutzeroberfläche: •Strukturierung einer Anwendung •Trennung von Präsentation und Anwendungslogik •Benutzerfreundlichkeitz . B . Mockup z . B . MVC-Modell Implementierung mittels GUI-Designer: •Gestaltungselemente •Code-Generierung •Überprüfung, Anpassung, Erweiterung des Quellcodesz . B . Window-Builder z . B . Fenster, Textfelder, Label, Buttons Ereignissteuerung: •Maus- und Tastaturereignisse •Listener Typumwandlung: •cast •parsez . B . Verarbeiten von Ein- und Ausgaben der GUI Exceptions: •Arten •Behandlung •Auslösung z . B . NullPointer-, NumberFormatException z . B . try, catch, finally z . B . throw, throws",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-024",
+      "page_start": 20,
+      "page_end": 20,
+      "text": "18 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 8.3 Die Schülerinnen und Schüler erweitern und optimieren Quellcode, um Ein- und Ausgabedaten strukturiert zu verarbeiten. Dabei implementieren sie die Anbindung an eine relationale Datenbank. Sie analysieren die Risiken der Datenhaltung und entwerfen geeignete Schutzmechanismen. Verpflichtende Inhalte Hinweise Schichten-Architektur z . B . Datenzugriffsschicht, Logikschicht, Präsentationsschicht persistente Speicherung z . B . FileWriter, FileReader, Datenbankzugriff Datenbankzugriff: •Datenbanktreiber •Verbindungsaufbau •Abfragen und Datenmanipulation •Ergebnisverarbeitung",
+      "tags": [
+        "relationale-datenbanken",
+        "sql-from",
+        "sql-select"
+      ]
+    },
+    {
+      "chunk_id": "chunk-025",
+      "page_start": 20,
+      "page_end": 20,
+      "text": "z . B . SELECT, INSERT, UPDATE, DELETE z . B . ResultSet, Containerklassen Sichere Datenhaltung: •unberechtigte Datenmanipulation •Schutzmechanismen •Datenverschlüsselung z . B . SQL Injections z . B . Prepared Statements z . B . Hash-Funktionen BPE 9 Planung und Durchführung eines DV-Projektes Zeitrichtwert 60 Die Schülerinnen und Schüler formulieren ein Projektziel auf der Basis der vorangegangenen Bildungs - planeinheiten, erstellen einen Projektplan mit den notwendigen Ressourcen und führen die einzelnen Projektphasen eigenständig und KI-gestützt durch. Sie beurteilen nach Abschluss des Projekts das erreichte Ergebnis und dokumentieren die Schwierigkeiten bei der Erreichung des Projektziels. BPE 9.1 Die Schülerinnen und Schüler wenden Projektmanagement-Methoden an. Verpflichtende Inhalte Hinweise Projektplanung Projektdurchführung Projektpräsentation z . B . Dokumentation, Verteidigung",
+      "tags": [
+        "sql-dml",
+        "sql-from",
+        "sql-select"
+      ]
+    },
+    {
+      "chunk_id": "chunk-026",
+      "page_start": 21,
+      "page_end": 21,
+      "text": "19 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 9.2 Die Schülerinnen und Schüler wenden geeignete Werkzeuge für die Softwareentwicklung an. Verpflichtende Inhalte Hinweise Versionsverwaltung z . B . Git Entwicklungsumgebung: •Auswahl •Verwendung Einsatz von KI in Programmier-Projekten BPE 10 Verträge im Online-Vertrieb anbahnen und bearbeiten Zeitrichtwert 25 Die Schülerinnen und Schüler skizzieren den Verkaufsprozess in einem Onlineshop von der Produkt - präsentation bis zum Zustandekommen des Kaufvertrags, wobei sie auch die Umweltauswirkungen und sozialen Bedingungen der Produkte berücksichtigen. Sie beurteilen relevante Entscheidungen entlang der Kundenkontaktstrecke in wirtschaftlicher, rechtlicher und ökologischer Hinsicht. BPE 10.1 Die Schülerinnen und Schüler wenden bei der Vertragsgestaltung und dem Vertragsabschluss in einem Onlineshop die relevanten rechtlichen Regelungen an und achten auf umweltfreundliche und faire Produktion und Handelsstrukturen. Sie erläutern die Vorteile des nachhaltigen Konsums im Online- und stationären Handel und treffen informierte Kaufentscheidungen. Verpflichtende Inhalte Hinweise Einführung Digital Business Kaufabschluss im digitalen Handel Altersverifikation: •Notwendigkeit •rechtliche Grundlagen •Techniken",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-027",
+      "page_start": 21,
+      "page_end": 21,
+      "text": "z . B . Postident-Verfahren, Giropay-ID, Kopie des Personalausweises, elektronischer Personal - ausweis Allgemeine Geschäftsbedingungen ÂVerweis auf Bildungsplan BWSK BPE 2.1 Click & Collect gewerbliche Impressumspflicht ÂVerweis auf BPE 4.3",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-028",
+      "page_start": 22,
+      "page_end": 22,
+      "text": "20 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 10.2 Für die Anbahnung und Abwicklung des Vertragsabschlusses im Online-Vertriebskanal erörtern die Schülerinnen und Schüler Anforderungskriterien für eine rechtssichere und benutzerfreundliche Gestaltung der Prozessschritte bis zum Vertragsabschluss. Verpflichtende Inhalte Hinweise Schritte zum Kaufabschluss (Checkout) Benutzerfreundlichkeit Verkaufstrichter z . B . Ausstiegsrate, Absprungrate BPE 10.3 Die Schülerinnen und Schüler empfehlen kriteriengeleitet Zahlungsmethoden und Finanzierungs- angebote. Sie begründen ihre Entscheidungen sowohl aus Unternehmens- als auch aus Käufersicht. Verpflichtende Inhalte Hinweise Zahlungsmethoden z . B . Rechnung, Vorkasse, Kreditkarte, Online - zahlungsdienste auch i . V . m . Authentifizie - rungsverfahren wie 3D-Secure ÂVerweis auf Bildungsplan BWSK BPE 3.2 Finanzierungsangebote ÂVerweis auf Bildungsplan BWSK BPE 5.2 BPE 10.4 Die Schülerinnen und Schüler empfehlen Möglichkeiten zur Übermittlung und Bereitstellung von Produkten für die Erfüllung der vertraglichen Pflichten. Dazu vergleichen sie kriteriengeleitet Kooperationspartner für nachgelagerte logistische Prozesse im Rahmen der Unternehmensvorgaben. Sie beurteilen die Bedeutung von Retouren und Stornierungen für Unternehmen und Kunden. Verpflichtende Inhalte Hinweise Produktübermittlung, Produktbereitstellung Versandarten z . B . Spedition, Kurier-, Express- und Paket - dienste (KEP-Dienste) Retouren, Stornierungen z . B . Kosten, Effizienz, Kundenzufriedenheit Nachhaltigkeit beim Produktversand z . B . Verpackungsarten, Bündelung von Sendungen, Retourenminimierung",
+      "tags": [
+        "eerm",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-029",
+      "page_start": 23,
+      "page_end": 23,
+      "text": "21 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 10.5 Die Schülerinnen und Schüler überprüfen die Einhaltung von Vorschriften zum Datenschutz und empfehlen erforderliche Maßnahmen. Verpflichtende Inhalte Hinweise Datenschutz-Grundverordnung Datensicherheit ÂVerweis auf Bildungsplan IKT BPE 2.1 BPE 11 Sortimente im Online-Vertrieb gestalten Zeitrichtwert 23 Die Schülerinnen und Schüler passen Online-Sortimente an und stellen Waren und Dienstleistungen ein. BPE 11.1 Die Schülerinnen und Schüler formulieren Anforderungskriterien für eine Produktpräsentation im Onlineshop. Sie geben dabei auch rechtliche Regelungen zur Produktpräsentation wieder. Verpflichtende Inhalte Hinweise Darstellung des Sortiments z . B . Startseite, Produktkategorienseite Seitenstruktur ÂVerweis auf BPE 4.1 interaktive Werbeelemente z . B . Teaser, Slider, Banner Barrierefreiheit ÂVerweis auf BPE 4.3 responsives Design ÂVerweis auf BPE 4.1 Informationspflichten Urheberrecht z . B . Bilder, Produkte, Namen Namens- und Markenrecht unlauterer Wettbewerb z . B . vergleichende Werbung, irreführende Werbung",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-030",
+      "page_start": 24,
+      "page_end": 24,
+      "text": "22 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 11.2 Für die Einstellung in den Online-Vertriebskanal stellen die Schülerinnen und Schüler die Produkte dar. Sie planen die Integration von Produktbeschreibungen und audiovisuellen Medien zur Produkt - präsentation und beurteilen unterschiedliche Dateiformate und Präsentationskanäle. Verpflichtende Inhalte Hinweise Produktdetailseite: •Darstellung •Inhalt audiovisuelle Elemente: •Dateiformate •Präsentationskanäle z . B . PNG, JPG, PDF, GIF z . B . Online-Plattformen umsatzsteigernde Elemente: •Cross-Selling •Up-Selling •Down-Selling BPE 11.3 Die Schülerinnen und Schüler planen die Erstellung von Produktkategorien und überprüfen die Auffindbarkeit der Produkte im Onlineshop. Verpflichtende Inhalte Hinweise Navigation Sortierfunktion Filter Suchfunktion BPE 11.4 Die Schülerinnen und Schüler beurteilen die besondere Dynamik des Nachfrageverhaltens und daraus resultierend die Relevanz einer kontinuierlichen Anpassung. Verpflichtende Inhalte Hinweise erhöhte Transparenz z . B . Vergleichbarkeit mit Wettbewerbern zeitliche und räumliche Unabhängigkeit dynamische Preisfestlegung",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-031",
+      "page_start": 25,
+      "page_end": 25,
+      "text": "23 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 12 Online-Marketing-Maßnahmen umsetzen und bewerten Zeitrichtwert 30 Die Schülerinnen und Schüler verfügen über die Kompetenz, eine Online-Marketing-Strategie zu planen, Online-Marketing-Maßnahmen umzusetzen und den Erfolg zu bewerten. Dabei berück - sichtigen sie auch Nachhaltigkeitsaspekte und beurteilen den ökologischen Fußabdruck ihrer Maßnahmen. Sie reflektieren kritisch ihre persönliche Nutzung von digitalen Diensten wie sozialen Medien hinsichtlich des Energieverbrauchs, der Ressourcennutzung und des Datenschutzes. BPE 12.1 Die Schülerinnen und Schüler charakterisieren die Verhaltensweisen der Nutzer im digitalen Vertrieb unter Verwendung geeigneter Instrumente. Sie formulieren Grundsätze einer ganzheitlichen Kommunikationsstrategie entlang der Kontaktstrecke und implementieren diese beispielhaft. Verpflichtende Inhalte Hinweise Instrumente zur Zielgruppenansprache: •Kundenreise („Customer Journey“) •Definition eines idealen Kunden („Buyer Persona“) z . B . Aufmerksamkeit, Interesse, Kauf, After Sales, evtl . Bezug zur AIDA-Formel Kommunikationsstrategie z . B . Copy Strategie Content z . B . Ökologischer Fußabdruck, Handprint BPE 12.2 Die Schülerinnen und Schüler bewerten die Eignung von unterschiedlichen Online-Marketing- Maßnahmen zur Kundengewinnung, Bestandskundenbindung und Kundenreaktivierung. Sie analysieren Chancen und Risiken sowie gegenseitige Abhängigkeiten dieser Maßnahmen. Die Schülerinnen und Schüler entwerfen einen Maßnahmenplan zur Umsetzung der Online- Marketing-Strategie unter Berücksichtigung der Budgetvorgaben. Verpflichtende Inhalte Hinweise Online-Marketing-Maßnahmen z . B . Influencer Marketing, Social Media Marketing, Affiliate Marketing, Cross-Media Marketing, Display Advertising, E-Mail-Marketing, Suchmaschinenwerbung Maßnahmenplan („Contentplan“) Marketingbudget",
+      "tags": [
+        "begruendung",
+        "sql-order-by"
+      ]
+    },
+    {
+      "chunk_id": "chunk-032",
+      "page_start": 26,
+      "page_end": 26,
+      "text": "24 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 12.3 Für Online-Marketing-Maßnahmen mit direkter Ansprache der Bestandskunden und potenzieller Interessenten formulieren die Schülerinnen und Schüler geeignete Kriterien zur Selektierung zielgruppengerechter Daten aus ihrem Kundenbeziehungsmanagement-System. Sie achten auf Nach - haltigkeit in ihrer Zielgruppenauswahl und berücksichtigen Umweltaspekte in ihrer Kommunikation. Sie wenden für die Segmentierung die Nutzwertanalyse an und beschreiben unterschiedliche Möglichkeiten der Zielgruppenansprache im Online-Vertriebskanal, zum Beispiel durch personalisierte Ansprache oder gezielte Werbemaßnahmen für umweltfreundliche Produkte. Verpflichtende Inhalte Hinweise Kundenbeziehungsmanagement-System (CRM) Nutzwertanalyse Zielgruppenansprache: •Formen •Vermeidung von Werbemüdigkeit z . B . Geo-, Profile-, Re-, Zeit-, Keyword-, Kontext-Targeting und semantisches Targeting z . B . Frequency Capping Möglichkeiten der Nutzeridentifikation z . B . Textdateien („Cookies“), Netzwerkadresse, Metadaten, Benutzerkonto, Web-Session BPE 12.4 Die Schülerinnen und Schüler analysieren die Funktionsweise von unterschiedlichen Suchmaschinen und erläutern die Durchführung von Suchmaschinenoptimierung zur Verbesserung der Auffindbarkeit eines Online-Angebots. Verpflichtende Inhalte Hinweise Suchmaschinen: •Funktionsweise •Arten •Suchverhalten •Aufbau der Suchergebnisseitez . B . indexbasierte Suchmaschinen",
+      "tags": [
+        "eerm",
+        "sql-order-by"
+      ]
+    },
+    {
+      "chunk_id": "chunk-033",
+      "page_start": 26,
+      "page_end": 26,
+      "text": "z . B . informationsorientiertes Suchverhalten Suchmaschinenoptimierung BPE 12.5 Die Schülerinnen und Schüler vergleichen Möglichkeiten, Varianten von Internetseiten oder Online- Marketing-Maßnahmen auf ihren Erfolg zu testen. Verpflichtende Inhalte Hinweise AB-Tests multivariate Tests",
+      "tags": [
+        "sql-order-by",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-034",
+      "page_start": 27,
+      "page_end": 27,
+      "text": "25 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 13 Kommunikation über digitale Kanäle kundenorientiert gestalten Zeitrichtwert 20 Die Schülerinnen und Schüler verfügen über die Kompetenz, Kommunikationskanäle im Rahmen eines kundenorientierten Serviceangebotes auszuwählen, zu nutzen und an veränderte Kunden- bedürfnisse anzupassen. BPE 13.1 Die Schülerinnen und Schüler analysieren die Wünsche und Bedürfnisse der Kunden hinsichtlich Erreichbarkeit und Beratungsintensität, auch mit Blick auf Umweltverträglichkeit und Nachhaltigkeit von Produkten oder Dienstleistungen. Sie werten gegebene Rezensionen, Kundenrückmeldungen und Retourengründe aus, um mögliche Nachhaltigkeitsaspekte zu identifizieren. Sie berücksichtigen auch Fragen des Ressourceneinsatzes, des Energieverbrauchs und des CO 2-Fußabdrucks in ihrer Analyse. Verpflichtende Inhalte Hinweise Herausforderungen der Kommunikation z . B . Vergleich zum stationären Handel Beratung Bedarfsermittlung Verkaufsargumentation Konfliktmanagement z . B . Beschwerdemanagement, Reaktion auf negative Kundenbewertungen After-Sales z . B . Bewertungsanfragen, Kundenzufrieden - heitsanalysen KI im Online-Shop z . B . Chat-Bots BPE 13.2 Die Schülerinnen und Schüler identifizieren Informations- und Kommunikationskanäle im E-Commerce. Sie bestimmen kanalspezifische rechtliche Regeln sowie technische Voraussetzungen und Anforderungen an die Mitarbeiterinnen und Mitarbeiter. Verpflichtende Inhalte Hinweise Informationskanäle z . B . Soziale Medien, Blog, Podcast, Liste mit häufig gestellten Fragen (FAQ-Liste) Kommunikationskanäle z . B . Soziale Medien, Telefon (Hotlines), E-Mail, Chat, Chatbot, Videokonferenz rechtliche Aspekte",
+      "tags": [
+        "eerm",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-035",
+      "page_start": 28,
+      "page_end": 28,
+      "text": "26 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 13.3 Die Schülerinnen und Schüler ermitteln anhand von Kundenbewertungen den Erfolg ihrer Service- und Kommunikationsaktivitäten. Verpflichtende Inhalte Hinweise Kundenfeedback z . B . Kundenbewertungen, Rezensionen Handlungsempfehlungen BPE 14 Online-Vertriebskanäle auswählen Zeitrichtwert 20 Die Schülerinnen und Schüler wählen passende Online-Vertriebskanäle aus und setzen sich dabei auch mit dem Einsatz von Social Media als Vertriebskanal kritisch auseinander. BPE 14.1 Die Schülerinnen und Schüler analysieren unterschiedliche Vertriebswege im Online-Vertrieb des Unternehmens, auch mit Blick auf Umweltverträglichkeit und Nachhaltigkeit von Produkten oder Dienstleistungen. Sie vergleichen Vertriebsmöglichkeiten im stationären Handel und im digitalen Handel auch hinsichtlich ihrer möglichen Nachhaltigkeitsaspekte wie Ressourceneffizienz, Kreislaufwirtschaft und Recyclingfähigkeit. Verpflichtende Inhalte Hinweise Unternehmen zu Unternehmen (B2B) Unternehmen zu Privatkunden (B2C) kanalübergreifende Verkaufsstrategie z . B . Crosschannel, Omnichannel BPE 14.2 Die Schülerinnen und Schüler analysieren unterschiedliche Vertriebskanäle im Online-Vertrieb des Unternehmens. Sie beurteilen diese im Hinblick auf Kosten und Nutzen sowie Chancen und Risiken. Verpflichtende Inhalte Hinweise Verkauf über: •eigenen Onlineshop •elektronische Marktplätze •Online-Auktionen •Soziale Medien („Social Selling“)",
+      "tags": [
+        "eerm",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-036",
+      "page_start": 29,
+      "page_end": 29,
+      "text": "27 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 14.3 Die Schülerinnen und Schüler vergleichen alternative Shop-Software zur Erstellung und Nutzung aus Unternehmenssicht. Verpflichtende Inhalte Hinweise Open-Source-Software Eigenprogrammierung Kauf eines Onlineshop-Systems Miete eines Onlineshop-Systems z . B . Lizenz, Software as a service (SaaS) Kostenvergleich BPE 14.4 Die Schülerinnen und Schüler beurteilen die Relevanz der Datenqualität im Onlineshop. Sie leiten Maßnahmen ab, um diese zu gewährleisten. Verpflichtende Inhalte Hinweise Stamm- und Produktdatenmanagement z . B . Dubletten, falsche Schreibweise, Format - fehler, fehlende Daten usw . Datenfeeds BPE 15 Online-Vertrieb kennzahlengestützt optimieren Zeitrichtwert 25 Die Schülerinnen und Schüler können die im Unternehmen anfallenden Daten aufbereiten, analysieren und Prozesse kennzahlengestützt optimieren. BPE 15.1 Die Schülerinnen und Schüler begründen die Notwendigkeit von Kennzahlen zur Erfolgsmessung und Optimierung des Onlinevertriebs. Verpflichtende Inhalte Hinweise Zweck von Kennzahlen z . B . Kontrollfunktion, Entscheidungsfunktion Kategorisierung von Kennzahlen z . B . absolute und Verhältniskennzahlen, qualitative und quantitative Kennzahlen",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-037",
+      "page_start": 30,
+      "page_end": 30,
+      "text": "28 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 15.2 Die Schülerinnen und Schüler beurteilen die Wirksamkeit von Online-Marketing-Maßnahmen mithilfe von geeigneten Kennzahlen. Sie analysieren die Wechselwirkung der Kennzahlen untereinander. Sie beurteilen die Kennzahlen anhand von Branchenwerten und leiten aus diesen Werten entsprechende Handlungsempfehlungen ab. Verpflichtende Inhalte Hinweise Analyse des Verkaufstrichters („Sales Funnel“) allgemeine Kennzahlen z . B . Conversion Rate, Cost per Click (CPC), Cost per Impression (CPI), ROAS Kennzahlen im E-Mail-Marketing z . B . E-Mail-Absprungrate („Bounce-Rate“), Zustellrate, Öffnungsrate, Abmelderate Kennzahlen im Social-Media-Marketing z . B . Anzahl der Follower, Interaktionsrate BPE 15.3 Die Schülerinnen und Schüler beurteilen die Nutzerfreundlichkeit des Kaufprozesses im Onlineshop mithilfe von Kennzahlen. Sie entwickeln Maßnahmen zur Optimierung des Kaufprozesses im Online - shop. Dabei wenden sie geeignete Webanalyse-Programme zur Informationssammlung und Daten - auswertung an. Sie beurteilen die Kennzahlen anhand von Branchenwerten und leiten aus diesen Werten entsprechende Handlungsempfehlungen ab. Verpflichtende Inhalte Hinweise Customer Journey als Kennzahlenquelle Kennzahlen während des Kaufprozesses z . B . Ausstiegsrate, Absprungrate, Seitenaufrufe Webanalyse: •nutzerspezifische Daten •rechtliche Besonderheiten z . B . Standort, Browser, Besucherherkunft",
+      "tags": [
+        "sql-group-by",
+        "sql-having"
+      ]
+    },
+    {
+      "chunk_id": "chunk-038",
+      "page_start": 31,
+      "page_end": 31,
+      "text": "29 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 16 Digitalisierungsmöglichkeiten in der Beschaffung beurteilen Zeitrichtwert 7 Die Schülerinnen und Schüler analysieren Möglichkeiten, die die Digitalisierung im Beschaffungs - bereich bietet und beurteilen Einsparungspotenziale und Möglichkeiten zur Prozessoptimierung, die Unternehmen dadurch nutzen können. BPE 16.1 Die Schülerinnen und Schüler erläutern den Begriff des elektronischen Einkaufs (Digital Procurement). Sie erörtern Vorteile im Vergleich zur physischen Beschaffung. Verpflichtende Inhalte Hinweise Einsparpotenzial durch Digitalisierung im Einkauf: •Automatisierung von Routinearbeiten •Verkürzung der Beschaffungszeit •Einsparung von Beschaffungskosten •Dezentralisierung der Prozesse BPE 16.2 Die Schülerinnen und Schüler beschreiben Voraussetzungen für erfolgreiches Digital Procurement und die elektronische Kommunikation mit Lieferanten. Verpflichtende Inhalte Hinweise Systemanforderungen z . B . Datenformate, Produktdaten Systemlösungen z . B . Sell-Side-Modell und Buy-Side-Modell, Marktplätze Kriterien der Lieferantenauswahl",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-039",
+      "page_start": 32,
+      "page_end": 32,
+      "text": "30 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 17 Projekt Zeitrichtwert 60 Die Schülerinnen und Schüler erstellen einen Onlineshop in einer selbst gewählten Branche. Sie bereiten dies mit den zugehörigen Entscheidungen und einem Projektplan entsprechend vor und setzen dies selbstständig um. Sie entwerfen einen Marketingplan für ihren Shop. BPE 17.1 Die Schülerinnen und Schüler entwerfen einen individuellen Projektplan mit vorbereitenden Entscheidungen zur Erstellung ihres Onlineshops. Sie dokumentieren ihre Entscheidungen in einer Ausarbeitung. Verpflichtende Inhalte Hinweise Projektplanung mit Aufgabenzuteilung und Terminplanung Branchendefinition Festlegung der Marketingziele ÂVerweis auf Bildungsplan BWSK BPE 7.1 Festlegung der Zielgruppen und Marktsegmente ÂVerweis auf Bildungsplan BWSK BPE 7.3 Festlegung von idealen Kunden („Buyer Personas“) ÂVerweis auf BPE 12.1 Konkurrenzanalyse BPE 17.2 Die Schülerinnen und Schüler gestalten ihren Onlineshop mithilfe einer geeigneten Software. Sie dokumentieren ihre Entscheidungen in einer Dokumentation. Verpflichtende Inhalte Hinweise Layout des Onlineshops ÂVerweis auf BPE 4.1 Hinzufügen der Produkte: •Produktbeschreibung •Produktbild •Produktdetails •Preis •Lieferzeit",
+      "tags": [
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-040",
+      "page_start": 32,
+      "page_end": 32,
+      "text": "z . B . Verfügbarkeit, Materialien, Testsiegel Anpassen des Menüs und der Navigation Anpassen des Checkouts: •Bezahlmöglichkeiten •Versandmöglichkeiten ÂVerweis auf BPE 10.3",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-041",
+      "page_start": 33,
+      "page_end": 33,
+      "text": "31 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Bildungsplaneinheiten (BPE)BPE 17.3 Die Schülerinnen und Schüler entwerfen einen Marketingplan für ihren Shop und dokumentieren ihre Entscheidungen in ihrer Ausarbeitung. Verpflichtende Inhalte Hinweise Erstellung des Marketingplans mit geeigneten Online-Marketing-Maßnahmen ÂVerweis auf BPE 12.2 Planung der Zielgruppenansprache („Targeting“) ÂVerweis auf BPE 12.1 Berücksichtigung der Suchmaschinen- optimierung ÂVerweis auf BPE 12.4 Prüfung von Barrierefreiheit und Responsivem Design ÂVerweis auf BPE 4.3 BPE 17.4 Die Schülerinnen und Schüler präsentieren ihren Shop und ihre Ausarbeitung mit geeigneten Medien. Verpflichtende Inhalte Hinweise Fertigstellung der Ausarbeitung Erstellung der Präsentation Durchführung der Präsentation Übersicht Schuljahr 2 Stundenübersicht Zeiteinheiten Gesamtstunden BPE 210 Zeit zur Leistungsfeststellung und zur möglichen Vertiefung70",
+      "tags": [
+        "sql-order-by"
+      ]
+    },
+    {
+      "chunk_id": "chunk-042",
+      "page_start": 34,
+      "page_end": 34,
+      "text": "32 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 Operatorenliste4 Operatorenliste In den Zielformulierungen der Bildungsplaneinheiten werden Operatoren (= handlungsleitende Verben) verwendet . Diese Zielformulierungen legen fest, welche Anforderungen die Schülerinnen und Schüler in der Regel erfüllen . Zusammen mit der Zuordnung zu einem der drei Anforderungsbereiche (AFB; I: Reproduktion, II: Reorganisation, III: Transfer/Bewertung) dienen Operatoren einer Präzisierung der Zielformulierungen . Dies sichert das Erreichen des vorgesehenen Niveaus und die angemessene Interpretation der Standards . Anforderungsbereiche (AFB) •Anforderungsbereich I umfasst die Reproduktion und die Anwendung einfacher Sachverhalte und Fachmethoden, das Darstellen von Sachverhalten in vorgegebener Form sowie die Darstellung ein - facher Bezüge . •Anforderungsbereich II umfasst die Reorganisation und das Übertragen komplexerer Sachverhalte und Fachmethoden, die situationsgerechte Anwendung von technischen Kommunikationsformen, die Wiedergabe von Bewertungsansätzen sowie das Herstellen von Bezügen, um technische Pro blemstellungen entsprechend den allgemeinen Regeln der Technik zu lösen . •Anforderungsbereich III umfasst das problembezogene Anwenden und Übertragen komplexer Sachverhalte und Fachmethoden, die situationsgerechte Auswahl von Kommunikationsformen, das Herstellen von Bezügen und das Bewerten von Sachverhalten . Operator Erläuterung AFB ableiten auf der Grundlage vorhandener/bekannter Merkmale, Erkenntnisse bzw . Ergebnisse oder Daten sachgerechte eigene Schlussfolgerungen ziehenII abschätzen auf der Grundlage von begründeten Überlegungen Größen - ordnungen angebenII analysieren, untersuchenrelevante Sachverhalte, Phänomene, Bestandteile, Merkma - le oder Eigenschaften kriteriengeleitet herausarbeiten und ggf . ihre Beziehungen zueinander aufzeigen (vor allem im naturwissenschaftlichen Bereich ggf . auch mit praktischen/ experimentellen Anteilen) für das Fach Deutsch sowie Fremdsprachenunterricht: einen Text als Ganzes oder aspektorientiert unter Wahrung des funktionalen Zusammenhangs von Inhalt, Form und Sprache erschließen und das Ergebnis der Erschließung darlegenII angeben, benennen, nennenElemente, Regeln, Sachverhalte, Begriffe, Daten oder Fakten ohne Erläuterung und Wertung aufzählen bzw . ziel- gerichtet Informationen zusammentragen, ohne diese zu kommentierenI",
+      "tags": [
+        "begruendung",
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-043",
+      "page_start": 35,
+      "page_end": 35,
+      "text": "33 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB anleiten andere Personen schulen und befähigen, eine Handlung durchzuführenIII anwenden, übertrageneinen bekannten Inhalt, Zusammenhang, eine bekannte Methode oder Funktion/Anwendung zur Lösungsfindung bzw . Zielerreichung auf einen anderen, ggf . unbekannten Sachverhalt beziehen oder unter Berücksichtigung des Adressaten- und Situationsbezugs in eine andere Sprache umsetzenII, III argumentieren, diskutieren, erörternsich mit Argumenten zu einer Aussage bzw . Behauptung auseinandersetzen, sie einander gegenüberstellen und z . B . auf ein Für und Wider hin abwägen III aufbauen Objekte und Geräte zielgerichtet anordnen und kombinieren II aufeinander abstimmen, koordinierenverschiedene Abläufe, Tätigkeiten oder Ressourcen unter Berücksichtigung mehrerer Aspekte arrangierenIII aufstellen fachspezifische Formeln, Gleichungen, Gleichungssysteme, Reaktionsgleichungen oder Reaktionsmechanismen entwickelnII aufzeigen, zeigenSachverhalte, Prozesse, Gedankengänge, Positionen o . a . sachlich beschreiben und erläuternI, II ausdrücken, (sich) äußernIm Sprachunterricht Aussagen zu einem Thema machen und/oder Gedanken zum Ausdruck bringen; auch ungeordnet oder unvollständig I, II ausfüllen, vervollständigeneine Vorlage durch sachgerechte Angaben ergänzen I,II (sich) äußern siehe ausdrücken aussprechen Aussprache, Intonationsmuster von Wörtern und Sätzen umsetzenI (sich) austauschen sich im (fremdsprachigen) Gespräch gegenseitig Fragen stellen, Informationen geben und verstehenI, II auswerten Informationen (Daten, Einzelergebnisse, Beobachtungen o . a .) erfassen, in einen Zusammenhang stellen und daraus zielgerichtete Schlussfolgerungen ziehen oder zu einer abschließenden Gesamtaussage zusammenführenII, III begründen kausale/logische Zusammenhänge für einen Sachverhalt oder für Aussagen herstellen oder Sachverhalte/Aussagen mit Regeln, Gesetzmäßigkeiten bzw . weiteren nachvoll - ziehbaren Argumenten stützenII",
+      "tags": []
+    },
+    {
+      "chunk_id": "chunk-044",
+      "page_start": 36,
+      "page_end": 36,
+      "text": "34 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB belegen Aussagen durch Textstellen oder bekannte Sachverhalte stützenII bemaßen etwas mit Maßen versehen II benennen siehe angeben beraten eine Entscheidungsfindung fachkompetent und zielgruppen - gerecht unterstützenIII berechnen, rechnenErgebnisse aus gegebenen Werten/Daten durch Rechen - operationen oder grafische Lösungsmethoden gewinnenII beschreiben Beobachtungen, Strukturen, Situationen, Sachverhalte, Zusammenhänge, Prozesse, Methoden, Verfahren, Vorgänge oder Eigenschaften genau, sachlich, strukturiert und fachsprachlich richtig mit eigenen Worten schildern; dabei wird auf Erklärungen oder Wertungen verzichtetI, II bestimmen, ermittelneinen Zusammenhang oder eine Lösung je nach Vorgabe (z . B . rechnerisch, grafisch oder experimentell) finden und das Ergebnis formulierenI, II beurteilen, Stellung nehmenzu einem Sachverhalt, einer Aussage, einem Prozess oder einer literarischen Figur eine eigene, auf Fachwissen sowie fachlichen Methoden und Maßstäben begründete Position über deren Sinnhaftigkeit (= Sachurteil) vertreten III beweisen, nachweisen, überprüfen, prüfendie Gültigkeit, Schlüssigkeit, Richtigkeit, Akzeptabilität oder Berechtigung eines Sachverhalts oder einer Aussage durch ein Experiment, eine logische Herleitung oder sach - liche bzw . kriterienorientierte Argumentation belegen bzw . widerlegenIII bewerten, kritisch Stellung nehmenzu einem Sachverhalt oder einer Aussage eine eigene, auf gesellschaftlich oder persönliche Wertvorstellungen begründete Position über deren Annehmbarkeit (= Wert - urteil) vertreten III charakterisieren spezifische Eigenheiten von Sachverhalten, Vorgängen, Personen etc . herausstellenII darlegen, darstellenSachverhalte, Strukturen, Zusammenhänge, Methoden oder Ergebnisse etc . unter einer bestimmten Fragestellung in geeigneten Kommunikationsformaten strukturiert und ggf . fachsprachlich zum Ausdruck bringenI, II darstellen siehe darlegen definieren Wesentliches eines Begriffs so formulieren, dass er von anderen Begriffen möglichst eindeutig abgegrenzt wirdI",
+      "tags": [
+        "begruendung",
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-045",
+      "page_start": 37,
+      "page_end": 37,
+      "text": "35 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB deuten, interpretierenvor dem Hintergrund einer Aufgaben- oder Fragegestellung sowie damit einhergehender Annahmen und auf der Grund - lage einer beschreibenden Analyse Erklärungsmöglichkeiten für Zusammenhänge und Wirkungsweisen mit Blick auf ein schlüssiges Gesamtverständnis aufzeigenIII dimensionieren eine technische Einrichtung nach den Verfahren der jeweiligen Technikwissenschaft entsprechend der gestellten Anforderung bestimmenII, III diskutieren siehe argumentieren dokumentieren entscheidende Erklärungen, Herleitungen und Skizzen zu einem Sachverhalt bzw . Vorgang angeben und systema - tisch ordnenI, II durchführen etwas in der für das angestrebte Ergebnis erforderlichen Weise oder gemäß einer vorgegebenen oder eigenen Anleitung bzw . Anweisung vornehmenI, II einordnen, kategorisieren, ordnen, zuordnen, strukturierenBegriffe, Gegenstände usw . auf der Grundlage bestimmter Merkmale begründet und systematisch einteilen und ggf . mit entsprechenden Oberbegriffen versehen für geisteswissenschaftliche und informationstechnische Fächer auch: eine Aussage, einen Text, einen Sachverhalt unter Verwendung von Kontextwissen begründet in einen vorgegebenen Zusammenhang stellenII empfehlen, vorschlagenProdukte und Verhaltensweisen kunden- und situations- gerecht unterbreitenII entwerfen, entwickeln, gestaltenWissen und Methoden zielgerichtet und ggf . kreativ mit- einander verknüpfen, um eine eigenständige Antwort auf eine Annahme oder eine Lösung für eine Problemstellung zu erarbeiten oder weiterzuentwickelnIII entwickeln siehe entwerfen erklären Strukturen, Prozesse oder Zusammenhänge eines Sach- verhalts nachvollziehbar, verständlich und fachlich begründet zum Ausdruck bringen I, II erläutern Wesentliches von Materialien, Sachverhalten, Gegenständen, Vorgängen, Thesen oder Zusammenhängen mithilfe von anschaulichen Beispielen oder durch (zusätzliche) Informa - tionen verdeutlichen bzw . in einen Begründungszusammen - hang stellenII ermitteln siehe bestimmen",
+      "tags": [
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-046",
+      "page_start": 38,
+      "page_end": 38,
+      "text": "36 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB erörtern siehe argumentieren erschließen geforderte Informationen herausarbeiten oder Sachverhalte schlussfolgern, die nicht explizit in dem zugrunde liegen - den Material genannt werdenII Erstellen Sie den BuchungssatzAnmerkung: Da die Prüfungsteilnehmenden in einer Prüfungssituation nicht tatsächlich „buchen“, muss der Arbeitsauftrag so formuliert werden . erweitern eine vorgegebene Struktur, einen Kenntnisstand o .a . ggf . unter verschiedenen Gesichtspunkten vergrößernII, III erzählen mit einer narrativen Struktur Gehörtes, Gelesenes, Erlebtes, oder Erdachtes ausführenIII formatieren eine Software unter Berücksichtigung bestehender Konventionen oder Regeln (z . B . DIN 5008) korrekt anwendenII formulieren Gefordertes in Schrift, (Fach-)Sprache, Zeichen oder Symbolen präzise zum Ausdruck bringen Hinweis: in den Naturwissenschaften gleichbedeutend mit „aufstellen“I, II gegenüberstellen, unterscheiden, vergleichennach vorgegebenen oder selbst gewählten Gesichts- punkten problembezogen Gemeinsamkeiten, Ähnlichkeiten und Unterschiede ermittelnII herstellen Bilder, Modelle, Objekte, Produkte, Zubereitungen o . a . anfertigen für pharmazeutische Bereiche: nach anerkannten Regeln Zubereitungen aus Stoffen gewinnen, anfertigen, zubereiten, be- oder verarbeiten, umfüllen, abfüllen, abpacken und kennzeichnenII, III gestalten siehe entwerfen herleiten mithilfe bekannter Gesetzmäßigkeiten/Regeln einen Zusammenhang zwischen verschiedenen (z . B . chemischen bzw . physikalischen) Größen herstellenII identifizieren wesentliche, typische oder gefragte sprachliche oder inhaltliche Sachverhalte, Strukturen, Merkmale oder Intentionen erfassenI, II implementieren Strukturen und/oder Prozesse mit Blick auf gegebene Rahmenbedingungen, Zielanforderungen sowie etwaige Regeln in einem System umsetzenII, III",
+      "tags": [
+        "eerm",
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-047",
+      "page_start": 39,
+      "page_end": 39,
+      "text": "37 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB in Beziehung setzen Zusammenhänge unter vorgegebenen oder selbst gewählten Gesichtspunkten begründet herstellenII (jemanden) informierenfachliche Informationen zielgruppengerecht aufbereiten und strukturierenII interpretieren siehe deuten kategorisieren siehe einordnen kennzeichnen Markierungen, Symbole, Zeichen oder Etiketten anbringen, die geltenden Konventionen und/oder gesetzlichen Vorschriften entsprechenII konstruieren Form und Bau eines technischen Objektes durch Ausarbeitung des Entwurfs, durch technische Berechnungen, Überlegungen usw . maßgebend gestaltenII koordinieren siehe aufeinander abstimmen III kritisch Stellung nehmensiehe bewerten markieren bestimmte Sachverhalte, Objekte, Strukturen oder Ergebnisse in einem Text oder einer Abbildung hervorheben oder wie gefordert kenntlich machenI nachweisen siehe beweisen nennen siehe angeben optimieren einen gegebenen technischen Sachverhalt, einen Quell - code oder eine gegebene technische Einrichtung so verändern, dass die geforderten Kriterien unter einem bestimmten Aspekt erfüllt werdenII, III ordnen siehe einordnen planen die Schritte eines Arbeitsprozesses/Lösungsweges antizipieren und eine nachvollziehbare ergebnisorientierte Anordnung der Schritte vornehmenIII präsentieren Sachverhalte strukturiert, mediengestützt und adressaten - gerecht vortragenII, III prüfen siehe beweisen rechnen siehe berechnen skizzieren, verdeutlichenSachverhalte, Objekte, Strukturen, Prozesse oder Ergebnisse auf das Wesentliche reduzieren und unter einem leitenden Gesichtspunkt übersichtlich darstellen – je nach fachlicher Maßgabe ggf . grafischI",
+      "tags": [
+        "begruendung",
+        "eerm"
+      ]
+    },
+    {
+      "chunk_id": "chunk-048",
+      "page_start": 40,
+      "page_end": 40,
+      "text": "38 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB Stellung nehmen siehe beurteilen strukturieren siehe einordnen testen, validiereneinen dokumentierten Nachweis erbringen, dass ein bestimmter Prozess oder ein System kontinuierlich eine Funktionalität/Produkt erzeugt, das die zuvor definierten Spezifikationen und Qualitätsmerkmale erfülltI überprüfen siehe beweisen übersetzen einen Sachverhalt oder einzelne Wörter und Phrasen wortgetreu in einer anderen Sprache ausdrückenII übertragen siehe anwenden unterscheiden siehe gegenüberstellen untersuchen siehe analysieren validieren siehe testen verallgemeinern aus einer Einsicht eine Aussage formulieren, die für verschiedene Anwendungsbereiche Gültigkeit besitztII verdeutlichen siehe skizzieren verdrahten Betriebsmittel nach einem vorgegebenen Anschluss-/ Stromlaufplan systematisch elektrisch miteinander verbindenI, II verfassen einen Text unter Anwendung der erforderlichen Textsorten - merkmale oder gemäß anderer Vorgaben schreibenII, III vergleichen siehe gegenüberstellen (global, detailliert, selektiv) verstehen einem aus Lernendensicht fremdsprachigen Text – je nach Lese- oder Hörabsicht – Informationen entnehmen, die aus dem Textganzen, aus für das Textverständnis relevanten Details oder aus ausgewählten Einzeltextstellen hervor - gehenI,II vervollständigen siehe ausfüllen vorlesen etwas hörbar lesen I vorschlagen siehe empfehlen wiedergeben, zu - sammenfassenwesentliche Information und/oder deren Zusammenhänge sachbezogen, konzentriert sowie inhaltlich und sprachlich strukturiert mit eigenen Worten zum Ausdruck bringen I, II",
+      "tags": [
+        "sql-where"
+      ]
+    },
+    {
+      "chunk_id": "chunk-049",
+      "page_start": 41,
+      "page_end": 41,
+      "text": "39 Wirtschaftsinformatik Berufskolleg vom 13. März 2025, K.u.U. LPH 3/2025 OperatorenlisteOperator Erläuterung AFB zeichnen einen beobachtbaren oder gegebenen Sachverhalt mit grafischen Mitteln und ggf . unter Einhaltung von fachlichen Konventionen (z . B . Symbole, Perspektiven etc .) sowie Anforderungen an die Genauigkeit darstellenI, II zeigen siehe aufzeigen zuordnen siehe einordnen zusammenfassen siehe wiedergeben",
+      "tags": []
+    }
+  ]
+}

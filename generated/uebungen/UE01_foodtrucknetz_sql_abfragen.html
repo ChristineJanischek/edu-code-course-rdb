@@ -83,7 +83,7 @@
 <main class="wrap">
 
   <h1>Übungsblatt UE01 – SQL-Abfragen: FoodTruckNetz</h1>
-  <p class="subtitle">10 Aufgaben · Kontext: FoodTruckNetz (foodtrucknetzdb_2025) · Themen: JOIN, WHERE, AND/OR, ORDER BY, GROUP BY, HAVING, Aggregatfunktionen, Datumsfunktionen</p>
+  <p class="subtitle">14 Aufgaben · Kontext: FoodTruckNetz (foodtrucknetzdb_2025) · Themen: SELECT/FROM, JOIN/LEFT JOIN, WHERE, DISTINCT, AND/OR, ORDER BY, GROUP BY, HAVING, Aggregatfunktionen, Datumsfunktionen</p>
 
   <div class="nav">
     <a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">📖 Stichwortverzeichnis öffnen</a>
@@ -543,6 +543,152 @@ ORDER BY durchschnitt DESC;</pre></div>
       <p class="row-count">3 Zeilen (Urban Bites 6,10 &gt; 6 ✓)</p>
     </div>
   </div>
+
+  <!-- AUFGABE 11 -->
+  <div class="card exercise" id="a11">
+    <div class="ex-header">
+      <span class="ex-num">Aufgabe 11</span>
+      <span class="badge easy">★☆☆ Einfach</span>
+      <span class="topic-badge">SELECT · FROM · JOIN · ORDER BY</span>
+    </div>
+    <div class="task">
+      <strong>Truck-Stammdaten mit Standort</strong>
+      Gib alle Trucks mit zugehoerigem Standort aus.
+      Ausgabe: truck_id, truckname, status, standortname.
+      Sortiere alphabetisch nach Truckname.
+    </div>
+    <div class="hint">💡 Tipp: Starte mit <code>FROM trucks</code> und ergaenze dann den JOIN auf <code>standorte</code>.</div>
+    <p class="sql-label">Dein SQL-Entwurf:</p>
+    <textarea class="sql-input" placeholder="SELECT t.truck_id, t.truckname, t.status, s.standortname&#10;FROM trucks t&#10;JOIN standorte s ON s.standort_id = t.standort_id&#10;ORDER BY ..."></textarea>
+    <div class="btn-row">
+      <button class="reveal btn-sol" onclick="toggle('sol11')">✔ Musterlösung</button>
+      <button class="reveal btn-res" onclick="toggle('res11')">📋 Erwartetes Ergebnis</button>
+    </div>
+    <div id="sol11" class="sol-box hidden"><pre>SELECT t.truck_id, t.truckname, t.status, s.standortname
+FROM trucks t
+JOIN standorte s ON s.standort_id = t.standort_id
+ORDER BY t.truckname ASC;</pre></div>
+    <div id="res11" class="res-box hidden">
+      <table>
+        <tr><th>truck_id</th><th>truckname</th><th>status</th><th>standortname</th></tr>
+        <tr><td>11</td><td>Campus Curry</td><td>offen</td><td>Campuspark</td></tr>
+        <tr><td>12</td><td>Lake Tacos</td><td>offen</td><td>Seepromenade</td></tr>
+        <tr><td>10</td><td>Urban Bites</td><td>offen</td><td>Innenstadt</td></tr>
+      </table>
+      <p class="row-count">3 Zeilen</p>
+    </div>
+  </div>
+
+  <!-- AUFGABE 12 -->
+  <div class="card exercise" id="a12">
+    <div class="ex-header">
+      <span class="ex-num">Aufgabe 12</span>
+      <span class="badge easy">★☆☆ Einfach</span>
+      <span class="topic-badge">SELECT DISTINCT · WHERE · ORDER BY</span>
+    </div>
+    <div class="task">
+      <strong>Verwendete Zahlarten (ohne Duplikate)</strong>
+      Zeige alle Zahlarten, die bei <em>bezahlten</em> Zahlungen vorkommen, ohne Duplikate.
+      Ausgabe: zahlart.
+      Sortiere alphabetisch.
+    </div>
+    <div class="hint">💡 Tipp: Nutze <code>DISTINCT</code>, damit jede Zahlart nur einmal erscheint.</div>
+    <p class="sql-label">Dein SQL-Entwurf:</p>
+    <textarea class="sql-input" placeholder="SELECT DISTINCT zahlart&#10;FROM zahlungen&#10;WHERE status = 'bezahlt'&#10;ORDER BY zahlart ASC"></textarea>
+    <div class="btn-row">
+      <button class="reveal btn-sol" onclick="toggle('sol12')">✔ Musterlösung</button>
+      <button class="reveal btn-res" onclick="toggle('res12')">📋 Erwartetes Ergebnis</button>
+    </div>
+    <div id="sol12" class="sol-box hidden"><pre>SELECT DISTINCT zahlart
+FROM zahlungen
+WHERE status = 'bezahlt'
+ORDER BY zahlart ASC;</pre></div>
+    <div id="res12" class="res-box hidden">
+      <table>
+        <tr><th>zahlart</th></tr>
+        <tr><td>App</td></tr>
+        <tr><td>Bar</td></tr>
+        <tr><td>Karte</td></tr>
+      </table>
+      <p class="row-count">3 Zeilen</p>
+    </div>
+  </div>
+
+    <!-- AUFGABE 13 -->
+    <div class="card exercise" id="a13">
+      <div class="ex-header">
+        <span class="ex-num">Aufgabe 13</span>
+        <span class="badge med">★★☆ Mittel</span>
+        <span class="topic-badge">LEFT JOIN · IS NULL · ORDER BY</span>
+      </div>
+      <div class="task">
+        <strong>Kunden ohne Bestellung</strong>
+        Zeige alle aktiven Kunden, die noch keine Bestellung im System haben.
+        Ausgabe: kunde_id, vorname, nachname, bonuslevel.
+        Sortiere nach Nachname, dann Vorname.
+      </div>
+      <div class="hint">💡 Tipp: Bei LEFT JOIN stehen fehlende Treffer auf der rechten Seite als <code>NULL</code>. Genau darauf filterst du.</div>
+      <p class="sql-label">Dein SQL-Entwurf:</p>
+      <textarea class="sql-input" placeholder="SELECT k.kunde_id, k.vorname, k.nachname, k.bonuslevel&#10;FROM kunden k&#10;LEFT JOIN bestellungen b ON b.kunde_id = k.kunde_id&#10;WHERE k.aktiv = 1 AND b.bestellung_id IS NULL&#10;ORDER BY ..."></textarea>
+      <div class="btn-row">
+        <button class="reveal btn-sol" onclick="toggle('sol13')">✔ Musterlösung</button>
+        <button class="reveal btn-res" onclick="toggle('res13')">📋 Erwartetes Ergebnis</button>
+      </div>
+      <div id="sol13" class="sol-box hidden"><pre>SELECT k.kunde_id, k.vorname, k.nachname, k.bonuslevel
+  FROM kunden k
+  LEFT JOIN bestellungen b ON b.kunde_id = k.kunde_id
+  WHERE k.aktiv = 1
+    AND b.bestellung_id IS NULL
+  ORDER BY k.nachname ASC, k.vorname ASC;</pre></div>
+      <div id="res13" class="res-box hidden">
+        <table>
+          <tr><th>kunde_id</th><th>vorname</th><th>nachname</th><th>bonuslevel</th></tr>
+          <tr><td>8</td><td>Uma</td><td>Dietz</td><td>Bronze</td></tr>
+          <tr><td>3</td><td>Lea</td><td>Jung</td><td>Bronze</td></tr>
+        </table>
+        <p class="row-count">2 Zeilen</p>
+      </div>
+    </div>
+
+    <!-- AUFGABE 14 -->
+    <div class="card exercise" id="a14">
+      <div class="ex-header">
+        <span class="ex-num">Aufgabe 14</span>
+        <span class="badge hard">★★★ Anspruchsvoll</span>
+        <span class="topic-badge">LEFT JOIN · GROUP BY · COUNT(*) · COUNT(spalte)</span>
+      </div>
+      <div class="task">
+        <strong>NULL-Effekt bei COUNT vergleichen</strong>
+        Ermittle fuer aktive Kunden ohne Bestellung den Unterschied zwischen <code>COUNT(*)</code> und <code>COUNT(b.bestellung_id)</code>.
+        Ausgabe: kunde_id, nachname, zeilen_count, bestellungs_count.
+        Sortiere nach Nachname.
+      </div>
+      <div class="hint">💡 Tipp: Bei LEFT JOIN ohne Treffer entsteht trotzdem eine Zeile. Deshalb ist <code>COUNT(*)</code> oft groesser als <code>COUNT(rechte_spalte)</code>.</div>
+      <p class="sql-label">Dein SQL-Entwurf:</p>
+      <textarea class="sql-input" placeholder="SELECT k.kunde_id, k.nachname, COUNT(*) AS zeilen_count, COUNT(b.bestellung_id) AS bestellungs_count&#10;FROM kunden k&#10;LEFT JOIN bestellungen b ON b.kunde_id = k.kunde_id&#10;WHERE k.aktiv = 1 AND b.bestellung_id IS NULL&#10;GROUP BY ...&#10;ORDER BY ..."></textarea>
+      <div class="btn-row">
+        <button class="reveal btn-sol" onclick="toggle('sol14')">✔ Musterlösung</button>
+        <button class="reveal btn-res" onclick="toggle('res14')">📋 Erwartetes Ergebnis</button>
+      </div>
+      <div id="sol14" class="sol-box hidden"><pre>SELECT k.kunde_id,
+         k.nachname,
+         COUNT(*) AS zeilen_count,
+         COUNT(b.bestellung_id) AS bestellungs_count
+  FROM kunden k
+  LEFT JOIN bestellungen b ON b.kunde_id = k.kunde_id
+  WHERE k.aktiv = 1
+    AND b.bestellung_id IS NULL
+  GROUP BY k.kunde_id, k.nachname
+  ORDER BY k.nachname ASC;</pre></div>
+      <div id="res14" class="res-box hidden">
+        <table>
+          <tr><th>kunde_id</th><th>nachname</th><th>zeilen_count</th><th>bestellungs_count</th></tr>
+          <tr><td>8</td><td>Dietz</td><td>1</td><td>0</td></tr>
+          <tr><td>3</td><td>Jung</td><td>1</td><td>0</td></tr>
+        </table>
+        <p class="row-count">2 Zeilen</p>
+      </div>
+    </div>
 
 </main>
 

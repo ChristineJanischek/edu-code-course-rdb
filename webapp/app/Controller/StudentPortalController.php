@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/../Repository/KeywordIndexRepository.php';
+
 final class StudentPortalController
 {
     private LearningContentRepository $repository;
@@ -165,22 +167,6 @@ final class StudentPortalController
      */
     private function indexLinks(): array
     {
-        return [
-            [
-                'topic' => 'Modellierung',
-                'title' => 'EERM und Grundbegriffe',
-                'href' => '/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html',
-            ],
-            [
-                'topic' => 'Normalisierung',
-                'title' => '3NF und Abhaengigkeiten',
-                'href' => '/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html',
-            ],
-            [
-                'topic' => 'SQL',
-                'title' => 'SQL-Klausel-Kompass',
-                'href' => '/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html',
-            ],
-        ];
+        return (new KeywordIndexRepository())->findAll();
     }
 }

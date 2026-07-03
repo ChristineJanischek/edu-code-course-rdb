@@ -463,6 +463,23 @@ ol {
 .keyword-source {
   margin-top: 0.85rem;
   font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.keyword-sources {
+  margin: 0.25rem 0 0 1rem;
+  padding: 0;
+  list-style: disc;
+  font-size: 0.85rem;
+}
+
+.keyword-sources li {
+  margin-bottom: 0.2rem;
+}
+
+.keyword-sources a {
+  color: var(--link);
+  text-decoration: underline;
 }
 
 .submission-card {

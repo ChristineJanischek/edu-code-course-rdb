@@ -116,16 +116,16 @@ Jeder Chunk erhält strukturierte Tags, zum Beispiel:
 - `normalisierung`
 - `3nf`
 - `sql-select`
+- `sql-from`
 - `sql-join`
+- `sql-where`
 - `sql-group-by`
+- `sql-having`
+- `sql-order-by`
 - `begruendung`
 - `pruefungsvorbereitung`
--__PROTECT`normalisierung`# Schr__PROTEC`sql-select`e`sql-join`_PROTECT_13__
 
-A`begruendung`:
-`pruefungsvorbereitung`enerierte Kl`modellkritik`- SQL-Dumps und MWB-Modelle
-- Handbuch-Vorlagen
-- bestehende Musterlösungen
+Achte darauf, dass die Tags konsistent mit der Stichwortsuche und den LLM-Hinweiskarten gepflegt werden.
 
 ## Schritt 5: Lückenanalyse
 

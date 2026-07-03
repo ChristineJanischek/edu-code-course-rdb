@@ -108,8 +108,7 @@ def assistant_keyword_search_route(dual_response, dual_error):
                 "syntax": item.syntax,
                 "example_sql": item.example_sql,
                 "example_view": item.example_view,
-                "source_label": item.source_label,
-                "source_url": item.source_url,
+                "related_sources": item.related_sources,
             }
             for item in response_dto.insights
         ],

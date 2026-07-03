@@ -20,8 +20,12 @@ TAG_RULES = {
     "eerm": ["entity relationship", "erm", "eer", "eerm", "entitaet", "beziehung", "kardinal"],
     "normalisierung": ["normalform", "normalisierung", "1. normalform", "2. normalform", "3. normalform", "3nf"],
     "sql-select": ["select", "projektion", "selektion", "abfrage"],
-    "sql-join": ["join", "verbund", "verknuepf", "fremdschluessel"],
+    "sql-from": ["from", "basistabelle", "quelltabelle", "datenquelle"],
+    "sql-join": ["join", "left join", "left outer join", "verbund", "verknuepf", "fremdschluessel"],
+    "sql-where": ["where", "filter", "bedingung", "vergleich", "like"],
     "sql-group-by": ["group by", "aggregation", "summe", "anzahl", "mittelwert"],
+    "sql-having": ["having", "gruppenfilter", "aggregatbedingung"],
+    "sql-order-by": ["order by", "sortierung", "aufsteigend", "absteigend", "asc", "desc"],
     "sql-ddl": ["create table", "alter table", "ddl", "schema"],
     "sql-dml": ["insert", "update", "delete", "dml"],
     "begruendung": ["begruenden", "begruendung", "erlaeutern", "bewerten"],
@@ -84,10 +88,20 @@ def paragraph_units(pages: Iterable[str]) -> list[tuple[int, str]]:
 
 def infer_tags(text: str) -> list[str]:
     lowered = text.lower()
-    tags = [tag for tag, keywords in TAG_RULES.items() if any(keyword in lowered for keyword in keywords)]
+    tags = {tag for tag, keywords in TAG_RULES.items() if any(keyword in lowered for keyword in keywords)}
+
+    # SQL-Klauseln didaktisch konsistent zusammenfassen.
+    # SELECT-Kompetenzen implizieren immer die FROM-Komponente.
+    if "sql-select" in tags:
+        tags.add("sql-from")
+
+    # GROUP BY wird in der Praxis mit HAVING-Logik trainiert (Gruppenfilter).
+    if "sql-group-by" in tags:
+        tags.add("sql-having")
+
     if "datenbank" in lowered and "relational" in lowered and "normalisierung" not in tags:
-        tags.append("relationale-datenbanken")
-    return sorted(set(tags))
+        tags.add("relationale-datenbanken")
+    return sorted(tags)
 
 
 def build_chunks(units: list[tuple[int, str]], max_chars: int = 900) -> list[CurriculumChunk]:
