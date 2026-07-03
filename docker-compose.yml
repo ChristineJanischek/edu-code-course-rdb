@@ -59,6 +59,7 @@ services:
       SUBMISSION_API_KEY: ${SUBMISSION_API_KEY:?SUBMISSION_API_KEY must be set}
       PYTHON_API_URL: ${PYTHON_API_URL:-/api-proxy.php}
       PYTHON_API_INTERNAL_URL: ${PYTHON_API_INTERNAL_URL:-http://python-api:8000}
+      GENERATED_BASE_PATH: /var/www/html/generated
     ports:
       - "${PHP_WEB_PORT:-8080}:80"
     depends_on:

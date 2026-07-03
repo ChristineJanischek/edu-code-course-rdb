@@ -246,6 +246,12 @@ Dieses Repository wird auch als Template für Student-Repositories verwendet. Da
 - Der Workflow `.github/workflows/template-sync-pr.yml` prüft regelmäßig das Upstream-Repository.
 - Bei konfliktfreien Änderungen wird direkt auf `main` gepusht; wenn Branch-Schutzregeln das verhindern, wird automatisch ein Pull Request erstellt.
 
+### 6.5 Auslieferung generierter Inhalte
+
+- Die Web-App liest Übungen, Klassenarbeiten und Hilfsmittel aus der gemeinsamen `generated/`-Quelle.
+- Im Container wird der Pfad explizit über `GENERATED_BASE_PATH=/var/www/html/generated` gesetzt.
+- Die Portal-Initialisierung prüft zur Laufzeit mehrere sinnvolle Basispfade, damit lokale Entwicklung und Containerbetrieb identisch funktionieren.
+
 ---
 
 ## 7. Performance & Skalierbarkeit

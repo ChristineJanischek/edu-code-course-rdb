@@ -13,8 +13,36 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' data:; style
 $pythonApiUrl = getenv('PYTHON_API_URL') ?: '/api-proxy.php';
 $submissionApiBaseUrl = '/api-proxy.php';
 
+function resolveGeneratedBasePath(): string
+{
+  $candidates = [];
+
+  $configuredPath = getenv('GENERATED_BASE_PATH');
+  if (is_string($configuredPath) && trim($configuredPath) !== '') {
+    $candidates[] = trim($configuredPath);
+  }
+
+  $documentRoot = $_SERVER['DOCUMENT_ROOT'] ?? '';
+  if (is_string($documentRoot) && trim($documentRoot) !== '') {
+    $candidates[] = rtrim(trim($documentRoot), '/\\') . '/generated';
+  }
+
+  $scriptDir = __DIR__;
+  $candidates[] = $scriptDir . '/generated';
+  $candidates[] = dirname($scriptDir, 2) . '/generated';
+
+  foreach ($candidates as $candidate) {
+    if (is_string($candidate) && $candidate !== '' && is_dir($candidate)) {
+      return $candidate;
+    }
+  }
+
+  return $candidates[0] ?? ($scriptDir . '/generated');
+}
+
 $contentRepository = new LearningContentRepository(__DIR__ . '/data/learning-content.json');
-$studentPortalController = new StudentPortalController($contentRepository, __DIR__ . '/generated');
+$generatedBasePath = resolveGeneratedBasePath();
+$studentPortalController = new StudentPortalController($contentRepository, $generatedBasePath);
 $viewModel = $studentPortalController->buildViewModel();
 
 /**
