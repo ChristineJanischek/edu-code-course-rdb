@@ -215,8 +215,12 @@ $viewModel['indexLinks'] = $indexLinks;
                 <article class="card">
                   <p class="eyebrow" id="currentCourseName">Kurs: RDB</p>
                   <h2 id="currentTaskTitle"><?php echo htmlspecialchars($initialTaskTitle, ENT_QUOTES, 'UTF-8'); ?></h2>
-                  <p id="currentTaskDescription"><?php echo htmlspecialchars($initialTaskDescription, ENT_QUOTES, 'UTF-8'); ?></p>
-                  <p class="muted" id="currentTaskTopic">Thema: -</p>
+                  <p class="task-meta" id="currentTaskTopic">★☆☆ Einfach · WHERE · OR · ORDER BY</p>
+                  <div id="currentTaskDescription" class="task-description-rich"><?php echo htmlspecialchars($initialTaskDescription, ENT_QUOTES, 'UTF-8'); ?></div>
+                  <div class="hint-panel" id="currentTaskHintPanel">
+                    <strong>💡 Tipp</strong>
+                    <p id="currentTaskHint">Nutze den Modulmodus und bearbeite die Aufgaben der Reihe nach.</p>
+                  </div>
                   <p class="muted" id="currentModulePosition">Modul 0 von 0</p>
                   <div class="module-switcher">
                     <label for="moduleSelect" class="field-label">Modul auswählen</label>
@@ -291,18 +295,10 @@ $viewModel['indexLinks'] = $indexLinks;
               <?php foreach ($courseFiles as $index => $fileName): ?>
                 <section class="workspace-panel<?php echo $index === 0 ? ' is-active' : ''; ?>" id="panel-right-editor-<?php echo $index; ?>" role="tabpanel" aria-labelledby="tab-right-editor-<?php echo $index; ?>"<?php echo $index === 0 ? '' : ' hidden'; ?>>
                   <article class="card editor-card">
-                    <h3>SQL-Editor</h3>
+                    <h3 id="currentSqlEditorHeading">SQL-Editor</h3>
                     <p class="muted">Datei: <?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?></p>
-                    <label for="practiceEditor-<?php echo $index; ?>" class="field-label">Code-In Box</label>
+                    <label for="practiceEditor-<?php echo $index; ?>" class="field-label" id="currentSqlDraftLabel">Dein SQL-Entwurf:</label>
                     <textarea id="practiceEditor-<?php echo $index; ?>" class="practice-editor js-course-editor" data-editor-file="<?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?>" rows="14" placeholder="Schreibe hier deinen Entwurf für <?php echo htmlspecialchars($fileName, ENT_QUOTES, 'UTF-8'); ?>."></textarea>
-                    <?php if ($index === 0): ?>
-                      <div class="info-box feedback-box" id="sqlTestLogBox" data-state="warning" aria-live="polite">
-                        <strong>SQL-Testprotokoll</strong>
-                        <p id="sqlTestLog">Noch kein Test gestartet.</p>
-                        <p id="sqlTestHint" class="muted">Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.</p>
-                      </div>
-                      <div id="sqlResultGrid" class="sql-result-grid" hidden></div>
-                    <?php endif; ?>
                   </article>
                 </section>
               <?php endforeach; ?>
@@ -356,13 +352,39 @@ $viewModel['indexLinks'] = $indexLinks;
 
       <footer class="app-footer" id="course-footer">
         <div class="footer-inner">
-          <div class="footer-actions" aria-label="Kursaktionen">
-            <a href="#" data-course-action="back">zurück</a>
-            <a href="#" data-course-action="next">weiter</a>
-            <a href="#" data-course-action="test">testen</a>
-            <a href="#" data-course-action="save">speichern</a>
+          <div class="sql-assistant-shell" aria-label="SQL-Assistent">
+            <div class="sql-assistant-head">
+              <h3>SQL-Assistent</h3>
+              <p id="workflowStatus" class="sql-assistant-note" aria-live="polite">Tippe eine Abfrage ein und starte den Test.</p>
+            </div>
+            <div class="footer-actions" aria-label="Kursaktionen">
+              <button type="button" data-course-action="test">Abfrage testen (Ergebnis)</button>
+              <button type="button" data-course-action="next">Naechster Schritt</button>
+              <button type="button" data-course-action="hint">i Lernhilfe</button>
+            </div>
+            <div class="footer-actions footer-actions-secondary" aria-label="Assistent-Ausgaben">
+              <button type="button" data-assistant-action="solution">✔ Musterlösung</button>
+              <button type="button" data-assistant-action="expected">📋 Erwartetes Ergebnis</button>
+            </div>
+            <div class="info-box feedback-box" id="sqlTestLogBox" data-state="warning" aria-live="polite">
+              <strong>SQL-Testprotokoll</strong>
+              <p id="sqlTestLog">Noch kein Test gestartet.</p>
+              <p id="sqlTestHint" class="muted">Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.</p>
+            </div>
+            <div id="assistantHintBox" class="hint-panel" hidden>
+              <strong>💡 Lernhilfe</strong>
+              <p id="assistantHintText">Keine Lernhilfe verfügbar.</p>
+            </div>
+            <div id="assistantSolutionBox" class="sol-box" hidden>
+              <strong>Musterlösung</strong>
+              <pre id="assistantSolutionSql"></pre>
+            </div>
+            <div id="assistantExpectedBox" class="res-box" hidden>
+              <strong>Erwartetes Ergebnis</strong>
+              <div id="assistantExpectedContent"></div>
+            </div>
+            <div id="sqlResultGrid" class="sql-result-grid" hidden></div>
           </div>
-          <p class="footer-status" id="workflowStatus" aria-live="polite">Lernpfad bereit.</p>
         </div>
       </footer>
     </div>
@@ -372,7 +394,6 @@ $viewModel['indexLinks'] = $indexLinks;
       window.SUBMISSION_API_BASE_URL = <?php echo json_encode($submissionApiBaseUrl, JSON_UNESCAPED_SLASHES); ?>;
       window.LEARNING_CONTENT = <?php echo json_encode($viewModel, JSON_UNESCAPED_SLASHES); ?>;
     </script>
-    <script type="module" src="js/module-switcher.mjs"></script>
     <script src="app.js" defer></script>
   </body>
 </html>

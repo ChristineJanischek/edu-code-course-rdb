@@ -2,9 +2,24 @@ import { ApiClient } from "../api-client.mjs";
 import { sanitizeStudentFacingMessage, withRetry } from "../error-handler.mjs";
 
 const COURSE_NAME = "Kurs: RDB";
-const MODULE_DATASET_KEY = "foodtrucknetz_uebung";
-const MODULE_EERM_IMAGE = "/generated/klassenarbeiten/foodtrucknetz_2025.png";
-const STORAGE_KEY = "rdb-foodtruck-guided-workflow-v1";
+const MODULE_CONFIGS = [
+  {
+    slug: "UE01_foodtrucknetz_sql_abfragen.html",
+    datasetKey: "foodtrucknetz_uebung",
+    eermImage: "/generated/klassenarbeiten/foodtrucknetz_2025.png",
+    eermAlt: "EERM FoodTruckNetz",
+    storageKey: "rdb-guided-workflow-ue01-v2",
+    moduleTitle: "SQL Abfragen Foodtrucknetz DB",
+  },
+  {
+    slug: "UE02_stadtfahrradverleih_sql_abfragen.html",
+    datasetKey: "stadtfahrradverleih_uebung",
+    eermImage: "/generated/klassenarbeiten/stadtfahrradverleih_2025.png",
+    eermAlt: "EERM Stadtfahrradverleih",
+    storageKey: "rdb-guided-workflow-ue02-v2",
+    moduleTitle: "SQL Abfragen Stadtfahrradverleih DB",
+  },
+];
 
 function escapeHtml(value) {
   return String(value || "")
@@ -19,9 +34,19 @@ function compactText(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
 }
 
+function normalizeHref(value) {
+  return String(value || "").trim();
+}
+
+function configForHref(moduleHref) {
+  const href = normalizeHref(moduleHref);
+  return MODULE_CONFIGS.find((entry) => href.includes(entry.slug)) || MODULE_CONFIGS[0];
+}
+
 class SqlLearningStateStore {
-  constructor(totalTasks) {
+  constructor(totalTasks, storageKey) {
     this.totalTasks = Math.max(0, Number(totalTasks) || 0);
+    this.storageKey = String(storageKey || "rdb-guided-workflow-v2");
     this.state = this.load();
   }
 
@@ -37,7 +62,7 @@ class SqlLearningStateStore {
     };
 
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
+      const raw = window.localStorage.getItem(this.storageKey);
       if (!raw) {
         return fallback;
       }
@@ -62,7 +87,12 @@ class SqlLearningStateStore {
 
   save() {
     this.state.lastUpdatedAt = new Date().toISOString();
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
+    window.localStorage.setItem(this.storageKey, JSON.stringify(this.state));
+  }
+
+  resetToStart() {
+    this.state.currentTaskIndex = 0;
+    this.save();
   }
 
   getCurrentTaskIndex() {
@@ -148,7 +178,7 @@ class SqlLearningStateStore {
   }
 }
 
-class FoodtruckModuleRepository {
+class ModuleRepository {
   async load(moduleHref) {
     const response = await fetch(moduleHref, { credentials: "same-origin" });
     if (!response.ok) {
@@ -157,55 +187,66 @@ class FoodtruckModuleRepository {
 
     const html = await response.text();
     const doc = new DOMParser().parseFromString(html, "text/html");
-    const tasks = this.parseTasks(doc);
 
     return {
-      tasks,
+      moduleTitle: compactText(doc.querySelector("h1")?.textContent || ""),
+      moduleSubtitle: compactText(doc.querySelector(".subtitle")?.textContent || ""),
+      tasks: this.parseTasks(doc),
       info: this.parseInfo(doc),
     };
   }
 
   parseTasks(doc) {
     const cards = Array.from(doc.querySelectorAll(".card.exercise"));
-    return cards
-      .map((card, index) => {
-        const id = card.id || `a${index + 1}`;
-        const heading = compactText(card.querySelector(".task strong")?.textContent || `Aufgabe ${index + 1}`);
 
-        const taskClone = card.querySelector(".task")?.cloneNode(true);
-        if (taskClone) {
-          const strong = taskClone.querySelector("strong");
-          if (strong) {
-            strong.remove();
-          }
+    return cards.map((card, index) => {
+      const id = card.id || `a${index + 1}`;
+      const heading = compactText(card.querySelector(".task strong")?.textContent || `Aufgabe ${index + 1}`);
+      const difficulty = compactText(card.querySelector(".ex-header .badge")?.textContent || "");
+      const topic = compactText(card.querySelector(".topic-badge")?.textContent || "");
+
+      const taskClone = card.querySelector(".task")?.cloneNode(true);
+      if (taskClone) {
+        const strong = taskClone.querySelector("strong");
+        if (strong) {
+          strong.remove();
         }
+      }
 
-        const description = compactText(taskClone?.textContent || "");
-        const hint = compactText(card.querySelector(".hint")?.textContent || "");
-        const topic = compactText(card.querySelector(".topic-badge")?.textContent || "");
-        const solutionSql = String(card.querySelector(`.sol-box pre`)?.textContent || "").trim();
+      const hintNode = card.querySelector(".hint");
+      const hintHtml = String(hintNode?.innerHTML || "").trim();
+      const solutionSql = String(card.querySelector(".sol-box pre")?.textContent || "").trim();
+      const expectedResultHtml = String(card.querySelector(".res-box")?.innerHTML || "").trim();
+      const editorPlaceholder = String(card.querySelector("textarea.sql-input")?.getAttribute("placeholder") || "");
 
-        return {
-          id,
-          number: index + 1,
-          title: heading,
-          description,
-          hint,
-          topic,
-          solutionSql,
-        };
-      })
-      .filter((task) => task.solutionSql);
+      return {
+        id,
+        number: index + 1,
+        title: heading,
+        difficulty,
+        topic,
+        descriptionHtml: String(taskClone?.innerHTML || "").trim(),
+        hintHtml,
+        solutionSql,
+        expectedResultHtml,
+        editorPlaceholder,
+      };
+    }).filter((task) => task.solutionSql);
   }
 
   parseInfo(doc) {
     const schemaHeading = Array.from(doc.querySelectorAll("h3")).find((node) => compactText(node.textContent).toLowerCase().includes("schema-kurzreferenz"));
     const schemaCard = schemaHeading ? schemaHeading.closest(".card") : null;
-    const schemaItems = Array.from(schemaCard?.querySelectorAll(".schema-table") || []).slice(0, 6).map((item) => {
+    const schemaItems = Array.from(schemaCard?.querySelectorAll(".schema-table") || []).slice(0, 8).map((item) => {
       const title = compactText(item.querySelector("strong")?.textContent || "Tabelle");
       const body = compactText(item.querySelector("code")?.textContent || "");
       return { title, body };
     });
+
+    const links = Array.from(doc.querySelectorAll(".nav a")).slice(0, 3).map((link) => ({
+      title: compactText(link.textContent || "Link"),
+      href: String(link.getAttribute("href") || "#"),
+    }));
 
     return {
       schemaItems,
@@ -215,10 +256,7 @@ class FoodtruckModuleRepository {
         "Filter auf Zeilen gehoeren in WHERE, Filter auf Gruppen in HAVING.",
         "Bei LEFT JOIN mit IS NULL pruefst du fehlende Treffer auf der rechten Seite.",
       ],
-      links: [
-        { title: "UE01 FoodTruckNetz (komplettes Modul)", href: "/generated/uebungen/UE01_foodtrucknetz_sql_abfragen.html" },
-        { title: "Stichwortverzeichnis RDB", href: "/generated/informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html" },
-      ],
+      links,
     };
   }
 }
@@ -229,6 +267,8 @@ class SqlLearningView {
     this.taskTitle = options.taskTitle;
     this.taskDescription = options.taskDescription;
     this.taskTopic = options.taskTopic;
+    this.taskHintPanel = options.taskHintPanel;
+    this.taskHint = options.taskHint;
     this.taskLink = options.taskLink;
     this.moduleSelect = options.moduleSelect;
     this.moduleOpenLink = options.moduleOpenLink;
@@ -237,33 +277,70 @@ class SqlLearningView {
     this.infoContent = options.infoContent;
     this.footerStatus = options.footerStatus;
     this.editor = options.editor;
+    this.editorHeading = options.editorHeading;
+    this.editorLabel = options.editorLabel;
     this.logBox = options.logBox;
     this.logText = options.logText;
     this.logHint = options.logHint;
     this.resultGrid = options.resultGrid;
     this.modelerCanvas = options.modelerCanvas;
+    this.assistantHintBox = options.assistantHintBox;
+    this.assistantHintText = options.assistantHintText;
+    this.assistantSolutionBox = options.assistantSolutionBox;
+    this.assistantSolutionSql = options.assistantSolutionSql;
+    this.assistantExpectedBox = options.assistantExpectedBox;
+    this.assistantExpectedContent = options.assistantExpectedContent;
   }
 
   renderTask(task, totalTasks, attemptCount, solved, moduleHref) {
     if (this.courseName) {
       this.courseName.textContent = COURSE_NAME;
     }
+
     if (this.taskTitle) {
       this.taskTitle.textContent = `Aufgabe ${task.number}: ${task.title}`;
     }
-    if (this.taskDescription) {
-      this.taskDescription.textContent = task.description;
-    }
+
     if (this.taskTopic) {
-      const solvedBadge = solved ? " | Status: geloest" : " | Status: offen";
-      this.taskTopic.textContent = `Thema: ${task.topic || "SQL"} | Testversuche: ${attemptCount}${solvedBadge}`;
+      const parts = [task.difficulty, task.topic].filter(Boolean);
+      const solvedBadge = solved ? "Status: geloest" : "Status: offen";
+      const attemptBadge = `Testversuche: ${attemptCount}`;
+      this.taskTopic.textContent = [...parts, attemptBadge, solvedBadge].join(" | ");
     }
+
+    if (this.taskDescription) {
+      this.taskDescription.innerHTML = task.descriptionHtml || "";
+    }
+
+    if (this.taskHintPanel && this.taskHint) {
+      if (task.hintHtml) {
+        this.taskHintPanel.hidden = false;
+        this.taskHint.innerHTML = task.hintHtml;
+      } else {
+        this.taskHintPanel.hidden = true;
+        this.taskHint.textContent = "";
+      }
+    }
+
     if (this.modulePosition) {
       this.modulePosition.textContent = `Aufgabe ${task.number} von ${totalTasks}`;
     }
+
     if (this.taskLink) {
       this.taskLink.href = `${moduleHref}#${task.id}`;
       this.taskLink.textContent = "Aktueller Arbeitsstand öffnen";
+    }
+
+    if (this.editorHeading) {
+      this.editorHeading.textContent = `SQL-Editor | Aufgabe ${task.number}`;
+    }
+
+    if (this.editorLabel) {
+      this.editorLabel.textContent = "Dein SQL-Entwurf:";
+    }
+
+    if (this.editor) {
+      this.editor.placeholder = task.editorPlaceholder || "SELECT ...\nFROM ...\nWHERE ...";
     }
   }
 
@@ -305,14 +382,14 @@ class SqlLearningView {
     `;
   }
 
-  renderModeler(imageHref) {
+  renderModeler(imageHref, imageAltText) {
     if (!this.modelerCanvas) {
       return;
     }
 
     this.modelerCanvas.innerHTML = `
-      <img src="${escapeHtml(imageHref)}" alt="EERM FoodTruckNetz" loading="lazy">
-      <p class="muted">EERM FoodTruckNetz fuer Aufgabe und Information.</p>
+      <img src="${escapeHtml(imageHref)}" alt="${escapeHtml(imageAltText)}" loading="lazy">
+      <p class="muted">${escapeHtml(imageAltText)} fuer Aufgabe und Information.</p>
     `;
   }
 
@@ -362,6 +439,54 @@ class SqlLearningView {
     this.resultGrid.innerHTML = "";
   }
 
+  resetAssistantPanels() {
+    if (this.assistantHintBox) {
+      this.assistantHintBox.hidden = true;
+    }
+    if (this.assistantSolutionBox) {
+      this.assistantSolutionBox.hidden = true;
+    }
+    if (this.assistantExpectedBox) {
+      this.assistantExpectedBox.hidden = true;
+    }
+  }
+
+  toggleHint(hintHtml) {
+    if (!this.assistantHintBox || !this.assistantHintText) {
+      return;
+    }
+
+    const willShow = this.assistantHintBox.hidden;
+    this.assistantHintBox.hidden = !willShow;
+    if (willShow) {
+      this.assistantHintText.innerHTML = hintHtml || "Keine Lernhilfe verfuegbar.";
+    }
+  }
+
+  toggleSolution(solutionSql) {
+    if (!this.assistantSolutionBox || !this.assistantSolutionSql) {
+      return;
+    }
+
+    const willShow = this.assistantSolutionBox.hidden;
+    this.assistantSolutionBox.hidden = !willShow;
+    if (willShow) {
+      this.assistantSolutionSql.textContent = solutionSql || "Keine Musterloesung verfuegbar.";
+    }
+  }
+
+  toggleExpected(expectedResultHtml) {
+    if (!this.assistantExpectedBox || !this.assistantExpectedContent) {
+      return;
+    }
+
+    const willShow = this.assistantExpectedBox.hidden;
+    this.assistantExpectedBox.hidden = !willShow;
+    if (willShow) {
+      this.assistantExpectedContent.innerHTML = expectedResultHtml || "<p class=\"muted\">Kein erwartetes Ergebnis hinterlegt.</p>";
+    }
+  }
+
   renderSummary(summary) {
     if (!this.infoText || !this.infoContent) {
       return;
@@ -407,6 +532,7 @@ class CourseWorkflowController {
   constructor(options = {}) {
     this.exerciseLinks = Array.isArray(options.exerciseLinks) ? options.exerciseLinks : [];
     this.actionLinks = options.actionLinks || [];
+    this.assistantActionLinks = options.assistantActionLinks || [];
     this.editor = options.editor;
     this.exportButton = options.exportButton;
     this.exportPreview = options.exportPreview;
@@ -415,47 +541,36 @@ class CourseWorkflowController {
     this.rightEditorTab = options.rightEditorTab;
 
     this.apiClient = new ApiClient(window.PYTHON_API_URL || "/api-proxy.php", { timeoutMs: 15000 });
-    this.repository = new FoodtruckModuleRepository();
+    this.repository = new ModuleRepository();
     this.view = new SqlLearningView(options.view);
 
     this.moduleHref = null;
+    this.moduleConfig = MODULE_CONFIGS[0];
     this.tasks = [];
     this.info = null;
     this.store = null;
+    this.loadingModule = false;
   }
 
   async bind() {
+    if (!this.editor) {
+      this.view.setFooterStatus("SQL-Editor nicht gefunden.");
+      return;
+    }
+
     this.bindModuleSwitcher();
 
-    this.moduleHref = this.resolveFoodtruckModuleHref();
-    if (!this.moduleHref || !this.editor) {
-      this.view.setFooterStatus("Kein UE01-Modul gefunden.");
-      return;
-    }
+    this.actionLinks.forEach((button) => {
+      button.addEventListener("click", (event) => this.onAction(event, button));
+    });
 
-    try {
-      const payload = await this.repository.load(this.moduleHref);
-      this.tasks = payload.tasks;
-      this.info = payload.info;
-    } catch (error) {
-      this.view.setFooterStatus(`Modulstart fehlgeschlagen: ${error.message}`);
-      return;
-    }
-
-    if (this.tasks.length === 0) {
-      this.view.setFooterStatus("Keine Aufgaben im UE01-Modul erkannt.");
-      return;
-    }
-
-    this.store = new SqlLearningStateStore(this.tasks.length);
-
-    this.actionLinks.forEach((link) => {
-      link.addEventListener("click", (event) => this.onAction(event, link));
+    this.assistantActionLinks.forEach((button) => {
+      button.addEventListener("click", (event) => this.onAssistantAction(event, button));
     });
 
     this.editor.addEventListener("input", () => {
       const task = this.getCurrentTask();
-      if (task) {
+      if (task && this.store) {
         this.store.saveSqlDraft(task.id, this.editor.value);
       }
     });
@@ -463,18 +578,24 @@ class CourseWorkflowController {
     this.exportButton?.addEventListener("click", () => this.exportState());
 
     this.activateInitialTabs();
-    this.view.renderModeler(MODULE_EERM_IMAGE);
-    this.renderCurrentTask();
-    this.view.setFooterStatus("Aufgabe 1 geladen. Schreibe deine SQL-Abfrage und klicke auf testen.");
+
+    const initialHref = normalizeHref(this.view.moduleSelect?.value || this.resolveDefaultModuleHref());
+    if (!initialHref) {
+      this.view.setFooterStatus("Kein SQL-Modul gefunden.");
+      return;
+    }
+
+    await this.loadModule(initialHref, { resetToFirstTask: true });
   }
 
-  resolveFoodtruckModuleHref() {
-    const direct = this.exerciseLinks.find((entry) => String(entry?.href || "").includes("UE01_foodtrucknetz_sql_abfragen.html"));
-    if (direct && direct.href) {
+  resolveDefaultModuleHref() {
+    const direct = this.exerciseLinks.find((entry) => String(entry?.href || "").includes(MODULE_CONFIGS[0].slug));
+    if (direct?.href) {
       return String(direct.href);
     }
+
     const fallback = this.exerciseLinks[0];
-    return fallback?.href ? String(fallback.href) : null;
+    return fallback?.href ? String(fallback.href) : "";
   }
 
   bindModuleSwitcher() {
@@ -483,7 +604,7 @@ class CourseWorkflowController {
     }
 
     const syncSelectedModuleLink = () => {
-      const selectedHref = String(this.view.moduleSelect.value || "").trim();
+      const selectedHref = normalizeHref(this.view.moduleSelect.value);
       if (!selectedHref) {
         return;
       }
@@ -491,7 +612,54 @@ class CourseWorkflowController {
     };
 
     syncSelectedModuleLink();
-    this.view.moduleSelect.addEventListener("change", syncSelectedModuleLink);
+
+    this.view.moduleSelect.addEventListener("change", async (event) => {
+      syncSelectedModuleLink();
+
+      const selectedHref = normalizeHref(event.target?.value);
+      if (!selectedHref) {
+        return;
+      }
+
+      await this.loadModule(selectedHref, { resetToFirstTask: true });
+    });
+  }
+
+  async loadModule(moduleHref, options = {}) {
+    const { resetToFirstTask = false } = options;
+    const normalizedHref = normalizeHref(moduleHref);
+    if (!normalizedHref || this.loadingModule) {
+      return;
+    }
+
+    this.loadingModule = true;
+    this.view.setFooterStatus("Modul wird geladen...");
+
+    try {
+      const payload = await this.repository.load(normalizedHref);
+      this.tasks = payload.tasks;
+      this.info = payload.info;
+      this.moduleHref = normalizedHref;
+      this.moduleConfig = configForHref(normalizedHref);
+
+      if (this.tasks.length === 0) {
+        this.view.setFooterStatus("Keine Aufgaben im gewaehlten Modul erkannt.");
+        return;
+      }
+
+      this.store = new SqlLearningStateStore(this.tasks.length, this.moduleConfig.storageKey);
+      if (resetToFirstTask) {
+        this.store.resetToStart();
+      }
+
+      this.view.renderModeler(this.moduleConfig.eermImage, this.moduleConfig.eermAlt);
+      this.renderCurrentTask({ resetAssistant: true, resetResult: true });
+      this.view.setFooterStatus(`Modul geladen: ${this.moduleConfig.moduleTitle}. Aufgabe 1-14 jetzt linear bearbeiten.`);
+    } catch (error) {
+      this.view.setFooterStatus(`Modulstart fehlgeschlagen: ${sanitizeStudentFacingMessage(error?.message || "Unbekannter Fehler")}`);
+    } finally {
+      this.loadingModule = false;
+    }
   }
 
   activateInitialTabs() {
@@ -506,7 +674,8 @@ class CourseWorkflowController {
     return this.tasks[this.store.getCurrentTaskIndex()] || null;
   }
 
-  renderCurrentTask() {
+  renderCurrentTask(options = {}) {
+    const { resetAssistant = false, resetResult = false } = options;
     const task = this.getCurrentTask();
     if (!task || !this.store) {
       return;
@@ -516,32 +685,87 @@ class CourseWorkflowController {
     const solved = this.store.isSolved(task.id);
 
     this.view.renderTask(task, this.tasks.length, attempts, solved, this.moduleHref);
-    this.view.renderInfo(task, this.info);
-    this.editor.value = this.store.loadSqlDraft(task.id);
-    this.view.clearResult();
-    this.view.renderLog("Noch kein Test gestartet.", "Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.", "warning");
+    this.view.renderInfo(task, this.info || { schemaItems: [], tips: [], links: [], clauseOrder: "" });
+
+    if (this.editor) {
+      this.editor.value = this.store.loadSqlDraft(task.id);
+    }
+
+    if (resetResult) {
+      this.view.clearResult();
+      this.view.renderLog("Noch kein Test gestartet.", "Tippe eine Abfrage ein und starte den Test.", "warning");
+    }
+
+    if (resetAssistant) {
+      this.view.resetAssistantPanels();
+    }
+
     this.updateExportPreview();
   }
 
-  onAction(event, link) {
+  refreshTaskHeaderOnly() {
+    const task = this.getCurrentTask();
+    if (!task || !this.store) {
+      return;
+    }
+
+    const attempts = this.store.attemptsFor(task.id);
+    const solved = this.store.isSolved(task.id);
+    this.view.renderTask(task, this.tasks.length, attempts, solved, this.moduleHref);
+  }
+
+  onAction(event, button) {
     event.preventDefault();
-    const action = String(link.dataset.courseAction || "").trim();
+    const action = String(button.dataset.courseAction || "").trim();
 
     if (action === "back") {
       this.moveTask(-1);
       return;
     }
+
     if (action === "next") {
       this.moveTask(1);
       return;
     }
+
     if (action === "save") {
       this.store?.save();
       this.view.setFooterStatus("Arbeitsstand gespeichert.");
       return;
     }
+
+    if (action === "hint") {
+      const task = this.getCurrentTask();
+      if (!task) {
+        return;
+      }
+      this.view.toggleHint(task.hintHtml);
+      this.view.setFooterStatus(`Lernhilfe fuer Aufgabe ${task.number} aktualisiert.`);
+      return;
+    }
+
     if (action === "test") {
       this.runTest();
+    }
+  }
+
+  onAssistantAction(event, button) {
+    event.preventDefault();
+    const action = String(button.dataset.assistantAction || "").trim();
+    const task = this.getCurrentTask();
+    if (!task) {
+      return;
+    }
+
+    if (action === "solution") {
+      this.view.toggleSolution(task.solutionSql);
+      this.view.setFooterStatus(`Musterloesung fuer Aufgabe ${task.number} umgeschaltet.`);
+      return;
+    }
+
+    if (action === "expected") {
+      this.view.toggleExpected(task.expectedResultHtml);
+      this.view.setFooterStatus(`Erwartetes Ergebnis fuer Aufgabe ${task.number} umgeschaltet.`);
     }
   }
 
@@ -568,12 +792,12 @@ class CourseWorkflowController {
 
     const unlocked = this.store.getUnlockedTaskIndex();
     if (next > unlocked) {
-      this.view.setFooterStatus("Bitte loese zuerst die aktuelle Aufgabe erfolgreich und klicke danach auf weiter.");
+      this.view.setFooterStatus("Bitte loese zuerst die aktuelle Aufgabe erfolgreich und klicke danach auf Naechster Schritt.");
       return;
     }
 
     this.store.setCurrentTaskIndex(next);
-    this.renderCurrentTask();
+    this.renderCurrentTask({ resetAssistant: true, resetResult: true });
     this.leftTaskTab?.click();
     this.view.setFooterStatus(`Aufgabe ${next + 1} geladen.`);
   }
@@ -588,7 +812,7 @@ class CourseWorkflowController {
       return;
     }
 
-    const sqlText = String(this.editor.value || "").trim();
+    const sqlText = String(this.editor?.value || "").trim();
     if (!sqlText) {
       this.view.renderLog("Bitte gib zuerst eine SQL-Abfrage ein.", "Starte mit SELECT ... FROM ...", "warning");
       this.view.setFooterStatus("Test abgebrochen: Keine SQL-Abfrage eingegeben.");
@@ -602,7 +826,7 @@ class CourseWorkflowController {
 
     try {
       const response = await withRetry(() => this.apiClient.postJson("/api/v1/sql-sandbox/execute", {
-        dataset_key: MODULE_DATASET_KEY,
+        dataset_key: this.moduleConfig.datasetKey,
         candidate_sql: sqlText,
         reference_sql: task.solutionSql,
       }), { attempts: 2, baseDelayMs: 180 });
@@ -615,8 +839,8 @@ class CourseWorkflowController {
         this.view.renderLog(
           `Aufgabe ${task.number} korrekt geloest (Score ${Number(response?.score || 0)}%).`,
           currentIndex < this.tasks.length - 1
-            ? "Klicke auf weiter, um die naechste Aufgabe zu laden."
-            : "Alle Aufgaben bearbeitet. Klicke auf weiter fuer die Abschlussauswertung.",
+            ? "Klicke auf Naechster Schritt, um die naechste Aufgabe zu laden."
+            : "Alle Aufgaben bearbeitet. Klicke auf Naechster Schritt fuer die Abschlussauswertung.",
           "success"
         );
         this.view.renderResult(response);
@@ -648,7 +872,8 @@ class CourseWorkflowController {
       this.view.setFooterStatus(`SQL-Fehler in Aufgabe ${task.number}. Bitte Hinweis pruefen und erneut testen.`);
     }
 
-    this.renderCurrentTask();
+    this.refreshTaskHeaderOnly();
+    this.updateExportPreview();
   }
 
   parseSqlError(rawMessage) {
@@ -656,7 +881,7 @@ class CourseWorkflowController {
     const lineMatch = message.match(/line\s+(\d+)/i);
     const lineText = lineMatch ? `Zeile ${lineMatch[1]}` : "Zeile unbekannt";
 
-    let hint = "Pruefe Klauselreihenfolge, Aliasnamen und Klammern."
+    let hint = "Pruefe Klauselreihenfolge, Aliasnamen und Klammern.";
     let signature = "SQL-Fehler";
     const lowered = message.toLowerCase();
 
@@ -690,6 +915,7 @@ class CourseWorkflowController {
     this.exportPreview.value = JSON.stringify({
       course: COURSE_NAME,
       module: this.moduleHref,
+      moduleTitle: this.moduleConfig.moduleTitle,
       state: this.store.state,
       summary,
       exportedAt: new Date().toISOString(),
@@ -703,10 +929,10 @@ class CourseWorkflowController {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "rdb-foodtruck-progress.json";
+    link.download = "rdb-modul-progress.json";
     link.click();
     URL.revokeObjectURL(url);
-    this.view.setFooterStatus("Arbeitsstand exportiert: rdb-foodtruck-progress.json");
+    this.view.setFooterStatus("Arbeitsstand exportiert: rdb-modul-progress.json");
   }
 }
 
@@ -717,6 +943,7 @@ export function initCourseWorkflowController() {
   new CourseWorkflowController({
     exerciseLinks,
     actionLinks: Array.from(document.querySelectorAll("[data-course-action]")),
+    assistantActionLinks: Array.from(document.querySelectorAll("[data-assistant-action]")),
     editor: document.getElementById("practiceEditor-0"),
     exportButton: document.getElementById("exportWorkspaceButton"),
     exportPreview: document.getElementById("exportPreview"),
@@ -728,6 +955,8 @@ export function initCourseWorkflowController() {
       taskTitle: document.getElementById("currentTaskTitle"),
       taskDescription: document.getElementById("currentTaskDescription"),
       taskTopic: document.getElementById("currentTaskTopic"),
+      taskHintPanel: document.getElementById("currentTaskHintPanel"),
+      taskHint: document.getElementById("currentTaskHint"),
       taskLink: document.getElementById("currentTaskLink"),
       moduleSelect: document.getElementById("moduleSelect"),
       moduleOpenLink: document.getElementById("moduleOpenLink"),
@@ -736,11 +965,19 @@ export function initCourseWorkflowController() {
       infoContent: document.getElementById("currentInfoContent"),
       footerStatus: document.getElementById("workflowStatus"),
       editor: document.getElementById("practiceEditor-0"),
+      editorHeading: document.getElementById("currentSqlEditorHeading"),
+      editorLabel: document.getElementById("currentSqlDraftLabel"),
       logBox: document.getElementById("sqlTestLogBox"),
       logText: document.getElementById("sqlTestLog"),
       logHint: document.getElementById("sqlTestHint"),
       resultGrid: document.getElementById("sqlResultGrid"),
       modelerCanvas: document.getElementById("modelerCanvas"),
+      assistantHintBox: document.getElementById("assistantHintBox"),
+      assistantHintText: document.getElementById("assistantHintText"),
+      assistantSolutionBox: document.getElementById("assistantSolutionBox"),
+      assistantSolutionSql: document.getElementById("assistantSolutionSql"),
+      assistantExpectedBox: document.getElementById("assistantExpectedBox"),
+      assistantExpectedContent: document.getElementById("assistantExpectedContent"),
     },
   }).bind();
 }
