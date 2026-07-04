@@ -348,6 +348,33 @@ ol {
   color: var(--student-accent-2);
 }
 
+.module-switcher {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.module-switch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.module-select {
+  min-width: 280px;
+  border: 1px solid #c8d6e5;
+  border-radius: 10px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+  background: #fdfefe;
+  color: var(--student-ink);
+}
+
+.module-select:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 2px;
+}
+
 .field-label {
   display: block;
   margin-bottom: 0.45rem;

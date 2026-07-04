@@ -108,6 +108,7 @@ Fuer dieses Repository ist die fachliche Domäne strikt auf relationale Datenban
 Architekturregel fuer Interaktivitaet und API-Implementierung:
 
 - **Frontend-Bootstrap:** `webapp/public/app.js` und `webapp/public/js/main.mjs` enthalten nur Initialisierung.
+- **Portal-Modulwahl:** In `webapp/public/index.php` wird die Übungsmodul-Auswahl (UE01/UE02) als Dropdown geführt; die Link-Synchronisierung erfolgt über ein dediziertes Frontend-Modul (`webapp/public/js/module-switcher.mjs`), damit die Navigation unabhängig von aufgabenspezifischer Controller-Logik stabil bleibt.
 - **Frontend-MVC:** Fachlogik in `webapp/public/js/models/`, DOM-Darstellung in `webapp/public/js/views/`, Steuerlogik in `webapp/public/js/controllers/`.
 - **Python-API-Bootstrap:** `services/python-api/app.py` bleibt schlanker Einstiegspunkt.
 - **Python-API-Schichten:** Routing/Controller in `services/python-api/learning_api/routes.py`, Services in `services/python-api/learning_api/*_service.py`, DB/Repository-nahe Logik in `services/python-api/learning_api/db.py`.

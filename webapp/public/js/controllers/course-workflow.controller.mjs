@@ -230,6 +230,8 @@ class SqlLearningView {
     this.taskDescription = options.taskDescription;
     this.taskTopic = options.taskTopic;
     this.taskLink = options.taskLink;
+    this.moduleSelect = options.moduleSelect;
+    this.moduleOpenLink = options.moduleOpenLink;
     this.modulePosition = options.modulePosition;
     this.infoText = options.infoText;
     this.infoContent = options.infoContent;
@@ -261,7 +263,7 @@ class SqlLearningView {
     }
     if (this.taskLink) {
       this.taskLink.href = `${moduleHref}#${task.id}`;
-      this.taskLink.textContent = `Aufgabe ${task.number} im Modul oeffnen`;
+      this.taskLink.textContent = "Aktueller Arbeitsstand öffnen";
     }
   }
 
@@ -423,6 +425,8 @@ class CourseWorkflowController {
   }
 
   async bind() {
+    this.bindModuleSwitcher();
+
     this.moduleHref = this.resolveFoodtruckModuleHref();
     if (!this.moduleHref || !this.editor) {
       this.view.setFooterStatus("Kein UE01-Modul gefunden.");
@@ -471,6 +475,23 @@ class CourseWorkflowController {
     }
     const fallback = this.exerciseLinks[0];
     return fallback?.href ? String(fallback.href) : null;
+  }
+
+  bindModuleSwitcher() {
+    if (!this.view.moduleSelect || !this.view.moduleOpenLink) {
+      return;
+    }
+
+    const syncSelectedModuleLink = () => {
+      const selectedHref = String(this.view.moduleSelect.value || "").trim();
+      if (!selectedHref) {
+        return;
+      }
+      this.view.moduleOpenLink.href = selectedHref;
+    };
+
+    syncSelectedModuleLink();
+    this.view.moduleSelect.addEventListener("change", syncSelectedModuleLink);
   }
 
   activateInitialTabs() {
@@ -708,6 +729,8 @@ export function initCourseWorkflowController() {
       taskDescription: document.getElementById("currentTaskDescription"),
       taskTopic: document.getElementById("currentTaskTopic"),
       taskLink: document.getElementById("currentTaskLink"),
+      moduleSelect: document.getElementById("moduleSelect"),
+      moduleOpenLink: document.getElementById("moduleOpenLink"),
       modulePosition: document.getElementById("currentModulePosition"),
       infoText: document.getElementById("currentInfoText"),
       infoContent: document.getElementById("currentInfoContent"),

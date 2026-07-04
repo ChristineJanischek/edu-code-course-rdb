@@ -127,6 +127,49 @@ $initialTaskDescription = is_array($initialExerciseLink) && !empty($initialExerc
   ? (string) $initialExerciseLink['description']
   : 'Beim späteren Login wird die zuletzt bearbeitete Aufgabe automatisch geladen. Bis dahin wird der lokale Arbeitsstand verwendet.';
 
+$moduleSwitchDefinitions = [
+  [
+    'slug' => 'UE01_foodtrucknetz_sql_abfragen.html',
+    'label' => 'SQL Abfragen Foodtrucknetz DB',
+    'fallbackHref' => '/generated/uebungen/UE01_foodtrucknetz_sql_abfragen.html',
+  ],
+  [
+    'slug' => 'UE02_stadtfahrradverleih_sql_abfragen.html',
+    'label' => 'SQL Abfragen Stadtfahrradverleih DB',
+    'fallbackHref' => '/generated/uebungen/UE02_stadtfahrradverleih_sql_abfragen.html',
+  ],
+];
+
+$moduleSwitchOptions = [];
+foreach ($moduleSwitchDefinitions as $definition) {
+  $href = $definition['fallbackHref'];
+  foreach ($exerciseLinks as $entry) {
+    if (!is_array($entry) || empty($entry['href'])) {
+      continue;
+    }
+
+    $candidateHref = (string) $entry['href'];
+    if (str_contains($candidateHref, $definition['slug'])) {
+      $href = $candidateHref;
+      break;
+    }
+  }
+
+  $moduleSwitchOptions[] = [
+    'label' => $definition['label'],
+    'href' => $href,
+  ];
+}
+
+$selectedModuleHref = $moduleSwitchOptions[0]['href'] ?? '#';
+if (str_contains($initialTaskHref, 'UE02_stadtfahrradverleih_sql_abfragen.html')) {
+  $selectedModuleHref = $moduleSwitchOptions[1]['href'] ?? $selectedModuleHref;
+}
+
+if ($initialTaskHref === '#' || str_contains($initialTaskHref, 'README.md')) {
+  $initialTaskHref = $selectedModuleHref;
+}
+
 $viewModel['learningPaths'] = $learningPaths;
 $viewModel['curriculumTopics'] = $curriculumTopics;
 $viewModel['learningPlanLinks'] = $learningPlanLinks;
@@ -175,7 +218,18 @@ $viewModel['indexLinks'] = $indexLinks;
                   <p id="currentTaskDescription"><?php echo htmlspecialchars($initialTaskDescription, ENT_QUOTES, 'UTF-8'); ?></p>
                   <p class="muted" id="currentTaskTopic">Thema: -</p>
                   <p class="muted" id="currentModulePosition">Modul 0 von 0</p>
-                  <a class="action-link" id="currentTaskLink" href="<?php echo htmlspecialchars($initialTaskHref, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Modul öffnen</a>
+                  <div class="module-switcher">
+                    <label for="moduleSelect" class="field-label">Modul auswählen</label>
+                    <div class="module-switch-row">
+                      <select id="moduleSelect" class="module-select" aria-label="SQL-Modul auswählen">
+                        <?php foreach ($moduleSwitchOptions as $option): ?>
+                          <option value="<?php echo htmlspecialchars($option['href'], ENT_QUOTES, 'UTF-8'); ?>"<?php echo $option['href'] === $selectedModuleHref ? ' selected' : ''; ?>><?php echo htmlspecialchars($option['label'], ENT_QUOTES, 'UTF-8'); ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                      <a class="action-link" id="moduleOpenLink" href="<?php echo htmlspecialchars($selectedModuleHref, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Ausgewähltes Modul öffnen</a>
+                    </div>
+                  </div>
+                  <a class="action-link" id="currentTaskLink" href="<?php echo htmlspecialchars($initialTaskHref, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Aktueller Arbeitsstand öffnen</a>
                 </article>
               </section>
 
@@ -318,6 +372,7 @@ $viewModel['indexLinks'] = $indexLinks;
       window.SUBMISSION_API_BASE_URL = <?php echo json_encode($submissionApiBaseUrl, JSON_UNESCAPED_SLASHES); ?>;
       window.LEARNING_CONTENT = <?php echo json_encode($viewModel, JSON_UNESCAPED_SLASHES); ?>;
     </script>
+    <script type="module" src="js/module-switcher.mjs"></script>
     <script src="app.js" defer></script>
   </body>
 </html>

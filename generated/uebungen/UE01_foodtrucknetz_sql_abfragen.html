@@ -73,6 +73,17 @@
     .nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; font-size: .9rem; }
     .nav a { color: var(--accent2); text-decoration: none; font-weight: 600; }
     .nav a:hover { text-decoration: underline; }
+    .module-switch { display: inline-flex; align-items: center; gap: 8px; color: var(--accent2); font-weight: 600; }
+    .module-select {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 5px 10px;
+      font-size: .9rem;
+      font-family: inherit;
+    }
+    .module-select:focus { outline: 2px solid rgba(11,95,165,.25); outline-offset: 1px; }
     .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: .84rem; margin-bottom: 14px; }
     .legend span { padding: 3px 10px; border-radius: 12px; }
     hr { border: 0; border-top: 1px solid var(--border); margin: 14px 0; }
@@ -87,7 +98,12 @@
 
   <div class="nav">
     <a href="../informationen/begrifflichkeiten/stichwortverzeichnis_relationale_datenbanken.html">📖 Stichwortverzeichnis öffnen</a>
-    <a href="UE02_stadtfahrradverleih_sql_abfragen.html">➜ Übungsblatt UE02 (Stadtfahrradverleih)</a>
+    <label class="module-switch" for="module-select">Modul:
+      <select id="module-select" class="module-select" aria-label="SQL-Modul auswählen">
+        <option value="UE01_foodtrucknetz_sql_abfragen.html" selected>SQL Abfragen Foodtrucknetz DB</option>
+        <option value="UE02_stadtfahrradverleih_sql_abfragen.html">SQL Abfragen Stadtfahrradverleih DB</option>
+      </select>
+    </label>
     <a href="README.md">← Übersicht</a>
   </div>
 
@@ -700,6 +716,14 @@ function toggle(id) {
   if (btn) btn.textContent = el.classList.contains('hidden')
     ? (id.startsWith('sol') ? '✔ Musterlösung' : '📋 Erwartetes Ergebnis')
     : (id.startsWith('sol') ? '✖ Musterlösung verbergen' : '✖ Ergebnis verbergen');
+}
+
+const moduleSelect = document.getElementById('module-select');
+if (moduleSelect) {
+  moduleSelect.addEventListener('change', (event) => {
+    const targetFile = event.target.value;
+    if (targetFile) window.location.href = targetFile;
+  });
 }
 </script>
 <script type="module" src="/js/sql-practice-runtime.mjs"></script>
