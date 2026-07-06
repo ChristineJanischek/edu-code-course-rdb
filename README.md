@@ -26,3 +26,14 @@ Die fachliche SSOT für Inhalte liegt in der normalisierten Content-DB unter `da
 Abgeleitete Artefakte werden über die Skripte in `scripts/` generiert und validiert.
 
 Template-Repositories und abgeleitete Schul-Repositories sollen Änderungen grundsätzlich als Voll-Repo-Merge von `upstream/main` übernehmen, nicht selektiv dateiweise. Die dazugehörige Routine ist in [generated/informationen/begrifflichkeiten/template-sync-routine.md](generated/informationen/begrifflichkeiten/template-sync-routine.md) beschrieben.
+
+<!-- CUSTOM_LICENSE_NOTICE_START -->
+## License
+
+This repository is licensed under a custom license.
+
+- Attribution required: Christine Janischek - https://emotionalspirit.de
+- Non-commercial use only
+- Use only within state school systems
+- Any other use requires explicit prior written permission
+<!-- CUSTOM_LICENSE_NOTICE_END -->
