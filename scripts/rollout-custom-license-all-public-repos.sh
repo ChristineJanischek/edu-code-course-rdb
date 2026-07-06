@@ -333,17 +333,39 @@ main() {
     git commit -m "$COMMIT_MESSAGE" >/dev/null 2>&1
 
     if [[ $PUSH_CHANGES -eq 1 ]]; then
-      git push -u origin "$BRANCH_NAME" >/dev/null 2>&1
-      echo "[license-rollout] PUSHED: $repo_full"
+      if git push -u origin "$BRANCH_NAME" --force-with-lease >/dev/null 2>&1; then
+        echo "[license-rollout] PUSHED: $repo_full"
+      else
+        echo "[license-rollout] FAIL push: $repo_full"
+        popd >/dev/null
+        fail_count=$((fail_count + 1))
+        continue
+      fi
 
       if [[ $CREATE_PR -eq 1 ]]; then
-        gh pr create \
+        local existing_pr_url=""
+        existing_pr_url="$(gh pr list \
           --repo "$repo_full" \
-          --base "$target_base" \
           --head "$BRANCH_NAME" \
-          --title "$PR_TITLE" \
-          --body "$PR_BODY" >/dev/null
-        echo "[license-rollout] PR created: $repo_full"
+          --state open \
+          --json url \
+          --jq '.[0].url' 2>/dev/null || true)"
+
+        if [[ -n "$existing_pr_url" && "$existing_pr_url" != "null" ]]; then
+          echo "[license-rollout] PR already exists: $existing_pr_url"
+        else
+          if gh pr create \
+            --repo "$repo_full" \
+            --base "$target_base" \
+            --head "$BRANCH_NAME" \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY" >/dev/null; then
+            echo "[license-rollout] PR created: $repo_full"
+          else
+            echo "[license-rollout] FAIL pr-create: $repo_full"
+            fail_count=$((fail_count + 1))
+          fi
+        fi
       fi
     fi
 
