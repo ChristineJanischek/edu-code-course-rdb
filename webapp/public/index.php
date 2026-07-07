@@ -201,6 +201,43 @@ $viewModel['indexLinks'] = $indexLinks;
         </div>
       </header>
 
+      <section class="assistant-banner" aria-label="SQL-Assistent">
+        <div class="assistant-banner-inner">
+          <div class="sql-assistant-shell">
+            <div class="sql-assistant-head">
+              <h3>SQL-Assistent</h3>
+              <p class="sql-assistant-module">Modul geladen: SQL Abfragen Foodtrucknetz DB. Aufgabe 1-14 jetzt linear bearbeiten.</p>
+              <p id="workflowStatus" class="sql-assistant-note" aria-live="polite">Tippe eine Abfrage ein und starte den Test.</p>
+            </div>
+            <div class="footer-actions" aria-label="Kursaktionen">
+              <button type="button" data-course-action="test">Abfrage testen (Ergebnis)</button>
+              <button type="button" data-course-action="next">Nächster Schritt</button>
+              <button type="button" data-course-action="hint">i Lernhilfe</button>
+              <button type="button" data-assistant-action="solution">✔ Musterlösung</button>
+              <button type="button" data-assistant-action="expected">📋 Erwartetes Ergebnis</button>
+            </div>
+            <div class="info-box feedback-box" id="sqlTestLogBox" data-state="warning" aria-live="polite">
+              <strong>SQL-Testprotokoll</strong>
+              <p id="sqlTestLog">Noch kein Test gestartet.</p>
+              <p id="sqlTestHint" class="muted">Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.</p>
+            </div>
+            <div id="assistantHintBox" class="hint-panel" hidden>
+              <strong>💡 Lernhilfe</strong>
+              <p id="assistantHintText">Keine Lernhilfe verfügbar.</p>
+            </div>
+            <div id="assistantSolutionBox" class="sol-box" hidden>
+              <strong>Musterlösung</strong>
+              <pre id="assistantSolutionSql"></pre>
+            </div>
+            <div id="assistantExpectedBox" class="res-box" hidden>
+              <strong>Erwartetes Ergebnis</strong>
+              <div id="assistantExpectedContent"></div>
+            </div>
+            <div id="sqlResultGrid" class="sql-result-grid" hidden></div>
+          </div>
+        </div>
+      </section>
+
       <main class="page">
         <div class="workspace-frames">
           <section class="workspace-pane" id="left-window" aria-label="Kursfenster links">
@@ -352,38 +389,21 @@ $viewModel['indexLinks'] = $indexLinks;
 
       <footer class="app-footer" id="course-footer">
         <div class="footer-inner">
-          <div class="sql-assistant-shell" aria-label="SQL-Assistent">
-            <div class="sql-assistant-head">
-              <h3>SQL-Assistent</h3>
-              <p id="workflowStatus" class="sql-assistant-note" aria-live="polite">Tippe eine Abfrage ein und starte den Test.</p>
-            </div>
-            <div class="footer-actions" aria-label="Kursaktionen">
-              <button type="button" data-course-action="test">Abfrage testen (Ergebnis)</button>
-              <button type="button" data-course-action="next">Naechster Schritt</button>
-              <button type="button" data-course-action="hint">i Lernhilfe</button>
-            </div>
-            <div class="footer-actions footer-actions-secondary" aria-label="Assistent-Ausgaben">
-              <button type="button" data-assistant-action="solution">✔ Musterlösung</button>
-              <button type="button" data-assistant-action="expected">📋 Erwartetes Ergebnis</button>
-            </div>
-            <div class="info-box feedback-box" id="sqlTestLogBox" data-state="warning" aria-live="polite">
-              <strong>SQL-Testprotokoll</strong>
-              <p id="sqlTestLog">Noch kein Test gestartet.</p>
-              <p id="sqlTestHint" class="muted">Hinweise erscheinen hier mit Zeilenbezug, sobald die Abfrage getestet wird.</p>
-            </div>
-            <div id="assistantHintBox" class="hint-panel" hidden>
-              <strong>💡 Lernhilfe</strong>
-              <p id="assistantHintText">Keine Lernhilfe verfügbar.</p>
-            </div>
-            <div id="assistantSolutionBox" class="sol-box" hidden>
-              <strong>Musterlösung</strong>
-              <pre id="assistantSolutionSql"></pre>
-            </div>
-            <div id="assistantExpectedBox" class="res-box" hidden>
-              <strong>Erwartetes Ergebnis</strong>
-              <div id="assistantExpectedContent"></div>
-            </div>
-            <div id="sqlResultGrid" class="sql-result-grid" hidden></div>
+          <div class="license-box" aria-label="Lizenzhinweise">
+            <p class="license-note">Lizenzhinweis: Für diese Anwendung gelten die Bestimmungen aus LICENSE und NOTICE.</p>
+            <details class="license-info">
+              <summary class="license-info-toggle" aria-label="Lizenz- und Notice-Informationen anzeigen">i</summary>
+              <div class="license-info-panel">
+                <p><strong>Lizenz:</strong> Custom License - Christine Janischek NC School-Only 1.0</p>
+                <ul>
+                  <li>Sichtbare Attribution erforderlich: Christine Janischek - https://emotionalspirit.de</li>
+                  <li>Nicht-kommerzielle Nutzung</li>
+                  <li>Nutzung nur im Kontext staatlicher Schulsysteme</li>
+                  <li>Andere Nutzungen nur mit ausdrücklicher schriftlicher Erlaubnis</li>
+                </ul>
+                <p><strong>Notice:</strong> Required attribution text siehe NOTICE.</p>
+              </div>
+            </details>
           </div>
         </div>
       </footer>
