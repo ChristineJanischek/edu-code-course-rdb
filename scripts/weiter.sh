@@ -26,8 +26,7 @@ ahead=0
 behind=0
 if git rev-parse --abbrev-ref --symbolic-full-name "@{u}" >/dev/null 2>&1; then
   ahead_behind="$(git rev-list --left-right --count "@{u}"...HEAD 2>/dev/null || echo '0 0')"
-  behind="${ahead_behind%% *}"
-  ahead="${ahead_behind##* }"
+  read -r behind ahead <<< "$(echo "$ahead_behind" | tr -s ' ')"
 fi
 
 has_marker() {
@@ -77,7 +76,7 @@ next_actions=""
 
 if [[ "$m1_baseline" == "no" ]]; then
   next_milestone="M1 Baseline sichern"
-  next_actions=$'- Lokale Aenderungen committen und pushen.\n- Optionalen Snapshot-Tag setzen.\n- Danach erneut `bash scripts/weiter.sh` ausfuehren.'
+  next_actions=$'- Lokale Aenderungen committen und pushen.\n- Optionalen Snapshot-Tag setzen.\n- Danach erneut bash scripts/weiter.sh ausfuehren.'
 elif [[ "$m2_hint" == "no" ]]; then
   next_milestone="M2 Hint-Modus abschliessen"
   next_actions=$'- API-Endpunkt und UI-Hinweisdialog vervollstaendigen.\n- Hint-Policy (keine Vollloesung) absichern.\n- API + UI Smoke-Test ausfuehren.'
@@ -146,7 +145,7 @@ $next_actions
 - API-Tests: Hint-Endpunkt, Keyword-Search, Fehlerpfade.
 - UI-Smoke: Laden, Weiter-Navigation, Lernhilfe, Stichwortsuche.
 - Sicherheits-Checks: SQL-Sandbox-Write-Blocker, Input-Validierung, Fehlerausgaben.
-- Pflicht-Gates: `bash scripts/validate-security.sh`, `bash scripts/validate-architecture.sh`, `bash scripts/validate-docs.sh`.
+- Pflicht-Gates: bash scripts/validate-security.sh, bash scripts/validate-architecture.sh, bash scripts/validate-docs.sh.
 EOF
 
 cp "$report_file" "$LATEST_REPORT"

@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weiter-Statusbericht</title>
-  <link rel="stylesheet" href="assets/generated-docs.css">
+  <link rel="stylesheet" href="../assets/generated-docs.css">
 </head>
 <body>
   <div class="page">
     <header class="hero">
       <h1>Weiter-Statusbericht</h1>
       <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
-      <p>Quelle: /workspaces/edu-code-course-rdb/generated/weiter-status.md</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/weiter-status-history/weiter-status-20260711-151343.md</p>
     </header>
     <main class="content">
 <h1>Weiter-Statusbericht</h1>
-<p>Zeitpunkt (UTC): 2026-07-11T15:14:05Z</p>
+<p>Zeitpunkt (UTC): 2026-07-11T15:13:43Z</p>
 <h2>Repo-Stand</h2>
 <ul>
 <li>Branch: main</li>
 <li>Letzter Commit: 754fc70 feat: add weiter routine for milestone-aware repo continuation</li>
-<li>Working Tree: dirty</li>
-<li>Ahead/Behind gegen Upstream: ahead=0, behind=0</li>
+<li>Working Tree: clean</li>
+<li>Ahead/Behind gegen Upstream: ahead=0  0, behind=0 0</li>
 </ul>
 <h2>Auto-Erkennung nach Marschplan</h2>
 <ul>
@@ -58,15 +58,45 @@
 <ul>
 <li>Lokale Aenderungen committen und pushen.</li>
 <li>Optionalen Snapshot-Tag setzen.</li>
-<li>Danach erneut bash scripts/weiter.sh ausfuehren.</li>
+<li>Danach erneut <code>bash scripts/weiter.sh</code> ausfuehren.</li>
 </ul>
 <h2>Sinnvolle Testvorschlaege fuer den naechsten Zyklus</h2>
 <ul>
 <li>API-Tests: Hint-Endpunkt, Keyword-Search, Fehlerpfade.</li>
 <li>UI-Smoke: Laden, Weiter-Navigation, Lernhilfe, Stichwortsuche.</li>
 <li>Sicherheits-Checks: SQL-Sandbox-Write-Blocker, Input-Validierung, Fehlerausgaben.</li>
-<li>Pflicht-Gates: bash scripts/validate-security.sh, bash scripts/validate-architecture.sh, bash scripts/validate-docs.sh.</li>
+<li>Pflicht-Gates: [security] Starte Sicherheitsvalidierung...
+[security] Sicherheitsvalidierung erfolgreich, [arch] Starte Architekturvalidierung...
+[java] Kompilierung erfolgreich
+[java] Starte Headless-Modell-Smoke-Tests...
+[java-model-test] Starte Volleyball-Modell-Smoke-Tests...</li>
 </ul>
+<hr />
+<p>PASS  Startaufstellung hat 6 Spieler
+  PASS  Erster Spieler ist Armin
+  PASS  Ersatzbank hat 6 Spieler
+  PASS  Erster Ersatzspieler ist Chris
+  PASS  Kader hat 12 Spieler gesamt
+  PASS  Nach Tausch ist Index 0 = Batu
+  PASS  Nach Tausch ist Index 1 = Armin
+  PASS  Nach Einfuegen hat Startaufstellung 7 Spieler
+  PASS  Eingefuegter Spieler ist an Position 0
+  PASS  Kader enthaelt Kaderspieler-Typ an Position 0
+  PASS  Kader enthaelt Ersatzspieler-Typ an Position 6
+  PASS  Ungueltiger Tausch wirft keine Exception
+  PASS  holeSpielerliste(99) gibt leere Liste zurueck</p>
+<hr />
+<p>[java-model-test] Ergebnis: 13 bestanden, 0 fehlgeschlagen
+[java-model-test] Alle Tests erfolgreich
+[java] Modell-Tests erfolgreich
+[arch] Architekturvalidierung erfolgreich, [docs] Starte Dokumentationsvalidierung...
+[content-db] CHECK: contexts=4, duplicates=1
+[content-db] OK
+[html-sync] NEEDS-FIX: generated/weiter-status-history/weiter-status-20260711-151343.md -&gt; generated/weiter-status-history/weiter-status-20260711-151343.html
+[html-sync] FAIL: generated HTML documentation is not synchronized
+[html-sync] HINT: bash scripts/sync-generated-html.sh
+[docs] FAIL: HTML-Exporte aus Markdown oder Stoffverlaufsplan sind nicht synchron
+[docs] HINT: bash scripts/sync-generated-html.sh.</p>
     </main>
   </div>
 </body>
