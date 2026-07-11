@@ -32,7 +32,7 @@ fi
 has_marker() {
   local pattern="$1"
   shift
-  if grep -RIn -- "$pattern" "$@" >/dev/null 2>&1; then
+  if grep -REIn -- "$pattern" "$@" >/dev/null 2>&1; then
     echo yes
   else
     echo no
