@@ -29,6 +29,7 @@
 - **[prozesse/neue-routine-erstellen.md](prozesse/neue-routine-erstellen.md)** - Schritt-für-Schritt Anleitung
 - **[prozesse/lehrplanbasierte-inhaltserweiterung.md](prozesse/lehrplanbasierte-inhaltserweiterung.md)** - Curriculare Inhaltsanalyse, didaktische Ableitung und ML/RAG-Workflow
 - **[prozesse/llm-assistent-implementierungsroutine.md](prozesse/llm-assistent-implementierungsroutine.md)** - Wiederholbare Schrittfolge fuer KI-Assistenten in neuen Fachthemen
+- **[prozesse/teacher-ui-batch-routine.md](prozesse/teacher-ui-batch-routine.md)** - Strukturierte Erfassung und Analyse von Teacher-UI-Ideen in Inhalts-Batches
 - **[prozesse/routine-aktualisieren.md](prozesse/routine-aktualisieren.md)** - Update & Wartung
 - **[prozesse/redundanz-management.md](prozesse/redundanz-management.md)** - Redundanzen finden & beheben
 - **[prozesse/content-ssot-normalisierung-und-generierung.md](prozesse/content-ssot-normalisierung-und-generierung.md)** - 3NF-Content-DB, SSOT und Artefakt-Generierung
