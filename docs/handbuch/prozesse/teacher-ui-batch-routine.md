@@ -1,6 +1,6 @@
 # Prozess: Teacher-UI Inhalts-Batches
 
-Version: 1.0
+Version: 1.1
 Status: Aktiv
 Gueltig ab: 11.07.2026
 
@@ -34,6 +34,34 @@ Erzeugte Artefakte:
 - `generated/teacher-ui/batches/BATCH-001.md`
 - `generated/teacher-ui/analysen/BATCH-001-analyse.md`
 - `generated/teacher-ui/backlog/TEACHER_UI_MASTER_BACKLOG.md`
+
+---
+
+## TUI-001 Implementierungsinkrement (Sprachaufnahme zu Struktur)
+
+Ausfuehrung:
+
+```bash
+bash scripts/teacher-ui-intake.sh --id TUI-001
+```
+
+Optional mit eigener Spracheingabe-Datei:
+
+```bash
+bash scripts/teacher-ui-intake.sh --id TUI-001 --input /pfad/zum/transkript.txt
+```
+
+Ergebnisdatei:
+
+- `generated/teacher-ui/intake/TUI-001-structured.md`
+
+Inhalt der Ergebnisdatei:
+
+- normalisierte Eingabe
+- erkannte Einzelanforderungen
+- standardisierte To-do-Liste
+- Akzeptanzkriterien
+- Testvorschlaege
 
 ---
 
@@ -74,3 +102,4 @@ Erzeugte Artefakte:
 ## Changelog
 
 - v1.0 (11.07.2026): Initiale Batch-Routine fuer Teacher-UI-Anforderungen.
+- v1.1 (11.07.2026): TUI-001-Inkrement mit Intake-Skript fuer Sprach-zu-Struktur-Analyse ergaenzt.

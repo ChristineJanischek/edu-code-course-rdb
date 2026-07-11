@@ -13,7 +13,26 @@ Aktualisiert am (UTC): 2026-07-11T15:18:46Z
 - Prioritaet: Kritisch
 - Zielbereich: Core
 - Prozess: Unterricht planen, Material erstellen
-- Status: Idee erfasst
+- Status: In Umsetzung
+
+Akzeptanzkriterien:
+
+1. Spracheingabe wird in strukturierte Textform normalisiert.
+2. Einzelanforderungen werden nachvollziehbar gelistet.
+3. Zu jeder Intake-Ausfuehrung entsteht eine standardisierte To-do-Liste.
+4. Akzeptanzkriterien und Testvorschlaege werden automatisch dokumentiert.
+
+Technische Teilaufgaben:
+
+- Intake-Skript bereitstellen: `scripts/teacher-ui-intake.sh`
+- Ergebnisartefakt unter `generated/teacher-ui/intake/` erzeugen
+- Prozessdokumentation fuer TUI-001 aktualisieren
+
+Sinnvolle Tests:
+
+- Parser-Test auf Fuellwoerter und Leerzeichen-Normalisierung
+- Segmentierungs-Test fuer mehrere Einzelanforderungen
+- Fehlerfall-Test fuer ungueltige Input-Datei
 
 ### TUI-002 Prozess- und UI-Zuordnung
 
