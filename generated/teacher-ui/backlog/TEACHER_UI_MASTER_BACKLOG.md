@@ -137,3 +137,5 @@ Sinnvolle Tests:
 - Acceptance-Test fuer Marker-Auswertung aus generated/weiter-status.md
 - Regressionstestpfad end-to-end (001 bis 005)
 - Stabilitaetstest bei sauberem und absichtlich dirty Working Tree
+
+- BATCH-002 (erstellt 20260711-204218)

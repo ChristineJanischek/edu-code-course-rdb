@@ -1,0 +1,6 @@
+Titel: M6 Schulbetrieb-Features in Teilaufgaben
+Freitext: Wir wollen im nächsten Inkrement drei Schienen sauber trennen. Erstens Avatar und Voice als optionale Lehrkraftfunktionen mit klarer DSGVO-konformer Speicherung, Löschkonzept, Rollenrechten und Opt-in. Zweitens Governance für Prompt-, Wissens- und Modellupdates mit Vier-Augen-Freigabe, Versionierung, Rollback und Audit-Trail. Drittens Pilotbetrieb mit Feedbackzyklus über zwei Klassen, definierten Erfolgsmetriken, wöchentlichem Review und priorisierter Nachsteuerung.
+Prioritaet: Hoch
+Zielbereich: Core
+Betroffener Prozess: Schulbetrieb und Qualitätssteuerung
+Optionaler UI-Bereich: Lehrkraft-Dashboard, Kurseditor, Admin-Konsole
