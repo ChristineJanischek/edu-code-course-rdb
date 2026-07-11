@@ -52,7 +52,26 @@
 <li>Prioritaet: Hoch</li>
 <li>Zielbereich: Core</li>
 <li>Prozess: Aufgabe erstellen, Aufgabe veroeffentlichen, Feedback geben</li>
-<li>Status: Idee erfasst</li>
+<li>Status: In Umsetzung</li>
+</ul>
+<p>Akzeptanzkriterien:</p>
+<ol>
+<li>Jede erkannte Anforderung wird einem Lehrerprozess zugeordnet.</li>
+<li>Jede Zuordnung enthaelt UI-Hauptbereich und Darstellungsform.</li>
+<li>Die Zuordnung bevorzugt bestehende UI-Strukturen vor neuen Reitern.</li>
+<li>Routing-Regeln sind als reproduzierbares Artefakt dokumentiert.</li>
+</ol>
+<p>Technische Teilaufgaben:</p>
+<ul>
+<li>Routing-Skript bereitstellen: scripts/teacher-ui-routing.sh</li>
+<li>Routing-Artefakt unter generated/teacher-ui/routing/ erzeugen</li>
+<li>Prozessdokumentation fuer TUI-002 aktualisieren</li>
+</ul>
+<p>Sinnvolle Tests:</p>
+<ul>
+<li>Mapping-Test fuer Prozesszuordnung anhand typischer Aufgabenbegriffe</li>
+<li>Stabilitaetstest der UI-Zuordnung bei synonymen Formulierungen</li>
+<li>Fallback-Test fuer unklare Anforderungen</li>
 </ul>
 <h3>TUI-003 To-do-Generierung je Funktionswunsch</h3>
 <ul>

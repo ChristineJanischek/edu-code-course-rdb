@@ -39,7 +39,26 @@ Sinnvolle Tests:
 - Prioritaet: Hoch
 - Zielbereich: Core
 - Prozess: Aufgabe erstellen, Aufgabe veroeffentlichen, Feedback geben
-- Status: Idee erfasst
+- Status: In Umsetzung
+
+Akzeptanzkriterien:
+
+1. Jede erkannte Anforderung wird einem Lehrerprozess zugeordnet.
+2. Jede Zuordnung enthaelt UI-Hauptbereich und Darstellungsform.
+3. Die Zuordnung bevorzugt bestehende UI-Strukturen vor neuen Reitern.
+4. Routing-Regeln sind als reproduzierbares Artefakt dokumentiert.
+
+Technische Teilaufgaben:
+
+- Routing-Skript bereitstellen: scripts/teacher-ui-routing.sh
+- Routing-Artefakt unter generated/teacher-ui/routing/ erzeugen
+- Prozessdokumentation fuer TUI-002 aktualisieren
+
+Sinnvolle Tests:
+
+- Mapping-Test fuer Prozesszuordnung anhand typischer Aufgabenbegriffe
+- Stabilitaetstest der UI-Zuordnung bei synonymen Formulierungen
+- Fallback-Test fuer unklare Anforderungen
 
 ### TUI-003 To-do-Generierung je Funktionswunsch
 

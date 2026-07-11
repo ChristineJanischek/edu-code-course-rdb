@@ -1,6 +1,6 @@
 # Prozess: Teacher-UI Inhalts-Batches
 
-Version: 1.1
+Version: 1.2
 Status: Aktiv
 Gueltig ab: 11.07.2026
 
@@ -65,6 +65,34 @@ Inhalt der Ergebnisdatei:
 
 ---
 
+## TUI-002 Implementierungsinkrement (Prozess- und UI-Zuordnung)
+
+Ausfuehrung:
+
+```bash
+bash scripts/teacher-ui-routing.sh --id TUI-002
+```
+
+Optional mit expliziter Eingabe:
+
+```bash
+bash scripts/teacher-ui-routing.sh --id TUI-002 --input generated/teacher-ui/intake/TUI-001-structured.md
+```
+
+Ergebnisdatei:
+
+- `generated/teacher-ui/routing/TUI-002-routing.md`
+
+Inhalt der Ergebnisdatei:
+
+- Anforderungsbezogene Prozesszuordnung
+- UI-Hauptbereichszuordnung
+- Darstellungsform (Assistent, Seitenleiste, Kontextdialog)
+- Routing-Qualitaetskriterien
+- Testvorschlaege
+
+---
+
 ## Analysekriterien
 
 ### Best Practice
@@ -103,3 +131,4 @@ Inhalt der Ergebnisdatei:
 
 - v1.0 (11.07.2026): Initiale Batch-Routine fuer Teacher-UI-Anforderungen.
 - v1.1 (11.07.2026): TUI-001-Inkrement mit Intake-Skript fuer Sprach-zu-Struktur-Analyse ergaenzt.
+- v1.2 (11.07.2026): TUI-002-Inkrement mit Routing-Skript fuer Prozess- und UI-Zuordnung ergaenzt.
