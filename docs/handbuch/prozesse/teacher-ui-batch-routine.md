@@ -1,6 +1,6 @@
 # Prozess: Teacher-UI Inhalts-Batches
 
-Version: 1.4
+Version: 1.5
 Status: Aktiv
 Gueltig ab: 11.07.2026
 
@@ -147,6 +147,27 @@ Inhalt der Ergebnisdatei:
 
 ---
 
+## TUI-005 Implementierungsinkrement (Milestone-Tracking mit Triggerwort weiter)
+
+Ausfuehrung:
+
+```bash
+bash scripts/teacher-ui-milestone.sh --id TUI-005
+```
+
+Ergebnisdatei:
+
+- `generated/teacher-ui/milestones/TUI-005-milestone.md`
+
+Inhalt der Ergebnisdatei:
+
+- Acceptance-Check fuer den weiter-Trigger
+- naechster Milestone aus dem aktuellen Statusreport
+- Regressionstestpfad fuer die komplette TUI-Kette (001 bis 005)
+- Konsolidierungsregeln fuer reproduzierbare Laeufe
+
+---
+
 ## Analysekriterien
 
 ### Best Practice
@@ -188,3 +209,4 @@ Inhalt der Ergebnisdatei:
 - v1.2 (11.07.2026): TUI-002-Inkrement mit Routing-Skript fuer Prozess- und UI-Zuordnung ergaenzt.
 - v1.3 (11.07.2026): TUI-003-Inkrement mit To-do-Generator fuer priorisierte Taskableitung ergaenzt.
 - v1.4 (11.07.2026): TUI-004-Inkrement mit Kontext-KI-Zuordnung und UI-Smoke-Checkliste ergaenzt.
+- v1.5 (11.07.2026): TUI-005-Inkrement mit Milestone-Konsolidierung, Acceptance-Check und Regressionstestpfad ergaenzt.

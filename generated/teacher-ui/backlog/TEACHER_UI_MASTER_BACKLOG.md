@@ -117,4 +117,23 @@ Sinnvolle Tests:
 - Prioritaet: Hoch
 - Zielbereich: Core
 - Prozess: Entwicklungssteuerung, Qualitaetssicherung
-- Status: In Umsetzung
+- Status: Abgeschlossen
+
+Akzeptanzkriterien:
+
+1. Weiter-Trigger erzeugt bei jedem Lauf einen versionierten Statusbericht.
+2. Marker M1 bis M5 werden reproduzierbar im Acceptance-Check dokumentiert.
+3. Naechster Milestone wird aus dem aktuellen Report uebernommen.
+4. Ein klarer Regressionstestpfad fuer TUI-001 bis TUI-005 ist dokumentiert.
+
+Technische Teilaufgaben:
+
+- Milestone-Skript bereitstellen: scripts/teacher-ui-milestone.sh
+- Milestone-Artefakt unter generated/teacher-ui/milestones/ erzeugen
+- Prozessdokumentation fuer TUI-005 aktualisieren
+
+Sinnvolle Tests:
+
+- Acceptance-Test fuer Marker-Auswertung aus generated/weiter-status.md
+- Regressionstestpfad end-to-end (001 bis 005)
+- Stabilitaetstest bei sauberem und absichtlich dirty Working Tree

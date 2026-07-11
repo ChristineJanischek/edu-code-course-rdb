@@ -130,7 +130,26 @@
 <li>Prioritaet: Hoch</li>
 <li>Zielbereich: Core</li>
 <li>Prozess: Entwicklungssteuerung, Qualitaetssicherung</li>
-<li>Status: In Umsetzung</li>
+<li>Status: Abgeschlossen</li>
+</ul>
+<p>Akzeptanzkriterien:</p>
+<ol>
+<li>Weiter-Trigger erzeugt bei jedem Lauf einen versionierten Statusbericht.</li>
+<li>Marker M1 bis M5 werden reproduzierbar im Acceptance-Check dokumentiert.</li>
+<li>Naechster Milestone wird aus dem aktuellen Report uebernommen.</li>
+<li>Ein klarer Regressionstestpfad fuer TUI-001 bis TUI-005 ist dokumentiert.</li>
+</ol>
+<p>Technische Teilaufgaben:</p>
+<ul>
+<li>Milestone-Skript bereitstellen: scripts/teacher-ui-milestone.sh</li>
+<li>Milestone-Artefakt unter generated/teacher-ui/milestones/ erzeugen</li>
+<li>Prozessdokumentation fuer TUI-005 aktualisieren</li>
+</ul>
+<p>Sinnvolle Tests:</p>
+<ul>
+<li>Acceptance-Test fuer Marker-Auswertung aus generated/weiter-status.md</li>
+<li>Regressionstestpfad end-to-end (001 bis 005)</li>
+<li>Stabilitaetstest bei sauberem und absichtlich dirty Working Tree</li>
 </ul>
     </main>
   </div>
