@@ -1,6 +1,6 @@
 # Prozess: Teacher-UI Inhalts-Batches
 
-Version: 1.3
+Version: 1.4
 Status: Aktiv
 Gueltig ab: 11.07.2026
 
@@ -120,6 +120,33 @@ Inhalt der Ergebnisdatei:
 
 ---
 
+## TUI-004 Implementierungsinkrement (Kontextbezogene KI im Arbeitsfenster)
+
+Ausfuehrung:
+
+```bash
+bash scripts/teacher-ui-context.sh --id TUI-004
+```
+
+Optional mit expliziten Quellen:
+
+```bash
+bash scripts/teacher-ui-context.sh --id TUI-004 --routing generated/teacher-ui/routing/TUI-002-routing.md --todo generated/teacher-ui/todos/TUI-003-todo.md
+```
+
+Ergebnisdatei:
+
+- `generated/teacher-ui/context/TUI-004-context.md`
+
+Inhalt der Ergebnisdatei:
+
+- Kontext-KI-Zuordnung pro Arbeitsfenster
+- Usability-Regeln ohne neue Hauptnavigation
+- UI-Smoke-Test-Checkliste
+- Testvorschlaege fuer Integration und Robustheit
+
+---
+
 ## Analysekriterien
 
 ### Best Practice
@@ -160,3 +187,4 @@ Inhalt der Ergebnisdatei:
 - v1.1 (11.07.2026): TUI-001-Inkrement mit Intake-Skript fuer Sprach-zu-Struktur-Analyse ergaenzt.
 - v1.2 (11.07.2026): TUI-002-Inkrement mit Routing-Skript fuer Prozess- und UI-Zuordnung ergaenzt.
 - v1.3 (11.07.2026): TUI-003-Inkrement mit To-do-Generator fuer priorisierte Taskableitung ergaenzt.
+- v1.4 (11.07.2026): TUI-004-Inkrement mit Kontext-KI-Zuordnung und UI-Smoke-Checkliste ergaenzt.

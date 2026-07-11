@@ -91,7 +91,26 @@ Sinnvolle Tests:
 - Prioritaet: Hoch
 - Zielbereich: Course
 - Prozess: Kurs verwalten, Aufgabe differenzieren, Bewertung vorbereiten
-- Status: Idee erfasst
+- Status: In Umsetzung
+
+Akzeptanzkriterien:
+
+1. Pro Arbeitsfenster ist mindestens eine passende Kontext-KI-Aktion definiert.
+2. Kontext-KI wird in bestehende Fenster integriert, ohne neuen Hauptreiter.
+3. Zu jeder Aktion sind Trigger und erwartete Ausgabe beschrieben.
+4. Eine UI-Smoke-Checkliste ist als Artefakt dokumentiert.
+
+Technische Teilaufgaben:
+
+- Kontext-Skript bereitstellen: scripts/teacher-ui-context.sh
+- Kontext-Artefakt unter generated/teacher-ui/context/ erzeugen
+- Prozessdokumentation fuer TUI-004 aktualisieren
+
+Sinnvolle Tests:
+
+- Integrationstest pro Arbeitsfenster (Kurseditor, Aufgabeneditor, Abgaben)
+- Usability-Test: keine neue Hauptnavigation
+- Robustheitstest bei fehlenden Kontextdaten
 
 ### TUI-005 Milestone-Tracking mit Triggerwort weiter
 

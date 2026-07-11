@@ -104,7 +104,26 @@
 <li>Prioritaet: Hoch</li>
 <li>Zielbereich: Course</li>
 <li>Prozess: Kurs verwalten, Aufgabe differenzieren, Bewertung vorbereiten</li>
-<li>Status: Idee erfasst</li>
+<li>Status: In Umsetzung</li>
+</ul>
+<p>Akzeptanzkriterien:</p>
+<ol>
+<li>Pro Arbeitsfenster ist mindestens eine passende Kontext-KI-Aktion definiert.</li>
+<li>Kontext-KI wird in bestehende Fenster integriert, ohne neuen Hauptreiter.</li>
+<li>Zu jeder Aktion sind Trigger und erwartete Ausgabe beschrieben.</li>
+<li>Eine UI-Smoke-Checkliste ist als Artefakt dokumentiert.</li>
+</ol>
+<p>Technische Teilaufgaben:</p>
+<ul>
+<li>Kontext-Skript bereitstellen: scripts/teacher-ui-context.sh</li>
+<li>Kontext-Artefakt unter generated/teacher-ui/context/ erzeugen</li>
+<li>Prozessdokumentation fuer TUI-004 aktualisieren</li>
+</ul>
+<p>Sinnvolle Tests:</p>
+<ul>
+<li>Integrationstest pro Arbeitsfenster (Kurseditor, Aufgabeneditor, Abgaben)</li>
+<li>Usability-Test: keine neue Hauptnavigation</li>
+<li>Robustheitstest bei fehlenden Kontextdaten</li>
 </ul>
 <h3>TUI-005 Milestone-Tracking mit Triggerwort weiter</h3>
 <ul>
