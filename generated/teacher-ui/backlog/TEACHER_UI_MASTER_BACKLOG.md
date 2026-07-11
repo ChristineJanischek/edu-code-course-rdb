@@ -65,7 +65,26 @@ Sinnvolle Tests:
 - Prioritaet: Kritisch
 - Zielbereich: Core
 - Prozess: Backlog-Management, Release-Planung
-- Status: Idee erfasst
+- Status: In Umsetzung
+
+Akzeptanzkriterien:
+
+1. Jede geroutete Anforderung wird in genau einen To-do-Eintrag ueberfuehrt.
+2. Jeder Eintrag enthaelt Prioritaet, fachlichen Schritt, technischen Schritt und Testschritt.
+3. Kritische Aufgaben sind gegenueber Mittel priorisiert.
+4. Ergebnis wird als versionierbares Artefakt unter generated abgelegt.
+
+Technische Teilaufgaben:
+
+- To-do-Generator bereitstellen: scripts/teacher-ui-todo.sh
+- To-do-Artefakt unter generated/teacher-ui/todos/ erzeugen
+- Prozessdokumentation fuer TUI-003 aktualisieren
+
+Sinnvolle Tests:
+
+- Vollstaendigkeitstest: Anzahl To-dos entspricht Anzahl Routing-Anforderungen
+- Priorisierungstest fuer To-do- und Akzeptanzkriterien-Schluesselwoerter
+- Fehlerfall-Test bei ungueltigem Inputpfad
 
 ### TUI-004 Kontextbezogene KI im Arbeitsfenster
 

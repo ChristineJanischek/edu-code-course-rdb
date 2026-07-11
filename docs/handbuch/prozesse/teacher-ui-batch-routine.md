@@ -1,6 +1,6 @@
 # Prozess: Teacher-UI Inhalts-Batches
 
-Version: 1.2
+Version: 1.3
 Status: Aktiv
 Gueltig ab: 11.07.2026
 
@@ -93,6 +93,33 @@ Inhalt der Ergebnisdatei:
 
 ---
 
+## TUI-003 Implementierungsinkrement (To-do-Generierung je Funktionswunsch)
+
+Ausfuehrung:
+
+```bash
+bash scripts/teacher-ui-todo.sh --id TUI-003
+```
+
+Optional mit expliziter Eingabe:
+
+```bash
+bash scripts/teacher-ui-todo.sh --id TUI-003 --input generated/teacher-ui/routing/TUI-002-routing.md
+```
+
+Ergebnisdatei:
+
+- `generated/teacher-ui/todos/TUI-003-todo.md`
+
+Inhalt der Ergebnisdatei:
+
+- priorisierte To-do-Eintraege je Ausgangsanforderung
+- Akzeptanzkriterien
+- technische Teilaufgaben
+- Testvorschlaege
+
+---
+
 ## Analysekriterien
 
 ### Best Practice
@@ -132,3 +159,4 @@ Inhalt der Ergebnisdatei:
 - v1.0 (11.07.2026): Initiale Batch-Routine fuer Teacher-UI-Anforderungen.
 - v1.1 (11.07.2026): TUI-001-Inkrement mit Intake-Skript fuer Sprach-zu-Struktur-Analyse ergaenzt.
 - v1.2 (11.07.2026): TUI-002-Inkrement mit Routing-Skript fuer Prozess- und UI-Zuordnung ergaenzt.
+- v1.3 (11.07.2026): TUI-003-Inkrement mit To-do-Generator fuer priorisierte Taskableitung ergaenzt.
