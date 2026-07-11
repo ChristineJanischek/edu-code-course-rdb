@@ -296,7 +296,15 @@
   "topic_count": 6,
   "keyword_count": 7,
   "redundancy": {
-    "exact_duplicate_groups": [],
-    "group_count": 0
+    "exact_duplicate_groups": [
+      {
+        "digest": "ae64f6d0b755a0ac26c13f951025ea3581fcc0dc8f1104d2d219a8524f8629ea",
+        "paths": [
+          "generated/weiter-status-history/weiter-status-20260711-150425.md",
+          "generated/weiter-status.md"
+        ]
+      }
+    ],
+    "group_count": 1
   }
 }

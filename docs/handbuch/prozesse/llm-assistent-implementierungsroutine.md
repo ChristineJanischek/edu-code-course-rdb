@@ -1,6 +1,6 @@
 # Prozess: Wiederholbare Implementierungsroutine fuer KI-Assistenten
 
-Version: 1.0
+Version: 1.1
 Status: Aktiv
 Gueltig ab: 01.07.2026
 
@@ -34,6 +34,28 @@ Eine wiederholbare, dokumentierte Routine bereitstellen, um den KI-Assistenten f
 8. Lehrkraftfunktionen fuer Erstellung, Bewertung und Korrektur anbinden.
 9. Sicherheits- und Doku-Gates ausfuehren.
 10. Ergebnisse committen, pushen, im Marschplan fortschreiben.
+
+---
+
+## Triggerwort "weiter" (operativer Fortsetzungsmodus)
+
+Wenn im Projektkontext das Stichwort "weiter" verwendet wird, wird diese Routine ausgefuehrt:
+
+1. Aktuellen Repo-Stand automatisch ermitteln (Branch, Working-Tree, Upstream-Sync).
+2. Marker fuer Marschplan-Fortschritt automatisch pruefen (Hint-API, UI, Wissenssuche, Audit-Trail, Lehrkraftfunktionen).
+3. Naechsten logischen Milestone ableiten und als priorisierte Folgeaufgaben ausgeben.
+4. Ergebnis als Audit-Artefakt sichern unter `generated/weiter-status.md` und `generated/weiter-status-history/`.
+5. Sinnvolle Testvorschlaege fuer den naechsten Zyklus bereitstellen.
+
+Ausfuehrung:
+
+```bash
+bash scripts/weiter.sh
+```
+
+Hinweis zur Zuordnung:
+- Core: wiederverwendbare Assistentenlogik, Security, Rollen, Logging, Governance.
+- Course: fachspezifische Inhalte, Aufgabenkarten, curriculare Beispiele und didaktische Aufbereitung.
 
 ---
 
@@ -72,3 +94,4 @@ Eine wiederholbare, dokumentierte Routine bereitstellen, um den KI-Assistenten f
 ## Changelog
 
 - v1.0 (01.07.2026): Initiale wiederholbare Implementierungsroutine.
+- v1.1 (11.07.2026): Triggerwort "weiter" inkl. automatischer Statusanalyse, Milestone-Ableitung und Testvorschlaegen ergaenzt.

@@ -131,3 +131,4 @@ Definition of Done:
 - v1.1 (01.07.2026): Phase-1-Checkpoint mit erfolgreicher API-Validierung und sichtbarer Frontend-Integration des Assistant-Panels ergaenzt.
 - v1.2 (01.07.2026): UX-Ausbau auf 2-Reiter-Workspace inkl. Datei-Reiter und Selbstkontroll-Assistenz dokumentiert.
 - v1.3 (01.07.2026): UI-Revision auf Kurslayout mit 1/3-2/3-Aufteilung, Fensterbenennung ohne Präfix Fenster:, Footer-Linkaktionen und linearem Modulfluss dokumentiert.
+- v1.4 (11.07.2026): Operative "weiter"-Routine mit automatischer Standermittlung, Milestone-Ableitung und Status-Audit via `bash scripts/weiter.sh` ergaenzt.
