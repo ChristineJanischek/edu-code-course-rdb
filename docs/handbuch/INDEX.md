@@ -22,6 +22,7 @@
 ### 🧪 Anleitungen & Live-Tests
 - **[anleitungen/java-live-test.md](anleitungen/java-live-test.md)** - Java-App kompilieren, Modell-Tests & GUI starten
 - **[anleitungen/rdb-live-test-und-webserver-setup.md](anleitungen/rdb-live-test-und-webserver-setup.md)** - Docker-Live-Test, Webserver-Voraussetzungen und Betriebsanleitung für relationale Datenbankinhalte
+- **[anleitungen/classroom-weiter-ablauf-fuer-schueler.md](anleitungen/classroom-weiter-ablauf-fuer-schueler.md)** - Didaktische Schrittfolge fuer Schueler zur KI-gestuetzten weiter-Routine im Classroom
 - **[anleitungen/lizenz-rollout-oeffentliche-repos.md](anleitungen/lizenz-rollout-oeffentliche-repos.md)** - Automatisierter Rollout einer benutzerdefinierten Lizenz auf alle öffentlichen GitHub-Repositories
 - **[anleitungen/neues-repo-mit-custom-lizenz.md](anleitungen/neues-repo-mit-custom-lizenz.md)** - Neues GitHub-Repository direkt mit automatischer Custom-Lizenz erstellen
 
