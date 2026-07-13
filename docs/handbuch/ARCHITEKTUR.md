@@ -108,6 +108,8 @@ Fuer dieses Repository ist die fachliche Domäne strikt auf relationale Datenban
 Architekturregel fuer Interaktivitaet und API-Implementierung:
 
 - **Frontend-Bootstrap:** `webapp/public/app.js` und `webapp/public/js/main.mjs` enthalten nur Initialisierung.
+- **Student Portal:** `webapp/public/index.php` ist die Hauptseite mit Übungsmodul-Auswahl, Aufgabenstellung, SQL-Editor und integrierten Teacher-UI-Informationspanels (Strategy, Curriculum-Empfehlungen, Unterrichtsmodule).
+- **Teacher-UI Dashboard:** `webapp/public/teacher-ui.php` ist eine dedizierte Seite für Lehrkräfte zur Modulplanung, isoliert vom Schülerzugang. Lädt die gleichen Datendateien (`teacher-ui-module-plan.json`, `teaching-modules.json`) über PHP Repositories.
 - **Portal-Modulwahl:** In `webapp/public/index.php` wird die Übungsmodul-Auswahl (UE01/UE02) als Dropdown geführt; die Link- und Ladelogik wird über den Workflow-Controller (`webapp/public/js/controllers/course-workflow.controller.mjs`) synchronisiert.
 - **Integrierter Modulmodus:** Aufgaben aus `generated/uebungen/UE01_*` und `generated/uebungen/UE02_*` werden im Portal linear (1 bis 14) verarbeitet: Aufgabenstellung links, SQL-Editor rechts, Test-/Hint-/Musterloesung-/Ergebnisfluss im Footer-Assistenten.
 - **Frontend-MVC:** Fachlogik in `webapp/public/js/models/`, DOM-Darstellung in `webapp/public/js/views/`, Steuerlogik in `webapp/public/js/controllers/`.

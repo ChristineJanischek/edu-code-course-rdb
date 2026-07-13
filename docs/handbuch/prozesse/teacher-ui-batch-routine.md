@@ -228,6 +228,30 @@ Ziel:
 
 ---
 
+## API und Live-Test: Teacher-UI Dedizierte Seite
+
+Die Teacher-UI wird in zwei Kontexten bereitgestellt:
+
+1. **Student Portal Info Panel** (`webapp/public/index.php`)
+   - Integriert in die Hauptseite des Schülerzugangs
+   - Zeigt Strategy, Curriculum-Empfehlungen, Module, Meilensteine inline
+   - URL: `http://localhost:8080/` (Scroll zu Teacher-UI Sections)
+
+2. **Dedizierte Teacher-UI Dashboard** (`webapp/public/teacher-ui.php`)
+   - Isolierte Seite nur für Lehrerplanung, ohne Studentenportal
+   - Vollständige Navigation mit 6 Ankerbereichen (Strategie, Lehrplan, Prozesse, Meilensteine, Wochenbericht, Module)
+   - Responsive Layout für Desktop- und Tablet-Nutzung
+   - URL: `http://localhost:8080/teacher-ui.php`
+
+Beide Seiten laden die gleichen Datendateien:
+
+- `webapp/public/data/teacher-ui-module-plan.json` (aus `import_teacher_ui_share.py`)
+- `webapp/public/data/teaching-modules.json` (aus `generate_teaching_module.py`)
+
+Das Dashboard (`teacher-ui.php`) ist eigenständig und ruft nicht auf andere Seiten zu, Lehrkräfte können also gezielt nur den Modulplan prüfen und bearbeiten, ohne den Schülerzugang zu beeinflussen.
+
+---
+
 ## Changelog
 
 - v1.0 (11.07.2026): Initiale Batch-Routine fuer Teacher-UI-Anforderungen.
@@ -236,3 +260,4 @@ Ziel:
 - v1.3 (11.07.2026): TUI-003-Inkrement mit To-do-Generator fuer priorisierte Taskableitung ergaenzt.
 - v1.4 (11.07.2026): TUI-004-Inkrement mit Kontext-KI-Zuordnung und UI-Smoke-Checkliste ergaenzt.
 - v1.5 (11.07.2026): TUI-005-Inkrement mit Milestone-Konsolidierung, Acceptance-Check und Regressionstestpfad ergaenzt.
+- v1.6 (13.07.2026): Dedizierte Teacher-UI Dashboard Seite (`webapp/public/teacher-ui.php`) hinzugefuegt. Standalone-Zugang fuer Lehrkraefte ohne Schuelerzugang. Beide Seiten teilen Datendateien ueber Repositories.

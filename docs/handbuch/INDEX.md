@@ -22,6 +22,7 @@
 ### 🧪 Anleitungen & Live-Tests
 - **[anleitungen/java-live-test.md](anleitungen/java-live-test.md)** - Java-App kompilieren, Modell-Tests & GUI starten
 - **[anleitungen/rdb-live-test-und-webserver-setup.md](anleitungen/rdb-live-test-und-webserver-setup.md)** - Docker-Live-Test, Webserver-Voraussetzungen und Betriebsanleitung für relationale Datenbankinhalte
+- **[anleitungen/teacher-ui-dashboard.md](anleitungen/teacher-ui-dashboard.md)** - Dedizierte Lehrkräfte-Seite für Modulplanung, Curriculum-Mapping und Unterrichtsmodule
 - **[anleitungen/classroom-weiter-ablauf-fuer-schueler.md](anleitungen/classroom-weiter-ablauf-fuer-schueler.md)** - Didaktische Schrittfolge fuer Schueler zur KI-gestuetzten weiter-Routine im Classroom
 - **[anleitungen/classroom-weiter-arbeitsblatt.md](anleitungen/classroom-weiter-arbeitsblatt.md)** - Kompaktes Arbeitsblatt mit Checkboxen fuer die weiter-Routine im Classroom
 - **[anleitungen/lizenz-rollout-oeffentliche-repos.md](anleitungen/lizenz-rollout-oeffentliche-repos.md)** - Automatisierter Rollout einer benutzerdefinierten Lizenz auf alle öffentlichen GitHub-Repositories
