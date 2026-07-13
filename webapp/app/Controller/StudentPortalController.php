@@ -4,18 +4,22 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../Repository/KeywordIndexRepository.php';
 require_once __DIR__ . '/../Repository/TeacherUiModulePlanRepository.php';
+require_once __DIR__ . '/../Repository/TeachingModuleRepository.php';
 
 final class StudentPortalController
 {
     private LearningContentRepository $repository;
     /** @var object */
     private $teacherUiModulePlanRepository;
+    /** @var object */
+    private $teachingModuleRepository;
     private string $generatedBasePath;
 
-    public function __construct(LearningContentRepository $repository, $teacherUiModulePlanRepository, ?string $generatedBasePath = null)
+    public function __construct(LearningContentRepository $repository, $teacherUiModulePlanRepository, $teachingModuleRepository, ?string $generatedBasePath = null)
     {
         $this->repository = $repository;
         $this->teacherUiModulePlanRepository = $teacherUiModulePlanRepository;
+        $this->teachingModuleRepository = $teachingModuleRepository;
         $this->generatedBasePath = $generatedBasePath ?? '/var/www/html/generated';
     }
 
@@ -34,6 +38,7 @@ final class StudentPortalController
             'indexLinks' => $this->indexLinks(),
             'catalogMeta' => is_array($catalog['meta'] ?? null) ? $catalog['meta'] : [],
             'teacherUiPlan' => $this->teacherUiModulePlanRepository->loadPlan(),
+            'teachingModules' => $this->teachingModuleRepository->loadModules(),
         ];
     }
 

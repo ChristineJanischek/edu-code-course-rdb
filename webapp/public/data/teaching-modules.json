@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "managed_by": "scripts/generate_teaching_module.py",
+    "generated_at": "2026-07-13T12:57:40Z",
+    "module_count": 2
+  },
+  "modules": [
+    {
+      "module_id": "MODULE-001",
+      "title": "Lernmodul: EERM und Modellierung",
+      "context_id": "ctx_eerm_modelling",
+      "context_title": "EERM und Modellierung",
+      "learning_goals": [
+        "Entitäten, Attribute und Beziehungen aus dem Sachverhalt ableiten und Kardinalitäten begründen.",
+        "Tabellenmodelle bis zur 3. Normalform überführen und Abhängigkeiten dokumentieren.",
+        "Datenintegritätsbedingungen benennen und Anomalien bei Verstößen erläutern.",
+        "Fachliche Entscheidungen schriftlich begründen und Alternativlösungen bewerten."
+      ],
+      "tasks": [
+        {
+          "task_id": "task_eerm_context_to_model",
+          "title": "Kontext in EERM ueberfuehren",
+          "prompt": "Extrahiere Entitaeten, Attribute und Beziehungen aus dem Fachtext und begruende die Kardinalitaeten.",
+          "difficulty": "mittel"
+        },
+        {
+          "task_id": "task_3nf_refactor",
+          "title": "Bis 3NF normalisieren",
+          "prompt": "Fuehre ein Tabellenmodell in die 3. Normalform ueber und dokumentiere die aufgeloesten Abhaengigkeiten.",
+          "difficulty": "hoch"
+        }
+      ],
+      "evaluation_criteria": [
+        "Fachsprache wird korrekt und präzise verwendet.",
+        "Modell- oder Abfrageentscheidungen werden schriftlich begründet.",
+        "Ergebnisse sind fachlich vollständig und ohne Redundanz.",
+        "Komplexe Abhängigkeiten und Randfälle werden erkannt und behandelt."
+      ],
+      "hints": [
+        "Beginne mit den Entitätstypen – was sind die zentralen Fachgegenstände?",
+        "Prüfe jede Beziehung mit einem Einmal-Satz (z. B. 'Ein Kunde hat mehrere Buchungen').",
+        "3NF: Gibt es Attribute, die nur transitiv vom Primärschlüssel abhängen?"
+      ],
+      "publication_status": "draft",
+      "tags": [
+        "CTX-EERM"
+      ]
+    },
+    {
+      "module_id": "MODULE-002",
+      "title": "Lernmodul: SQL und Abfragekompetenz",
+      "context_id": "ctx_sql_queries",
+      "context_title": "SQL und Abfragekompetenz",
+      "learning_goals": [
+        "Einfache SELECT-Abfragen mit Projektion und Selektion formulieren und begründen.",
+        "Tabellen über Fremdschlüssel per JOIN verbinden und Ergebnismengen fachlich interpretieren.",
+        "Aggregation und Gruppierung mit GROUP BY / HAVING auf reale Fragestellungen anwenden.",
+        "Filterbedingungen in WHERE korrekt formulieren und von HAVING abgrenzen.",
+        "Abfrageergebnisse mit ORDER BY sinnvoll sortieren und Sortierrichtung begründen.",
+        "Fachliche Entscheidungen schriftlich begründen und Alternativlösungen bewerten."
+      ],
+      "tasks": [
+        {
+          "task_id": "task_sql_join_count",
+          "title": "Buchungen pro Raum zaehlen",
+          "prompt": "Schreibe eine SQL-Abfrage mit JOIN und GROUP BY, die Buchungen je Raum ausgibt.",
+          "difficulty": "mittel"
+        }
+      ],
+      "evaluation_criteria": [
+        "Fachsprache wird korrekt und präzise verwendet.",
+        "Modell- oder Abfrageentscheidungen werden schriftlich begründet.",
+        "Ergebnisse sind fachlich vollständig und ohne Redundanz."
+      ],
+      "hints": [
+        "Starte mit SELECT und FROM – welche Spalten und Tabellen braucht die Aufgabe?",
+        "JOIN nur dann, wenn Daten aus mehr als einer Tabelle benötigt werden.",
+        "GROUP BY-Spalten müssen in SELECT erscheinen oder aggregiert sein."
+      ],
+      "publication_status": "draft",
+      "tags": [
+        "CTX-SQL"
+      ]
+    }
+  ]
+}

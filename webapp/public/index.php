@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../app/Repository/LearningContentRepository.php';
 require_once __DIR__ . '/../app/Repository/TeacherUiModulePlanRepository.php';
+require_once __DIR__ . '/../app/Repository/TeachingModuleRepository.php';
 require_once __DIR__ . '/../app/Controller/StudentPortalController.php';
 
 header('X-Content-Type-Options: nosniff');
@@ -43,8 +44,9 @@ function resolveGeneratedBasePath(): string
 
 $contentRepository = new LearningContentRepository(__DIR__ . '/data/learning-content.json');
 $teacherUiModulePlanRepository = new \TeacherUiModulePlanRepository(__DIR__ . '/data/teacher-ui-module-plan.json');
+$teachingModuleRepository = new \TeachingModuleRepository(__DIR__ . '/data/teaching-modules.json');
 $generatedBasePath = resolveGeneratedBasePath();
-$studentPortalController = new StudentPortalController($contentRepository, $teacherUiModulePlanRepository, $generatedBasePath);
+$studentPortalController = new StudentPortalController($contentRepository, $teacherUiModulePlanRepository, $teachingModuleRepository, $generatedBasePath);
 $viewModel = $studentPortalController->buildViewModel();
 
 /**
@@ -114,6 +116,8 @@ $teacherUiModules = is_array($teacherUiPlan['modules'] ?? null) ? $teacherUiPlan
 $teacherUiMilestones = is_array($teacherUiPlan['milestones'] ?? null) ? $teacherUiPlan['milestones'] : [];
 $teacherUiWeeklyReport = is_array($teacherUiPlan['weekly_report'] ?? null) ? $teacherUiPlan['weekly_report'] : [];
 $teacherUiMeta = is_array($teacherUiPlan['meta'] ?? null) ? $teacherUiPlan['meta'] : [];
+$teachingModulesPayload = is_array($viewModel['teachingModules'] ?? null) ? $viewModel['teachingModules'] : [];
+$teachingModules = is_array($teachingModulesPayload['modules'] ?? null) ? $teachingModulesPayload['modules'] : [];
 $teacherUiProcessGroups = [];
 foreach ($teacherUiModules as $moduleEntry) {
   if (!is_array($moduleEntry)) {
@@ -465,6 +469,58 @@ $viewModel['indexLinks'] = $indexLinks;
                         <?php endif; ?>
                       </article>
                     <?php endif; ?>
+                  </section>
+                <?php endif; ?>
+
+                <?php if (!empty($teachingModules)): ?>
+                  <section class="section-block">
+                    <div class="section-head">
+                      <p class="eyebrow">MOD-GEN-004</p>
+                      <h2>Generierte Unterrichtsmodule</h2>
+                    </div>
+                    <div class="card-grid compact">
+                      <?php foreach ($teachingModules as $teachingModule): ?>
+                        <?php if (!is_array($teachingModule)) { continue; } ?>
+                        <article class="card module-plan-card">
+                          <div class="module-plan-head">
+                            <strong><?php echo htmlspecialchars((string) ($teachingModule['module_id'] ?? 'MOD'), ENT_QUOTES, 'UTF-8'); ?></strong>
+                            <span class="status-pill status-<?php echo htmlspecialchars((string) ($teachingModule['publication_status'] ?? 'draft'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) ($teachingModule['publication_status'] ?? 'draft'), ENT_QUOTES, 'UTF-8'); ?></span>
+                          </div>
+                          <h3><?php echo htmlspecialchars((string) ($teachingModule['title'] ?? 'Modul'), ENT_QUOTES, 'UTF-8'); ?></h3>
+
+                          <?php if (!empty($teachingModule['learning_goals']) && is_array($teachingModule['learning_goals'])): ?>
+                            <p class="module-plan-label">Lernziele</p>
+                            <ul class="resource-list compact-list">
+                              <?php foreach ($teachingModule['learning_goals'] as $goal): ?>
+                                <li><?php echo htmlspecialchars((string) $goal, ENT_QUOTES, 'UTF-8'); ?></li>
+                              <?php endforeach; ?>
+                            </ul>
+                          <?php endif; ?>
+
+                          <?php if (!empty($teachingModule['tasks']) && is_array($teachingModule['tasks'])): ?>
+                            <p class="module-plan-label">Aufgaben (<?php echo count($teachingModule['tasks']); ?>)</p>
+                            <ul class="resource-list compact-list">
+                              <?php foreach ($teachingModule['tasks'] as $taskItem): ?>
+                                <?php if (!is_array($taskItem)) { continue; } ?>
+                                <li>
+                                  <?php echo htmlspecialchars((string) ($taskItem['title'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?>
+                                  <span class="muted"> · <?php echo htmlspecialchars((string) ($taskItem['difficulty'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></span>
+                                </li>
+                              <?php endforeach; ?>
+                            </ul>
+                          <?php endif; ?>
+
+                          <?php if (!empty($teachingModule['hints']) && is_array($teachingModule['hints'])): ?>
+                            <p class="module-plan-label">Lernhilfen</p>
+                            <ul class="resource-list compact-list">
+                              <?php foreach ($teachingModule['hints'] as $hintItem): ?>
+                                <li><?php echo htmlspecialchars((string) $hintItem, ENT_QUOTES, 'UTF-8'); ?></li>
+                              <?php endforeach; ?>
+                            </ul>
+                          <?php endif; ?>
+                        </article>
+                      <?php endforeach; ?>
+                    </div>
                   </section>
                 <?php endif; ?>
               </section>

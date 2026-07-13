@@ -1,0 +1,64 @@
+name: weekly-report
+
+on:
+  schedule:
+    # Jeden Montag um 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pypdf
+
+      - name: Generate teaching modules
+        run: python3 scripts/generate_teaching_module.py
+
+      - name: Generate content catalog
+        run: bash scripts/generate-content-catalog.sh
+
+      - name: Run weiter status
+        run: bash scripts/weiter.sh
+
+      - name: Sync generated HTML
+        run: bash scripts/sync-generated-html.sh --write
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit weekly report artifacts
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          WEEK=$(date -u +"%Y-KW%V")
+          git add -A
+          git commit -m "chore: weekly report ${WEEK} – module plan, status, HTML sync"
+
+      - name: Push weekly report
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: git push origin HEAD:main
