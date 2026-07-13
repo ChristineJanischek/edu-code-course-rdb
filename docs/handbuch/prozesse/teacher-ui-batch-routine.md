@@ -202,6 +202,32 @@ Inhalt der Ergebnisdatei:
 
 ---
 
+## Externe ChatGPT-Share-Quelle andocken
+
+Wenn eine externe ChatGPT-Share-Konversation als Strategie- oder Ideenquelle fuer Teacher-UI, Kurseditor oder Modulplanung genutzt werden soll, kann sie direkt in die bestehende TUI-Kette importiert werden.
+
+Ausfuehrung:
+
+```bash
+python3 scripts/import_teacher_ui_share.py <share-url>
+```
+
+Wirkung:
+
+- importiert die Share-Quelle als versioniertes Artefakt unter `generated/teacher-ui/sources/`
+- erzeugt ein Batch-Input unter `generated/teacher-ui/batches/`
+- fuehrt Intake, Routing, To-do, Kontext und Milestone fuer die Quelle aus
+- schreibt einen strukturierten Modulplan nach `webapp/public/data/teacher-ui-module-plan.json`
+- erzeugt einen Wochenbericht unter `generated/teacher-ui/reports/`
+
+Ziel:
+
+- Ideen/Vorgaenge/Beduerfnisse aus der Quelle reproduzierbar sichern
+- daraus Module, Tests und Meilensteine ableiten
+- den aktuellen Entwicklungsplan direkt im Web-Frontend sichtbar machen
+
+---
+
 ## Changelog
 
 - v1.0 (11.07.2026): Initiale Batch-Routine fuer Teacher-UI-Anforderungen.

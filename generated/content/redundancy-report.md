@@ -6,7 +6,7 @@ Analyse auf inhaltlich exakt gleiche Markdown-Inhalte zwischen docs/handbuch und
 
 ## Gruppe 1
 
-- Fingerprint: 63487d3377a694036271079c809f6bf1ddb31be265b049ae32d5d625f6fb754c
+- Fingerprint: 088b8cd6d1537d7050cce56bfedb82fec03d3c81396dbaee50dd329ca020ff9a
 - Dateien:
-  - generated/weiter-status-history/weiter-status-20260711-204838.md
+  - generated/weiter-status-history/weiter-status-20260713-112707.md
   - generated/weiter-status.md

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strategieplan: ChatGPT - Automatisierte UI-Entwicklung</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Strategieplan: ChatGPT - Automatisierte UI-Entwicklung</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/teacher-ui/analysen/chatgpt-share-001-strategie.md</p>
+    </header>
+    <main class="content">
+<h1>Strategieplan: ChatGPT - Automatisierte UI-Entwicklung</h1>
+<h2>Kernbild</h2>
+<ul>
+<li>Idee: Paeadagogische Ideen automatisch in didaktisch tragfaehige digitale Lernmodule uebersetzen.</li>
+<li>Ausgangspunkt: Freiform-Ideen und Sprachinput sind vorhanden, aber bisher nicht als durchgaengige Quellkette im Repo angedockt.</li>
+<li>Ziel: Eine wiederholbare Teacher-UI- und Kurseditor-Pipeline, die Ideen aufnimmt, analysiert, Module plant, testbar macht und transparent fortschreibt.</li>
+<li>Philosophie: Bedarfsgesteuerte Softwareentwicklung: erst den Lehrerprozess verstehen, dann Funktionen pro Taetigkeit kapseln und sichtbar machen.</li>
+</ul>
+<h2>Erkannte Bedürfnisse</h2>
+<ul>
+<li>Freiform- und Spracheingaben ohne Vorstruktur aufnehmen</li>
+<li>Ideen in Prozesse, Bedürfnisse und Module zerlegen</li>
+<li>Didaktik, Lehrplan und Differenzierung automatisch mitdenken</li>
+<li>Backend- und Frontend-Bausteine pro Lehrerprozess planen</li>
+<li>Meilensteine, Tests und Wochenberichte aus derselben Quelle ableiten</li>
+<li>Lehrkraft als finale Entscheidungstraegerin im Review behalten</li>
+</ul>
+<h2>Module</h2>
+<h3>MOD-SRC-001: Share-Quellenimport</h3>
+<ul>
+<li>Prozess: Quelle andocken</li>
+<li>Status: implemented</li>
+<li>Ziel: Externe ChatGPT-Share-Quellen reproduzierbar importieren und als Repo-Artefakt sichern.</li>
+<li>Backend: scripts/import_teacher_ui_share.py</li>
+<li>Backend: generated/teacher-ui/sources/*.md</li>
+<li>Backend: generated/teacher-ui/batches/*-input.txt</li>
+<li>Frontend: Teacher-UI Modulplan im Informationsfenster</li>
+<li>Test: Share-URL ist abrufbar</li>
+<li>Test: Nach dem Import existieren Quellen-, Plan- und Reportdateien</li>
+</ul>
+<h3>MOD-ANL-002: Bedarfs- und Prozessanalyse</h3>
+<ul>
+<li>Prozess: Ideen analysieren</li>
+<li>Status: implemented</li>
+<li>Ziel: Aus Rohideen Bedürfnisse, Prozesse, UI-Zuordnung und technische Aufgaben ableiten.</li>
+<li>Backend: scripts/teacher-ui-intake.sh</li>
+<li>Backend: scripts/teacher-ui-routing.sh</li>
+<li>Backend: scripts/teacher-ui-todo.sh</li>
+<li>Backend: scripts/teacher-ui-context.sh</li>
+<li>Frontend: Prozessgruppen im Modulplan</li>
+<li>Frontend: Status- und Testangaben pro Modul</li>
+<li>Test: Intake erzeugt strukturierte Anforderungen</li>
+<li>Test: Routing ordnet Prozesse und UI-Hauptbereiche zu</li>
+<li>Test: To-do-Datei enthaelt Testschritte</li>
+</ul>
+<h3>MOD-DID-003: Didaktik- und Lehrplan-Mapping</h3>
+<ul>
+<li>Prozess: Unterricht planen</li>
+<li>Status: implemented</li>
+<li>Ziel: Kompetenzziele, Differenzierung, Altersstufe und Lehrplanhinweise aus der Quelle auf Kursbausteine mappen.</li>
+<li>Backend: Curriculum-Service mit Tagging und Empfehlungen</li>
+<li>Backend: Mapping-Regeln fuer Kompetenzziele</li>
+<li>Backend: Lehrplanindex aus generated/lehrplaene/index.json</li>
+<li>Frontend: Planungskarte mit Lehrplan- und Kompetenzhinweisen</li>
+<li>Frontend: Kontext-Hinweise im Kurseditor</li>
+<li>Frontend: Curriculum-Empfehlungen im Strategiepanel</li>
+<li>Test: Lehrplanhinweise erscheinen pro Modulkontext</li>
+<li>Test: Empfehlungen sind pro Curriculum-Dokument nachvollziehbar</li>
+<li>Test: Curriculum-Empfehlungen werden im Web-Frontend gerendert</li>
+</ul>
+<h3>MOD-GEN-004: Unterrichtsmodul-Generator</h3>
+<ul>
+<li>Prozess: Module generieren</li>
+<li>Status: planned</li>
+<li>Ziel: Aus validierten Anforderungen Kursmodule, Aufgaben, Bewertungsraster und Lernhilfen zusammenstellen.</li>
+<li>Backend: Generator fuer Materialpakete und Bewertungsraster</li>
+<li>Backend: Versionsierte Moduldefinitionen</li>
+<li>Frontend: Modul-Composer pro Arbeitsprozess</li>
+<li>Frontend: Vorschau fuer Aufgaben, Hinweise und Veroeffentlichung</li>
+<li>Test: Jedes Modul hat Aufgabe, Hilfe, Bewertung und Publikationsstatus</li>
+<li>Test: Fehlende Daten brechen die Vorschau nicht</li>
+</ul>
+<h3>MOD-OPS-005: Milestone- und Testorchestrierung</h3>
+<ul>
+<li>Prozess: Qualitaet sichern</li>
+<li>Status: implemented</li>
+<li>Ziel: Naechste Meilensteine, Regressionstests und Qualitaets-Gates automatisch fortschreiben.</li>
+<li>Backend: scripts/weiter.sh</li>
+<li>Backend: scripts/teacher-ui-milestone.sh</li>
+<li>Frontend: Milestone- und Testlisten im Modulplan</li>
+<li>Test: Weiter-Report wird aktualisiert</li>
+<li>Test: Milestone-Datei verweist auf Regressionstestpfad</li>
+</ul>
+<h3>MOD-REP-006: Wochenbericht-Automat</h3>
+<ul>
+<li>Prozess: Transparenz herstellen</li>
+<li>Status: implemented</li>
+<li>Ziel: Aktuellen Stand, umgesetzte Module und naechste Schritte als wiederholbaren Wochenbericht ausgeben.</li>
+<li>Backend: generated/teacher-ui/reports/*.md</li>
+<li>Backend: webapp/public/data/teacher-ui-module-plan.json</li>
+<li>Frontend: Wochenberichtskarte im Informationsfenster</li>
+<li>Test: Bericht nennt Stand, umgesetzte Module und naechste Schritte</li>
+<li>Test: Bericht bleibt auch ohne externe Quelle konsistent lesbar</li>
+</ul>
+<h2>Meilensteine</h2>
+<ul>
+<li>MS-01: Quelle ingestieren und strukturieren (done)</li>
+<li>MS-02: Strategieplan im UI sichtbar machen (done)</li>
+<li>MS-03: Didaktisches Mapping und Modulgenerator vertiefen (next)</li>
+</ul>
+<h2>Wochenbericht</h2>
+<ul>
+<li>Stand: Die externe Strategiequelle ist nun als Artefakt importiert, analysiert und in einen sichtbaren Modulplan fuer die Webapp ueberfuehrt.</li>
+<li>Umgesetzt: Share-Quellenimport</li>
+<li>Umgesetzt: Bedarfs- und Prozessanalyse</li>
+<li>Umgesetzt: Didaktik- und Lehrplan-Mapping</li>
+<li>Umgesetzt: Milestone- und Testorchestrierung</li>
+<li>Umgesetzt: Wochenbericht-Automat</li>
+<li>Naechster Schritt: Modul-Generator fuer Aufgaben, Bewertungsraster und Publikation konkretisieren</li>
+<li>Naechster Schritt: Curriculum-Mapping von Empfehlungen auf konkrete Modulvorlagen verfeinern</li>
+<li>Naechster Schritt: Wochenberichte optional zeitgesteuert aus demselben Datenmodell erzeugen</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>

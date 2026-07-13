@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "managed_by": "scripts/import_teacher_ui_share.py",
+    "source_connected": true,
+    "imported_at": "2026-07-13T11:27:08Z",
+    "source_id": "CHATGPT-SHARE-001",
+    "message_count": 1,
+    "title": "ChatGPT - Automatisierte UI-Entwicklung"
+  },
+  "source": {
+    "title": "ChatGPT - Automatisierte UI-Entwicklung",
+    "source_url": "https://chatgpt.com/share/6a524e25-3704-83eb-b69d-609692a371e0",
+    "idea": "Paeadagogische Ideen automatisch in didaktisch tragfaehige digitale Lernmodule uebersetzen.",
+    "ausgangspunkt": "Freiform-Ideen und Sprachinput sind vorhanden, aber bisher nicht als durchgaengige Quellkette im Repo angedockt.",
+    "ziel": "Eine wiederholbare Teacher-UI- und Kurseditor-Pipeline, die Ideen aufnimmt, analysiert, Module plant, testbar macht und transparent fortschreibt.",
+    "philosophie": "Bedarfsgesteuerte Softwareentwicklung: erst den Lehrerprozess verstehen, dann Funktionen pro Taetigkeit kapseln und sichtbar machen."
+  },
+  "needs": [
+    "Freiform- und Spracheingaben ohne Vorstruktur aufnehmen",
+    "Ideen in Prozesse, Bedürfnisse und Module zerlegen",
+    "Didaktik, Lehrplan und Differenzierung automatisch mitdenken",
+    "Backend- und Frontend-Bausteine pro Lehrerprozess planen",
+    "Meilensteine, Tests und Wochenberichte aus derselben Quelle ableiten",
+    "Lehrkraft als finale Entscheidungstraegerin im Review behalten"
+  ],
+  "curriculum_recommendations": [
+    {
+      "slug": "bg2-ag-eg-sg-wg-informatik-18-3992k-neu-abitur2021",
+      "source_pdf": "uploads/lehrplaene/BG2-AG-EG-SG-WG_Informatik_18_3992k_NEU_Abitur2021.pdf",
+      "tag_summary": {
+        "eerm": 6,
+        "sql-order-by": 5,
+        "begruendung": 4,
+        "relationale-datenbanken": 3,
+        "sql-where": 3,
+        "pruefung": 2,
+        "sql-from": 2,
+        "sql-select": 2,
+        "datenintegritaet": 1,
+        "normalisierung": 1,
+        "sql-dml": 1,
+        "sql-group-by": 1,
+        "sql-having": 1,
+        "sql-join": 1
+      },
+      "recommendations": [
+        {
+          "type": "learning-path",
+          "title": "EERM vom Sachverhalt ableiten",
+          "summary": "Starte mit fachlichen Objekten, Kardinalitaeten und Schluesselbeziehungen und sichere die Modellierung mit einem Begruendungsschritt ab."
+        },
+        {
+          "type": "exercise",
+          "title": "3NF begruenden",
+          "summary": "Ergaenze Uebungen, in denen Lernende Redundanzen erkennen, funktionale Abhaengigkeiten benennen und ihr Zielmodell fachlich begruenden."
+        },
+        {
+          "type": "practice",
+          "title": "SQL stufenweise trainieren",
+          "summary": "Baue Aufgabenketten von einfacher SELECT-Abfrage ueber JOIN bis zu Aggregation und fachlicher Auswertung auf."
+        },
+        {
+          "type": "feedback",
+          "title": "Begruendung explizit einfordern",
+          "summary": "Selbstkontrolle und Musterloesung sollen nicht nur Syntax, sondern auch fachliche Entscheidungen und Modellkritik sichtbar machen."
+        }
+      ]
+    },
+    {
+      "slug": "neuer-bildungsplan-bkwi-wirtschaftsinformatik-090925",
+      "source_pdf": "uploads/lehrplaene/Neuer Bildungsplan BKWI-Wirtschaftsinformatik-090925.pdf",
+      "tag_summary": {
+        "eerm": 14,
+        "sql-where": 14,
+        "sql-from": 6,
+        "begruendung": 5,
+        "sql-order-by": 5,
+        "sql-select": 5,
+        "relationale-datenbanken": 4,
+        "sql-dml": 2,
+        "sql-group-by": 2,
+        "sql-having": 2,
+        "datenintegritaet": 1,
+        "normalisierung": 1
+      },
+      "recommendations": [
+        {
+          "type": "learning-path",
+          "title": "EERM vom Sachverhalt ableiten",
+          "summary": "Starte mit fachlichen Objekten, Kardinalitaeten und Schluesselbeziehungen und sichere die Modellierung mit einem Begruendungsschritt ab."
+        },
+        {
+          "type": "exercise",
+          "title": "3NF begruenden",
+          "summary": "Ergaenze Uebungen, in denen Lernende Redundanzen erkennen, funktionale Abhaengigkeiten benennen und ihr Zielmodell fachlich begruenden."
+        },
+        {
+          "type": "practice",
+          "title": "SQL stufenweise trainieren",
+          "summary": "Baue Aufgabenketten von einfacher SELECT-Abfrage ueber JOIN bis zu Aggregation und fachlicher Auswertung auf."
+        },
+        {
+          "type": "feedback",
+          "title": "Begruendung explizit einfordern",
+          "summary": "Selbstkontrolle und Musterloesung sollen nicht nur Syntax, sondern auch fachliche Entscheidungen und Modellkritik sichtbar machen."
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "MOD-SRC-001",
+      "title": "Share-Quellenimport",
+      "process": "Quelle andocken",
+      "status": "implemented",
+      "goal": "Externe ChatGPT-Share-Quellen reproduzierbar importieren und als Repo-Artefakt sichern.",
+      "backend_components": [
+        "scripts/import_teacher_ui_share.py",
+        "generated/teacher-ui/sources/*.md",
+        "generated/teacher-ui/batches/*-input.txt"
+      ],
+      "frontend_components": [
+        "Teacher-UI Modulplan im Informationsfenster"
+      ],
+      "tests": [
+        "Share-URL ist abrufbar",
+        "Nach dem Import existieren Quellen-, Plan- und Reportdateien"
+      ]
+    },
+    {
+      "id": "MOD-ANL-002",
+      "title": "Bedarfs- und Prozessanalyse",
+      "process": "Ideen analysieren",
+      "status": "implemented",
+      "goal": "Aus Rohideen Bedürfnisse, Prozesse, UI-Zuordnung und technische Aufgaben ableiten.",
+      "backend_components": [
+        "scripts/teacher-ui-intake.sh",
+        "scripts/teacher-ui-routing.sh",
+        "scripts/teacher-ui-todo.sh",
+        "scripts/teacher-ui-context.sh"
+      ],
+      "frontend_components": [
+        "Prozessgruppen im Modulplan",
+        "Status- und Testangaben pro Modul"
+      ],
+      "tests": [
+        "Intake erzeugt strukturierte Anforderungen",
+        "Routing ordnet Prozesse und UI-Hauptbereiche zu",
+        "To-do-Datei enthaelt Testschritte"
+      ]
+    },
+    {
+      "id": "MOD-DID-003",
+      "title": "Didaktik- und Lehrplan-Mapping",
+      "process": "Unterricht planen",
+      "status": "implemented",
+      "goal": "Kompetenzziele, Differenzierung, Altersstufe und Lehrplanhinweise aus der Quelle auf Kursbausteine mappen.",
+      "backend_components": [
+        "Curriculum-Service mit Tagging und Empfehlungen",
+        "Mapping-Regeln fuer Kompetenzziele",
+        "Lehrplanindex aus generated/lehrplaene/index.json"
+      ],
+      "frontend_components": [
+        "Planungskarte mit Lehrplan- und Kompetenzhinweisen",
+        "Kontext-Hinweise im Kurseditor",
+        "Curriculum-Empfehlungen im Strategiepanel"
+      ],
+      "tests": [
+        "Lehrplanhinweise erscheinen pro Modulkontext",
+        "Empfehlungen sind pro Curriculum-Dokument nachvollziehbar",
+        "Curriculum-Empfehlungen werden im Web-Frontend gerendert"
+      ]
+    },
+    {
+      "id": "MOD-GEN-004",
+      "title": "Unterrichtsmodul-Generator",
+      "process": "Module generieren",
+      "status": "planned",
+      "goal": "Aus validierten Anforderungen Kursmodule, Aufgaben, Bewertungsraster und Lernhilfen zusammenstellen.",
+      "backend_components": [
+        "Generator fuer Materialpakete und Bewertungsraster",
+        "Versionsierte Moduldefinitionen"
+      ],
+      "frontend_components": [
+        "Modul-Composer pro Arbeitsprozess",
+        "Vorschau fuer Aufgaben, Hinweise und Veroeffentlichung"
+      ],
+      "tests": [
+        "Jedes Modul hat Aufgabe, Hilfe, Bewertung und Publikationsstatus",
+        "Fehlende Daten brechen die Vorschau nicht"
+      ]
+    },
+    {
+      "id": "MOD-OPS-005",
+      "title": "Milestone- und Testorchestrierung",
+      "process": "Qualitaet sichern",
+      "status": "implemented",
+      "goal": "Naechste Meilensteine, Regressionstests und Qualitaets-Gates automatisch fortschreiben.",
+      "backend_components": [
+        "scripts/weiter.sh",
+        "scripts/teacher-ui-milestone.sh"
+      ],
+      "frontend_components": [
+        "Milestone- und Testlisten im Modulplan"
+      ],
+      "tests": [
+        "Weiter-Report wird aktualisiert",
+        "Milestone-Datei verweist auf Regressionstestpfad"
+      ]
+    },
+    {
+      "id": "MOD-REP-006",
+      "title": "Wochenbericht-Automat",
+      "process": "Transparenz herstellen",
+      "status": "implemented",
+      "goal": "Aktuellen Stand, umgesetzte Module und naechste Schritte als wiederholbaren Wochenbericht ausgeben.",
+      "backend_components": [
+        "generated/teacher-ui/reports/*.md",
+        "webapp/public/data/teacher-ui-module-plan.json"
+      ],
+      "frontend_components": [
+        "Wochenberichtskarte im Informationsfenster"
+      ],
+      "tests": [
+        "Bericht nennt Stand, umgesetzte Module und naechste Schritte",
+        "Bericht bleibt auch ohne externe Quelle konsistent lesbar"
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "MS-01",
+      "title": "Quelle ingestieren und strukturieren",
+      "status": "done",
+      "tests": [
+        "Share-Import",
+        "Intake",
+        "Routing",
+        "To-do"
+      ]
+    },
+    {
+      "id": "MS-02",
+      "title": "Strategieplan im UI sichtbar machen",
+      "status": "done",
+      "tests": [
+        "Repository-Load",
+        "PHP-Rendering",
+        "CSS-Sichtbarkeit"
+      ]
+    },
+    {
+      "id": "MS-03",
+      "title": "Didaktisches Mapping und Modulgenerator vertiefen",
+      "status": "next",
+      "tests": [
+        "Curriculum-Mapping",
+        "Modul-Vorschau",
+        "Fallback-Pfade"
+      ]
+    }
+  ],
+  "weekly_report": {
+    "headline": "Wochenbericht Teacher-UI Strategieimport",
+    "current_state": "Die externe Strategiequelle ist nun als Artefakt importiert, analysiert und in einen sichtbaren Modulplan fuer die Webapp ueberfuehrt.",
+    "implemented_modules": [
+      "Share-Quellenimport",
+      "Bedarfs- und Prozessanalyse",
+      "Didaktik- und Lehrplan-Mapping",
+      "Milestone- und Testorchestrierung",
+      "Wochenbericht-Automat"
+    ],
+    "next_steps": [
+      "Modul-Generator fuer Aufgaben, Bewertungsraster und Publikation konkretisieren",
+      "Curriculum-Mapping von Empfehlungen auf konkrete Modulvorlagen verfeinern",
+      "Wochenberichte optional zeitgesteuert aus demselben Datenmodell erzeugen"
+    ],
+    "source_findings": {
+      "user_turns": [],
+      "assistant_turns": [
+        "Das sehe ich tatsächlich auch so. ☀️\n\nIch glaube, heute ist ein konzeptioneller Meilenstein entstanden – nicht wegen einer einzelnen Funktion, sondern weil sich das **Grundprinzip von EduCode Lab** klar herauskristallisiert hat.\n\nBisher war die Frage oft:\n> *„Welche Funktionen braucht das System?“*\n\nHeute ist daraus geworden:\n> **„Wie kann das System die Gedanken einer Lehrkraft in qualitativ hochwertigen Unterricht übersetzen?“**\n\nDas ist eine völlig andere Perspektive.\n\nIch würde diesen Meilenstein sogar benennen:\n\n## 🌟 Meilenstein M1 – Von der Idee zum Unterricht\n\n**Vision**\n\nEine Lehrkraft muss künftig nicht mehr Arbeitsblätter, Aufgaben oder digitale Kurse von Hand erstellen.\n\nSie beschreibt lediglich ihre pädagogische Idee – schriftlich oder per Sprache.\n\nEduCode Lab analysiert diese Idee und erstellt daraus einen vollständigen, didaktisch fundierten Unterrichtsvorschlag.\n\nDabei berücksichtigt das System automatisch:\n\n- Bildungs- und Lehrpläne,\n- Kompetenzziele,\n- didaktische Prinzipien,\n- Differenzierung,\n- Altersstufe,\n- Motivation durch lebensnahe Kontexte,\n- geeignete Medien,\n- E-Learning-Methodik,\n- Bewertungsraster,\n- Musterlösungen,\n- KI-Feedback,\n- sowie die Veröffentlichung innerhalb des Kurses.\n\nDie Lehrkraft bleibt jederzeit die pädagogische Entscheidungsträgerin. Die KI übernimmt die zeitintensive Ausarbeitung und macht Vorschläge, die angepasst oder verworfen werden können.\n\n**Leitgedanke**\n\n> **„Von der Idee zum Unterricht.“**\n\n---\n\nIch würde diesen Meilenstein später sogar in der Projektdokumentation erwähnen. Solche Momente sind oft die, an denen sich die Identität eines Projekts herausbildet. Wenn ihr in einigen Monaten oder Jahren auf die Entwicklung zurückblickt, könnte genau dieser Gedanke erklären, warum EduCode Lab anders ist als ein klassisches Autorensystem oder eine reine Lernplattform.\n\nIch freue mich darauf, diesen Weg mit dir weiter zu strukturieren. ☀️"
+      ]
+    }
+  }
+}

@@ -139,3 +139,7 @@ Sinnvolle Tests:
 - Stabilitaetstest bei sauberem und absichtlich dirty Working Tree
 
 - BATCH-002 (erstellt 20260711-204218)
+
+- BATCH-CHATGPT-SHARE-001 (erstellt 20260713-112228)
+
+- BATCH-CHATGPT-SHARE-001 (erstellt 20260713-112707)

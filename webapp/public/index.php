@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../app/Repository/LearningContentRepository.php';
+require_once __DIR__ . '/../app/Repository/TeacherUiModulePlanRepository.php';
 require_once __DIR__ . '/../app/Controller/StudentPortalController.php';
 
 header('X-Content-Type-Options: nosniff');
@@ -41,8 +42,9 @@ function resolveGeneratedBasePath(): string
 }
 
 $contentRepository = new LearningContentRepository(__DIR__ . '/data/learning-content.json');
+$teacherUiModulePlanRepository = new \TeacherUiModulePlanRepository(__DIR__ . '/data/teacher-ui-module-plan.json');
 $generatedBasePath = resolveGeneratedBasePath();
-$studentPortalController = new StudentPortalController($contentRepository, $generatedBasePath);
+$studentPortalController = new StudentPortalController($contentRepository, $teacherUiModulePlanRepository, $generatedBasePath);
 $viewModel = $studentPortalController->buildViewModel();
 
 /**
@@ -104,6 +106,26 @@ $learningPlanLinks = $viewModel['learningPlanLinks'];
 $exerciseLinks = $viewModel['exerciseLinks'];
 $indexLinks = $viewModel['indexLinks'];
 $catalogMeta = $viewModel['catalogMeta'];
+$teacherUiPlan = is_array($viewModel['teacherUiPlan'] ?? null) ? $viewModel['teacherUiPlan'] : [];
+$teacherUiSource = is_array($teacherUiPlan['source'] ?? null) ? $teacherUiPlan['source'] : [];
+$teacherUiNeeds = is_array($teacherUiPlan['needs'] ?? null) ? $teacherUiPlan['needs'] : [];
+$teacherUiCurriculumRecommendations = is_array($teacherUiPlan['curriculum_recommendations'] ?? null) ? $teacherUiPlan['curriculum_recommendations'] : [];
+$teacherUiModules = is_array($teacherUiPlan['modules'] ?? null) ? $teacherUiPlan['modules'] : [];
+$teacherUiMilestones = is_array($teacherUiPlan['milestones'] ?? null) ? $teacherUiPlan['milestones'] : [];
+$teacherUiWeeklyReport = is_array($teacherUiPlan['weekly_report'] ?? null) ? $teacherUiPlan['weekly_report'] : [];
+$teacherUiMeta = is_array($teacherUiPlan['meta'] ?? null) ? $teacherUiPlan['meta'] : [];
+$teacherUiProcessGroups = [];
+foreach ($teacherUiModules as $moduleEntry) {
+  if (!is_array($moduleEntry)) {
+    continue;
+  }
+
+  $processName = !empty($moduleEntry['process']) ? (string) $moduleEntry['process'] : 'Unzugeordnet';
+  if (!array_key_exists($processName, $teacherUiProcessGroups)) {
+    $teacherUiProcessGroups[$processName] = [];
+  }
+  $teacherUiProcessGroups[$processName][] = $moduleEntry;
+}
 $configuredCourseFiles = getenv('COURSE_WORKING_FILES') ?: '';
 $courseFiles = array_values(array_filter(array_map(static fn (string $entry): string => trim($entry), explode(',', $configuredCourseFiles))));
 if (count($courseFiles) === 0) {
@@ -284,6 +306,167 @@ $viewModel['indexLinks'] = $indexLinks;
                     <p>Finaler Login-Prozess folgt später. Vorbereitung ist bereits enthalten: Aufgabe, Information und Dateistand werden lokal fortgeführt.</p>
                   </div>
                 </article>
+
+                <?php if (($teacherUiMeta['source_connected'] ?? false) === true): ?>
+                  <section class="section-block">
+                    <div class="section-head">
+                      <p class="eyebrow">Teacher-UI Strategie</p>
+                      <h2><?php echo htmlspecialchars((string) ($teacherUiSource['title'] ?? 'Externe Quelle'), ENT_QUOTES, 'UTF-8'); ?></h2>
+                    </div>
+
+                    <div class="card-grid compact">
+                      <article class="card module-plan-card">
+                        <h3>Idee</h3>
+                        <p><?php echo htmlspecialchars((string) ($teacherUiSource['idea'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p class="muted"><?php echo htmlspecialchars((string) ($teacherUiSource['ausgangspunkt'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+                      </article>
+                      <article class="card module-plan-card">
+                        <h3>Ziel</h3>
+                        <p><?php echo htmlspecialchars((string) ($teacherUiSource['ziel'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p class="muted"><?php echo htmlspecialchars((string) ($teacherUiSource['philosophie'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+                      </article>
+                      <article class="card module-plan-card">
+                        <h3>Quelle</h3>
+                        <p class="muted">Importiert am: <?php echo htmlspecialchars((string) ($teacherUiMeta['imported_at'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+                        <?php if (!empty($teacherUiSource['source_url'])): ?>
+                          <a class="action-link" href="<?php echo htmlspecialchars((string) $teacherUiSource['source_url'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener">Quell-Chat öffnen</a>
+                        <?php endif; ?>
+                      </article>
+                    </div>
+
+                    <?php if (!empty($teacherUiNeeds)): ?>
+                      <article class="card module-plan-card">
+                        <h3>Erkannte Bedürfnisse</h3>
+                        <ul class="resource-list">
+                          <?php foreach ($teacherUiNeeds as $needEntry): ?>
+                            <li><?php echo htmlspecialchars((string) $needEntry, ENT_QUOTES, 'UTF-8'); ?></li>
+                          <?php endforeach; ?>
+                        </ul>
+                      </article>
+                    <?php endif; ?>
+
+                    <?php if (!empty($teacherUiCurriculumRecommendations)): ?>
+                      <article class="card module-plan-card">
+                        <h3>Lehrplan- und Didaktik-Mapping</h3>
+                        <div class="card-grid compact">
+                          <?php foreach ($teacherUiCurriculumRecommendations as $curriculumEntry): ?>
+                            <?php if (is_array($curriculumEntry)): ?>
+                              <article class="card module-plan-nested-card">
+                                <p class="eyebrow">Curriculum</p>
+                                <h3><?php echo htmlspecialchars((string) ($curriculumEntry['slug'] ?? 'curriculum'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                                <?php if (!empty($curriculumEntry['source_pdf'])): ?>
+                                  <p class="muted"><?php echo htmlspecialchars((string) $curriculumEntry['source_pdf'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <?php endif; ?>
+                                <?php if (!empty($curriculumEntry['recommendations']) && is_array($curriculumEntry['recommendations'])): ?>
+                                  <ul class="resource-list compact-list">
+                                    <?php foreach ($curriculumEntry['recommendations'] as $recommendationEntry): ?>
+                                      <?php if (is_array($recommendationEntry)): ?>
+                                        <li>
+                                          <strong><?php echo htmlspecialchars((string) ($recommendationEntry['title'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></strong>
+                                          <span class="muted"> <?php echo htmlspecialchars((string) ($recommendationEntry['summary'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></span>
+                                        </li>
+                                      <?php endif; ?>
+                                    <?php endforeach; ?>
+                                  </ul>
+                                <?php endif; ?>
+                              </article>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        </div>
+                      </article>
+                    <?php endif; ?>
+
+                    <?php foreach ($teacherUiProcessGroups as $processName => $processModules): ?>
+                      <section class="process-lane">
+                        <div class="section-head">
+                          <p class="eyebrow">Prozess</p>
+                          <h3><?php echo htmlspecialchars((string) $processName, ENT_QUOTES, 'UTF-8'); ?></h3>
+                        </div>
+                        <div class="card-grid compact">
+                          <?php foreach ($processModules as $moduleEntry): ?>
+                            <article class="card module-plan-card">
+                              <div class="module-plan-head">
+                                <strong><?php echo htmlspecialchars((string) ($moduleEntry['id'] ?? 'MOD'), ENT_QUOTES, 'UTF-8'); ?></strong>
+                                <span class="status-pill status-<?php echo htmlspecialchars((string) ($moduleEntry['status'] ?? 'planned'), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) ($moduleEntry['status'] ?? 'planned'), ENT_QUOTES, 'UTF-8'); ?></span>
+                              </div>
+                              <h3><?php echo htmlspecialchars((string) ($moduleEntry['title'] ?? 'Unbenanntes Modul'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                              <p><?php echo htmlspecialchars((string) ($moduleEntry['goal'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+
+                              <?php if (!empty($moduleEntry['backend_components']) && is_array($moduleEntry['backend_components'])): ?>
+                                <p class="module-plan-label">Backend</p>
+                                <ul class="resource-list compact-list">
+                                  <?php foreach ($moduleEntry['backend_components'] as $backendComponent): ?>
+                                    <li><?php echo htmlspecialchars((string) $backendComponent, ENT_QUOTES, 'UTF-8'); ?></li>
+                                  <?php endforeach; ?>
+                                </ul>
+                              <?php endif; ?>
+
+                              <?php if (!empty($moduleEntry['frontend_components']) && is_array($moduleEntry['frontend_components'])): ?>
+                                <p class="module-plan-label">Frontend</p>
+                                <ul class="resource-list compact-list">
+                                  <?php foreach ($moduleEntry['frontend_components'] as $frontendComponent): ?>
+                                    <li><?php echo htmlspecialchars((string) $frontendComponent, ENT_QUOTES, 'UTF-8'); ?></li>
+                                  <?php endforeach; ?>
+                                </ul>
+                              <?php endif; ?>
+
+                              <?php if (!empty($moduleEntry['tests']) && is_array($moduleEntry['tests'])): ?>
+                                <p class="module-plan-label">Tests</p>
+                                <ul class="resource-list compact-list">
+                                  <?php foreach ($moduleEntry['tests'] as $testEntry): ?>
+                                    <li><?php echo htmlspecialchars((string) $testEntry, ENT_QUOTES, 'UTF-8'); ?></li>
+                                  <?php endforeach; ?>
+                                </ul>
+                              <?php endif; ?>
+                            </article>
+                          <?php endforeach; ?>
+                        </div>
+                      </section>
+                    <?php endforeach; ?>
+
+                    <?php if (!empty($teacherUiMilestones)): ?>
+                      <article class="card module-plan-card">
+                        <h3>Meilensteine</h3>
+                        <ul class="resource-list">
+                          <?php foreach ($teacherUiMilestones as $milestoneEntry): ?>
+                            <?php if (is_array($milestoneEntry)): ?>
+                              <li>
+                                <strong><?php echo htmlspecialchars((string) ($milestoneEntry['id'] ?? 'MS'), ENT_QUOTES, 'UTF-8'); ?></strong>
+                                : <?php echo htmlspecialchars((string) ($milestoneEntry['title'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?>
+                                (<?php echo htmlspecialchars((string) ($milestoneEntry['status'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?>)
+                              </li>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        </ul>
+                      </article>
+                    <?php endif; ?>
+
+                    <?php if (!empty($teacherUiWeeklyReport)): ?>
+                      <article class="card module-plan-card weekly-report-card">
+                        <h3><?php echo htmlspecialchars((string) ($teacherUiWeeklyReport['headline'] ?? 'Wochenbericht'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                        <p><?php echo htmlspecialchars((string) ($teacherUiWeeklyReport['current_state'] ?? '-'), ENT_QUOTES, 'UTF-8'); ?></p>
+
+                        <?php if (!empty($teacherUiWeeklyReport['implemented_modules']) && is_array($teacherUiWeeklyReport['implemented_modules'])): ?>
+                          <p class="module-plan-label">Umgesetzte Module</p>
+                          <ul class="resource-list compact-list">
+                            <?php foreach ($teacherUiWeeklyReport['implemented_modules'] as $implementedModule): ?>
+                              <li><?php echo htmlspecialchars((string) $implementedModule, ENT_QUOTES, 'UTF-8'); ?></li>
+                            <?php endforeach; ?>
+                          </ul>
+                        <?php endif; ?>
+
+                        <?php if (!empty($teacherUiWeeklyReport['next_steps']) && is_array($teacherUiWeeklyReport['next_steps'])): ?>
+                          <p class="module-plan-label">Nächste Schritte</p>
+                          <ul class="resource-list compact-list">
+                            <?php foreach ($teacherUiWeeklyReport['next_steps'] as $nextStep): ?>
+                              <li><?php echo htmlspecialchars((string) $nextStep, ENT_QUOTES, 'UTF-8'); ?></li>
+                            <?php endforeach; ?>
+                          </ul>
+                        <?php endif; ?>
+                      </article>
+                    <?php endif; ?>
+                  </section>
+                <?php endif; ?>
               </section>
 
               <section class="workspace-panel" id="panel-left-keywords" role="tabpanel" aria-labelledby="tab-left-keywords" hidden>

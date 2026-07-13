@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHATGPT-SHARE-001 Milestone-Tracking Konsolidierung</title>
+  <link rel="stylesheet" href="../../assets/generated-docs.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>CHATGPT-SHARE-001 Milestone-Tracking Konsolidierung</h1>
+      <p>Automatisch aus der zugehörigen Markdown-Quelle erzeugte HTML-Fassung.</p>
+      <p>Quelle: /workspaces/edu-code-course-rdb/generated/teacher-ui/milestones/CHATGPT-SHARE-001-milestone.md</p>
+    </header>
+    <main class="content">
+<h1>CHATGPT-SHARE-001 Milestone-Tracking Konsolidierung</h1>
+<p>Erstellt am (UTC): 2026-07-13T11:27:08Z</p>
+<h2>Acceptance-Check weiter-Trigger</h2>
+<ul>
+<li>[FAIL] M1 Baseline gesichert = no</li>
+<li>[PASS] M2 Hint-Modus = yes</li>
+<li>[PASS] M3 Wissensanbindung = yes</li>
+<li>[PASS] M4 Audit-Trail = yes</li>
+<li>[PASS] M5 Lehrkraft-Features Fundament = yes</li>
+</ul>
+<p>Naechster Milestone laut weiter-Report: M1 Baseline sichern</p>
+<h2>Regressionstestpfad</h2>
+<ol>
+<li>bash scripts/teacher-ui-intake.sh --id TUI-001</li>
+<li>bash scripts/teacher-ui-routing.sh --id TUI-002</li>
+<li>bash scripts/teacher-ui-todo.sh --id TUI-003</li>
+<li>bash scripts/teacher-ui-context.sh --id TUI-004</li>
+<li>bash scripts/teacher-ui-milestone.sh --id TUI-005</li>
+<li>bash scripts/sync-generated-html.sh --write</li>
+<li>bash scripts/validate-security.sh</li>
+<li>bash scripts/validate-architecture.sh</li>
+<li>bash scripts/validate-docs.sh</li>
+</ol>
+<h2>Konsolidierungsregeln</h2>
+<ul>
+<li>Der weiter-Trigger ist zentrale Instanz fuer den Entwicklungsstatus.</li>
+<li>TUI-Artefakte werden versionsiert unter generated/teacher-ui/ abgelegt.</li>
+<li>Jeder Lauf endet mit Pflicht-Gates und konsistenten HTML-Ableitungen.</li>
+</ul>
+    </main>
+  </div>
+</body>
+</html>
